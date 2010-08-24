@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse-pydev version="1.0"?>
+
+<pydev_project>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">/home/cristiroma/workspace/pythons/2.4/bin/python</pydev_property>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.4</pydev_property>
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/home/cristiroma/workspace/bap/zope/eggs/simplejson-2.0.9-py2.4-linux-x86_64.egg</path>
+<path>/home/cristiroma/workspace/bap/zope/eggs/SQLAlchemy-0.6.3-py2.4.egg</path>
+<path>/home/cristiroma/workspace/bap/zope/eggs/FormEncode-1.2.2-py2.4.egg</path>
+<path>/home/cristiroma/workspace/bap/zope/eggs/z3c.sqlalchemy-1.4.0-py2.4.egg</path>
+<path>/home/cristiroma/workspace/bap/zope/parts/zope-server/lib/python</path>
+</pydev_pathproperty>
+<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
+<path>/bap</path>
+</pydev_pathproperty>
+</pydev_project>

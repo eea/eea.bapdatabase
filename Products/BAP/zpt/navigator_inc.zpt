@@ -1,0 +1,51 @@
+<tal:block tal:define="page_ob options/page;
+	filter_url options/filter_url;
+	sort_order options/sort_order|string:;
+	sort_on options/sort_on|string:;
+	count page_ob/paginator/count;
+	currpage options/currpage;
+	num_pages page_ob/paginator/num_pages">
+
+
+<div class="pagination" tal:condition="python: num_pages > 1">
+
+	<tal:block condition="page_ob/leading_range">
+	<span tal:repeat="page page_ob/leading_range">
+	<tal:block define="this_page python:page == currpage">
+		<span tal:condition="this_page" tal:content="page"/>
+		<a tal:condition="not:this_page" tal:content="page"
+		tal:attributes="href string:${filter_url}&sort=${sort_on}&order=${sort_order}&page=${page}#tbl"/>
+	</tal:block>
+	</span>
+	...
+	</tal:block>
+
+	<span tal:repeat="page page_ob/main_range">
+	<tal:block define="this_page python:page == currpage">
+		<span tal:condition="this_page" tal:content="page"/>
+		<a tal:condition="not:this_page"
+		tal:content="page" tal:attributes="href string:${filter_url}&sort=${sort_on}&order=${sort_order}&page=${page}#tbl"/>
+	</tal:block>
+	</span>
+
+	<tal:block condition="page_ob/trailing_range">
+	...
+	<span tal:repeat="page page_ob/trailing_range">
+	<tal:block define="this_page python:page == currpage">
+		<span tal:condition="this_page" tal:content="page"/>
+		<a tal:condition="not:this_page"
+		tal:content="page" tal:attributes="href string:${filter_url}&sort=${sort_on}&order=${sort_order}&page=${page}#tbl"/>
+	</tal:block>
+	</span>
+	</tal:block>
+
+	<span tal:define="has_previous page_ob/has_previous;
+						has_next page_ob/has_next;">
+		<a class="prevpage" tal:condition="has_previous"
+			tal:attributes="href string:${filter_url}&sort=${sort_on}&order=${sort_order}&page=${page_ob/previous_page_number}#tbl">&lt; previous</a>
+		<tal:block condition="python:(has_previous and has_next)">|</tal:block>
+		<a class="nextpage" tal:condition="has_next"
+			tal:attributes="href string:${filter_url}&sort=${sort_on}&order=${sort_order}&page=${page_ob/next_page_number}#tbl">next &gt;</a>
+	</span>
+</div>
+</tal:block>
