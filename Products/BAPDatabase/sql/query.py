@@ -3,7 +3,7 @@ Created on Aug 23, 2010
 
 @author: cristiroma
 '''
-from Products.BAP.sql import mappings
+import mappings
 
 def list_country(session):
     """ Retrieve the list of countries from table 01header

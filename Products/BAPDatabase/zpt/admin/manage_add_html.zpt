@@ -1,10 +1,10 @@
 <html>
 	<head>
-		<title>Create new BAP application</title>
+		<title>Create new BAPDatabase application</title>
 	</head>
 	<body>
-		<h1>Create new BAP application</h1>
-		<form action="manage_add_BAP">
+		<h1>Create new BAPDatabase application</h1>
+		<form action="manage_add">
 			<div>
 				<label for="id">ID</label>
 				<input type="text" id="id" name="id" value="" />
