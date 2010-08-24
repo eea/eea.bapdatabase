@@ -13,21 +13,23 @@
 #
 # Author(s):
 # Cristian Romanescu, Eau De Web
+# Cornel Nitu, Eau De Web
+
 from OFS.Folder import Folder
 from AccessControl.SecurityInfo import ClassSecurityInfo
 from App.class_init import InitializeClass
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
 
-from Products.BAP.sql import query
-from Products.BAP.paginate import DiggPaginator
-from Products.BAP.utils import paginate_items
+from sql import query
+from paginate import DiggPaginator
+from utils import paginate_items
 
 manage_add_html = PageTemplateFile('zpt/admin/manage_add_html', globals())
-def manage_add_BAP(parent, id, REQUEST=None):
-    """ Create new BAP object from ZMI.
+def manage_add(parent, id, REQUEST=None):
+    """ Create new BAPDatabase object from ZMI.
     """
-    parent._setObject(id, BAP(id, 'BAP application - %s' % id, 'en'))
+    parent._setObject(id, BAPDatabase(id, 'BAPDatabase application - %s' % id, 'en'))
     ob = parent._getOb(id)
     if REQUEST:
         ob.db_host = REQUEST.get('db_host', None)
@@ -40,12 +42,12 @@ def manage_add_BAP(parent, id, REQUEST=None):
     return ob
 
 
-class BAP(Folder):
+class BAPDatabase(Folder):
     """
-        BAP object, folder-type that contains items described within specs.
+        BAPDatabase object, folder-type that contains items described within specs.
         This is the root of the application.
     """
-    meta_type = 'BAP Application'
+    meta_type = 'BAPDatabase'
     security = ClassSecurityInfo()
 
     db_host = None
@@ -58,10 +60,10 @@ class BAP(Folder):
 
     def __init__(self, id, title, lang):
         """
-        Constructor that builds new BAP object.
+        Constructor that builds new BAPDatabase object.
         Parameters:
         """
-        super(BAP, self).__init__(id)
+        super(BAPDatabase, self).__init__(id)
 
     security.declarePrivate('loadDefaultData')
     def loadDefaultData(self, *args, **kwargs):
@@ -129,4 +131,4 @@ class BAP(Folder):
     paginator = PageTemplateFile('zpt/paginator_inc', globals())
     navigator = PageTemplateFile('zpt/navigator_inc', globals())
 
-InitializeClass(BAP)
+InitializeClass(BAPDatabase)

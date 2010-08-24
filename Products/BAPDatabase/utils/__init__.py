@@ -1,4 +1,4 @@
-from Products.BAP.paginate import DiggPaginator, EmptyPage, InvalidPage
+from Products.BAPDatabase.paginate import DiggPaginator, EmptyPage, InvalidPage
 
 def paginate_items(queryset, per_page, REQUEST):
 

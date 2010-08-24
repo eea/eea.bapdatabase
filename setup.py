@@ -16,25 +16,13 @@
 
 from setuptools import setup, find_packages
 
-w_long_description = """\
-BAP Application
-"""
-
-VERSION='0.1'
-
-setup(name='edw_bap',
-      author='Eau de Web',
-      author_email='office@eaudeweb.ro',
-      description='BAP Application',
-      version=VERSION,
-      download_url='http://naaya.eaudeweb.ro/eggshop/watsan.portal-'+VERSION+'.zip',
-      url='http://watsan.edw.ro/',
-      long_description=w_long_description,
-      zip_safe=False,
-      packages=find_packages(exclude='tests'),
-      include_package_data=True,
-      package_data={'':['*.*']},
-      license='Python',
-      platforms=['all',],
-      install_requires=[],
+setup(name='BAPDatabase',
+    version='0.0.1dev',
+    author='Eau de Web',
+    author_email='office@eaudeweb.ro',
+    url='http://naaya.eaudeweb.ro',
+    packages=find_packages(),
+    include_package_data=True,
+    zip_safe=False,
+    install_requires=[]
 )

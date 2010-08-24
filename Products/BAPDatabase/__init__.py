@@ -17,7 +17,7 @@
 import transaction
 import zLOG
 
-import BAP
+import BAPDatabase
 
 __doc__ = """This Zope product represents the BAP Application. See specifications for more details on this component"""
 __version__ = '0.1'
@@ -32,10 +32,10 @@ def initialize(context):
 
     try:
         context.registerClass(
-            BAP.BAP,
+            BAPDatabase.BAPDatabase,
             constructors = (
-                BAP.manage_add_html,
-                BAP.manage_add_BAP),
+                BAPDatabase.manage_add_html,
+                BAPDatabase.manage_add),
         )
     except:
         import sys, traceback, string
