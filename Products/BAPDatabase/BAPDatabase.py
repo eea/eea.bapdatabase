@@ -1,3 +1,4 @@
+import re
 from copy import deepcopy
 from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
 from AccessControl.SecurityInfo import ClassSecurityInfo
@@ -6,10 +7,38 @@ from App.class_init import InitializeClass
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
-from Products.NaayaBase.NyContentType import NY_CONTENT_BASE_SCHEMA
 from sql import query
 
-DEFAULT_SCHEMA = deepcopy(NY_CONTENT_BASE_SCHEMA)
+cp_1252_chars = {
+    # from http://www.microsoft.com/typography/unicode/1252.htm
+    u"\x80": u"\u20AC", # EURO SIGN
+    u"\x82": u"\u201A", # SINGLE LOW-9 QUOTATION MARK
+    u"\x83": u"\u0192", # LATIN SMALL LETTER F WITH HOOK
+    u"\x84": u"\u201E", # DOUBLE LOW-9 QUOTATION MARK
+    u"\x85": u"\u2026", # HORIZONTAL ELLIPSIS
+    u"\x86": u"\u2020", # DAGGER
+    u"\x87": u"\u2021", # DOUBLE DAGGER
+    u"\x88": u"\u02C6", # MODIFIER LETTER CIRCUMFLEX ACCENT
+    u"\x89": u"\u2030", # PER MILLE SIGN
+    u"\x8A": u"\u0160", # LATIN CAPITAL LETTER S WITH CARON
+    u"\x8B": u"\u2039", # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+    u"\x8C": u"\u0152", # LATIN CAPITAL LIGATURE OE
+    u"\x8E": u"\u017D", # LATIN CAPITAL LETTER Z WITH CARON
+    u"\x91": u"\u2018", # LEFT SINGLE QUOTATION MARK
+    u"\x92": u"\u2019", # RIGHT SINGLE QUOTATION MARK
+    u"\x93": u"\u201C", # LEFT DOUBLE QUOTATION MARK
+    u"\x94": u"\u201D", # RIGHT DOUBLE QUOTATION MARK
+    u"\x95": u"\u2022", # BULLET
+    u"\x96": u"\u2013", # EN DASH
+    u"\x97": u"\u2014", # EM DASH
+    u"\x98": u"\u02DC", # SMALL TILDE
+    u"\x99": u"\u2122", # TRADE MARK SIGN
+    u"\x9A": u"\u0161", # LATIN SMALL LETTER S WITH CARON
+    u"\x9B": u"\u203A", # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+    u"\x9C": u"\u0153", # LATIN SMALL LIGATURE OE
+    u"\x9E": u"\u017E", # LATIN SMALL LETTER Z WITH CARON
+    u"\x9F": u"\u0178", # LATIN CAPITAL LETTER Y WITH DIAERESIS
+}
 
 def create_object_callback(parent, id, contributor):
     ob = BAPDatabase(id, contributor)
@@ -59,13 +88,6 @@ class BAPDatabase(NyFolder):
         """
         super(BAPDatabase, self).__init__(id, contributor)
 
-    security.declarePrivate('loadDefaultData')
-    def loadDefaultData(self, *args, **kwargs):
-        """ Load the initial data into a new created object
-        """
-        pass
-
-
     security.declarePrivate('get_db_session')
     def get_db_session(self):
         """
@@ -99,6 +121,21 @@ class BAPDatabase(NyFolder):
         country = self.aq_parent.title_or_id()
         return query.list_actionsnarrative(session, country, objective)
 
+    security.declareProtected(view, 'fix_1252_codes')
+    def fix_1252_codes(self, text):
+        """
+        Replace non-standard Microsoft character codes from the Windows-1252 character set in a unicode string with proper unicode codes.
+        Code originally from: http://effbot.org/zone/unicode-gremlins.htm
+        """
+        if re.search(u"[\x80-\x9f]", text):
+            def fixup(m):
+                s = m.group(0)
+                return cp_1252_chars.get(s, s)
+            if isinstance(text, type("")):
+                text = unicode(text, "iso-8859-1")
+            text = re.sub(u"[\x80-\x9f]", fixup, text)
+        return text
+
     ##### VIEWS #####
 
     _index = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
@@ -110,30 +147,5 @@ class BAPDatabase(NyFolder):
         country = self.aq_parent.title_or_id()
         objectives = query.list_objectives(session, country)
         return self._index(REQUEST, objectives = objectives)
-
-
-    #_country_html = PageTemplateFile('zpt/views/country_html', globals())
-    #def country(self, REQUEST):
-    #    """ List of countries
-    #    """
-    #    session = self.get_db_session()
-    #    items = query.list_country(session)
-    #    items = paginate_items(items, 20, REQUEST)
-    #    return self._country_html(REQUEST, page=items)
-    #
-    #_actionsnarrative_html = PageTemplateFile('zpt/views/actionsnarrative_html', globals())
-    #def actionsnarrative(self, REQUEST):
-    #    """ Query - actionsnarrative
-    #    """
-    #    session = self.get_db_session()
-    #    items = query.list_actionsnarrative(session)
-    #    items = paginate_items(items, 20, REQUEST)
-    #    return self._actionsnarrative_html(REQUEST, page=items)
-
-    ##### END VIEWS #####
-
-    #template_tpl = PageTemplateFile('zpt/template_tpl', globals())
-    #paginator = PageTemplateFile('zpt/paginator_inc', globals())
-    #navigator = PageTemplateFile('zpt/navigator_inc', globals())
 
 InitializeClass(BAPDatabase)

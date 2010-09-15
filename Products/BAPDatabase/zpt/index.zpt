@@ -6,58 +6,80 @@
 	</metal:block>
 
 	<metal:block metal:fill-slot="head">
+
+		<script>
+			$(document).ready(function(){
+					$('p').each(function(){
+							$(this).html(Linkify($(this).html()));
+					})
+			})
+		</script>
+
 		<style type="text/css">
-			.container-content {
-				clear:both;
-				margin-bottom:2em;
+			.action-title {
+				background-color:#E7F3FB;
+				border-top:1px solid #3366CC;
+				font-size:130%;
+				font-weight:bold;
+				margin:2em 0 0 0;
+				padding:1px 3px;
+				position:relative;
 			}
 
-			.left-content{
-				float: left;
-				width: 500px;
-				padding:0.2em;
-				margin: 0;
-				margin-bottom: 1em;
+			.mop-content {
+				border-color:#BBBBBB;
+				background-color:#F4F4F4;
+				border-bottom:1px solid;
+				border-top:1px solid;
+				margin:1em 0 0;
+				padding:0.2em 0.5em 0.2em 0.9em;
 			}
 
-			.right-content{
-				margin-left: 503px;
-				max-width: 36em;
-				padding:0.2em;
+			p {
+				line-height:125%;
+				margin:0;
+				padding:1em 0 0;
 			}
 
-			.content-title, .content-subtitle{
-				background-color:#6A98C5;
-				padding:0.1em;
-				color: white;
-				font-weight: bold;
-				margin-bottom: 0.2em;
-			}
-
-			.content-subtitle{
-				width: 300px;
+			p.backtotop {
+				float:right;
+				margin:0.5em 0 0 4em;
+				padding:0;
+				position:relative;
+				z-index:99;
 			}
 		</style>
 	</metal:block>
 
 	<metal:block fill-slot="body">
 		<div id="center_content">
+			<a id="top"></a>
 			<h1 tal:content="here/aq_parent/title_or_id" />
 			<tal:block repeat="objective options/objectives">
+				<p class="backtotop" tal:condition="not:repeat/objective/start">
+					<a class="backtop" href="#top">Back to top</a>
+				</p>
+				<p class="backtotop" tal:condition="repeat/objective/start">
+					<span class="backtop">
+					<form name="toObjectives" action="" method="get">
+						Go to
+						<select name="objectives" ONCHANGE="location = this.options[this.selectedIndex].value;">
+							<tal:block repeat="objective options/objectives">
+							<option tal:attributes="value string:#${objective/Objective}" tal:content="objective/Objective" />
+							</tal:block>
+						</select>
+					</form>
+					</span>
+				</p>
+				<a tal:attributes="id objective/Objective"></a>
 				<h2 tal:content="objective/Objective" />
 					<tal:block define="obj objective/Objective" repeat="action python:here.getCountryActions(obj)">
-						<div class="container-content">
-							<div class="left-content">
-								<div class="content-title">Action</div>
-								<span tal:replace="action/FullText" />
-							</div>
-							<div class="right-content">
-								<div class="content-title">MOP</div>
-								<span tal:replace="action/MOPText" />
-							</div>
-							<br style="clear:both" />
-							<span tal:replace="action/Narative" />
-						</div>
+						<h3 class="action-title">Action</h3>
+						<p><em tal:define="text action/FullText" tal:content="python:here.fix_1252_codes(str(text))" /></p>
+						<p class="mop-content" tal:condition="action/MOPText">
+							<strong>MOP:  </strong><span tal:define="text action/MOPText" tal:replace="python:here.fix_1252_codes(str(text))" />
+						</p>
+						<p tal:define="text action/Narative" tal:content="python:here.fix_1252_codes(str(text))"/>
 					</tal:block>
 			</tal:block>
 		</div>
