@@ -1,8 +1,3 @@
-'''
-Created on Aug 23, 2010
-
-@author: cristiroma
-'''
 from sqlalchemy.schema import Table, MetaData, Column, ForeignKey
 from sqlalchemy.types import String
 from sqlalchemy.orm import mapper
@@ -11,7 +6,7 @@ metadata = MetaData()
 
 t_01header = Table('01header', metadata,
         Column('Country', String),
-        Column('CountryCode', String, primary_key=True), 
+        Column('CountryCode', String, primary_key=True),
         Column('PrefilledName', String),
         Column('PrefilledVerifiedCOName', String),
         Column('PrefilledVerifiedCODate', String),
@@ -39,7 +34,7 @@ mapper(T01Header, t_01header)
 
 
 t_narrative = Table('narrative', metadata,
-        Column('Country', String, ForeignKey(T01Header.CountryCode), primary_key=True), 
+        Column('Country', String, ForeignKey(T01Header.CountryCode), primary_key=True),
         Column('Objective', String),
         Column('Ident', String),
         Column('MOP', String),
@@ -66,7 +61,7 @@ mapper(TNarrative, t_narrative)
 
 
 t_questionstext = Table('questionstext', metadata,
-        Column('ID', String, primary_key=True), 
+        Column('ID', String, primary_key=True),
         Column('Ident', String, ForeignKey(TNarrative.Ident)),
         Column('MOP', String),
         Column('Action', String),
@@ -83,4 +78,3 @@ class TQuestionsText(object):
             setattr(self, k, v)
 
 mapper(TQuestionsText, t_questionstext)
-

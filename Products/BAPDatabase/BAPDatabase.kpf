@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Komodo Project File - DO NOT EDIT -->
-<project id="c9e9c561-8dcc-406b-bb65-a357b55ad5cb" kpf_version="4" name="BAPDatabase.kpf">
-<preference-set idref="c9e9c561-8dcc-406b-bb65-a357b55ad5cb">
-  <boolean id="import_live">1</boolean>
-</preference-set>
-</project>

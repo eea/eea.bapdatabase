@@ -1,0 +1,66 @@
+<tal:block define="global left_portlets python:True" />
+<metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
+
+	<metal:block metal:fill-slot="title">
+			<title tal:content="string:${here/title} | ${here/site_title}" />
+	</metal:block>
+
+	<metal:block metal:fill-slot="head">
+		<style type="text/css">
+			.container-content {
+				clear:both;
+				margin-bottom:2em;
+			}
+
+			.left-content{
+				float: left;
+				width: 500px;
+				padding:0.2em;
+				margin: 0;
+				margin-bottom: 1em;
+			}
+
+			.right-content{
+				margin-left: 503px;
+				max-width: 36em;
+				padding:0.2em;
+			}
+
+			.content-title, .content-subtitle{
+				background-color:#6A98C5;
+				padding:0.1em;
+				color: white;
+				font-weight: bold;
+				margin-bottom: 0.2em;
+			}
+
+			.content-subtitle{
+				width: 300px;
+			}
+		</style>
+	</metal:block>
+
+	<metal:block fill-slot="body">
+		<div id="center_content">
+			<h1 tal:content="here/aq_parent/title_or_id" />
+			<tal:block repeat="objective options/objectives">
+				<h2 tal:content="objective/Objective" />
+					<tal:block define="obj objective/Objective" repeat="action python:here.getCountryActions(obj)">
+						<div class="container-content">
+							<div class="left-content">
+								<div class="content-title">Action</div>
+								<span tal:replace="action/FullText" />
+							</div>
+							<div class="right-content">
+								<div class="content-title">MOP</div>
+								<span tal:replace="action/MOPText" />
+							</div>
+							<br style="clear:both" />
+							<span tal:replace="action/Narative" />
+						</div>
+					</tal:block>
+			</tal:block>
+		</div>
+	</metal:block>
+
+</metal:block>

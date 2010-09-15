@@ -1,48 +1,39 @@
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# Author(s):
-# Cristian Romanescu, Eau De Web
-# Cornel Nitu, Eau De Web
-
-from OFS.Folder import Folder
+from copy import deepcopy
+from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
 from AccessControl.SecurityInfo import ClassSecurityInfo
+from AccessControl.Permissions import view_management_screens, view
 from App.class_init import InitializeClass
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
-from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
-
+from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
+from Products.Naaya.NyFolder import NyFolder, addNyFolder
+from Products.NaayaBase.NyContentType import NY_CONTENT_BASE_SCHEMA
 from sql import query
-from paginate import DiggPaginator
-from utils import paginate_items
+
+DEFAULT_SCHEMA = deepcopy(NY_CONTENT_BASE_SCHEMA)
+
+def create_object_callback(parent, id, contributor):
+    ob = BAPDatabase(id, contributor)
+    parent._setObject(id, ob)
+    ob = parent._getOb(id)
+    return ob
 
 manage_add_html = PageTemplateFile('zpt/admin/manage_add_html', globals())
-def manage_add(parent, id, REQUEST=None):
+def manage_add(self, id, REQUEST=None):
     """ Create new BAPDatabase object from ZMI.
     """
-    parent._setObject(id, BAPDatabase(id, 'BAPDatabase application - %s' % id, 'en'))
-    ob = parent._getOb(id)
+    id = addNyFolder(self, id, callback=create_object_callback)
+    ob = self._getOb(id)
     if REQUEST:
         ob.db_host = REQUEST.get('db_host', None)
         ob.db_port = REQUEST.get('db_port', None)
         ob.db_username = REQUEST.get('db_username', None)
         ob.db_password = REQUEST.get('db_password', None)
         ob.db_name = REQUEST.get('db_name', None)
-        return parent.manage_main(parent, REQUEST, update_menu=1)
-    
+        return self.manage_main(self, REQUEST, update_menu=1)
     return ob
 
 
-class BAPDatabase(Folder):
+class BAPDatabase(NyFolder):
     """
         BAPDatabase object, folder-type that contains items described within specs.
         This is the root of the application.
@@ -57,13 +48,16 @@ class BAPDatabase(Folder):
     db_name = None
     db_debug = True
 
+    def _get_schema(self):
+        from Products.NaayaCore.constants import ID_SCHEMATOOL
+        return self.getSite()._getOb(ID_SCHEMATOOL).getSchemaForMetatype('Naaya Folder')
 
-    def __init__(self, id, title, lang):
+    def __init__(self, id, contributor):
         """
         Constructor that builds new BAPDatabase object.
         Parameters:
         """
-        super(BAPDatabase, self).__init__(id)
+        super(BAPDatabase, self).__init__(id, contributor)
 
     security.declarePrivate('loadDefaultData')
     def loadDefaultData(self, *args, **kwargs):
@@ -72,6 +66,7 @@ class BAPDatabase(Folder):
         pass
 
 
+    security.declarePrivate('get_db_session')
     def get_db_session(self):
         """
         Retrive managed database connection
@@ -97,38 +92,48 @@ class BAPDatabase(Folder):
             del registeredWrappers[self.db_name]
             self._p_changed = 1
 
+    security.declareProtected(view, 'getCountryActions')
+    def getCountryActions(self, objective):
+        """ get country actions """
+        session = self.get_db_session()
+        country = self.aq_parent.title_or_id()
+        return query.list_actionsnarrative(session, country, objective)
+
     ##### VIEWS #####
 
-
-    _index_html = PageTemplateFile('zpt/index_html', globals())
+    _index = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
+    security.declareProtected(view, 'index_html')
     def index_html(self, REQUEST):
         """ Main product page
         """
-        return self._index_html(REQUEST)
-
-
-    _country_html = PageTemplateFile('zpt/views/country_html', globals())
-    def country(self, REQUEST):
-        """ List of countries
-        """
         session = self.get_db_session()
-        items = query.list_country(session)
-        items = paginate_items(items, 20, REQUEST)
-        return self._country_html(REQUEST, page=items)
+        country = self.aq_parent.title_or_id()
+        objectives = query.list_objectives(session, country)
+        return self._index(REQUEST, objectives = objectives)
 
-    _actionsnarrative_html = PageTemplateFile('zpt/views/actionsnarrative_html', globals())
-    def actionsnarrative(self, REQUEST):
-        """ Query - actionsnarrative
-        """
-        session = self.get_db_session()
-        items = query.list_actionsnarrative(session)
-        items = paginate_items(items, 20, REQUEST)
-        return self._actionsnarrative_html(REQUEST, page=items)
+
+    #_country_html = PageTemplateFile('zpt/views/country_html', globals())
+    #def country(self, REQUEST):
+    #    """ List of countries
+    #    """
+    #    session = self.get_db_session()
+    #    items = query.list_country(session)
+    #    items = paginate_items(items, 20, REQUEST)
+    #    return self._country_html(REQUEST, page=items)
+    #
+    #_actionsnarrative_html = PageTemplateFile('zpt/views/actionsnarrative_html', globals())
+    #def actionsnarrative(self, REQUEST):
+    #    """ Query - actionsnarrative
+    #    """
+    #    session = self.get_db_session()
+    #    items = query.list_actionsnarrative(session)
+    #    items = paginate_items(items, 20, REQUEST)
+    #    return self._actionsnarrative_html(REQUEST, page=items)
 
     ##### END VIEWS #####
 
-    template_tpl = PageTemplateFile('zpt/template_tpl', globals())
-    paginator = PageTemplateFile('zpt/paginator_inc', globals())
-    navigator = PageTemplateFile('zpt/navigator_inc', globals())
+    #template_tpl = PageTemplateFile('zpt/template_tpl', globals())
+    #paginator = PageTemplateFile('zpt/paginator_inc', globals())
+    #navigator = PageTemplateFile('zpt/navigator_inc', globals())
 
 InitializeClass(BAPDatabase)

@@ -1,1 +1,0 @@
-<span tal:content="string:${page/start_index}-${page/end_index} of ${page/paginator/count} items" tal:define="page options/page" />
