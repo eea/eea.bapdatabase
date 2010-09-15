@@ -7,7 +7,7 @@
 
 	<metal:block metal:fill-slot="head">
 
-		<script>
+		<script type="text/javascript">
 			$(document).ready(function(){
 					$('p').each(function(){
 							$(this).html(Linkify($(this).html()));
@@ -54,21 +54,19 @@
 	<metal:block fill-slot="body">
 		<div id="center_content">
 			<a id="top"></a>
-			<h1 tal:content="here/aq_parent/title_or_id" />
+			<h1><span tal:replace="here/aq_parent/title_or_id" /> - BAP report</h1>
 			<tal:block repeat="objective options/objectives">
 				<p class="backtotop" tal:condition="not:repeat/objective/start">
 					<a class="backtop" href="#top">Back to top</a>
 				</p>
 				<p class="backtotop" tal:condition="repeat/objective/start">
 					<span class="backtop">
-					<form name="toObjectives" action="" method="get">
 						Go to
 						<select name="objectives" ONCHANGE="location = this.options[this.selectedIndex].value;">
 							<tal:block repeat="objective options/objectives">
 							<option tal:attributes="value string:#${objective/Objective}" tal:content="objective/Objective" />
 							</tal:block>
 						</select>
-					</form>
 					</span>
 				</p>
 				<a tal:attributes="id objective/Objective"></a>
