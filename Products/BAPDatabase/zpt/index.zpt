@@ -64,21 +64,24 @@
 						Go to
 						<select name="objectives" ONCHANGE="location = this.options[this.selectedIndex].value;">
 							<tal:block repeat="objective options/objectives">
-							<option tal:attributes="value string:#${objective/Objective}" tal:content="objective/Objective" />
+							<option tal:attributes="value string:#${objective/name}" tal:content="objective/description" />
 							</tal:block>
 						</select>
 					</span>
 				</p>
-				<a tal:attributes="id objective/Objective"></a>
-				<h2 tal:content="objective/Objective" />
-					<tal:block define="obj objective/Objective" repeat="action python:here.getCountryActions(obj)">
-						<h3 class="action-title">Action</h3>
-						<p><em tal:define="text action/FullText" tal:content="python:here.fix_1252_codes(str(text))" /></p>
-						<p class="mop-content" tal:condition="action/MOPText">
-							<strong>MOP:  </strong><span tal:define="text action/MOPText" tal:replace="python:here.fix_1252_codes(str(text))" />
-						</p>
-						<p tal:define="text action/Narative" tal:content="python:here.fix_1252_codes(str(text))"/>
-					</tal:block>
+				<a tal:attributes="id objective/name"></a>
+				<h2>
+					<span tal:replace="objective/name" />
+					<span tal:replace="objective/description" />
+				</h2>				
+				<tal:block define="obj objective/name" repeat="action python:here.getCountryActions(obj)">
+					<h3 class="action-title">Action</h3>
+					<p><em tal:content="action/FullText" /></p>
+					<p class="mop-content" tal:condition="action/MOPText">
+						<strong>MOP:  </strong><span tal:replace="action/MOPText" />
+					</p>
+					<p tal:content="action/Narative"/>
+				</tal:block>
 			</tal:block>
 		</div>
 	</metal:block>
