@@ -8,7 +8,7 @@ from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
 
-import views
+import models
 
 def create_object_callback(parent, id, contributor):
     ob = BAPDatabase(id, contributor)
@@ -16,18 +16,22 @@ def create_object_callback(parent, id, contributor):
     ob = parent._getOb(id)
     return ob
 
-manage_add_html = PageTemplateFile('zpt/admin/manage_add_html', globals())
-def manage_add(self, id, REQUEST=None):
+manage_add_html = PageTemplateFile('zpt/manage_add', globals())
+def manage_add(self, id, REQUEST=None, **kwargs):
     """ Create new BAPDatabase object from ZMI.
     """
     id = addNyFolder(self, id, callback=create_object_callback)
     ob = self._getOb(id)
-    if REQUEST:
-        ob.db_host = REQUEST.get('db_host', None)
-        ob.db_port = REQUEST.get('db_port', None)
-        ob.db_username = REQUEST.get('db_username', None)
-        ob.db_password = REQUEST.get('db_password', None)
-        ob.db_name = REQUEST.get('db_name', None)
+    if REQUEST is not None:
+        params = dict(REQUEST.form)
+    else:
+        params = kwargs
+    ob.db_host = params.pop('db_host', None)
+    ob.db_port = params.pop('db_port', None)
+    ob.db_username = params.pop('db_username', None)
+    ob.db_password = params.pop('db_password', None)
+    ob.db_name = params.pop('db_name', None)
+    if REQUEST is not None:
         return self.manage_main(self, REQUEST, update_menu=1)
     return ob
 
@@ -53,19 +57,12 @@ class BAPDatabase(NyFolder):
 
     def __init__(self, id, contributor):
         """
-        Constructor that builds new BAPDatabase object.
-        Parameters:
+            Constructor that builds new BAPDatabase object.
         """
         super(BAPDatabase, self).__init__(id, contributor)
 
-    security.declarePrivate('get_db_session')
-    def get_db_session(self):
-        """
-        Retrive managed database connection
-        Return:
-            SQLAlchemy database session
-        """
-        wrapper = None
+    def _get_session(self):
+        """ Create a Z3C.SQLAlchemy registered wrapper """
         if self.db_name in registeredWrappers.keys():
             wrapper = registeredWrappers[self.db_name]
         else:
@@ -75,29 +72,25 @@ class BAPDatabase(NyFolder):
                                       engine_options = {'echo' : self.db_debug, 'encoding' : 'utf-8'})
         return wrapper.session
 
-
     def _delete_wrapper(self):
         """
-        Delete the Z3C.SQLAlchemy registered wrapper (created by get_db_session)
+            Delete the Z3C.SQLAlchemy registered wrapper
         """
         if self.db_name in registeredWrappers.keys():
             del registeredWrappers[self.db_name]
             self._p_changed = 1
 
-    security.declareProtected(view, 'getCountryActions')
-    def getCountryActions(self, objective):
-        """ get country actions """
-        session = self.get_db_session()
-        country = self.aq_parent.title_or_id()
-        return views.list_actionsnarrative(session, country, objective)
-   
-    _index = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
-    security.declareProtected(view, 'index_html')
-    def index_html(self, REQUEST):
-        """ Main product page
-        """
-        session = self.get_db_session()
-        return self._index(REQUEST, 
-                        objectives = views.list_objectives(session))
+    #database queries
+    def get_headline(self, objective):
+        result = self._get_session().query(models.QuestionsText.FullText).\
+                                    filter(models.QuestionsText.Ident == objective).all()
+        if result:
+            return result[0][0]    #take the first headline
+        return ''
+
+    def get_objectives(self):
+        return self._get_session().query(models.Objective).all()
+            
+    index_html = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
 
 InitializeClass(BAPDatabase)
