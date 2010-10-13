@@ -14,8 +14,8 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
                     id = 'bap', 
                     db_host = 'pivo.edw.ro', 
                     db_port = '3306',
-                    db_username = 'cornel',
-                    db_password = 'cr4pb4g',
+                    db_username = 'bap',
+                    db_password = 'bap',
                     db_name='bap')
         import transaction; transaction.commit()
 
@@ -31,18 +31,26 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.browser.go('http://localhost/portal/countries/austria/bap')
         html = self.browser.get_html()
         self.failUnless("Objective1:" in html)
-
+    
     def test_headlines(self):
         self.browser.go('http://localhost/portal/countries/austria/bap')
         html = self.browser.get_html()
         self.failUnless("Headline Target" in html)
-
+    
     def test_actions(self):
         self.browser.go('http://localhost/portal/countries/austria/bap')
         html = self.browser.get_html()
         self.failUnless("Target" in html)    
+    
+    def test_A1_3_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_3_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Indicate the number of action plans per species group')
 
-
-        
+        record = self.portal.bap.get_action_values('A1_3_1_ActionPlan', country='Austria')
+        self.assertTrue(hasattr(record, 'BirdComp'))
+                
         
         

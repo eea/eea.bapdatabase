@@ -1,6 +1,3 @@
-import re
-
-
 cp_1252_chars = {
     # from http://www.microsoft.com/typography/unicode/1252.htm
     u"\x80": u"\u20AC", # EURO SIGN
@@ -31,18 +28,3 @@ cp_1252_chars = {
     u"\x9E": u"\u017E", # LATIN SMALL LETTER Z WITH CARON
     u"\x9F": u"\u0178", # LATIN CAPITAL LETTER Y WITH DIAERESIS
 }
-
-def fix_1252_codes(text):
-    """
-        Replace non-standard Microsoft character codes 
-        from the Windows-1252 character set in a unicode string with proper unicode codes.
-        Code originally from: http://effbot.org/zone/unicode-gremlins.htm
-    """
-    if re.search(u"[\x80-\x9f]", text):
-        def fixup(m):
-            s = m.group(0)
-            return cp_1252_chars.get(s, s)
-        if isinstance(text, str):
-            text = unicode(text, "iso-8859-1")
-        text = re.sub(u"[\x80-\x9f]", fixup, text)
-    return text

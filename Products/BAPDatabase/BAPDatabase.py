@@ -11,6 +11,7 @@ from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
 
 import models
+import utilities
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
 
@@ -62,7 +63,7 @@ class BAPDatabase(NyFolder):
     db_username = None
     db_password = None
     db_name = None
-    db_debug = True
+    db_debug = False
 
     def _get_schema(self):
         from Products.NaayaCore.constants import ID_SCHEMATOOL
@@ -79,10 +80,10 @@ class BAPDatabase(NyFolder):
         if self.db_name in registeredWrappers.keys():
             wrapper = registeredWrappers[self.db_name]
         else:
-            wrapper = createSAWrapper('mysql://%s:%s@%s:%d/%s' \
+            wrapper = createSAWrapper('mysql://%s:%s@%s:%d/%s?charset=utf8&use_unicode=0' \
                                       % (self.db_username, self.db_password, self.db_host, int(self.db_port), self.db_name),
                                       name=self.db_name,
-                                      engine_options = {'echo' : self.db_debug, 'encoding' : 'utf-8'})
+                                      engine_options = {'echo' : self.db_debug})
         return wrapper.session
 
     def _delete_wrapper(self):
