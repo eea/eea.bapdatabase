@@ -114,3 +114,31 @@ class A1_3_1_RedList(Base):
     Fish = Column(String)
     Invert = Column(String)
     Plants = Column(String)
+
+
+class A2_1_1(Base):
+    __tablename__ = 'A2_1_1'
+
+    CountryCode = Column(String, primary_key=True)
+    EAFRDTotal = Column(String)
+    EAFRDAxis2 = Column(String)
+    EAFRDAxis2Percent = Column(String)
+    PublicTotal = Column(String)
+    PublicAxis2 = Column(String)
+    PublicAxis2Percent = Column(String)
+    AgriEAFRD = Column(String)
+    AgriEAFRDPercent = Column(String)
+    AgriPublic = Column(String)
+    AgriPublicPercent = Column(String)
+    NaturaAgriEAFRD = Column(String)
+    NaturaAgriEAFRDPercent = Column(String)
+    NaturaAgriPublic = Column(String)
+    NaturaAgriPublicPercent = Column(String)
+    NaturaForestEAFRD = Column(String)
+    NaturaForestEAFRDPercent = Column(String)
+    NaturaForestPublic = Column(String)
+    NaturaForestPublicPercent = Column(String)
+    ForestEAFRD = Column(String)
+    ForestEAFRDPercent = Column(String)
+    ForestPublic = Column(String)
+    ForestPublicPercent = Column(String)

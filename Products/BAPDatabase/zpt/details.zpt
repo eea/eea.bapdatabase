@@ -29,7 +29,7 @@
 					<p tal:content="structure action/FullText" />
 				</div>
 
-				<span tal:replace="structure python:here.get_table(action_id, mop, country)" />
+				<span tal:replace="structure python:here.get_table(action, mop, country)" />
 			</tal:block>
 		</div>
 	</metal:block>

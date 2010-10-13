@@ -51,6 +51,13 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
         record = self.portal.bap.get_action_values('A1_3_1_ActionPlan', country='Austria')
         self.assertTrue(hasattr(record, 'BirdComp'))
-                
-        
-        
+
+    def test_A2_1_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'EAFRD')
+
+        record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
+        self.assertTrue(hasattr(record, 'EAFRDTotal'))

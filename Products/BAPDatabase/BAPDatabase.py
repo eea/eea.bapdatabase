@@ -151,8 +151,8 @@ class BAPDatabase(NyFolder):
             return
 
     def get_table(self, action, mop, country):
-        template = tables.get(action)
-        return template.__of__(self)(mop=mop, country=country, action_id=action)
+        template = tables.get(action.Ident)
+        return template.__of__(self)(mop=mop, country=country, action=action)
 
     index_html = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
     details = NaayaPageTemplateFile('zpt/details', globals(), 'products.bapdatabase.details')
