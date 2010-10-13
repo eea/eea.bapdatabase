@@ -1,0 +1,52 @@
+<tal:block define="country options/country;
+					mop options/mop;
+					record python:here.get_action_values('A1_1_3', country)">
+
+<h2>Measures of Progress</h2>
+
+<table class="datatable">
+	<tr>
+		<th width="40%" rowspan="6">Indicate the number of complaints/infringements (legal cases)</th>
+		<th>2004 and earlier</th>
+		<td width="30%" tal:content="record/Y2004" />
+	</tr>
+	<tr>
+		<th>2005</th>
+		<td width="30%" tal:content="record/Y2005" />
+	</tr>
+	<tr>
+		<th>2006</th>
+		<td width="30%" tal:content="record/Y2006" />
+	</tr>
+	<tr>
+		<th>2007</th>
+		<td width="30%" tal:content="record/Y2007" />
+	</tr>
+	<tr>
+		<th>2008</th>
+		<td width="30%" tal:content="record/Y2008" />
+	</tr>
+	<tr>
+		<th>2009</th>
+		<td width="30%" tal:content="record/Y2009" />
+	</tr>
+	<tr>
+		<th colspan="3">
+			Additional detail & Narrative summary of the above information (text provided should be able to stand alone):
+		</th>
+	</tr>
+	<tr>
+		<td colspan="3">???</td>
+	</tr>
+	<tr>
+		<th colspan="3">Additional clarifications:</th>
+	<tr>
+		<td colspan="3">???</td>
+	</tr>
+	<tr>
+		<th>Data source</th>
+		<td colspan="2" tal:content="mop/DataSource" />
+	</tr>
+</table>
+
+</tal:block>

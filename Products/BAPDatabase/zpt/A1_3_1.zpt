@@ -108,8 +108,32 @@
 	<tr>
 		<td colspan="5" tal:content="mop/Narative" />
 	</tr>
+	<tr>
+		<th colspan="5">
+			Additional clarifications:
+		</th>
+	</tr>
+	<tr>
+		<td colspan="5" tal:content="mop/Clarifcations" />
+	</tr>
 	</tal:block>
+</table>
 
+<table class="datatable">
+<tal:block define="record python:here.get_action_values('A1_3_1_BirdMonitoring', country)">
+	<tr>
+		<th width="50%">Does your country have active common bird monitoring schemes? Please indicate Y or N</th>
+		<td tal:content="record/active" />
+	</tr>
+	<tr>
+		<th colspan="2">
+			Additional detail (Provide details on the common bird monitoring schemes) & Narrative summary of the above information (text provided should be able to stand alone):
+		</th>
+	</tr>
+	<tr>
+		<td>????</td>
+	</tr>
+</tal:block>	
 </table>
 
 </tal:block>

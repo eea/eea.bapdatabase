@@ -1,8 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.types import String
-from utilities import cp_1252_chars
-
 
 Base = declarative_base()
 
@@ -64,6 +62,17 @@ class Objective(Base):
     name = Column(String)
     description = Column(String)
 
+class A1_1_3(Base):
+    __tablename__ = 'A1_1_3'
+
+    CountryCode = Column(String, primary_key=True)
+    Y2004 = Column(String)
+    Y2005 = Column(String)
+    Y2006 = Column(String)
+    Y2007 = Column(String)
+    Y2008 = Column(String)
+    Y2009 = Column(String)
+        
 class A1_3(Base):
     __tablename__ = 'A1_3'
     

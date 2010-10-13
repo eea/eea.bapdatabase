@@ -41,7 +41,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.browser.go('http://localhost/portal/countries/austria/bap')
         html = self.browser.get_html()
         self.failUnless("Target" in html)    
-    
+
+    def test_A1_1_3(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_1_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Indicate the number of complaints/infringements (legal cases)')
+
+        record = self.portal.bap.get_action_values('A1_1_3', country='Austria')
+        self.assertTrue(hasattr(record, 'Y2004'))
+
     def test_A1_3_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_3_1')
         html = self.browser.get_html()

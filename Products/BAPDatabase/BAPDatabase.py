@@ -11,13 +11,13 @@ from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
 
 import models
-import utilities
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
 
 country_codes = {'Austria': 'AT'}
 
 tables = {
+            'A1_1_3': NaayaPageTemplateFile('zpt/A1_1_3', globals(), 'products.bapdatabase.tables.A1_1_3'),
             'A1_3': NaayaPageTemplateFile('zpt/A1_3', globals(), 'products.bapdatabase.tables.A1_3'),
             'A1_3_1': NaayaPageTemplateFile('zpt/A1_3_1', globals(), 'products.bapdatabase.tables.A1_3_1'),
             'A2_1_1': NaayaPageTemplateFile('zpt/A2_1_1', globals(), 'products.bapdatabase.tables.A2_1_1'),
