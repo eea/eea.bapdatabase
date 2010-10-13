@@ -63,3 +63,54 @@ class Objective(Base):
     id = Column(String, primary_key=True)
     name = Column(String)
     description = Column(String)
+
+class A1_3(Base):
+    __tablename__ = 'A1_3'
+    
+    CountryCode = Column(String, primary_key=True)
+    BirdRed = Column(String)
+    BirdAmd = Column(String)
+    BirdGrn = Column(String)
+
+class A1_3_1_ActionPlan(Base):
+    __tablename__ = 'A1_3_1_ActionPlan'
+
+    CountryCode = Column(String, primary_key=True)
+    BirdComp = Column(String)
+    MammalComp = Column(String)
+    AmphibComp = Column(String)
+    FishComp = Column(String)
+    InvertComp = Column(String)
+    PlantsComp = Column(String)
+    BirdPlan = Column(String)
+    MammalPlan = Column(String)
+    AmphibPlan = Column(String)
+    FishPlan = Column(String)
+    InvertPlan = Column(String)
+    PlantsPlan = Column(String)
+    PlanDataSource = Column(String)
+
+class A1_3_1_BirdIndicator(Base):
+    __tablename__ = 'A1_3_1_BirdIndicator'
+
+    CountryCode = Column(String, primary_key=True)
+    IndicatorDev = Column(String)
+    IndicatorDesc = Column(String)
+    DataSource = Column(String)
+
+class A1_3_1_BirdMonitoring(Base):
+    __tablename__ = 'A1_3_1_BirdMonitoring'
+
+    CountryCode = Column(String, primary_key=True)
+    active = Column(String)
+
+class A1_3_1_RedList(Base):
+    __tablename__ = 'A1_3_1_RedList'
+
+    CountryCode = Column(String, primary_key=True)
+    Bird = Column(String)
+    Mammal = Column(String)
+    Amphib = Column(String)
+    Fish = Column(String)
+    Invert = Column(String)
+    Plants = Column(String)

@@ -1,0 +1,45 @@
+<tal:block define="country options/country;
+					mop options/mop;
+					record python:here.get_action_values('A1_3', country)">
+
+<h2>Measures of Progress</h2>
+
+<table class="datatable">
+	<tr>
+		<th rowspan="2">
+			What is the conservation status of birds 
+			(% of species - least concern, near-threatened and red-listed)?
+		</th>
+		<th>Detail</th>
+		<th>Least concerned</th>
+		<th>Near-threatened</th>
+		<th>Red-listed</th>
+	<tr>
+		<th>% of birds</th>
+		<td tal:content="record/BirdGrn" />
+		<td tal:content="record/BirdAmd" />
+		<td tal:content="record/BirdRed" />
+	</tr>
+	<tr>
+		<th colspan="5">
+			Additional detail & Narrative summary of the information (text provided should be able to stand alone):
+		</th>
+	</tr>
+	<tr>
+		<td colspan="5" tal:content="mop/Narative" />
+	</tr>
+	<tr>
+		<th colspan="5">
+			Additional clarifications:
+		</th>
+	</tr>
+	<tr>
+		<td colspan="5" tal:content="mop/Clarifcations" />
+	</tr>
+	<tr>
+		<th>Data source</th>
+		<td colspan="4" tal:content="mop/DataSource" />
+	</tr>
+</table>
+
+</tal:block>

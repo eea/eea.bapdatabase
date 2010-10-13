@@ -4,25 +4,23 @@
 			<title tal:content="string:${here/title} | ${here/site_title}" />
 	</metal:block>
 
-	<metal:block metal:fill-slot="head">
-		<script type="text/javascript">
-			$(document).ready(function(){
-					$('p').each(function(){
-							$(this).html(Linkify($(this).html()));
-					})
-			})
-		</script>
-	</metal:block>
-
 	<metal:block fill-slot="body">
-		<div id="center_content">
+		<div id="center_content" tal:define="country here/aq_parent/title_or_id">
 			<h1 i18n:translate="">
-				Country profile <span i18n:name="country-name" tal:replace="here/aq_parent/title_or_id" />
+				Country profile <span i18n:name="country-name" tal:replace="country" />
 			</h1>
 			<div tal:repeat="obj here/get_objectives">
-				<div tal:content="string:${obj/name}: ${obj/description}" />
-				<div tal:define="obj_name obj/name"
-						tal:content="python:here.get_headline(obj_name)" />
+				<tal:block define="obj_name obj/name">
+				<h3 tal:content="string:${obj_name}: ${obj/description}" />
+				<h4 tal:content="python:here.get_headline(obj_name)" />
+				<div tal:repeat="target python:here.get_targets(obj_name, country)">
+					<p>
+						<span tal:define="text target/FullText;
+											ident target/Ident" 
+							tal:content="structure python:here.humanize_text(text, ident)" /> 
+					</p>
+				</div>
+				</tal:block>
 			</div>
 		</div>
 	</metal:block>

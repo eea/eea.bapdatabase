@@ -1,4 +1,6 @@
+import re
 from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
+from sqlalchemy.orm.exc import NoResultFound
 
 from App.class_init import InitializeClass
 from AccessControl.SecurityInfo import ClassSecurityInfo
@@ -9,6 +11,16 @@ from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
 
 import models
+
+pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
+
+country_codes = {'Austria': 'AT'}
+
+tables = {
+            'A1_3': NaayaPageTemplateFile('zpt/A1_3', globals(), 'products.bapdatabase.tables.A1_3'),
+            'A1_3_1': NaayaPageTemplateFile('zpt/A1_3_1', globals(), 'products.bapdatabase.tables.A1_3_1')
+        }
+
 
 def create_object_callback(parent, id, contributor):
     ob = BAPDatabase(id, contributor)
@@ -88,9 +100,59 @@ class BAPDatabase(NyFolder):
             return result[0][0]    #take the first headline
         return ''
 
+    def humanize_text(self, text, id):
+        m = pattern.match(text)
+        if m is not None:
+            return '<a href="%(url)s">%(heading)s</a> %(text)s' % {
+                'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
+                'heading': m.group('heading').strip(),
+                'text': m.group('text').strip(),
+            }
+        return text
+
     def get_objectives(self):
         return self._get_session().query(models.Objective).all()
+
+    def get_action_mop(self, id, country):
+        try:
+            return self._get_session().query(models.Narrative) \
+                                .filter(models.Narrative.Ident == id) \
+                                .filter(models.Narrative.Country == country).one()
+        except NoResultFound:
+            return
+
+    def get_action(self, id):
+        action = self._get_session().query(models.QuestionsText) \
+                                .filter(models.QuestionsText.Ident == id).all()
+        if action:
+            return action[0]    #texts are simlar
+        return ''
+
+    def get_targets(self, objective, country):
+        result = {}
+        for target in self._get_session().query(models.QuestionsText) \
+                        .join((models.Narrative, models.QuestionsText.Ident == models.Narrative.Ident)) \
+                        .filter(models.Narrative.Country == country) \
+                        .filter(models.Narrative.Objective == objective).all():
+            if target.Ident != objective:   #skip headlines
+                result[target.Ident] = target
             
+        return [result[k] for k in sorted(result)]
+
+    def get_action_values(self, action, country):
+        code = country_codes.get(country)
+        model = getattr(models, action)
+        try:
+            return self._get_session().query(model) \
+                                    .filter(model.CountryCode == code).one()
+        except NoResultFound:
+            return
+
+    def get_table(self, action, mop, country):
+        template = tables.get(action)
+        return template.__of__(self)(mop=mop, country=country)
+
     index_html = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
+    details = NaayaPageTemplateFile('zpt/details', globals(), 'products.bapdatabase.details')
 
 InitializeClass(BAPDatabase)
