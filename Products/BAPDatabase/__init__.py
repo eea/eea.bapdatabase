@@ -9,5 +9,5 @@ def initialize(context):
         BAPDatabase.BAPDatabase,
         constructors = (
             BAPDatabase.manage_add_html,
-            BAPDatabase.manage_add),
+            BAPDatabase.manage_add_bap),
     )

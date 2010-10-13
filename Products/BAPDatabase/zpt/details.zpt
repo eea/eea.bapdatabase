@@ -15,7 +15,7 @@
 	</metal:block>
 
 	<metal:block fill-slot="body">
-		<div id="center_content" 
+		<div id="center_content"
 				tal:define="country here/aq_parent/title_or_id;
 							action_id request/id | nothing">
 			<h1 i18n:translate="">
@@ -25,12 +25,12 @@
 			<tal:block condition="action_id"
 						define="action python:here.get_action(action_id);
 								mop python:here.get_action_mop(action_id, country)">
-			<div id="action-description" tal:condition="action">
-				<p tal:content="structure action/FullText" />
-			</div>
-			
-			<span tal:replace="structure python:here.get_table(action_id, mop, country)" />
-		</tal:block>
+				<div id="action-description" tal:condition="action">
+					<p tal:content="structure action/FullText" />
+				</div>
+
+				<span tal:replace="structure python:here.get_table(action_id, mop, country)" />
+			</tal:block>
 		</div>
 	</metal:block>
 

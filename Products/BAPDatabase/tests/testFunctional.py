@@ -6,11 +6,11 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
     """ TestCase for BAP object """
     def afterSetUp(self):
         from Products.Naaya.NyFolder import addNyFolder
-        from Products.BAPDatabase.BAPDatabase import manage_add
+        from Products.BAPDatabase.BAPDatabase import manage_add_bap
         addNyFolder(self.portal, 'countries', contributor='admin', submitted=1)
         #add a country
         addNyFolder(self.portal.countries, id='austria', title='Austria', contributor='admin', submitted=1)
-        manage_add(self.portal, 
+        manage_add_bap(self.portal, 
                     id = 'bap', 
                     db_host = 'pivo.edw.ro', 
                     db_port = '3306',

@@ -18,7 +18,8 @@ country_codes = {'Austria': 'AT'}
 
 tables = {
             'A1_3': NaayaPageTemplateFile('zpt/A1_3', globals(), 'products.bapdatabase.tables.A1_3'),
-            'A1_3_1': NaayaPageTemplateFile('zpt/A1_3_1', globals(), 'products.bapdatabase.tables.A1_3_1')
+            'A1_3_1': NaayaPageTemplateFile('zpt/A1_3_1', globals(), 'products.bapdatabase.tables.A1_3_1'),
+            'A2_1_1': NaayaPageTemplateFile('zpt/A2_1_1', globals(), 'products.bapdatabase.tables.A2_1_1')
         }
 
 
@@ -29,7 +30,7 @@ def create_object_callback(parent, id, contributor):
     return ob
 
 manage_add_html = PageTemplateFile('zpt/manage_add', globals())
-def manage_add(self, id, REQUEST=None, **kwargs):
+def manage_add_bap(self, id, REQUEST=None, **kwargs):
     """ Create new BAPDatabase object from ZMI.
     """
     id = addNyFolder(self, id, callback=create_object_callback)
@@ -150,7 +151,7 @@ class BAPDatabase(NyFolder):
 
     def get_table(self, action, mop, country):
         template = tables.get(action)
-        return template.__of__(self)(mop=mop, country=country)
+        return template.__of__(self)(mop=mop, country=country, action_id=action)
 
     index_html = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
     details = NaayaPageTemplateFile('zpt/details', globals(), 'products.bapdatabase.details')
