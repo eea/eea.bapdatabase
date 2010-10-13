@@ -81,7 +81,7 @@
 			</th>
 		</tr>
 		<tr>
-			<td colspan="7" tal:content="structure mop/Clarifcations" />
+			<td colspan="7" tal:content="mop/Clarifcations" />
 		</tr>
 
 		<tr>

@@ -61,3 +61,13 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
+
+    def test_C1_3(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Indicate national/sub-national biodiversity monitoring schemes for habitats')
+
+        record = self.portal.bap.get_action_values('C1_3', country='Austria')
+        self.assertTrue(hasattr(record, 'Costal'))

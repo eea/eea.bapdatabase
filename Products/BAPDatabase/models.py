@@ -115,7 +115,6 @@ class A1_3_1_RedList(Base):
     Invert = Column(String)
     Plants = Column(String)
 
-
 class A2_1_1(Base):
     __tablename__ = 'A2_1_1'
 
@@ -142,3 +141,42 @@ class A2_1_1(Base):
     ForestEAFRDPercent = Column(String)
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
+
+class C1_3(Base):
+    __tablename__ = 'C1_3'
+
+    CountryCode = Column(String, primary_key=True)
+    Costal = Column(String)
+    Dunes = Column(String)
+    FWHabitats = Column(String)
+    Heath = Column(String)
+    Scrub = Column(String)
+    Grass = Column(String)
+    Bogs = Column(String)
+    Rocky = Column(String)
+    Forest = Column(String)
+    HabitatOther = Column(String)
+    Birds = Column(String)
+    Mammals = Column(String)
+    Amphibians = Column(String)
+    Fish = Column(String)
+    Inverts = Column(String)
+    Plants = Column(String)
+    SpeciesOther = Column(String)
+    CostalDetail = Column(String)
+    DunesDetail = Column(String)
+    FWHabitatsDetail = Column(String)
+    HeathDetail = Column(String)
+    ScrubDetail = Column(String)
+    GrassDetail = Column(String)
+    BogsDetail = Column(String)
+    RockyDetail = Column(String)
+    ForestDetail = Column(String)
+    HabitatOtherDetail = Column(String)
+    BirdsDetail = Column(String)
+    MammalsDetail = Column(String)
+    AmphibiansDetail = Column(String)
+    FishDetail = Column(String)
+    InvertsDetail = Column(String)
+    PlantsDetail = Column(String)
+    SpeciesOtherDetail = Column(String)
