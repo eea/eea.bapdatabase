@@ -72,6 +72,24 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_A10_1_2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_A10_1_2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Is there a plan for follow-up to MA as part of a national initiative? Y or N here:')
+        record = self.portal.bap.get_action_values('test_A10_1_2', country='Austria')
+        self.assertTrue(hasattr(record, 'NatFollow'))
+
+    def test_A10_1_8(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_A10_1_8')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Has a national biodiversity platform been created to ensure that biodiversity research and outcomes are reflected in policy development and implementation? Enter Y or N here:')
+        record = self.portal.bap.get_action_values('test_A10_1_8', country='Austria')
+        self.assertTrue(hasattr(record, 'Platform'))
+
     def test_A10_1_9(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_A10_1_9')
         html = self.browser.get_html()

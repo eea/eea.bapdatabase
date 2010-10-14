@@ -183,6 +183,31 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class A10_1_2(Base):
+    __tablename__ = 'A10_1_2'
+    CountryCode = Column(String, primary_key=True)
+    NatFollow = Column(String)
+    WideFollow = Column(String)
+    FollowDetails = Column(String)
+    Local = Column(String)
+    SubNat = Column(String)
+    Nat = Column(String)
+    Stakeholder = Column(String)
+    Valuation = Column(String)
+    CaseStudies = Column(String)
+    Access = Column(String)
+    Standards = Column(String)
+    MAInPlans = Column(String)
+    ValuationUsed = Column(String)
+
+class A10_1_8(Base):
+    __tablename__ = 'A10_1_8'
+    CountryCode = Column(String, primary_key=True)
+    Platform = Column(String)
+    PlatfromUpdated = Column(String)
+    PlatfromDevPlans = Column(String)
+    PlatfromLink = Column(String)
+
 class A10_1_9(Base):
     __tablename__ = 'A10_1_9'
     CountryCode = Column(String, primary_key=True)

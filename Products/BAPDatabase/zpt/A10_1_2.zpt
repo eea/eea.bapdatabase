@@ -1,0 +1,102 @@
+<tal:block define="country options/country;
+					action_id options/action_id;
+					mop python:here.get_action_mop(action_id, country);
+					action python:here.get_action(action_id)">
+
+<div id="action-description" tal:condition="action">
+	<p tal:content="structure action/FullText" />
+</div>
+
+<h2>Measures of Progress</h2>
+
+<table class="datatable">
+	<tal:block define="record python:here.get_action_values(action_id, country)">
+		<tr>
+			<th colspan="3" style="text-align:left">Is there a plan for follow-up to MA as part of a national initiative? Y or N here:</th>
+			<td width="20%" tal:content="record/NatFollow"/>
+		</tr>
+		<tr>
+			<th colspan="3" style="text-align:left">Is there a plan for follow-up to MA as part of a wider programme, such as the European Ecosystem Assessment (EURECA) of the European Environment Agency? Y or N here:</th>
+			<td tal:content="record/WideFollow"/>
+		</tr>
+		<tr>
+			<th colspan="4" style="text-align:left">If Y, please list and provide a short description here:</th>
+		</tr>
+		<tr>
+			<td colspan="4" tal:content="record/FollowDetails"/>
+		</tr>
+		<tr>
+			<th colspan="4" style="text-align:left">If you responded Y to either question above, please indicate:</th>
+		</tr>
+		<tr>
+			<th colspan="2" rowspan="3" style="text-align:left">1. What is the geographical scope of the assessment? (Tick all that apply)</th>
+			<th style="text-align:left">Local/Community</th>
+			<td tal:content="record/Local"/>
+		</tr>
+		<tr>
+			<th style="text-align:left">Sub-national</th>
+			<td tal:content="record/SubNat"/>
+		</tr>
+		<tr>
+			<th style="text-align:left">National</th>
+			<td tal:content="record/Nat"/>
+		</tr>
+		<tr>
+			<th rowspan="5" style="text-align:left">2. Do the plans include the following (Tick all that apply)</th>
+			<th colspan="2" style="text-align:left">Stakeholder engagement</th>
+			<td tal:content="record/Stakeholder"/>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:left">Valuation of ecosystem services</th>
+			<td tal:content="record/Valuation"/>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:left">The contribution of documented case-studies from indigenous and local communities</th>
+			<td tal:content="record/CaseStudies"/>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:left">The facilitation of open access to research on biodiversity</th>
+			<td tal:content="record/Access"/>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:left">Support for standardization for collection of biodiversity data and reporting</th>
+			<td tal:content="record/Standards"/>
+		</tr>
+		<tr>
+			<th colspan="3" style="text-align:left">Are the framework, experiences and findings of the original Millennium Assessment (2001-2005) utilized in reviewing, revising and implementing national plans and strategies on biodiversity, development and cooperation?<br/>Enter Y or N here:</th>
+			<td tal:content="record/MAInPlans"/>
+		</tr>
+		<tr>
+			<th colspan="3" style="text-align:left">Are valuation/accounting methods used for the assessment of ecosystem services?<br/>Enter Y or N here:</th>
+			<td tal:content="record/ValuationUsed"/>
+		</tr>
+		<tr>
+			<th colspan="3" style="text-align:left">Narrative summary of the above information (text provided should be able to stand alone):</th>
+		</tr>
+		<tr>
+ 			<td colspan="3" tal:content="mop/Narative" />
+		</tr>
+		<tr>
+			<th colspan="3" style="text-align:left">
+				Additional clarifications:
+			</th>
+		</tr>
+		<tr>
+			<td colspan="3" tal:content="mop/Clarifcations"/>
+		</tr>
+		<tr>
+			<th style="text-align:left;width:20%">
+				Explanation of information contained in the measure of progress above
+			</th>
+			<td colspan="2" tal:content="action/MOPText"/>
+		</tr>
+		<tr>
+			<th style="text-align:left;width:20%">
+				Provide relevant Data Sources and internet links here:
+			</th>
+			<td colspan="2" tal:content="mop/DataSource"/>
+		</tr>
+	</tal:block>
+</table>
+
+</tal:block>
