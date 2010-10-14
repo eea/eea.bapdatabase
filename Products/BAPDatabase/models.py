@@ -183,6 +183,38 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class B3_1_8(Base):
+    __tablename__ = 'B3_1_8'
+
+    CountryCode = Column(String, primary_key=True)
+    EU = Column(String)
+    NonEU = Column(String)
+
+class B4_1_1(Base):
+    __tablename__ = 'B4_1_1'
+
+    CountryCode = Column(String, primary_key=True)
+    Yes = Column(String)
+    No = Column(String)
+    Dev = Column(String)
+    NotYet = Column(String)
+    Partially = Column(String)
+    Fully = Column(String)
+
+class B4_1_2(Base):
+    __tablename__ = 'B4_1_2'
+
+    CountryCode = Column(String, primary_key=True)
+    Y2006 = Column(String)
+    Y2007 = Column(String)
+    Y2008 = Column(String)
+    Declaration = Column(String)
+
+class C1_2(Base):
+    __tablename__ = 'C1_2'
+
+    CountryCode = Column(String, primary_key=True)
+    SEBI = Column(String)
 
 class C1_2_1(Base):
     __tablename__ = 'C1_2_1'

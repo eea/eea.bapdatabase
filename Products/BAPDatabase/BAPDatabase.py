@@ -17,7 +17,6 @@ import models
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
 
-
 tables = {}
 for f in os.listdir(join(dirname(__file__), 'zpt')):
     if f.endswith('.zpt'):
@@ -122,7 +121,7 @@ class BAPDatabase(NyFolder):
         return self._get_session().query(models.Header.CountryCode) \
                                 .filter(models.Header.Country == country).one()[0]
 
-    def get_action_mop(self, id, mop, country):
+    def get_action_mop(self, id, country, mop=''):
         try:
             return self._get_session().query(models.Narrative) \
                                 .filter(models.Narrative.Ident == id) \
@@ -131,7 +130,7 @@ class BAPDatabase(NyFolder):
         except NoResultFound:
             return
 
-    def get_action(self, id, mop):
+    def get_action(self, id, mop=None):
         try:
             return self._get_session().query(models.QuestionsText) \
                                     .filter(models.QuestionsText.Ident == id) \
@@ -150,9 +149,9 @@ class BAPDatabase(NyFolder):
             
         return [result[k] for k in sorted(result)]
 
-    def get_action_values(self, action, country):
+    def get_action_values(self, action_id, country):
         code = self.get_country_code(country)
-        model = getattr(models, action)
+        model = getattr(models, action_id)
         try:
             return self._get_session().query(model) \
                                     .filter(model.CountryCode == code).one()

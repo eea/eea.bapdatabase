@@ -72,13 +72,39 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_B4_1_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B4_1_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Has a communications campaign in support of the EU Biodiversity Action Plan (BAP) been developed at the national level?Please tick only one of the following')
+        record = self.portal.bap.get_action_values('B4_1_1', country='Austria')
+        self.assertTrue(hasattr(record, 'Yes'))
+
+    def test_B4_1_2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B4_1_2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'What is the amount of funding by the MS for the supporting the 2010 countdown initiative?Please indicate amounts (in EUR):')
+        record = self.portal.bap.get_action_values('B4_1_2', country='Austria')
+        self.assertTrue(hasattr(record, 'Y2006'))
+
+    def test_C1_2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Indicate the extent to which the full suite of SEBI and national indicators is developed and applied:')
+        record = self.portal.bap.get_action_values('C1_2', country='Austria')
+        self.assertTrue(hasattr(record, 'SEBI'))
+
     def test_C1_2_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_2_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
         self.assertEqual(datatable.tr.th.text, 'Indicate national/sub-national biodiversity indicators')
-
         record = self.portal.bap.get_action_values('C1_2_1', country='Austria')
         self.assertTrue(hasattr(record, 'Abundance'))
 
@@ -88,6 +114,5 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
         self.assertEqual(datatable.tr.th.text, 'Indicate national/sub-national biodiversity monitoring schemes for habitats')
-
         record = self.portal.bap.get_action_values('C1_3', country='Austria')
         self.assertTrue(hasattr(record, 'Costal'))
