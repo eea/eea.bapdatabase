@@ -151,6 +151,38 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class C1_2_1(Base):
+    __tablename__ = 'C1_2_1'
+
+    CountryCode = Column(String, primary_key=True)
+    Abundance = Column(String)
+    RedList = Column(String)
+    Species = Column(String)
+    Ecosystem = Column(String)
+    Habitat = Column(String)
+    Livestock = Column(String)
+    Areas = Column(String)
+    BirdSites = Column(String)
+    Nitrogen = Column(String)
+    Aliens = Column(String)
+    BirdClimate = Column(String)
+    MarineTrophic = Column(String)
+    FragArea = Column(String)
+    FragRicer = Column(String)
+    NutrientCostal = Column(String)
+    FWQuality = Column(String)
+    ForestGrow = Column(String)
+    ForestDead = Column(String)
+    AgriNitro = Column(String)
+    AgriAreas = Column(String)
+    Fisheries = Column(String)
+    Aquaculture = Column(String)
+    Footprint = Column(String)
+    Patent = Column(String)
+    Finance = Column(String)
+    Public = Column(String)
+    Additional = Column(String)
+
 class C1_3(Base):
     __tablename__ = 'C1_3'
 

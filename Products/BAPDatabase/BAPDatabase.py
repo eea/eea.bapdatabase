@@ -21,6 +21,7 @@ tables = {
             'A1_3': NaayaPageTemplateFile('zpt/A1_3', globals(), 'products.bapdatabase.tables.A1_3'),
             'A1_3_1': NaayaPageTemplateFile('zpt/A1_3_1', globals(), 'products.bapdatabase.tables.A1_3_1'),
             'A2_1_1': NaayaPageTemplateFile('zpt/A2_1_1', globals(), 'products.bapdatabase.tables.A2_1_1'),
+            'C1_2_1': NaayaPageTemplateFile('zpt/C1_2_1', globals(), 'products.bapdatabase.tables.C1_2_1'),
             'C1_3': NaayaPageTemplateFile('zpt/C1_3', globals(), 'products.bapdatabase.tables.C1_3'),
         }
 
