@@ -183,6 +183,22 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class B1_1_4(Base):
+    __tablename__ = 'B1_1_4'
+    CountryCode = Column(String, primary_key=True)
+    Cat51_2006 = Column(String)
+    Cat51_2007 = Column(String)
+    Cat51_2008 = Column(String)
+    Cat51_2009 = Column(String)
+    Cat55_2006 = Column(String)
+    Cat55_2007 = Column(String)
+    Cat55_2008 = Column(String)
+    Cat55_2009 = Column(String)
+    Cat56_2006 = Column(String)
+    Cat56_2007 = Column(String)
+    Cat56_2008 = Column(String)
+    Cat56_2009 = Column(String)
+
 class B1_1_8(Base):
     __tablename__ = 'B1_1_8'
     CountryCode = Column(String, primary_key=True)

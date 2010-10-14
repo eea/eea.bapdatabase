@@ -72,6 +72,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_B1_1_4(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B1_1_4')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, "Indicate cohesion and structural funds for projects directly or indirectly providing biodiversity benefits in all MS' operational programmes (in EUR)")
+        record = self.portal.bap.get_action_values('test_B1_1_4', country='Austria')
+        self.assertTrue(hasattr(record, 'Cat51_2006'))
+
     def test_B1_1_8(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B1_1_8')
         html = self.browser.get_html()
