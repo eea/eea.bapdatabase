@@ -14,9 +14,13 @@ import models
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
 
-country_codes = {'Austria': 'AT'}
+country_codes = {
+    'Austria': 'AT',
+    'France': 'FR',
+}
 
 tables = {
+            'A1_1_1': NaayaPageTemplateFile('zpt/A1_1_1', globals(), 'products.bapdatabase.tables.A1_1_1'),
             'A1_1_3': NaayaPageTemplateFile('zpt/A1_1_3', globals(), 'products.bapdatabase.tables.A1_1_3'),
             'A1_3': NaayaPageTemplateFile('zpt/A1_3', globals(), 'products.bapdatabase.tables.A1_3'),
             'A1_3_1': NaayaPageTemplateFile('zpt/A1_3_1', globals(), 'products.bapdatabase.tables.A1_3_1'),
@@ -65,7 +69,7 @@ class BAPDatabase(NyFolder):
     db_username = None
     db_password = None
     db_name = None
-    db_debug = False
+    db_debug = True
 
     def _get_schema(self):
         from Products.NaayaCore.constants import ID_SCHEMATOOL

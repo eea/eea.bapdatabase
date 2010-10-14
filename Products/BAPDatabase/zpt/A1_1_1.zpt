@@ -1,0 +1,115 @@
+<tal:block define="country options/country;
+					mop options/mop">
+
+<h2>Measures of Progress</h2>
+
+<table class="datatable" 
+	tal:define="record python:here.get_action_values('A1_1_1_Natura2000Compleat', country)">
+	<tr>
+		<th rowspan="6" width="30%">
+			How complete is the Natura 2000 network?
+		</th>
+		<th colspan="2" width="35%">
+			Sites of Community Importance (Habitats Directive):
+		</th>
+		<th colspan="2" width="35%">
+			Special Protection Areas (Birds Directive):
+		</th>
+	</tr>
+	<tr>
+		<th>Number of sites</th>
+		<td tal:content="record/HabitatSites" />
+		<th>Number of sites</th>
+		<td tal:content="record/BirdSites" />
+	</tr>
+	<tr>
+		<th>Total area sites (km<sup>2</sup>)</th>
+		<td tal:content="record/HabitatArea" />
+		<th>Total area sites (km<sup>2</sup>)</th>
+		<td tal:content="record/BirdArea" />
+	</tr>
+	<tr>
+		<th>Terrestrial area (%)</th>
+		<td tal:content="record/HabitatTerraArea" />
+		<th>Terrestrial area (%)</th>
+		<td tal:content="record/BirdTerraArea" />
+	</tr>
+	<tr>
+		<th>Number of marine sites</th>
+		<td tal:content="record/HabitatMarineSites" />
+		<th>Number of marine sites</th>
+		<td tal:content="record/BirdMarineSites" />
+	</tr>
+	<tr>
+		<th>Marine area (%)</th>
+		<td tal:content="record/HabitatMarineArea" />
+		<th>Marine area (%)</th>
+		<td tal:content="record/BirdMarineArea" />
+	</tr>
+	<tr>
+		<th colspan="5">
+			Additional detail & Narrative summary of the above information (text provided should be able to stand alone):
+		</th>
+	</tr>
+	<tr>
+		<td colspan="5" tal:content="mop/Narative" />
+	</tr>
+	<tr>
+		<th colspan="5">
+			Additional clarifications
+		</th>
+	</tr>
+	<tr>
+		<td colspan="5" tal:content="mop/Clarifcations" />
+	</tr>
+	<tr>
+		<th>
+			Additional clarifications
+		</th>
+		<td colspan="4" tal:content="mop/DataSource" />
+	</tr>
+</table>
+
+<table class="datatable" 
+	tal:define="record python:here.get_action_values('A1_1_1_Natura2000Plan', country)">
+	<tr>
+		<th width="40%" rowspan="3">
+			What is the percentage of Natura 2000 sites with a management plan completed or in preparation?
+		</th>
+		<th width="40%">% of Natura 2000 sites with a management plan completed</th>
+		<td tal:content="record/Compleat" />
+	</tr>
+	<tr>
+		<th>% of Natura 2000 sites with a management plan in preparation</th>
+		<td tal:content="record/Preperation" />
+	</tr>
+	<tr>
+		<th>% of Natura 2000 sites with no management plan completed or in preparation</th>
+		<td tal:content="record/None_" />
+	</tr>
+	<tr>
+		<th colspan="3">
+			Additional detail & Narrative summary of the above information (text provided should be able to stand alone):
+		</th>
+	</tr>
+	<tr>
+		<td colspan="3"></td>
+	</tr>
+	<tr>
+		<th colspan="3">
+			Additional clarifications:
+		</th>
+	</tr>
+	<tr>
+		<td colspan="3"></td>
+	</tr>
+	<tr>
+		<th>
+			Data source (if any)
+		</th>
+		<td colspan="2"></td>
+	</tr>
+</table>
+
+
+</tal:block>

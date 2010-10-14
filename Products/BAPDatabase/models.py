@@ -28,10 +28,10 @@ class Header(Base):
 class Narrative(Base):
     __tablename__ = 'Narrative'
 
-    Country = Column(String, ForeignKey('01Header.CountryCode'), primary_key=True)
-    Objective = Column(String)
-    Ident = Column(String)
-    MOP = Column(String)
+    Country = Column(String, primary_key=True)
+    Objective = Column(String, primary_key=True)
+    Ident = Column(String, primary_key=True)
+    MOP = Column(String, primary_key=True)
     Narative = Column(String)
     MSComments = Column(String)
     Clarifcations = Column(String)
@@ -47,7 +47,7 @@ class QuestionsText(Base):
     __tablename__ = 'QuestionsText'
 
     ID = Column(String, primary_key=True)
-    Ident = Column(String, ForeignKey('Narrative.Ident'))
+    Ident = Column(String)
     MOP = Column(String)
     Action = Column(String)
     MSAction = Column(String)
@@ -62,6 +62,32 @@ class Objective(Base):
     name = Column(String)
     description = Column(String)
 
+
+class A1_1_1_Natura2000Compleat(Base):
+  __tablename__ = 'A1_1_1_Natura2000Compleat'
+
+  CountryCode = Column(String, primary_key=True)
+  HabitatSites = Column(String)
+  HabitatArea = Column(String)
+  HabitatTerraArea = Column(String)
+  HabitatMarineSites = Column(String)
+  HabitatMarineArea = Column(String)
+  BirdSites = Column(String)
+  BirdArea = Column(String)
+  BirdTerraArea = Column(String)
+  BirdMarineSites = Column(String)
+  BirdMarineArea = Column(String)
+  
+
+class A1_1_1_Natura2000Plan(Base):
+    __tablename__ = 'A1_1_1_Natura2000Plan'
+
+    CountryCode = Column(String, primary_key=True)
+    Compleat = Column(String)
+    Preperation = Column(String)
+    None_ = Column('None', String)
+
+      
 class A1_1_3(Base):
     __tablename__ = 'A1_1_3'
 
@@ -72,6 +98,7 @@ class A1_1_3(Base):
     Y2007 = Column(String)
     Y2008 = Column(String)
     Y2009 = Column(String)
+
         
 class A1_3(Base):
     __tablename__ = 'A1_3'
@@ -80,6 +107,7 @@ class A1_3(Base):
     BirdRed = Column(String)
     BirdAmd = Column(String)
     BirdGrn = Column(String)
+
 
 class A1_3_1_ActionPlan(Base):
     __tablename__ = 'A1_3_1_ActionPlan'
@@ -99,6 +127,7 @@ class A1_3_1_ActionPlan(Base):
     PlantsPlan = Column(String)
     PlanDataSource = Column(String)
 
+
 class A1_3_1_BirdIndicator(Base):
     __tablename__ = 'A1_3_1_BirdIndicator'
 
@@ -107,11 +136,13 @@ class A1_3_1_BirdIndicator(Base):
     IndicatorDesc = Column(String)
     DataSource = Column(String)
 
+
 class A1_3_1_BirdMonitoring(Base):
     __tablename__ = 'A1_3_1_BirdMonitoring'
 
     CountryCode = Column(String, primary_key=True)
     active = Column(String)
+
 
 class A1_3_1_RedList(Base):
     __tablename__ = 'A1_3_1_RedList'
@@ -123,6 +154,7 @@ class A1_3_1_RedList(Base):
     Fish = Column(String)
     Invert = Column(String)
     Plants = Column(String)
+
 
 class A2_1_1(Base):
     __tablename__ = 'A2_1_1'
@@ -150,6 +182,7 @@ class A2_1_1(Base):
     ForestEAFRDPercent = Column(String)
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
+
 
 class C1_2_1(Base):
     __tablename__ = 'C1_2_1'
