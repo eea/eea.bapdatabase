@@ -1,4 +1,7 @@
 import re
+import os
+from os.path import join, dirname, splitext
+
 from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -14,21 +17,15 @@ import models
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
 
-country_codes = {
-    'Austria': 'AT',
-    'France': 'FR',
-}
 
-tables = {
-            'A1_1_1': NaayaPageTemplateFile('zpt/A1_1_1', globals(), 'products.bapdatabase.tables.A1_1_1'),
-            'A1_1_3': NaayaPageTemplateFile('zpt/A1_1_3', globals(), 'products.bapdatabase.tables.A1_1_3'),
-            'A1_3': NaayaPageTemplateFile('zpt/A1_3', globals(), 'products.bapdatabase.tables.A1_3'),
-            'A1_3_1': NaayaPageTemplateFile('zpt/A1_3_1', globals(), 'products.bapdatabase.tables.A1_3_1'),
-            'A2_1_1': NaayaPageTemplateFile('zpt/A2_1_1', globals(), 'products.bapdatabase.tables.A2_1_1'),
-            'C1_2_1': NaayaPageTemplateFile('zpt/C1_2_1', globals(), 'products.bapdatabase.tables.C1_2_1'),
-            'C1_3': NaayaPageTemplateFile('zpt/C1_3', globals(), 'products.bapdatabase.tables.C1_3'),
-        }
-
+tables = {}
+for f in os.listdir(join(dirname(__file__), 'zpt')):
+    if f.endswith('.zpt'):
+        fname = splitext(f)[0]
+        tables.setdefault(fname, 
+                            NaayaPageTemplateFile('zpt/%s' % fname, 
+                                                globals(), 
+                                                'products.bapdatabase.tables.%s' % fname))
 
 def create_object_callback(parent, id, contributor):
     ob = BAPDatabase(id, contributor)
@@ -121,6 +118,10 @@ class BAPDatabase(NyFolder):
     def get_objectives(self):
         return self._get_session().query(models.Objective).all()
 
+    def get_country_code(self, country):
+        return self._get_session().query(models.Header.CountryCode) \
+                                .filter(models.Header.Country == country).one()[0]
+
     def get_action_mop(self, id, mop, country):
         try:
             return self._get_session().query(models.Narrative) \
@@ -150,7 +151,7 @@ class BAPDatabase(NyFolder):
         return [result[k] for k in sorted(result)]
 
     def get_action_values(self, action, country):
-        code = country_codes.get(country)
+        code = self.get_country_code(country)
         model = getattr(models, action)
         try:
             return self._get_session().query(model) \
