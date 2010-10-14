@@ -1,81 +1,89 @@
 <tal:block define="country options/country;
-					mop options/mop">
+					action_id options/action_id;">
+
+<tal:block define="action python:here.get_action(action_id, 'Natura2000Compleat');
+					record python:here.get_action_values('A1_1_1_Natura2000Compleat', country);
+					mop python:here.get_action_mop(action_id, 'Natura2000Compleat', country)">
+
+	<div id="action-description" tal:condition="action">
+		<p tal:content="structure action/FullText" />
+	</div>
+
+	<h2>Measures of Progress</h2>
+
+	<table class="datatable">
+		<tr>
+			<th rowspan="6" width="30%" tal:content="action/MOPText" />
+			<th colspan="2" width="35%">
+				Sites of Community Importance (Habitats Directive):
+			</th>
+			<th colspan="2" width="35%">
+				Special Protection Areas (Birds Directive):
+			</th>
+		</tr>
+		<tr>
+			<th>Number of sites</th>
+			<td tal:content="record/HabitatSites" />
+			<th>Number of sites</th>
+			<td tal:content="record/BirdSites" />
+		</tr>
+		<tr>
+			<th>Total area sites (km<sup>2</sup>)</th>
+			<td tal:content="record/HabitatArea" />
+			<th>Total area sites (km<sup>2</sup>)</th>
+			<td tal:content="record/BirdArea" />
+		</tr>
+		<tr>
+			<th>Terrestrial area (%)</th>
+			<td tal:content="record/HabitatTerraArea" />
+			<th>Terrestrial area (%)</th>
+			<td tal:content="record/BirdTerraArea" />
+		</tr>
+		<tr>
+			<th>Number of marine sites</th>
+			<td tal:content="record/HabitatMarineSites" />
+			<th>Number of marine sites</th>
+			<td tal:content="record/BirdMarineSites" />
+		</tr>
+		<tr>
+			<th>Marine area (%)</th>
+			<td tal:content="record/HabitatMarineArea" />
+			<th>Marine area (%)</th>
+			<td tal:content="record/BirdMarineArea" />
+		</tr>
+		<tr>
+			<th colspan="5">
+				Additional detail & Narrative summary of the above information (text provided should be able to stand alone):
+			</th>
+		</tr>
+		<tr>
+			<td colspan="5" tal:content="mop/Narative" />
+		</tr>
+		<tr>
+			<th colspan="5">
+				Additional clarifications
+			</th>
+		</tr>
+		<tr>
+			<td colspan="5" tal:content="mop/Clarifcations" />
+		</tr>
+		<tr>
+			<th>
+				Data Source
+			</th>
+			<td colspan="4" tal:content="mop/DataSource" />
+		</tr>
+	</table>
+</tal:block>
 
 <h2>Measures of Progress</h2>
-
+	
 <table class="datatable" 
-	tal:define="record python:here.get_action_values('A1_1_1_Natura2000Compleat', country)">
+	tal:define="record python:here.get_action_values('A1_1_1_Natura2000Plan', country);
+				mop python:here.get_action_mop(action_id, 'Natura2000Plan', country);
+				action python:here.get_action(action_id, 'Natura2000Plan');">
 	<tr>
-		<th rowspan="6" width="30%">
-			How complete is the Natura 2000 network?
-		</th>
-		<th colspan="2" width="35%">
-			Sites of Community Importance (Habitats Directive):
-		</th>
-		<th colspan="2" width="35%">
-			Special Protection Areas (Birds Directive):
-		</th>
-	</tr>
-	<tr>
-		<th>Number of sites</th>
-		<td tal:content="record/HabitatSites" />
-		<th>Number of sites</th>
-		<td tal:content="record/BirdSites" />
-	</tr>
-	<tr>
-		<th>Total area sites (km<sup>2</sup>)</th>
-		<td tal:content="record/HabitatArea" />
-		<th>Total area sites (km<sup>2</sup>)</th>
-		<td tal:content="record/BirdArea" />
-	</tr>
-	<tr>
-		<th>Terrestrial area (%)</th>
-		<td tal:content="record/HabitatTerraArea" />
-		<th>Terrestrial area (%)</th>
-		<td tal:content="record/BirdTerraArea" />
-	</tr>
-	<tr>
-		<th>Number of marine sites</th>
-		<td tal:content="record/HabitatMarineSites" />
-		<th>Number of marine sites</th>
-		<td tal:content="record/BirdMarineSites" />
-	</tr>
-	<tr>
-		<th>Marine area (%)</th>
-		<td tal:content="record/HabitatMarineArea" />
-		<th>Marine area (%)</th>
-		<td tal:content="record/BirdMarineArea" />
-	</tr>
-	<tr>
-		<th colspan="5">
-			Additional detail & Narrative summary of the above information (text provided should be able to stand alone):
-		</th>
-	</tr>
-	<tr>
-		<td colspan="5" tal:content="mop/Narative" />
-	</tr>
-	<tr>
-		<th colspan="5">
-			Additional clarifications
-		</th>
-	</tr>
-	<tr>
-		<td colspan="5" tal:content="mop/Clarifcations" />
-	</tr>
-	<tr>
-		<th>
-			Additional clarifications
-		</th>
-		<td colspan="4" tal:content="mop/DataSource" />
-	</tr>
-</table>
-
-<table class="datatable" 
-	tal:define="record python:here.get_action_values('A1_1_1_Natura2000Plan', country)">
-	<tr>
-		<th width="40%" rowspan="3">
-			What is the percentage of Natura 2000 sites with a management plan completed or in preparation?
-		</th>
+		<th width="40%" rowspan="3" tal:content="action/MOPText" />
 		<th width="40%">% of Natura 2000 sites with a management plan completed</th>
 		<td tal:content="record/Compleat" />
 	</tr>
@@ -93,21 +101,21 @@
 		</th>
 	</tr>
 	<tr>
-		<td colspan="3"></td>
+		<td colspan="3" tal:content="mop/Narative" />
 	</tr>
 	<tr>
 		<th colspan="3">
-			Additional clarifications:
+			Additional clarifications
 		</th>
 	</tr>
 	<tr>
-		<td colspan="3"></td>
+		<td colspan="3" tal:content="mop/Clarifcations" />
 	</tr>
 	<tr>
 		<th>
-			Data source (if any)
+			Data Source
 		</th>
-		<td colspan="2"></td>
+		<td colspan="2" tal:content="mop/DataSource" />
 	</tr>
 </table>
 

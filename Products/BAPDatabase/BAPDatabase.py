@@ -121,20 +121,22 @@ class BAPDatabase(NyFolder):
     def get_objectives(self):
         return self._get_session().query(models.Objective).all()
 
-    def get_action_mop(self, id, country):
+    def get_action_mop(self, id, mop, country):
         try:
             return self._get_session().query(models.Narrative) \
                                 .filter(models.Narrative.Ident == id) \
+                                .filter(models.Narrative.MOP == mop) \
                                 .filter(models.Narrative.Country == country).one()
         except NoResultFound:
             return
 
-    def get_action(self, id):
-        action = self._get_session().query(models.QuestionsText) \
-                                .filter(models.QuestionsText.Ident == id).all()
-        if action:
-            return action[0]    #texts are simlar
-        return ''
+    def get_action(self, id, mop):
+        try:
+            return self._get_session().query(models.QuestionsText) \
+                                    .filter(models.QuestionsText.Ident == id) \
+                                    .filter(models.QuestionsText.MOP == mop).one()
+        except NoResultFound:
+            return
 
     def get_targets(self, objective, country):
         result = {}
@@ -156,9 +158,9 @@ class BAPDatabase(NyFolder):
         except NoResultFound:
             return
 
-    def get_table(self, action, mop, country):
-        template = tables.get(action.Ident)
-        return template.__of__(self)(mop=mop, country=country, action=action)
+    def get_table(self, action_id, country):
+        template = tables.get(action_id)
+        return template.__of__(self)(country=country, action_id=action_id)
 
     index_html = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
     details = NaayaPageTemplateFile('zpt/details', globals(), 'products.bapdatabase.details')

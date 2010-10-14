@@ -22,14 +22,8 @@
 				Country profile <span i18n:name="country-name" tal:replace="country" />
 			</h1>
 
-			<tal:block condition="action_id"
-						define="action python:here.get_action(action_id);
-								mop python:here.get_action_mop(action_id, country)">
-				<div id="action-description" tal:condition="action">
-					<p tal:content="structure action/FullText" />
-				</div>
-
-				<span tal:replace="structure python:here.get_table(action, mop, country)" />
+			<tal:block condition="action_id">
+				<span tal:replace="structure python:here.get_table(action_id, country)" />
 			</tal:block>
 		</div>
 	</metal:block>
