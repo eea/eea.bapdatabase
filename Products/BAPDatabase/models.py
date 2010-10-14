@@ -183,9 +183,32 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class B1_1_8(Base):
+    __tablename__ = 'B1_1_8'
+    CountryCode = Column(String, primary_key=True)
+    Y2006 = Column(String)
+    Y2007 = Column(String)
+    Y2008 = Column(String)
+    Y2009 = Column(String)
+
+class B2_4(Base):
+    __tablename__ = 'B2_4'
+    CountryCode = Column(String, primary_key=True)
+    New = Column(String)
+    Existing = Column(String)
+    Develope = Column(String)
+    NoNew = Column(String)
+    Details = Column(String)
+
+class B3_1_2(Base):
+    __tablename__ = 'B3_1_2'
+    CountryCode = Column(String, primary_key=True)
+    Local = Column(String)
+    Regional = Column(String)
+    National = Column(String)
+
 class B3_1_5(Base):
     __tablename__ = 'B3_1_5'
-
     CountryCode = Column(String, primary_key=True)
     Local = Column(String)
     Regional = Column(String)
@@ -193,7 +216,6 @@ class B3_1_5(Base):
 
 class B3_1_6(Base):
     __tablename__ = 'B3_1_6'
-
     CountryCode = Column(String, primary_key=True)
     Y2006 = Column(String)
     Y2007 = Column(String)
@@ -202,7 +224,6 @@ class B3_1_6(Base):
 
 class B3_1_7(Base):
     __tablename__ = 'B3_1_7'
-
     CountryCode = Column(String, primary_key=True)
     Y2006 = Column(String)
     Y2007 = Column(String)
@@ -211,14 +232,12 @@ class B3_1_7(Base):
 
 class B3_1_8(Base):
     __tablename__ = 'B3_1_8'
-
     CountryCode = Column(String, primary_key=True)
     EU = Column(String)
     NonEU = Column(String)
 
 class B4_1_1(Base):
     __tablename__ = 'B4_1_1'
-
     CountryCode = Column(String, primary_key=True)
     Yes = Column(String)
     No = Column(String)
@@ -229,7 +248,6 @@ class B4_1_1(Base):
 
 class B4_1_2(Base):
     __tablename__ = 'B4_1_2'
-
     CountryCode = Column(String, primary_key=True)
     Y2006 = Column(String)
     Y2007 = Column(String)
@@ -238,13 +256,11 @@ class B4_1_2(Base):
 
 class C1_2(Base):
     __tablename__ = 'C1_2'
-
     CountryCode = Column(String, primary_key=True)
     SEBI = Column(String)
 
 class C1_2_1(Base):
     __tablename__ = 'C1_2_1'
-
     CountryCode = Column(String, primary_key=True)
     Abundance = Column(String)
     RedList = Column(String)
@@ -276,7 +292,6 @@ class C1_2_1(Base):
 
 class C1_3(Base):
     __tablename__ = 'C1_3'
-
     CountryCode = Column(String, primary_key=True)
     Costal = Column(String)
     Dunes = Column(String)

@@ -72,6 +72,33 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_B1_1_8(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B1_1_8')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Please indicate amount of national funding allocated for European and national biodiversity research activities and programmes for the years indicated.')
+        record = self.portal.bap.get_action_values('test_B1_1_8', country='Austria')
+        self.assertTrue(hasattr(record, 'Y2006'))
+
+    def test_B2_4(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B2_4')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Has a new national environmental policy or strategy been created, or an existing policy or strategy updated, in light of the Communication 'Halting the loss of biodiversity by 2010 and beyond'? Please indicate Y or N in each case.')
+        record = self.portal.bap.get_action_values('test_B2_4', country='Austria')
+        self.assertTrue(hasattr(record, 'New'))
+
+    def test_B3_1_2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B3_1_2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'How many farming and biodiversity, forestry and biodiversity partnerships have been facilitated by MS at the local, regional and national levels? Please indicate number of partnerships in the following table:')
+        record = self.portal.bap.get_action_values('test_B3_1_2', country='Austria')
+        self.assertTrue(hasattr(record, 'Local'))
+
     def test_B3_1_5(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B3_1_5')
         html = self.browser.get_html()
