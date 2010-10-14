@@ -72,6 +72,24 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_B3_1_7(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B3_1_7')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'How many forums or similar platform/framework set up to encourage partnerships between financing sector and biodiversity? Please indicate number of forums or similar platforms/frameworks in the following table:')
+        record = self.portal.bap.get_action_values('test_B3_1_7', country='Austria')
+        self.assertTrue(hasattr(record, 'Y2006'))
+
+    def test_B3_1_8(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B3_1_8')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Have the CBD Akwe-Kwon Guidelines been applied to projects financed by public funds? Please indicate Y/N against each box:')
+        record = self.portal.bap.get_action_values('test_B3_1_8', country='EU')
+        self.assertTrue(hasattr(record, 'Yes'))
+
     def test_B4_1_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B4_1_1')
         html = self.browser.get_html()
