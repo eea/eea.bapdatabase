@@ -1,31 +1,8 @@
-<metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
+<tal:block i18n:domain="portal_translations">
 
-	<metal:block metal:fill-slot="title">
-			<title tal:content="string:${here/title} | ${here/site_title}" />
-	</metal:block>
+<div id="mop-content" tal:define="country here/aq_parent/title_or_id;
+									action_id request/id | nothing">
+	<span tal:condition="action_id" tal:replace="structure python:here.get_table(action_id, country)" />
+</div>
 
-	<metal:block metal:fill-slot="head">
-		<script type="text/javascript">
-			$(document).ready(function(){
-					$('p').each(function(){
-							$(this).html(Linkify($(this).html()));
-					})
-			})
-		</script>
-	</metal:block>
-
-	<metal:block fill-slot="body">
-		<div id="center_content"
-				tal:define="country here/aq_parent/title_or_id;
-							action_id request/id | nothing">
-			<h1 i18n:translate="">
-				Country profile <span i18n:name="country-name" tal:replace="country" />
-			</h1>
-
-			<tal:block condition="action_id">
-				<span tal:replace="structure python:here.get_table(action_id, country)" />
-			</tal:block>
-		</div>
-	</metal:block>
-
-</metal:block>
+</tal:block>

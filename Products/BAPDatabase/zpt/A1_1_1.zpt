@@ -3,13 +3,9 @@
 
 <tal:block define="action python:here.get_action(action_id, 'Natura2000Compleat');
 					record python:here.get_action_values('A1_1_1_Natura2000Compleat', country);
-					mop python:here.get_action_mop(action_id, 'Natura2000Compleat', country)">
+					mop python:here.get_action_mop(action_id, country, 'Natura2000Compleat')">
 
-	<div id="action-description" tal:condition="action">
-		<p tal:content="structure action/FullText" />
-	</div>
-
-	<h2>Measures of Progress</h2>
+	<h3>Measures of Progress</h3>
 
 	<table class="datatable">
 		<tr>
@@ -76,11 +72,11 @@
 	</table>
 </tal:block>
 
-<h2>Measures of Progress</h2>
+<h3>Measures of Progress</h3>
 	
 <table class="datatable" 
 	tal:define="record python:here.get_action_values('A1_1_1_Natura2000Plan', country);
-				mop python:here.get_action_mop(action_id, 'Natura2000Plan', country);
+				mop python:here.get_action_mop(action_id, country, 'Natura2000Plan');
 				action python:here.get_action(action_id, 'Natura2000Plan');">
 	<tr>
 		<th width="40%" rowspan="3" tal:content="action/MOPText" />

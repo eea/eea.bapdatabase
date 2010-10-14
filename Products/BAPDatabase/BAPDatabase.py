@@ -16,6 +16,7 @@ from Products.Naaya.NyFolder import NyFolder, addNyFolder
 import models
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
+target_pattern = re.compile(r'^[A-Z]\d+\_\d+$', re.DOTALL)
 
 tables = {}
 for f in os.listdir(join(dirname(__file__), 'zpt')):
@@ -96,7 +97,26 @@ class BAPDatabase(NyFolder):
             del registeredWrappers[self.db_name]
             self._p_changed = 1
 
-    #database queries
+    def humanize_text(self, text, id, action=False):
+        m = pattern.match(text)
+        if m is not None:
+            if action:  #@todo: optimize this code
+                return '<a class="action-link" href="%(url)s">%(heading)s</a> %(text)s' % {
+                     'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
+                     'heading': m.group('heading').strip(),
+                     'text': m.group('text').strip(),
+                 }
+            else:
+                return '<a class="target-link" href="%(url)s">%(heading)s</a> %(text)s' % {
+                    'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
+                    'heading': m.group('heading').strip(),
+                    'text': text,
+                }
+            return text
+
+    def get_objectives(self):
+        return self._get_session().query(models.Objective).all()
+
     def get_headline(self, objective):
         result = self._get_session().query(models.QuestionsText.FullText).\
                                     filter(models.QuestionsText.Ident == objective).all()
@@ -104,18 +124,28 @@ class BAPDatabase(NyFolder):
             return result[0][0]    #take the first headline
         return ''
 
-    def humanize_text(self, text, id):
-        m = pattern.match(text)
-        if m is not None:
-            return '<a href="%(url)s">%(heading)s</a> %(text)s' % {
-                'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
-                'heading': m.group('heading').strip(),
-                'text': m.group('text').strip(),
-            }
-        return text
+    def get_targets(self, objective, country):
+        result = {}
+        for target in self._get_session().query(models.QuestionsText) \
+                        .join((models.Narrative, models.QuestionsText.Ident == models.Narrative.Ident)) \
+                        .filter(models.Narrative.Country == country) \
+                        .filter(models.Narrative.Objective == objective).all():
+            if target_pattern.match(target.Ident):   #extract targets (e.g. A1_1)
+                result[target.Ident] = target
 
-    def get_objectives(self):
-        return self._get_session().query(models.Objective).all()
+        return [result[k] for k in sorted(result)]
+
+    def get_actions(self, objective, target, country):
+        result = {}
+        for action in self._get_session().query(models.QuestionsText) \
+                        .join((models.Narrative, models.QuestionsText.Ident == models.Narrative.Ident)) \
+                        .filter(models.Narrative.Country == country) \
+                        .filter(models.Narrative.Objective == objective) \
+                        .filter(models.QuestionsText.Ident.like('%s%%' % target)).all():
+            if action.Ident != target:   #skip targets
+                result[action.Ident] = action
+
+        return [result[k] for k in sorted(result)]
 
     def get_country_code(self, country):
         return self._get_session().query(models.Header.CountryCode) \
@@ -137,17 +167,6 @@ class BAPDatabase(NyFolder):
                                     .filter(models.QuestionsText.MOP == mop).one()
         except NoResultFound:
             return
-
-    def get_targets(self, objective, country):
-        result = {}
-        for target in self._get_session().query(models.QuestionsText) \
-                        .join((models.Narrative, models.QuestionsText.Ident == models.Narrative.Ident)) \
-                        .filter(models.Narrative.Country == country) \
-                        .filter(models.Narrative.Objective == objective).all():
-            if target.Ident != objective:   #skip headlines
-                result[target.Ident] = target
-            
-        return [result[k] for k in sorted(result)]
 
     def get_action_values(self, action_id, country):
         code = self.get_country_code(country)
