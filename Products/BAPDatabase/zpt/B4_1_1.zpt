@@ -10,7 +10,7 @@
 <h2>Measures of Progress</h2>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('B4_1_1', country)">
+	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
 			<th rowspan="3" colspan="2" style="text-align:left;vertical-align:middle">Has a communications campaign in support of the EU Biodiversity Action Plan (BAP) been developed at the national level?<br/>
 			Please tick only one of the following</th>

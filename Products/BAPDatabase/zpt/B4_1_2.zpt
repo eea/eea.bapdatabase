@@ -10,7 +10,7 @@
 <h2>Measures of Progress</h2>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('B4_1_2', country)">
+	<tal:block define="record python:here.get_action_values(action_id, country)">
  		<tr>
 			<th rowspan="2" colspan="2" style="text-align:left">What is the amount of funding by the MS for the supporting the 2010 countdown initiative?<br/>
 			Please indicate amounts (in EUR):</th>

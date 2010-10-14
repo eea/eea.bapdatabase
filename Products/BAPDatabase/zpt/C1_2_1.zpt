@@ -6,7 +6,7 @@
 <h2>Measures of Progress</h2>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('C1_2_1', country)">
+	<tal:block define="record python:here.get_action_values(action_id, country)">
  		<tr>
 			<th rowspan="28" colspan="2" style="vertical-align:middle">Indicate national/sub-national biodiversity indicators</th>
 			<th width="30%">SEBI 2010 indicator</th>

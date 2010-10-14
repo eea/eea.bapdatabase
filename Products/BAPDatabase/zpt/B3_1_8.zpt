@@ -10,7 +10,7 @@
 <h2>Measures of Progress</h2>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('B3_1_8', country)">
+	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
 			<th rowspan="2" colspan="2" style="text-align:left;vertical-align:middle">Have the CBD Akwe-Kwon Guidelines been applied to projects financed by public funds? Please indicate Y/N against each box:</th>
 			<th width="20%">In EU countries</th>
