@@ -183,6 +183,19 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class A10_1_9(Base):
+    __tablename__ = 'A10_1_9'
+    CountryCode = Column(String, primary_key=True)
+    MoU = Column(String)
+    Associate = Column(String)
+    NonMember = Column(String)
+    GBIFDetails = Column(String)
+    GBIFLink = Column(String)
+    Gov = Column(String)
+    Public = Column(String)
+    NotMember = Column(String)
+    ENBIDetails = Column(String)
+
 class B1_1_1(Base):
     __tablename__ = 'B1_1_1'
     CountryCode = Column(String, primary_key=True)

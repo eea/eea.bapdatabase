@@ -72,12 +72,21 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_A10_1_9(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_A10_1_9')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Please indicate level of participation in the Global Biodiversity Information Facility (GBIF). Please select only ONE of the following:')
+        record = self.portal.bap.get_action_values('test_A10_1_9', country='Austria')
+        self.assertTrue(hasattr(record, 'MoU'))
+
     def test_B1_1_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=test_B1_1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
-        self.assertEqual(datatable.tr.th.text, "Does a national programme identifying long-term goals and the allocation of funding (both COM and MS co-funding) for the related biodiversity activities exist? If present indicate Y, if absent indicate N")
+        self.assertEqual(datatable.tr.th.text, 'Does a national programme identifying long-term goals and the allocation of funding (both COM and MS co-funding) for the related biodiversity activities exist? If present indicate Y, if absent indicate N')
         record = self.portal.bap.get_action_values('test_B1_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'NatProg'))
 
