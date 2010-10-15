@@ -189,8 +189,24 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class A2_1_3_ForestCert(Base):
+    __tablename__ = 'A2_1_3_ForestCert'
+    CountryCode = Column(String, primary_key=True)
+    FSCArea = Column(String)
+    FSCPercent = Column(String)
+    PECFArea = Column(String)
+    PECFPercent = Column(String)
+    OtherCert = Column(String)
+    OtherCertArea = Column(String)
+    OtherCertPercent = Column(String)
 
-
+class A2_1_3_HNV(Base):
+    __tablename__ = 'A2_1_3_HNV'
+    CountryCode = Column(String, primary_key=True)
+    Area = Column(String)
+    Share = Column(String)
+    NoMapped = Column(String)
+    Mapped = Column(String)
 
 class A7_1_4(Base):
     __tablename__ = 'A7_1_4'
