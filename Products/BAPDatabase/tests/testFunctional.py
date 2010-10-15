@@ -122,6 +122,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A8_1_4(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_4')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        '''<em> and <br/> tags are not displayed on the page, so this is why
+        no space between national and biodiversity:'''
+        self.assertEqual(datatable.tr.th.text, 'What is the proportion of national consumption of wood products derived from sustainable sources (%)?')
+        record = self.portal.bap.get_action_values('A8_1_4', country='Austria')
+        self.assertTrue(hasattr(record, 'Y2006'))
+
     def test_A8_1_8(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_8')
         html = self.browser.get_html()
