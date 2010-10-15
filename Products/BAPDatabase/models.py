@@ -254,6 +254,11 @@ class A2_1_8(Base):
 
 
 
+class A5_1_3(Base):
+    __tablename__ = 'A5_1_3'
+    CountryCode = Column(String, primary_key=True)
+    Ballast = Column(String)
+
 class A5_1_4(Base):
     __tablename__ = 'A5_1_4'
     CountryCode = Column(String, primary_key=True)

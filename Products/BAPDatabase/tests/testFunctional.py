@@ -185,6 +185,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A5_1_3(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Has the country ratified the International Convention for the Control and Management of Ship’s Ballast Water and Sediments under the International Maritime Organisation?Please enter Y or N here:')
+        record = self.portal.bap.get_action_values('A5_1_3', country='Austria')
+        self.assertTrue(hasattr(record, 'Ballast'))
+
     def test_A5_1_4(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1_4')
         html = self.browser.get_html()
