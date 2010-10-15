@@ -119,6 +119,20 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+
+
+
+    def test_A8_1_8(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_8')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        '''<em> and <br/> tags are not displayed on the page, so this is why
+        no space between national and biodiversity:'''
+        self.assertEqual(datatable.tr.th.text, 'Number of import applications denied during the last reporting cycle compared to the number of import documents issued')
+        record = self.portal.bap.get_action_values('A8_1_8', country='Austria')
+        self.assertTrue(hasattr(record, 'ImportApps'))
+
     def test_A9_1_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_1_1')
         html = self.browser.get_html()

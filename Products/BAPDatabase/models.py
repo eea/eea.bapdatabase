@@ -189,6 +189,30 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class A8_1_8(Base):
+    __tablename__ = 'A8_1_8'
+    CountryCode = Column(String, primary_key=True)
+    ImportApps = Column(String)
+    ImportAppsDenied = Column(String)
+    ImportPercent = Column(String)
+    ExportApps = Column(String)
+    ExportAppsDenied = Column(String)
+    ExportPercent = Column(String)
+    ReExportApps = Column(String)
+    ReExportAppsDenied = Column(String)
+    ReExportPercent = Column(String)
+    SeizeP1Year = Column(String)
+    SeizeP1Num = Column(String)
+    SeizeP2Year = Column(String)
+    SeizeP2Num = Column(String)
+    NetChange = Column(String)
+    Capacity = Column(String)
+    Finance = Column(String)
+    CITESDataLink = Column(String)
+    Contributions = Column(String)
+    Amount = Column(String)
+    CITES_COPDataLink = Column(String)
+
 class A9_1_1(Base):
     __tablename__ = 'A9_1_1'
     CountryCode = Column(String, primary_key=True)
