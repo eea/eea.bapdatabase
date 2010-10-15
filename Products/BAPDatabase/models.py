@@ -254,6 +254,16 @@ class A2_1_8(Base):
 
 
 
+class A4_3(Base):
+    __tablename__ = 'A4_3'
+    CountryCode = Column(String, primary_key=True)
+    Planing = Column(String)
+    LawPost2006 = Column(String)
+    Monitor = Column(String)
+    MonitorReports = Column(String)
+    Coordination = Column(String)
+    EcoNetwork = Column(String)
+
 class A4_4_1(Base):
     __tablename__ = 'A4_4_1'
     CountryCode = Column(String, primary_key=True)

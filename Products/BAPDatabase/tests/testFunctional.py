@@ -185,6 +185,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A4_3(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Are you obliged by law to consider ecological networks in spatial planning? Enter Y or N here:')
+        record = self.portal.bap.get_action_values('A4_3', country='Austria')
+        self.assertTrue(hasattr(record, 'Planing'))
+
     def test_A4_4_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4_4_1')
         html = self.browser.get_html()
