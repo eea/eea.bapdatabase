@@ -239,6 +239,18 @@ class A2_1_8(Base):
     BioIndicators = Column(String)
     BioIndicatorsDetails = Column(String)
     
+
+
+
+
+
+class A5_2(Base):
+    __tablename__ = 'A5_2'
+    CountryCode = Column(String, primary_key=True)
+    GMlegalNo = Column(String)
+    GMlegalDev = Column(String)
+    GMlegalImp = Column(String)
+
 class A6_1_1(Base):
     __tablename__ = 'A6_1_1'
     CountryCode = Column(String, primary_key=True)
