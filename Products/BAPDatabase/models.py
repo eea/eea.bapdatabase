@@ -183,6 +183,16 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class A9_4_3(Base):
+    __tablename__ = 'A9_4_3'
+    CountryCode = Column(String, primary_key=True)
+    StudiesYN = Column(String)
+    StudiesDetail = Column(String)
+    HabitatYN = Column(String)
+    HabitatDetail = Column(String)
+    SpeciesYN = Column(String)
+    SpeciesDetail = Column(String)
+
 class A10_1(Base):
     __tablename__ = 'A10_1'
     CountryCode = Column(String, primary_key=True)
