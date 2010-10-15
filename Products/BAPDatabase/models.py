@@ -254,6 +254,11 @@ class A2_1_8(Base):
 
 
 
+class A4(Base):
+    __tablename__ = 'A4'
+    CountryCode = Column(String, primary_key=True)
+    spending = Column(String)
+
 class A4_3(Base):
     __tablename__ = 'A4_3'
     CountryCode = Column(String, primary_key=True)

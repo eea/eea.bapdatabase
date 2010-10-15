@@ -185,6 +185,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A4(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Has there been an increase in Biodiversity spending under Cohesion and Structural funds since 2006? Please indicate Y or N.')
+        record = self.portal.bap.get_action_values('A4', country='Austria')
+        self.assertTrue(hasattr(record, 'spending'))
+
     def test_A4_3(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4_3')
         html = self.browser.get_html()
