@@ -1,0 +1,151 @@
+.datatable td, .datatable th  {
+	margin:0;
+	padding: 0.3em;
+	vertical-align: middle;
+        font-weight: normal;
+}
+
+table.datatable {
+	border: 1px solid #4CA6D6;
+	color: #666666;
+	margin: 1em 0em;
+	width: 95%;
+}
+
+.datatable th {
+	text-align: left;
+	background-color: #E4F1F9;
+	border-bottom: 2px solid white;
+	border-top: none;
+	color: #4C4C4C;
+}
+
+/**
+ * For jQuery purposes targets and actions will not be displayed
+ *
+ * BAP Stylesheet
+*/
+
+#bap-content {
+	border: 2px solid #DFDFDF;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.bap-objectives {
+	border-bottom: 2px solid #DFDFDF;
+	padding: 0.5em 0 0.5em 1em;
+}
+
+.bap-objectives:hover {
+}
+
+.bap-objectives a {
+	
+}
+
+.bap-objective {
+	margin: 0.5em 2.2em 0em 1em;
+	background-color: #FAFAFA;
+	padding: 0;
+	border: 1px solid #EFEFEF;
+}
+
+.bap-objective-title {
+	color: #4B4742 !important;
+}
+
+.bap-objective-title a.inactive {
+	background: transparent url('up.png') no-repeat left center;
+}
+
+.bap-objective-title a.active {
+	background: transparent url('down.png') no-repeat left 55%;
+}
+
+.bap-objective-title a {
+	background: transparent url('down.png') no-repeat left 55%;
+	outline: none;
+	padding-left: 1em;
+	font-size: 1.2em;
+	line-height: 1.2em;
+	vertical-align: middle;
+}
+
+.bap-objective-title span {
+	vertical-align: middle;
+	font-size: 1.1em;
+	line-height: 1.1em;
+	margin-left: 0.5em;
+	font-style: italic;
+}
+
+.bap-objective-title span:hover {
+	cursor: pointer;
+}
+
+.bap-headline {
+	background-color: #F4FFE0;
+	border-bottom: 1px dotted #D6D6D6;
+	text-align: left;
+	text-indent: 1em;
+	padding: 0.5em 0em 0.5em 1em;
+	padding-left: 1em;
+}
+
+.bap-target {
+	margin-top: 1em;
+	border-bottom: 1px solid #EFEFEF;
+	padding: 0em 1em 0.5em 1em;
+}
+
+.bap-target span {
+	
+}
+
+.bap-target:last-child {
+	border: none;
+}
+
+.bap-target span a {
+	background: transparent url('bullet-orange.png') no-repeat left center;
+	padding-left: 20px;
+	padding-bottom: 3px;
+	vertical-align: middle;
+}
+
+.bap-actions {
+}
+
+.bap-action a {
+	background: transparent url('bullet-red.png') no-repeat left center !important;
+}
+
+.bap-action {
+	background-color: #FFFFFF;
+	border: 1px solid #EFEFEF;
+	padding: 1em;
+	margin: 1em 0 1em 0em;
+	-moz-box-shadow: 2px 2px 7px #DFDFDF;
+	-webkit-box-shadow: 2px 2px 7px #DFDFDF;
+	box-shadow: 2px 2px 7px #DFDFDF;
+}
+
+.bap-mop-content {
+	margin-left: 2em;
+}
+
+.loading-indicator {
+	height: 80px;
+	width: 80px;
+	background: url('loading.gif');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.loading-indicator-overlay {
+	background-color: #FFFFFF;
+	opacity: 0.6;
+	filter: alpha(opacity = 60);
+}

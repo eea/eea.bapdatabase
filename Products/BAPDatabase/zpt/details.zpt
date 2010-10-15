@@ -12,10 +12,9 @@
            Country profile <span i18n:name="country-name" tal:replace="country" /> 
    </h1>
 
-
-<!-- 	<div id="action-description" tal:condition="action"> 
-		<p tal:content="structure action/FullText" /> 
-	</div> -->
+	<div tal:condition="action_id" tal:define="action python:here.get_action(action_id);"> 
+		<p tal:condition="action" tal:content="structure action/FullText" /> 
+	</div>
 
 	<div id="mop-content" 
 			tal:condition="action_id"

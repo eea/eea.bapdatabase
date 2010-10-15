@@ -12,11 +12,12 @@ from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 
 from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
-
+ 
 import models
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
 target_pattern = re.compile(r'^[A-Z]\d+\_\d+$', re.DOTALL)
+
 
 tables = {}
 for f in os.listdir(join(dirname(__file__), 'zpt')):
@@ -51,6 +52,9 @@ def manage_add_bap(self, id, REQUEST=None, **kwargs):
     if REQUEST is not None:
         return self.manage_main(self, REQUEST, update_menu=1)
     return ob
+
+from Products.NaayaCore.LayoutTool.DiskFile import allow_path
+allow_path('Products.BAPDatabase:www/css/')
 
 
 class BAPDatabase(NyFolder):

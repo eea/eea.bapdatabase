@@ -5,8 +5,9 @@
 	</metal:block>
 
 	<metal:block metal:fill-slot="head">
-		<script type="text/javascript" tal:attributes="src string:${here/getSitePath}/js/bap.js"></script>
-			<script type="text/javascript" tal:attributes="src string:${here/getSitePath}/js/showLoading.js"></script>
+		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap.js"></script>
+		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
+		<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
 	</metal:block>
 
 	<metal:block fill-slot="body">
@@ -19,7 +20,7 @@
 			 
 				<div class="bap-objectives" tal:define="objective_name objective/name">
 					<span class="bap-objective-title">
-						<a href="#" tal:content="objective_name" />
+						<a href="javascript:void(0);" tal:content="objective_name" />
 						<span tal:content="objective/description" />
 					</span>
 					<div class="bap-objective" tal:condition="objective">
