@@ -254,6 +254,27 @@ class A2_1_8(Base):
 
 
 
+class A5_1_2(Base):
+    __tablename__ = 'A5_1_2'
+    CountryCode = Column(String, primary_key=True)
+    StrategyNo = Column(String)
+    StrategyDev = Column(String)
+    StrategyImp = Column(String)
+    StrategyDontKnow = Column(String)
+    ActionNo = Column(String)
+    ActionDev = Column(String)
+    ActionImp = Column(String)
+    ActionDontKnow = Column(String)
+    OtherDesc = Column(String)
+    OtherNo = Column(String)
+    OtherDev = Column(String)
+    OtherImp = Column(String)
+    OtherDontKnow = Column(String)
+    IASStrategy = Column(String)
+    IASStrategyDetails = Column(String)
+    IASAction = Column(String)
+    IASActionDetails = Column(String)
+
 class A5_1_3(Base):
     __tablename__ = 'A5_1_3'
     CountryCode = Column(String, primary_key=True)
