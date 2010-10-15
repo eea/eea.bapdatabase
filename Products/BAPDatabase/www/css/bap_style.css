@@ -57,15 +57,15 @@ table.datatable {
 }
 
 .bap-objective-title a.inactive {
-	background: transparent url('up.png') no-repeat left center;
+	background: transparent url('/misc_/BAPDatabase/up.png') no-repeat left center;
 }
 
 .bap-objective-title a.active {
-	background: transparent url('down.png') no-repeat left 55%;
+	background: transparent url('/misc_/BAPDatabase/down.png') no-repeat left 55%;
 }
 
 .bap-objective-title a {
-	background: transparent url('down.png') no-repeat left 55%;
+	background: transparent url('/misc_/BAPDatabase/down.png') no-repeat left 55%;
 	outline: none;
 	padding-left: 1em;
 	font-size: 1.2em;
@@ -109,7 +109,7 @@ table.datatable {
 }
 
 .bap-target span a {
-	background: transparent url('bullet-orange.png') no-repeat left center;
+	background: transparent url('/misc_/BAPDatabase/bullet_orange.png') no-repeat left center;
 	padding-left: 20px;
 	padding-bottom: 3px;
 	vertical-align: middle;
@@ -119,7 +119,7 @@ table.datatable {
 }
 
 .bap-action a {
-	background: transparent url('bullet-red.png') no-repeat left center !important;
+	background: transparent url('/misc_/BAPDatabase/bullet_red.png') no-repeat left center !important;
 }
 
 .bap-action {
@@ -139,7 +139,7 @@ table.datatable {
 .loading-indicator {
 	height: 80px;
 	width: 80px;
-	background: url('loading.gif');
+	background: url('/misc_/BAPDatabase/ajax-loader.gif');
 	background-repeat: no-repeat;
 	background-position: center center;
 }

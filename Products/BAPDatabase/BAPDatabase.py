@@ -175,11 +175,8 @@ class BAPDatabase(NyFolder):
     def get_action_values(self, table_id, country):
         code = self.get_country_code(country)
         model = getattr(models, table_id)
-        try:
-            return self._get_session().query(model) \
-                                    .filter(model.CountryCode == code).one()
-        except NoResultFound:
-            return
+        return self._get_session().query(model) \
+                                .filter(model.CountryCode == code).one()
 
     def get_table(self, action_id, country):
         template = tables.get(action_id)

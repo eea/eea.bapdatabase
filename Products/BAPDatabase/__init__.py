@@ -16,4 +16,10 @@ def initialize(context):
 misc_ = {
     'bap.js':ImageFile('www/js/bap.js', globals()),
     'showLoading.js':ImageFile('www/js/showLoading.js', globals()),
+    'ajax-loader.gif':ImageFile('www/ajax-loader.gif', globals()),
+    'bullet_orange.png':ImageFile('www/bullet_orange.png', globals()),
+    'bullet_blue.png':ImageFile('www/bullet_blue.png', globals()),
+    'bullet_red.png':ImageFile('www/bullet_red.png', globals()),
+    'up.png':ImageFile('www/up.png', globals()),
+    'down.png':ImageFile('www/down.png', globals()),
 }
