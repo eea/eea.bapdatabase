@@ -254,6 +254,30 @@ class A2_1_8(Base):
 
 
 
+class A3_5_2(Base):
+    __tablename__ = 'A3_5_2'
+    CountryCode = Column(String, primary_key=True)
+    SalmonPlan = Column(String)
+    SalmonLink = Column(String)
+    TroutPlan = Column(String)
+    TroutLink = Column(String)
+    SturgeonPlan = Column(String)
+    SturgeonLink = Column(String)
+    EelPlan = Column(String)
+    EelLink = Column(String)
+    OtherDesc = Column(String)
+    OtherPlan = Column(String)
+    OtherLink = Column(String)
+    Habitat = Column(String)
+    HabitatDetail = Column(String)
+    Barriers = Column(String)
+    BarriersDetail = Column(String)
+    Stock = Column(String)
+    StockDetail = Column(String)
+    DiaOtherDesc = Column(String)
+    DiaOther = Column(String)
+    DiaOtherDetail = Column(String)
+
 class A4(Base):
     __tablename__ = 'A4'
     CountryCode = Column(String, primary_key=True)
