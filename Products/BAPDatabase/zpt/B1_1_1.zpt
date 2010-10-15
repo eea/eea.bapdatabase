@@ -18,7 +18,7 @@
 			<td colspan="6" tal:content="record/NatProgDetails"/>
 		</tr>
 		<tr>
-			<th width="20" style="text-align:left;vertical-align:middle">Data source</th>
+			<th width="20%" style="text-align:left;vertical-align:middle">Data source</th>
 			<td colspan="5" tal:content="record/NatProgData"/>
 		</tr>
 		<tr>

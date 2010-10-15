@@ -6,9 +6,23 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th colspan="3">Are ex-ante strategic environmental assessment (SEA) of relevant strategies and programmes and environmental impact assessment (EIA) of relevant projects mandatory?<br/>
-			Please enter Y or N:</th>
-			<td width="20%" tal:content="record/MandatorySEA_EIA"/>
+			<th rowspan="3">Contribution to the GEF replenishment</th>
+			<th width="20%" />
+			<th width="20%">3<sup>rd</sup> replenishment</th>
+			<th width="20%">4<sup>rd</sup> replenishment</th>
+			<th width="20%">5<sup>rd</sup> replenishment</th>
+		</tr>
+		<tr>
+			<th>Total in million EUR</th>
+			<td tal:content="record/Total3rd" />
+			<td tal:content="record/Total4th" />
+			<td tal:content="record/Total5th" />
+		</tr>
+		<tr>
+			<th>Percentage of total budget</th>
+			<td tal:content="record/Percent3rd" />
+			<td tal:content="record/Percent4th" />
+			<td tal:content="record/Percent5th" />
 		</tr>
 		<tr>
 			<th colspan="4" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
@@ -25,7 +39,7 @@
 			<td colspan="4" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th width="20%">Data source (if any)</th>
+			<th width="20%">Data source</th>
 			<td colspan="3" tal:content="mop/DataSource"/>
 		</tr>
 	</tal:block>

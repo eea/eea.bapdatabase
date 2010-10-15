@@ -131,6 +131,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A7_1_4(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_1_4')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Contribution to the GEF replenishment')
+        record = self.portal.bap.get_action_values('A7_1_4', country='Austria')
+        self.assertTrue(hasattr(record, 'Total3rd'))
+
     def test_A7_2_2(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_2_2')
         html = self.browser.get_html()

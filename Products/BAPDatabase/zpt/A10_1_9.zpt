@@ -27,7 +27,7 @@
 			<td colspan="4" tal:content="record/GBIFDetails"/>
 		</tr>
 		<tr>
-			<th width="20" style="text-align:left;vertical-align:middle">Data source</th>
+			<th width="20%" style="text-align:left;vertical-align:middle">Data source</th>
 			<td colspan="3" tal:content="record/GBIFLink"/>
 		</tr>
 		<tr>

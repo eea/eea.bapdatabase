@@ -192,6 +192,16 @@ class A2_1_1(Base):
 
 
 
+class A7_1_4(Base):
+    __tablename__ = 'A7_1_4'
+    CountryCode = Column(String, primary_key=True)
+    Total3rd = Column(String)
+    Total4th = Column(String)
+    Total5th = Column(String)
+    Percent3rd = Column(String)
+    Percent4th = Column(String)
+    Percent5th = Column(String)
+
 class A7_2_2(Base):
     __tablename__ = 'A7_2_2'
     CountryCode = Column(String, primary_key=True)
