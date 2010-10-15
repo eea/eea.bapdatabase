@@ -89,6 +89,16 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A1_2_3', country='Austria')
         self.assertTrue(hasattr(record, 'ToolInPlace'))
 
+    def test_A1_3(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'What is the conservation status of birds (% of species - least concern, near-threatened and red-listed)?')
+
+        record = self.portal.bap.get_action_values('A1_3', country='Austria')
+        self.assertTrue(hasattr(record, 'BirdGrn'))
+
     def test_A1_3_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_3_1')
         html = self.browser.get_html()
