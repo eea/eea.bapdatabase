@@ -225,6 +225,20 @@ class A2_1_6(Base):
     TrainingAmount = Column(String)
     TrainingPercent = Column(String)
 
+class A2_1_8(Base):
+    __tablename__ = 'A2_1_8'
+    CountryCode = Column(String, primary_key=True)
+    RegBirds = Column(String)
+    RegFarming = Column(String)
+    RegForestry = Column(String)
+    RegTree = Column(String)
+    NatBirds = Column(String)
+    NatFarming = Column(String)
+    NatForestry = Column(String)
+    NatTree = Column(String)
+    BioIndicators = Column(String)
+    BioIndicatorsDetails = Column(String)
+    
 class A6_1_1(Base):
     __tablename__ = 'A6_1_1'
     CountryCode = Column(String, primary_key=True)
