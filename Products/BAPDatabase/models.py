@@ -208,10 +208,15 @@ class A2_1_3_HNV(Base):
     NoMapped = Column(String)
     Mapped = Column(String)
 
-
-
-
-
+class A2_1_4(Base):
+    __tablename__ = 'A2_1_4'
+    CountryCode = Column(String, primary_key=True)
+    Livestock = Column(String)
+    Pasture = Column(String)
+    Landscape = Column(String)
+    Habitat = Column(String)
+    GAEC = Column(String)
+    GAECDetails = Column(String)
 
 class A7_1(Base):
     __tablename__ = 'A7_1'
@@ -223,6 +228,7 @@ class A7_1(Base):
     Percent2007 = Column(String)
     Percent2008 = Column(String)
 
+
 class A7_1_3(Base):
     __tablename__ = 'A7_1_3'
     CountryCode = Column(String, primary_key=True)
@@ -232,6 +238,7 @@ class A7_1_3(Base):
     BiPercent2006 = Column(String)
     BiPercent2007 = Column(String)
     BiPercent2008 = Column(String)
+
 
 class A7_1_4(Base):
     __tablename__ = 'A7_1_4'
