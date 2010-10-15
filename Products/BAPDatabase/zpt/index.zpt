@@ -6,6 +6,7 @@
 
 	<metal:block metal:fill-slot="head">
 		<script type="text/javascript" tal:attributes="src string:${here/getSitePath}/js/bap.js"></script>
+			<script type="text/javascript" tal:attributes="src string:${here/getSitePath}/js/showLoading.js"></script>
 	</metal:block>
 
 	<metal:block fill-slot="body">

@@ -62,6 +62,13 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A1_1_1_Natura2000Plan', country='Austria')
         self.assertTrue(hasattr(record, 'Compleat'))
 
+    def test_A1_1_2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_1_2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Additional detail & Narrative summary of the above information (text provided should be able to stand alone):')
+
     def test_A1_1_3(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_1_3')
         html = self.browser.get_html()
