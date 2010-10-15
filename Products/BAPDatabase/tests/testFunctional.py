@@ -185,6 +185,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A5_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Number of worst invasive alien species registered per country')
+        record = self.portal.bap.get_action_values('A5_1_AlienSpecies', country='Austria')
+        self.assertTrue(hasattr(record, 'TotalAlien'))
+        record = self.portal.bap.get_action_values('A5_1_AlienLegal', country='Austria')
+        self.assertTrue(hasattr(record, 'General'))
+
     def test_A5_1_2(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1_2')
         html = self.browser.get_html()

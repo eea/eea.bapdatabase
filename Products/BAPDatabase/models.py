@@ -254,6 +254,24 @@ class A2_1_8(Base):
 
 
 
+class A5_1_AlienLegal(Base):
+    __tablename__ = 'A5_1_AlienLegal'
+    CountryCode = Column(String, primary_key=True)
+    General = Column(String)
+    GenralDetail = Column(String)
+    Specific = Column(String)
+    SpecificDetail = Column(String)
+    Import = Column(String)
+    Trade = Column(String)
+    Intro = Column(String)
+    Control = Column(String)
+
+class A5_1_AlienSpecies(Base):
+    __tablename__ = 'A5_1_AlienSpecies'
+    CountryCode = Column(String, primary_key=True)
+    TotalAlien = Column(String)
+    Num1000km = Column(String)
+
 class A5_1_2(Base):
     __tablename__ = 'A5_1_2'
     CountryCode = Column(String, primary_key=True)
