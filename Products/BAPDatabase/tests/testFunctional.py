@@ -131,6 +131,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A8_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'The MS actions under this target fully implemented by 2010, showing impact on biodiversity of EU trade significantly reduced by 2010 (Y/N)')
+        record = self.portal.bap.get_action_values('A8_1', country='Austria')
+        self.assertTrue(hasattr(record, 'A8_1_3Imp'))
+
     def test_A8_1_3(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_3')
         html = self.browser.get_html()

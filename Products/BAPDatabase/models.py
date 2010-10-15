@@ -192,6 +192,19 @@ class A2_1_1(Base):
 
 
 
+class A8_1(Base):
+    __tablename__ = 'A8_1'
+    CountryCode = Column(String, primary_key=True)
+    A8_1_3Imp = Column(String)
+    A8_1_3Partial = Column(String)
+    A8_1_3Not = Column(String)
+    A8_1_4Imp = Column(String)
+    A8_1_4Partial = Column(String)
+    A8_1_4Not = Column(String)
+    A8_1_8Imp = Column(String)
+    A8_1_8Partial = Column(String)
+    A8_1_8Not = Column(String)
+
 class A8_1_3_BenefitShare(Base):
     __tablename__ = 'A8_1_3_BenefitShare'
     CountryCode = Column(String, primary_key=True)
