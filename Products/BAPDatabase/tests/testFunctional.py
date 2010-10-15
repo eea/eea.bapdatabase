@@ -119,6 +119,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_A9_1_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_1_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        '''<em> and <br/> tags are not displayed on the page, so this is why
+        no space between national and biodiversity:'''
+        self.assertEqual(datatable.tr.th.text, 'Annual anthropogenic Greenhouse Gas Emissions (GHG) in million tonnes of CO2 equivalents (excl. LULUCF).')
+        record = self.portal.bap.get_action_values('A9_1_1', country='Austria')
+        self.assertTrue(hasattr(record, 'GHG2006'))
+
     def test_A9_3_2(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_3_2')
         html = self.browser.get_html()
