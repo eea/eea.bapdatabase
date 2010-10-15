@@ -108,6 +108,12 @@ class A1_3(Base):
     BirdAmd = Column(String)
     BirdGrn = Column(String)
 
+class A1_2_3(Base):
+    __tablename__ = 'A1_2_3'
+    
+    CountryCode = Column(String, primary_key=True)
+    ToolInPlace = Column(String)
+    ToolInDev = Column(String)
 
 class A1_3_1_ActionPlan(Base):
     __tablename__ = 'A1_3_1_ActionPlan'
