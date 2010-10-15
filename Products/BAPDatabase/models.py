@@ -225,6 +225,24 @@ class A2_1_6(Base):
     TrainingAmount = Column(String)
     TrainingPercent = Column(String)
 
+class A6_1_1(Base):
+    __tablename__ = 'A6_1_1'
+    CountryCode = Column(String, primary_key=True)
+    NationalReport4 = Column(String)
+    NBSAP = Column(String)
+    NBSAPData = Column(String)
+    CBDYear = Column(String)
+    CBDAmount = Column(String)
+    CMSYear = Column(String)
+    CMSAmount = Column(String)
+    AEWAYear = Column(String)
+    AEWAAmount = Column(String)
+    RamsarYear = Column(String)
+    RamsarAmount = Column(String)
+    WHCYear = Column(String)
+    WHCAmount = Column(String)
+    ConventionData = Column(String)
+
 class A7_1(Base):
     __tablename__ = 'A7_1'
     CountryCode = Column(String, primary_key=True)
