@@ -141,6 +141,19 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_3_ForestCert', country='Austria')
         self.assertTrue(hasattr(record, 'FSCArea'))
 
+
+
+
+
+    def test_A7_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Annual spending on biodiversity-relatedmultilateralaid')
+        record = self.portal.bap.get_action_values('A7_1', country='Austria')
+        self.assertTrue(hasattr(record, 'Aid2006'))
+
     def test_A7_1_3(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_1_3')
         html = self.browser.get_html()
