@@ -1,4 +1,4 @@
-<tal:block define="country options/country;
+<div class="bap-action-content" tal:define="country options/country;
 					mop options/mop;
 					record python:here.get_action_values('A1_1_3', country)">
 
@@ -49,4 +49,4 @@
 	</tr>
 </table>
 
-</tal:block>
+</div>
