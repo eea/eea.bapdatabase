@@ -119,14 +119,16 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
-    def test_A10_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A10_1')
+    def test_A9_4_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_4_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
-        self.assertEqual(datatable.tr.th.text, 'Is there a national research programme dedicated exclusively to supporting biodiversity research? Enter Y or N here:')
-        record = self.portal.bap.get_action_values('A10_1', country='Austria')
-        self.assertTrue(hasattr(record, 'Programme'))
+        '''<em> and <br/> tags are not displayed on the page, so this is why
+        no space between national and biodiversity:'''
+        self.assertEqual(datatable.tr.th.text, 'Have a nationalbiodiversity adaptation strategyand/oraction planbeen developed?Please mark accordingly:')
+        record = self.portal.bap.get_action_values('A9_4_1', country='Austria')
+        self.assertTrue(hasattr(record, 'StratNo'))
 
     def test_A9_4_3(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_4_3')
@@ -136,6 +138,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertEqual(datatable.tr.th.text, 'Have scientific studies been undertaken to support assessments of species and habitats at risk?Please enter Y or N and provide comments')
         record = self.portal.bap.get_action_values('A9_4_3', country='Austria')
         self.assertTrue(hasattr(record, 'StudiesYN'))
+
+    def test_A10_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A10_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Is there a national research programme dedicated exclusively to supporting biodiversity research? Enter Y or N here:')
+        record = self.portal.bap.get_action_values('A10_1', country='Austria')
+        self.assertTrue(hasattr(record, 'Programme'))
 
     def test_A10_1_2(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A10_1_2')
