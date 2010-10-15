@@ -189,6 +189,24 @@ class A2_1_1(Base):
     ForestPublic = Column(String)
     ForestPublicPercent = Column(String)
 
+class A9_3_2(Base):
+    __tablename__ = 'A9_3_2'
+    CountryCode = Column(String, primary_key=True)
+    PlanNo = Column(String)
+    PlanDev = Column(String)
+    PlanImp = Column(String)
+    PlanDontKnow = Column(String)
+    NREAPNo = Column(String)
+    NREAPDev = Column(String)
+    NREAPImp = Column(String)
+    NREAPDontKnow = Column(String)
+    Round = Column(String)
+    NatCert = Column(String)
+    OtherDesc = Column(String)
+    OtherNat = Column(String)
+    Require = Column(String)
+    RequireDetail = Column(String)
+
 class A9_4_1(Base):
     __tablename__ = 'A9_4_1'
     CountryCode = Column(String, primary_key=True)

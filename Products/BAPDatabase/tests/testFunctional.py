@@ -119,6 +119,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_1', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
+    def test_A9_3_2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_3_2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        '''<em> and <br/> tags are not displayed on the page, so this is why
+        no space between national and biodiversity:'''
+        self.assertEqual(datatable.tr.th.text, 'Have a separate action plan onbiomassand/or a National Renewable Action Plan (NREAP) already been developed?Please tick only one box for each row:')
+        record = self.portal.bap.get_action_values('A9_3_2', country='Austria')
+        self.assertTrue(hasattr(record, 'PlanNo'))
+
     def test_A9_4_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_4_1')
         html = self.browser.get_html()
