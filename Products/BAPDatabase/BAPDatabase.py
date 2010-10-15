@@ -66,7 +66,7 @@ class BAPDatabase(NyFolder):
     db_username = None
     db_password = None
     db_name = None
-    db_debug = True
+    db_debug = False
 
     def _get_schema(self):
         from Products.NaayaCore.constants import ID_SCHEMATOOL
@@ -159,16 +159,6 @@ class BAPDatabase(NyFolder):
                                 .filter(models.Narrative.Country == country).one()
         except NoResultFound:
             return
-
-    def get_action_mop2(self, REQUEST):
-        """ """
-        id = REQUEST.get('id', None)
-        country = REQUEST.get('country', None)
-        mop = REQUEST.get('mop', None)
-        return self._get_session().query(models.Narrative) \
-                            .filter(models.Narrative.Ident == id) \
-                            .filter(models.Narrative.MOP == mop) \
-                            .filter(models.Narrative.Country == country).one()
 
     def get_action(self, id, mop=None):
         try:

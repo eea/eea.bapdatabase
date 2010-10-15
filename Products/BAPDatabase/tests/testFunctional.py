@@ -30,7 +30,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
     def test_objectives(self):
         self.browser.go('http://localhost/portal/countries/austria/bap')
         html = self.browser.get_html()
-        self.failUnless("Objective1:" in html)
+        self.failUnless("Objective1" in html)
     
     def test_headlines(self):
         self.browser.go('http://localhost/portal/countries/austria/bap')
@@ -108,6 +108,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
         record = self.portal.bap.get_action_values('A1_3_1_ActionPlan', country='Austria')
         self.assertTrue(hasattr(record, 'BirdComp'))
+
+        record = self.portal.bap.get_action_values('A1_3_1_BirdIndicator', country='Austria')
+        self.assertTrue(hasattr(record, 'IndicatorDev'))
+
+        record = self.portal.bap.get_action_values('A1_3_1_RedList', country='Austria')
+        self.assertTrue(hasattr(record, 'Bird'))
+
+        record = self.portal.bap.get_action_values('A1_3_1_BirdMonitoring', country='Austria')
+        self.assertTrue(hasattr(record, 'active'))
 
     def test_A2_1_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_1')
