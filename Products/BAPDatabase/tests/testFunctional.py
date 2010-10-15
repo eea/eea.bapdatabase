@@ -131,6 +131,19 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A8_1_3(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Indicate the provision of funds for the CBD Access & Benefit-sharing Working Group')
+        record = self.portal.bap.get_action_values('A8_1_3_CBD', country='Austria')
+        self.assertTrue(hasattr(record, 'Y2006'))
+        record = self.portal.bap.get_action_values('A8_1_3_BenefitShare', country='Austria')
+        self.assertTrue(hasattr(record, 'Legal'))
+        record = self.portal.bap.get_action_values('A8_1_3_GeneticResource', country='Austria')
+        self.assertTrue(hasattr(record, 'Legal'))
+
     def test_A8_1_4(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_4')
         html = self.browser.get_html()

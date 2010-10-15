@@ -168,9 +168,9 @@ class BAPDatabase(NyFolder):
         except NoResultFound:
             return
 
-    def get_action_values(self, action_id, country):
+    def get_action_values(self, table_id, country):
         code = self.get_country_code(country)
-        model = getattr(models, action_id)
+        model = getattr(models, table_id)
         try:
             return self._get_session().query(model) \
                                     .filter(model.CountryCode == code).one()
