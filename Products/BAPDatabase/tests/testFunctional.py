@@ -194,6 +194,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A3_5_2', country='Austria')
         self.assertTrue(hasattr(record, 'SalmonPlan'))
 
+    def test_A3_7_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A3_7_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Has the Member State established a multi-annual plan Data Collection Framework (DCF) that includes sampling/monitoring design for collecting ecosystem data to assist with assessing the impact of the fisheries sector on the marine ecosystem? (Enter Y/N)')
+        record = self.portal.bap.get_action_values('A3_7_1', country='Austria')
+        self.assertTrue(hasattr(record, 'DCF'))
+
     def test_A4(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4')
         html = self.browser.get_html()

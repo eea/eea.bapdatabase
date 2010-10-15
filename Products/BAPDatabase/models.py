@@ -278,6 +278,11 @@ class A3_5_2(Base):
     DiaOther = Column(String)
     DiaOtherDetail = Column(String)
 
+class A3_7_1(Base):
+    __tablename__ = 'A3_7_1'
+    CountryCode = Column(String, primary_key=True)
+    DCF = Column(String)
+
 class A4(Base):
     __tablename__ = 'A4'
     CountryCode = Column(String, primary_key=True)
