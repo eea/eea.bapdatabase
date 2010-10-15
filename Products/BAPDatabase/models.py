@@ -208,6 +208,16 @@ class A2_1_3_HNV(Base):
     NoMapped = Column(String)
     Mapped = Column(String)
 
+class A7_1_3(Base):
+    __tablename__ = 'A7_1_3'
+    CountryCode = Column(String, primary_key=True)
+    BiAid2006 = Column(String)
+    BiAid2007 = Column(String)
+    BiAid2008 = Column(String)
+    BiPercent2006 = Column(String)
+    BiPercent2007 = Column(String)
+    BiPercent2008 = Column(String)
+
 class A7_1_4(Base):
     __tablename__ = 'A7_1_4'
     CountryCode = Column(String, primary_key=True)
