@@ -173,6 +173,27 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    def test_A5_1_4(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1_4')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Is there an inventory/database of alien species in place other than those published by the DAISIE and/or NOBANIS projects?Please tick only one box:')
+        record = self.portal.bap.get_action_values('A5_1_4', country='Austria')
+        self.assertTrue(hasattr(record, 'DatabaseNo'))
+
     def test_A5_2(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_2')
         html = self.browser.get_html()

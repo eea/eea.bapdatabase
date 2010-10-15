@@ -244,6 +244,32 @@ class A2_1_8(Base):
 
 
 
+
+
+
+
+
+
+
+
+
+
+class A5_1_4(Base):
+    __tablename__ = 'A5_1_4'
+    CountryCode = Column(String, primary_key=True)
+    DatabaseNo = Column(String)
+    DatabaseDev = Column(String)
+    DatabaseImp = Column(String)
+    DatabaseDontKnow = Column(String)
+    EarlyWarnNo = Column(String)
+    EarlyWarnDev = Column(String)
+    EarlyWarnImp = Column(String)
+    EarlyWarnDontKnow = Column(String)
+    Rapid = Column(String)
+    Incident = Column(String)
+    Focal = Column(String)
+    Coordination = Column(String)
+
 class A5_2(Base):
     __tablename__ = 'A5_2'
     CountryCode = Column(String, primary_key=True)
