@@ -218,6 +218,13 @@ class A2_1_4(Base):
     GAEC = Column(String)
     GAECDetails = Column(String)
 
+class A2_1_6(Base):
+    __tablename__ = 'A2_1_6'
+    CountryCode = Column(String, primary_key=True)
+    Training = Column(String)
+    TrainingAmount = Column(String)
+    TrainingPercent = Column(String)
+
 class A7_1(Base):
     __tablename__ = 'A7_1'
     CountryCode = Column(String, primary_key=True)

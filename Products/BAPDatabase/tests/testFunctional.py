@@ -151,6 +151,16 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_4', country='Austria')
         self.assertTrue(hasattr(record, 'Livestock'))
 
+    def test_A2_1_6(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_6')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Have training or advisory services been specifically designed to support the uptake of Axis 2 measures of benefit to biodiversity? Please enter Y or N here:')
+
+        record = self.portal.bap.get_action_values('A2_1_6', country='Austria')
+        self.assertTrue(hasattr(record, 'Training'))
+
     def test_A7_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_1')
         html = self.browser.get_html()
