@@ -192,6 +192,11 @@ class A2_1_1(Base):
 
 
 
+class A7_2_2(Base):
+    __tablename__ = 'A7_2_2'
+    CountryCode = Column(String, primary_key=True)
+    MandatorySEA_EIA = Column(String)
+
 class A8_1(Base):
     __tablename__ = 'A8_1'
     CountryCode = Column(String, primary_key=True)
