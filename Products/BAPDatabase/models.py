@@ -254,6 +254,14 @@ class A2_1_8(Base):
 
 
 
+class A4_4_1(Base):
+    __tablename__ = 'A4_4_1'
+    CountryCode = Column(String, primary_key=True)
+    TourismGuide = Column(String)
+    Plan = Column(String)
+    Legal = Column(String)
+    Reporting = Column(String)
+
 class A5_1_AlienLegal(Base):
     __tablename__ = 'A5_1_AlienLegal'
     CountryCode = Column(String, primary_key=True)
