@@ -312,7 +312,13 @@ class A2_1_15(Base):
     OtherDeforest = Column(String)
     OtherDeforestLimits = Column(String)
 
-
+class A2_2_1(Base):
+    __tablename__ = 'A2_2_1'
+    CountryCode = Column(String, primary_key=True)
+    NatMonitor = Column(String)
+    NatMonitorDetails = Column(String)
+    MandatoryParam = Column(String)
+    Projects = Column(String)
 
 
 
