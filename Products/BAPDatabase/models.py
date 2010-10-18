@@ -278,6 +278,19 @@ class A3_5_2(Base):
     DiaOther = Column(String)
     DiaOtherDetail = Column(String)
 
+class A3_6_3_Inshore(Base):
+    __tablename__ = 'A3_6_3_Inshore'
+    CountryCode = Column(String, primary_key=True)
+    Measures = Column(String)
+    Number = Column(String)
+
+class A3_6_3_Offshore(Base):
+    __tablename__ = 'A3_6_3_Offshore'
+    CountryCode = Column(String, primary_key=True)
+    AllSites = Column(String)
+    Requests = Column(String)
+    Number = Column(String)
+
 class A3_7_1(Base):
     __tablename__ = 'A3_7_1'
     CountryCode = Column(String, primary_key=True)

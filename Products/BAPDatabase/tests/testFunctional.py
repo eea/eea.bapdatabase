@@ -204,6 +204,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A3_5_2', country='Austria')
         self.assertTrue(hasattr(record, 'SalmonPlan'))
 
+    def test_A3_6_3(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_6_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'How many marine N2000 sites has the MS established?')
+        record = self.portal.bap.get_action_values('A3_6_3_Inshore', country='France')
+        self.assertTrue(hasattr(record, 'Number'))
+        record = self.portal.bap.get_action_values('A3_6_3_Offshore', country='France')
+        self.assertTrue(hasattr(record, 'Number'))
+
     def test_A3_7_1(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_7_1')
         html = self.browser.get_html()
