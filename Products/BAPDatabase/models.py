@@ -332,11 +332,38 @@ class A2_2_1(Base):
 
 
 
-class A3_5(Base):
-    __tablename__ = 'A3_5'
+class A3_2_Phospate(Base):
+    __tablename__ = 'A3_2_Phospate'
     CountryCode = Column(String, primary_key=True)
-    WithinLimit = Column(String)
-    OutsideLimit = Column(String)
+    Region = Column(String)
+    Decrease = Column(String)
+    NoTrend = Column(String)
+    Increase = Column(String)
+    Total = Column(String)
+    DataLink = Column(String)
+    CountryRegion = Column(String)
+
+class A3_2_Nitrogen(Base):
+    __tablename__ = 'A3_2_Nitrogen'
+    CountryCode = Column(String, primary_key=True)
+    Region = Column(String)
+    Decrease = Column(String)
+    NoTrend = Column(String)
+    Increase = Column(String)
+    Total = Column(String)
+    DataLink = Column(String)
+    CountryRegion = Column(String)
+
+class A3_2_BathingWater(Base):
+    __tablename__ = 'A3_2_BathingWater'
+    CountryCode = Column(String, primary_key=True)
+    Guide2006 = Column(String)
+    Guide2007 = Column(String)
+    Guide2008 = Column(String)
+    Mandatory2006 = Column(String)
+    Mandtory2007 = Column(String)
+    Mandtory2008 = Column(String)
+    DataLink = Column(String)
 
 class A3_4(Base):
     __tablename__ = 'A3_4'
@@ -360,6 +387,12 @@ class A3_4(Base):
     Axis2 = Column(String)
     Axis3 = Column(String)
     Axis4 = Column(String)
+
+class A3_5(Base):
+    __tablename__ = 'A3_5'
+    CountryCode = Column(String, primary_key=True)
+    WithinLimit = Column(String)
+    OutsideLimit = Column(String)
 
 class A3_5_1(Base):
     __tablename__ = 'A3_5_1'
