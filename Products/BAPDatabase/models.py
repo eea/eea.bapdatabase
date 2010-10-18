@@ -436,22 +436,14 @@ class A2_3_1_BioAsses(Base):
     RedCostalMA = Column(String) 
     RedCostalBI = Column(String)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class A2_4_1(Base):
+    __tablename__ = 'A2_4_1'
+    CountryCode = Column(String, primary_key=True)
+    NumInstalls = Column(String)
+    NumPermits = Column(String)
+    NumPermitsNotUpdated = Column(String)
+    NumPermitsUpdated = Column(String)
+    OutstandingPermits = Column(String)
 
 class A2_4_2_EcoAtRisk(Base):
     __tablename__ = 'A2_4_2_EcoAtRisk'
