@@ -245,6 +245,57 @@ class A2_1_9(Base):
     Amount = Column(String)
     Percentage = Column(String)
 
+class A2_1_11_NatStrats(Base):
+    __tablename__ = 'A2_1_11_NatStrats'
+    CountryCode = Column(String, primary_key=True)
+    NatStratNo = Column(String)
+    NatStratDev = Column(String)
+    NatStratImp = Column(String)
+    NatStratDontKnow = Column(String)
+    ActionNo = Column(String)
+    ActionDev = Column(String)
+    ActionImp = Column(String)
+    ActionDontKnow = Column(String)
+    OtherDesc = Column(String)
+    OtherNo = Column(String)
+    OtherDev = Column(String)
+    OtherImp = Column(String)
+    OtherDontKnow = Column(String)
+    NatStratCrop = Column(String)
+    NatStratLivestock = Column(String)
+    NatStratTree = Column(String)
+    ActionCrop = Column(String)
+    ActionLivestock = Column(String)
+    ActionTree = Column(String)
+    OtherDescIn = Column(String)
+    OtherCropIn = Column(String)
+    OtherLivestockIn = Column(String)
+    OtherTreeIn = Column(String)
+    CropNum = Column(String)
+    CropValue = Column(String)
+    LivestockNum = Column(String)
+    LivestockValue = Column(String)
+    TreeNum = Column(String)
+    TreeValue = Column(String)
+    KeyAims = Column(String)
+
+class A2_1_11_RDPPayments(Base):
+    __tablename__ = 'A2_1_11_RDPPayments'
+    CountryCode = Column(String, primary_key=True)
+    EAFRD = Column(String)
+    EAFRDPercent = Column(String)
+    Public = Column(String)
+    PublicPercent = Column(String)
+
+
+
+
+
+
+
+
+
+
 
 
 

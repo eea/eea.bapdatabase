@@ -181,8 +181,19 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_9', country='Austria')
         self.assertTrue(hasattr(record, 'Percentage'))
 
+    def test_A2_1_11(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_11')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertTrue(datatable.tr.th.text.startswith('Has a national strategy and/or action plan'))
 
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        record = self.portal.bap.get_action_values('A2_1_11_NatStrats', country='Austria')
+        self.assertTrue(hasattr(record, 'NatStratNo'))
 
+        record = self.portal.bap.get_action_values('A2_1_11_RDPPayments', country='Austria')
+        self.assertTrue(hasattr(record, 'EAFRD'))
 
 
 
