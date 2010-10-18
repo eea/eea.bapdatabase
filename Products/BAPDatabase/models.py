@@ -305,6 +305,12 @@ class A2_1_11_RDPPayments(Base):
 
 
 
+class A3_5(Base):
+    __tablename__ = 'A3_5'
+    CountryCode = Column(String, primary_key=True)
+    WithinLimit = Column(String)
+    OutsideLimit = Column(String)
+
 class A3_5_1(Base):
     __tablename__ = 'A3_5_1'
     CountryCode = Column(String, primary_key=True)

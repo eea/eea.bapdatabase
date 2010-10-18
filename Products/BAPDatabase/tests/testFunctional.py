@@ -229,6 +229,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A3_5(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Percentage of stocks within safe biological limits')
+        record = self.portal.bap.get_action_values('A3_5', country='France')
+        self.assertTrue(hasattr(record, 'WithinLimit'))
+
     def test_A3_5_1(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5_1')
         html = self.browser.get_html()
