@@ -345,6 +345,49 @@ class A2_2_1(Base):
 
 
 
+class A3(Base):
+    __tablename__ = 'A3'
+    CountryCode = Column(String, primary_key=True)
+    MeanTrophic = Column(String)
+    Change1999_2004 = Column(String)
+    Change1984_2004 = Column(String)
+
+class A3_1(Base):
+    __tablename__ = 'A3_1'
+    CountryCode = Column(String, primary_key=True)
+    MarineFVNum = Column(String)
+    MarineFVPercent = Column(String)
+    MarineUNum = Column(String)
+    MarineUPercent = Column(String)
+    MarineXXNum = Column(String)
+    MarineXXPercent = Column(String)
+    MarineNANum = Column(String)
+    MarineNAPercent = Column(String)
+    CostalFVNum = Column(String)
+    CostalFVPercent = Column(String)
+    CostalUNum = Column(String)
+    CostalUPercent = Column(String)
+    CostalXXNum = Column(String)
+    CostalXXPercent = Column(String)
+    CostalNANum = Column(String)
+    CostalNAPercent = Column(String)
+    SpeciesFVNum = Column(String)
+    SpeciesFVPercent = Column(String)
+    SpeciesUNum = Column(String)
+    SpeciesUPercent = Column(String)
+    SpeciesXXNum = Column(String)
+    SpeciesXXPercent = Column(String)
+    SpeciesNANum = Column(String)
+    SpeciesNAPercent = Column(String)
+    NotFishFVNum = Column(String)
+    NotFishFVPercent = Column(String)
+    NotFishUNum = Column(String)
+    NotFishUPercent = Column(String)
+    NotFishXXNum = Column(String)
+    NotFishXXPercent = Column(String)
+    NotFishNANum = Column(String)
+    NotFishNAPercent = Column(String)
+
 class A3_1_4(Base):
     __tablename__ = 'A3_1_4'
     CountryCode = Column(String, primary_key=True)

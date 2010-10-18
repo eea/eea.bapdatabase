@@ -246,6 +246,24 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A3(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Mean marine trophic level for EEZ waters in 2004')
+        record = self.portal.bap.get_action_values('A3', country='France')
+        self.assertTrue(hasattr(record, 'MeanTrophic'))
+
+    def test_A3_1(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Narrative summary of the above information (text provided should be able to stand alone) and any further details were available (e.g. types of marine and coastal habitat present, trends in status):')
+        record = self.portal.bap.get_action_values('A3_1', country='France')
+        self.assertTrue(hasattr(record, 'MarineFVNum'))
+
     def test_A3_1_4(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_1_4')
         html = self.browser.get_html()
