@@ -261,6 +261,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A2_4_2(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A2_4_2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Comparison of Member States Emission ceilings with Member States current emissions and WM projections 2010')
+        record = self.portal.bap.get_action_values('A2_4_2_EcoAtRisk', country='France')
+        self.assertTrue(hasattr(record, 'Acid2000'))
+        record = self.portal.bap.get_action_values('A2_4_2_Emission', country='France')
+        self.assertTrue(hasattr(record, 'NO2006'))
+
     def test_A2_4_3(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A2_4_3')
         html = self.browser.get_html()

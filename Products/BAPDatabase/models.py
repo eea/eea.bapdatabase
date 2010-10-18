@@ -402,6 +402,42 @@ class A2_3_InlandBathing(Base):
 
 
 
+class A2_4_2_EcoAtRisk(Base):
+    __tablename__ = 'A2_4_2_EcoAtRisk'
+    CountryCode = Column(String, primary_key=True)
+    Acid2000 = Column(String)
+    Acid2010 = Column(String)
+    Acid2020 = Column(String)
+    AcidMFR2010 = Column(String)
+    Eutro2000 = Column(String)
+    Eutro2010 = Column(String)
+    Eutro2020 = Column(String)
+    EutroMFR2010 = Column(String)
+
+class A2_4_2_Emission(Base):
+    __tablename__ = 'A2_4_2_Emission'
+    CountryCode = Column(String, primary_key=True)
+    NO2006 = Column(String)
+    NO2007 = Column(String)
+    NO2008 = Column(String)
+    NONECD = Column(String)
+    NO2010 = Column(String)
+    SO2006 = Column(String)
+    SO2007 = Column(String)
+    SO2008 = Column(String)
+    SONECD = Column(String)
+    SO2010 = Column(String)
+    NH2006 = Column(String)
+    NH2007 = Column(String)
+    NH2008 = Column(String)
+    NHNECD = Column(String)
+    NH2010 = Column(String)
+    Volatile2006 = Column(String)
+    Volatile2007 = Column(String)
+    Volatile2008 = Column(String)
+    VolatileNECD = Column(String)
+    Volatile2010 = Column(String)
+
 class A2_4_3(Base):
     __tablename__ = 'A2_4_3'
     CountryCode = Column(String, primary_key=True)
