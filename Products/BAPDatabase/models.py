@@ -402,6 +402,13 @@ class A2_3_InlandBathing(Base):
 
 
 
+class A2_4_3(Base):
+    __tablename__ = 'A2_4_3'
+    CountryCode = Column(String, primary_key=True)
+    Y1990_1992 = Column(String)
+    Y2002_2004 = Column(String)
+    Change = Column(String)
+
 class A3(Base):
     __tablename__ = 'A3'
     CountryCode = Column(String, primary_key=True)

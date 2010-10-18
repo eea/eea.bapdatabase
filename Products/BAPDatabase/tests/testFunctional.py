@@ -261,6 +261,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A2_4_3(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A2_4_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Nitrogen balance expressed as kg nitrogen per hectare of total agricultural land')
+        record = self.portal.bap.get_action_values('A2_4_3', country='France')
+        self.assertTrue(hasattr(record, 'Y1990_1992'))
+
     def test_A3(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3')
         html = self.browser.get_html()
