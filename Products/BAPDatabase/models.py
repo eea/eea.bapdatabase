@@ -332,6 +332,32 @@ class A2_2_1(Base):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+class A3_1_4(Base):
+    __tablename__ = 'A3_1_4'
+    CountryCode = Column(String, primary_key=True)
+    MeasureNo = Column(String)
+    MeasureDev = Column(String)
+    MeasureImp = Column(String)
+    MeasureDontKnow = Column(String)
+    MontitorNo = Column(String)
+    MontitorDev = Column(String)
+    MontitorImp = Column(String)
+    MontitorDontKnow = Column(String)
+    Average = Column(String)
+
 class A3_1_5(Base):
     __tablename__ = 'A3_1_5'
     CountryCode = Column(String, primary_key=True)
