@@ -217,9 +217,24 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_2_1', country='Austria')
         self.assertTrue(hasattr(record, 'NatMonitor'))
 
+    def test_A2_3(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertTrue(datatable.tr.th.text.startswith('Oxygen Demand (BOD5) and ammonium concentrations'))
 
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        record = self.portal.bap.get_action_values('A2_3_FWHabitatStatus', country='Austria')
+        self.assertTrue(hasattr(record, 'FVNum'))
 
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        record = self.portal.bap.get_action_values('A2_3_FWQuality', country='Austria')
+        self.assertTrue(hasattr(record, 'BOD2002'))
 
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        record = self.portal.bap.get_action_values('A2_3_InlandBathing', country='Austria')
+        self.assertTrue(hasattr(record, 'Total2005'))
 
 
 

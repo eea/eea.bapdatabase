@@ -320,10 +320,67 @@ class A2_2_1(Base):
     MandatoryParam = Column(String)
     Projects = Column(String)
 
+class A2_3_FWHabitatStatus(Base):
+    __tablename__ = 'A2_3_FWHabitatStatus'
+    CountryCode = Column(String, primary_key=True)
+    FVNum = Column(String) 
+    FVPercent = Column(String) 
+    UNum = Column(String) 
+    UPercent = Column(String) 
+    XXNum = Column(String) 
+    XXPercent = Column(String) 
+    NANum = Column(String) 
+    NAPercent = Column(String) 
+
+class A2_3_FWQuality(Base):
+    __tablename__ = 'A2_3_FWQuality'
+    CountryCode = Column(String, primary_key=True)
+    BOD2002 = Column(String) 
+    BOD2003 = Column(String) 
+    BOD2004 = Column(String) 
+    BOD2005 = Column(String) 
+    Ammonium2002 = Column(String) 
+    Ammonium2003 = Column(String) 
+    Ammonium2004 = Column(String) 
+    Ammonium2005 = Column(String) 
+    NO3River2002 = Column(String) 
+    NO3River2003 = Column(String) 
+    NO3River2004 = Column(String) 
+    NO3River2005 = Column(String) 
+    NO3Lake2002 = Column(String) 
+    NO3Lake2003 = Column(String) 
+    NO3Lake2004 = Column(String) 
+    NO3Lake2005 = Column(String) 
+    NO3Ground2002 = Column(String) 
+    NO3Ground2003 = Column(String) 
+    NO3Ground2004 = Column(String) 
+    NO3Ground2005 = Column(String) 
+    OPRiver2002 = Column(String) 
+    OPRiver2003 = Column(String) 
+    OPRiver2004 = Column(String) 
+    OPRiver2005 = Column(String) 
+    TPLake2002 = Column(String) 
+    TPLake2003 = Column(String) 
+    TPLake2004 = Column(String) 
+    TPLake2005 = Column(String) 
+    Y1992To2005 = Column(String)
 
 
-
-
+class A2_3_InlandBathing(Base):
+    __tablename__ = 'A2_3_InlandBathing'
+    CountryCode = Column(String, primary_key=True)
+    Total2005 = Column(String)  
+    Total2006 = Column(String)  
+    Total2007 = Column(String)  
+    Total2008 = Column(String)  
+    Comply2005 = Column(String)  
+    Comply2006 = Column(String)  
+    Comply2007 = Column(String)  
+    Comply2008 = Column(String)  
+    Percent2005 = Column(String)  
+    Percent2006 = Column(String)  
+    Percent2007 = Column(String)  
+    Percent2008 = Column(String) 
 
 
 
