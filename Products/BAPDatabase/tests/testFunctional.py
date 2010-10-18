@@ -201,8 +201,17 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
         self.assertEqual(datatable.tr.th.text, 'Please indicate for which species a management plan exists (enter Y/N) and provide a link if possible')
-        record = self.portal.bap.get_action_values('A3_5_2', country='Austria')
+        record = self.portal.bap.get_action_values('A3_5_2', country='France')
         self.assertTrue(hasattr(record, 'SalmonPlan'))
+
+    def test_A3_5_3(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5_3')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Fleet capacity (number of vessels, tonnage, power)')
+        record = self.portal.bap.get_action_values('A3_5_3', country='France')
+        self.assertTrue(hasattr(record, 'Vessel1999'))
 
     def test_A3_6_1(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_6_1')

@@ -278,6 +278,22 @@ class A3_5_2(Base):
     DiaOther = Column(String)
     DiaOtherDetail = Column(String)
 
+class A3_5_3(Base):
+    __tablename__ = 'A3_5_3'
+    CountryCode = Column(String, primary_key=True)
+    Vessel1999 = Column(String)
+    Vessel2004 = Column(String)
+    Vessel2006 = Column(String)
+    Vessel2007 = Column(String)
+    Tonnage1999 = Column(String)
+    Tonnage2004 = Column(String)
+    Tonnage2006 = Column(String)
+    Tonnage2007 = Column(String)
+    Power1999 = Column(String)
+    Power2004 = Column(String)
+    Power2006 = Column(String)
+    Power2007 = Column(String)
+
 class A3_6_1(Base):
     __tablename__ = 'A3_6_1'
     CountryCode = Column(String, primary_key=True)
