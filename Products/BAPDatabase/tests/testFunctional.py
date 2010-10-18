@@ -238,6 +238,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A3_4(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_4')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Amount of funding')
+        record = self.portal.bap.get_action_values('A3_4', country='France')
+        self.assertTrue(hasattr(record, 'Ax12007MS'))
+
     def test_A3_5(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5')
         html = self.browser.get_html()

@@ -332,6 +332,29 @@ class A3_5(Base):
     WithinLimit = Column(String)
     OutsideLimit = Column(String)
 
+class A3_4(Base):
+    __tablename__ = 'A3_4'
+    CountryCode = Column(String, primary_key=True)
+    Ax12007MS = Column(String)
+    Ax12007EC = Column(String)
+    Ax12007MSTotal = Column(String)
+    Ax22007MS = Column(String)
+    Ax22007EC = Column(String)
+    Ax22007MSTotal = Column(String)
+    Ax32007MS = Column(String)
+    Ax32007EC = Column(String)
+    Ax32007MSTotal = Column(String)
+    Ax42007MS = Column(String)
+    Ax42007EC = Column(String)
+    Ax42007MSTotal = Column(String)
+    Total2007MS = Column(String)
+    Total2007EC = Column(String)
+    Total2007MSTotal = Column(String)
+    Axis1 = Column(String)
+    Axis2 = Column(String)
+    Axis3 = Column(String)
+    Axis4 = Column(String)
+
 class A3_5_1(Base):
     __tablename__ = 'A3_5_1'
     CountryCode = Column(String, primary_key=True)
