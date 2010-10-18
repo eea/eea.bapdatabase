@@ -305,6 +305,22 @@ class A2_1_11_RDPPayments(Base):
 
 
 
+class A3_5_1(Base):
+    __tablename__ = 'A3_5_1'
+    CountryCode = Column(String, primary_key=True)
+    vessels2006 = Column(String)
+    Infringe2006 = Column(String)
+    InfringePercent2006 = Column(String)
+    Penalties2006 = Column(String)
+    AveFine2006 = Column(String)
+    MaxFine2006 = Column(String)
+    vessels2007 = Column(String)
+    Infringe2007 = Column(String)
+    InfringePercent2007 = Column(String)
+    Penalties2007 = Column(String)
+    AveFine2007 = Column(String)
+    MaxFine2007 = Column(String)
+
 class A3_5_2(Base):
     __tablename__ = 'A3_5_2'
     CountryCode = Column(String, primary_key=True)

@@ -206,6 +206,38 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def test_A3_5_1(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5_1')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Number of serious infringement procedures by year')
+        record = self.portal.bap.get_action_values('A3_5_1', country='France')
+        self.assertTrue(hasattr(record, 'vessels2006'))
+
     def test_A3_5_2(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A3_5_2')
         html = self.browser.get_html()
