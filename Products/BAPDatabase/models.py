@@ -288,8 +288,29 @@ class A2_1_11_RDPPayments(Base):
     PublicPercent = Column(String)
 
 
-
-
+class A2_1_15(Base):
+    __tablename__ = 'A2_1_15'
+    CountryCode = Column(String, primary_key=True)
+    Afforest = Column(String)
+    Deforest = Column(String)
+    AfforestDetails = Column(String)
+    DeforestDetails = Column(String)
+    EIAAfforest = Column(String)
+    EIAAfforestLimits = Column(String)
+    EIADeforest = Column(String)
+    EIADeforestLimits = Column(String)
+    SEAAfforest = Column(String)
+    SEAAfforestLimits = Column(String)
+    SEADeforest = Column(String)
+    SEADeforestLimits = Column(String)
+    BioAfforest = Column(String)
+    BioAfforestLimits = Column(String)
+    BioDeforest = Column(String)
+    BioDeforestLimits = Column(String)
+    OtherAfforest = Column(String)
+    OtherAfforestLimits = Column(String)
+    OtherDeforest = Column(String)
+    OtherDeforestLimits = Column(String)
 
 
 
