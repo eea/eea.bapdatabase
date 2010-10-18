@@ -239,11 +239,11 @@ class A2_1_8(Base):
     BioIndicators = Column(String)
     BioIndicatorsDetails = Column(String)
     
-
-
-
-
-
+class A2_1_9(Base):
+    __tablename__ = 'A2_1_9'
+    CountryCode = Column(String, primary_key=True)
+    Amount = Column(String)
+    Percentage = Column(String)
 
 
 
