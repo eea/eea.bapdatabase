@@ -246,6 +246,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
 
+    def test_A3_1_5(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_1_5')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'What is the status of your national plan/strategy for integrated coastal zone management (ICZM) (Mark one only)')
+        record = self.portal.bap.get_action_values('A3_1_5', country='France')
+        self.assertTrue(hasattr(record, 'NoPlan'))
+
     def test_A3_2(self):
         self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_2')
         html = self.browser.get_html()

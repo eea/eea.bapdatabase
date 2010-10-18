@@ -332,6 +332,15 @@ class A2_2_1(Base):
 
 
 
+class A3_1_5(Base):
+    __tablename__ = 'A3_1_5'
+    CountryCode = Column(String, primary_key=True)
+    NoPlan = Column(String)
+    InDev = Column(String)
+    Adopted = Column(String)
+    DontKnow = Column(String)
+    Link = Column(String)
+
 class A3_2_Phospate(Base):
     __tablename__ = 'A3_2_Phospate'
     CountryCode = Column(String, primary_key=True)
