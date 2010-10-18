@@ -278,6 +278,17 @@ class A3_5_2(Base):
     DiaOther = Column(String)
     DiaOtherDetail = Column(String)
 
+class A3_6_2(Base):
+    __tablename__ = 'A3_6_2'
+    CountryCode = Column(String, primary_key=True)
+    SharkMonitor = Column(String)
+    SharkYear1 = Column(String)
+    SharkNumYears = Column(String)
+    SeabirdsMonitor = Column(String)
+    SeabirdsYear1 = Column(String)
+    SeabirdsNumYears = Column(String)
+    Links = Column(String)
+
 class A3_6_3_Inshore(Base):
     __tablename__ = 'A3_6_3_Inshore'
     CountryCode = Column(String, primary_key=True)

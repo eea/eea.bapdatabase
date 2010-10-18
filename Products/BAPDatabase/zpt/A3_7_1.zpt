@@ -7,9 +7,7 @@
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
 			<th colspan="2" width="80%">
-				Has the Member State established a multi-annual plan Data Collection Framework (DCF) that 
-				includes sampling/monitoring design for collecting ecosystem data to assist with 
-				assessing the impact of the fisheries sector on the marine ecosystem? (Enter Y/N)
+				Has the Member State established a multi-annual plan Data Collection Framework (DCF) that includes sampling/monitoring design for collecting ecosystem data to assist with assessing the impact of the fisheries sector on the marine ecosystem? (Enter Y/N)
 			</th>
 			<td tal:content="record/DCF"/>
 		</tr>
