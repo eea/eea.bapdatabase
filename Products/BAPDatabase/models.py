@@ -4,10 +4,8 @@ from sqlalchemy.types import String
 
 Base = declarative_base()
 
-
 class Header(Base):
     __tablename__ = '01Header'
-    
     CountryCode = Column(String, primary_key=True)
     Country = Column(String)
     PrefilledName = Column(String)
@@ -24,10 +22,8 @@ class Header(Base):
     VerifiedECName = Column(String)
     VerifiedECDate = Column(String)
 
-
 class Narrative(Base):
     __tablename__ = 'Narrative'
-
     Country = Column(String, primary_key=True)
     Objective = Column(String, primary_key=True)
     Ident = Column(String, primary_key=True)
@@ -42,10 +38,8 @@ class Narrative(Base):
     CO1Verrified = Column(String)
     CO2Verrified = Column(String)
 
-
 class QuestionsText(Base):
     __tablename__ = 'QuestionsText'
-
     ID = Column(String, primary_key=True)
     Ident = Column(String)
     MOP = Column(String)
@@ -54,10 +48,8 @@ class QuestionsText(Base):
     FullText = Column(String)
     MOPText = Column(String)
 
-
 class Objective(Base):
     __tablename__ = 'objectives'
-
     id = Column(String, primary_key=True)
     name = Column(String)
     description = Column(String)
@@ -65,7 +57,6 @@ class Objective(Base):
 
 class A1_1_1_Natura2000Compleat(Base):
   __tablename__ = 'A1_1_1_Natura2000Compleat'
-
   CountryCode = Column(String, primary_key=True)
   HabitatSites = Column(String)
   HabitatArea = Column(String)
@@ -77,20 +68,16 @@ class A1_1_1_Natura2000Compleat(Base):
   BirdTerraArea = Column(String)
   BirdMarineSites = Column(String)
   BirdMarineArea = Column(String)
-  
 
 class A1_1_1_Natura2000Plan(Base):
     __tablename__ = 'A1_1_1_Natura2000Plan'
-
     CountryCode = Column(String, primary_key=True)
     Compleat = Column(String)
     Preperation = Column(String)
     None_ = Column('None', String)
 
-      
 class A1_1_3(Base):
     __tablename__ = 'A1_1_3'
-
     CountryCode = Column(String, primary_key=True)
     Y2004 = Column(String)
     Y2005 = Column(String)
@@ -99,10 +86,8 @@ class A1_1_3(Base):
     Y2008 = Column(String)
     Y2009 = Column(String)
 
-        
 class A1_3(Base):
     __tablename__ = 'A1_3'
-    
     CountryCode = Column(String, primary_key=True)
     BirdRed = Column(String)
     BirdAmd = Column(String)
@@ -110,14 +95,12 @@ class A1_3(Base):
 
 class A1_2_3(Base):
     __tablename__ = 'A1_2_3'
-    
     CountryCode = Column(String, primary_key=True)
     ToolInPlace = Column(String)
     ToolInDev = Column(String)
 
 class A1_3_1_ActionPlan(Base):
     __tablename__ = 'A1_3_1_ActionPlan'
-
     CountryCode = Column(String, primary_key=True)
     BirdComp = Column(String)
     MammalComp = Column(String)
@@ -133,26 +116,20 @@ class A1_3_1_ActionPlan(Base):
     PlantsPlan = Column(String)
     PlanDataSource = Column(String)
 
-
 class A1_3_1_BirdIndicator(Base):
     __tablename__ = 'A1_3_1_BirdIndicator'
-
     CountryCode = Column(String, primary_key=True)
     IndicatorDev = Column(String)
     IndicatorDesc = Column(String)
     DataSource = Column(String)
 
-
 class A1_3_1_BirdMonitoring(Base):
     __tablename__ = 'A1_3_1_BirdMonitoring'
-
     CountryCode = Column(String, primary_key=True)
     active = Column(String)
 
-
 class A1_3_1_RedList(Base):
     __tablename__ = 'A1_3_1_RedList'
-
     CountryCode = Column(String, primary_key=True)
     Bird = Column(String)
     Mammal = Column(String)
@@ -161,10 +138,8 @@ class A1_3_1_RedList(Base):
     Invert = Column(String)
     Plants = Column(String)
 
-
 class A2_1_1(Base):
     __tablename__ = 'A2_1_1'
-
     CountryCode = Column(String, primary_key=True)
     EAFRDTotal = Column(String)
     EAFRDAxis2 = Column(String)
@@ -286,7 +261,6 @@ class A2_1_11_RDPPayments(Base):
     EAFRDPercent = Column(String)
     Public = Column(String)
     PublicPercent = Column(String)
-
 
 class A2_1_15(Base):
     __tablename__ = 'A2_1_15'

@@ -119,6 +119,13 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A1_3_1_BirdMonitoring', country='Austria')
         self.assertTrue(hasattr(record, 'active'))
 
+    def test_Objective2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=Objective2')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertTrue(datatable.tr.th.text.startswith('Additional detail & Narrative summary of the information (text provided should be able to stand alone):'))
+
     def test_A2_1_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_1')
         html = self.browser.get_html()
