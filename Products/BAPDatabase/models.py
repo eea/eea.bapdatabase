@@ -714,6 +714,14 @@ class A4_4_1(Base):
     Legal = Column(String)
     Reporting = Column(String)
 
+class A4_5_1(Base):
+    __tablename__ = 'A4_5_1'
+    CountryCode = Column(String, primary_key=True)
+    OutermostRegion = Column(String)
+    Minimised = Column(String)
+    Compensated = Column(String)
+    Measures = Column(String)
+
 class A5_1_AlienLegal(Base):
     __tablename__ = 'A5_1_AlienLegal'
     CountryCode = Column(String, primary_key=True)
