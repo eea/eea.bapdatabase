@@ -7,9 +7,9 @@
 
 <table class="datatable">
 	<tr>
-		<th colspan="2" width="90%">Are ex-ante strategic environmental assessment (SEA) of relevant strategies and programmes and environmental impact assessment (EIA) of relevant projects mandatory for OCTs?<br/>
+		<th colspan="2" width="80%">Are ex-ante strategic environmental assessment (SEA) of relevant strategies and programmes and environmental impact assessment (EIA) of relevant projects mandatory for OCTs?<br/>
 		Please enter Y or N:</th>
-		<td tal:content="record/XXX" />
+		<td tal:content="record/OCTMandatorySEA_EIA" />
 	</tr>
 	<tr>
 		<th colspan="3">

@@ -286,7 +286,6 @@ class A2_1_12(Base):
     ForestPublic = Column(String) 
     ForestPublicPercent = Column(String)
 
-
 class A2_1_15(Base):
     __tablename__ = 'A2_1_15'
     CountryCode = Column(String, primary_key=True)
@@ -863,6 +862,15 @@ class A7_1_4(Base):
 class A7_1_6(Base):
     __tablename__ = 'A7_1_6'
     CountryCode = Column(String, primary_key=True)
+    Aid2006 = Column(String)
+    Aid2007 = Column(String)
+    Aid2008 = Column(String)
+    Percent2006 = Column(String)
+    Percent2007 = Column(String)
+    Percent2008 = Column(String)
+    OCT = Column(String)
+    Value = Column(String)
+    Objectives = Column(String)
 
 class A7_2_2(Base):
     __tablename__ = 'A7_2_2'
@@ -872,6 +880,7 @@ class A7_2_2(Base):
 class A7_2_5(Base):
     __tablename__ = 'A7_2_5'
     CountryCode = Column(String, primary_key=True)
+    OCTMandatorySEA_EIA = Column(String)
 
 class A8_1(Base):
     __tablename__ = 'A8_1'
