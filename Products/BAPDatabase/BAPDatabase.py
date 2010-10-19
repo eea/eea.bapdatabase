@@ -105,13 +105,13 @@ class BAPDatabase(NyFolder):
         m = pattern.match(text)
         if m is not None:
             if action:  #@todo: optimize this code
-                return '<a class="action-link" href="%(url)s">%(heading)s</a> %(text)s' % {
+                return '<a class="action-link" title="CLick to see details" href="%(url)s">%(heading)s</a> %(text)s' % {
                      'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
                      'heading': m.group('heading').strip(),
                      'text': m.group('text').strip(),
                  }
             else:
-                return '<a class="target-link" href="%(url)s">%(heading)s</a> %(text)s' % {
+                return '<a class="target-link" title="CLick to see details" href="%(url)s">%(heading)s</a> %(text)s' % {
                     'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
                     'heading': m.group('heading').strip(),
                     'text': m.group('text').strip(),

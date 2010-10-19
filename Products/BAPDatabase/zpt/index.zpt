@@ -20,7 +20,7 @@
 			 
 				<div class="bap-objectives" tal:define="objective_name objective/name">
 					<span class="bap-objective-title">
-						<a href="javascript:void(0);" tal:content="objective_name" />
+						<a href="javascript:void(0);" title="Click to see details" tal:content="objective_name" />
 						<span tal:content="objective/description" />
 					</span>
 					<div class="bap-objective" tal:condition="objective">

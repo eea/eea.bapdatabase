@@ -9,6 +9,7 @@ CREATE TABLE `objectives` (
   `id` INTEGER NOT NULL auto_increment,
   `name` varchar(100) default NULL,
   `description` varchar(255) default NULL,
+  `headline` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
