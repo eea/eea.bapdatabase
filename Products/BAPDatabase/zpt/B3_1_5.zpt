@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="3" colspan="2" style="text-align:left;vertical-align:middle">Does MS have a forum or similar platform/framework set up for biodiversity and planning partnership at local, regional, national levels? Please indicate Y/N against each box</th>
+			<th rowspan="3" colspan="2">Does MS have a forum or similar platform/framework set up for biodiversity and planning partnership at local, regional, national levels? Please indicate Y/N against each box</th>
 			<th width="20%">Local</th>
 			<td width="20%" tal:content="record/Local"/>
 		</tr>
@@ -21,13 +21,13 @@
 			<td width="20%" tal:content="record/National"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Narrative summary of the above information (text provided should be able to stand alone) including if Member State has a forum or similar platform/framework set up for biodiversity and planning partnerships at local, region, and/or national levels, please provide details</th>
+			<th colspan="4">Narrative summary of the above information (text provided should be able to stand alone) including if Member State has a forum or similar platform/framework set up for biodiversity and planning partnerships at local, region, and/or national levels, please provide details</th>
 		</tr>
 		<tr>
  			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -35,7 +35,7 @@
 			<td colspan="4" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="3" tal:content="mop/DataSource"/>

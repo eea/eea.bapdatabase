@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="3" colspan="2" style="text-align:left">Number of import applications denied during the last reporting cycle compared to the number of import documents issued</th>
+			<th rowspan="3" colspan="2">Number of import applications denied during the last reporting cycle compared to the number of import documents issued</th>
 			<th width="30%">Number of import documents issued</th>
 			<td colspan="2" tal:content="record/ImportApps"/>
 		</tr>
@@ -21,7 +21,7 @@
 			<td colspan="2" tal:content="record/ImportPercent"/>
 		</tr>
 		<tr>
-			<th rowspan="6" colspan="2" style="text-align:left">Number of export and re-export certificates/permits denied during the last reporting cycle compared to permits issued</th>
+			<th rowspan="6" colspan="2">Number of export and re-export certificates/permits denied during the last reporting cycle compared to permits issued</th>
 			<th>Number of export documents issued</th>
 			<td colspan="2" tal:content="record/ExportApps"/>
 		</tr>
@@ -46,7 +46,7 @@
 			<td colspan="2" tal:content="record/ReExportPercent"/>
 		</tr>
 		<tr>
-			<th rowspan="4" colspan="2" style="text-align:left">Change in the number of seizures as a percentage of total trade for the last two reporting periods (net change)</th>
+			<th rowspan="4" colspan="2">Change in the number of seizures as a percentage of total trade for the last two reporting periods (net change)</th>
 			<th/>
 			<th width="15%">Year</th>
 			<th width="15%">Number</th>
@@ -67,19 +67,19 @@
 			<td tal:content="record/NetChange"/>
 		</tr>
 		<tr>
-			<th colspan="2" style="text-align:left">Development of national capacity (summarise information from MS biennial reports)</th>
+			<th colspan="2">Development of national capacity (summarise information from MS biennial reports)</th>
 			<td colspan="3" tal:content="record/Capacity"/>
 		</tr>
 		<tr>
-			<th colspan="2" style="text-align:left">Financial contributions to developing countries for CITES implementation (summarise information from MS biennial reports)</th>
+			<th colspan="2">Financial contributions to developing countries for CITES implementation (summarise information from MS biennial reports)</th>
 			<td colspan="3" tal:content="record/Finance"/>
 		</tr>
 		<tr>
-			<th width="20%" style="text-align:left">Data source</th>
+			<th width="20%">Data source</th>
 			<td colspan="4" tal:content="record/CITESDataLink"/>
 		</tr>
 		<tr>
-			<th rowspan="2" colspan="2" style="text-align:left">Financial contributions of MS to the CITES Trust Fund (latest figure available)</th>
+			<th rowspan="2" colspan="2">Financial contributions of MS to the CITES Trust Fund (latest figure available)</th>
 			<th>Year</th>
 			<th colspan="2">Amount (EUR)</th>
 		</tr>
@@ -88,17 +88,17 @@
 			<td tal:content="record/Amount"/>
 		</tr>
 		<tr>
-			<th style="text-align:left">Data source</th>
+			<th>Data source</th>
 			<td colspan="4" tal:content="record/CITES_COPDataLink"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="4">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>

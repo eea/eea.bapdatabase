@@ -25,13 +25,13 @@
 			<td tal:content="record/BiPercent2008" />
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="6">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="6" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">
+			<th colspan="6">
 				Additional clarifications:
 			</th>
 		</tr>

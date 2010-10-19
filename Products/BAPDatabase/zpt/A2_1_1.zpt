@@ -68,7 +68,7 @@
 			<td tal:content="record/ForestPublicPercent" />
 		</tr>
 		<tr>
-			<th colspan="7" style="text-align:left">
+			<th colspan="7">
 				Additional detail & Narrative summary of the above information<br/>(text provided should be able to stand alone):
 			</th>
 		</tr>
@@ -77,7 +77,7 @@
 		</tr>
 
 		<tr>
-			<th colspan="7" style="text-align:left">
+			<th colspan="7">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -86,7 +86,7 @@
 		</tr>
 
 		<tr>
-			<th colspan="2" style="text-align:left">
+			<th colspan="2">
 				Explanation of information contained in the measure of progress above
 			</th>
 			<td colspan="5">
@@ -96,7 +96,7 @@
 		</tr>
 
 		<tr>
-			<th style="text-align:left">
+			<th>
 				Data source
 			</th>
 			<td colspan="5">

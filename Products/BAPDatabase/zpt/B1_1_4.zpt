@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="4" width="20%" style="text-align:left;vertical-align:middle">Indicate cohesion and structural funds for projects directly or indirectly providing biodiversity benefits in all MS' operational programmes (in EUR)</th>
+			<th rowspan="4" width="20%">Indicate cohesion and structural funds for projects directly or indirectly providing biodiversity benefits in all MS' operational programmes (in EUR)</th>
 			<th width="20%"><em>Year</em></th>
 			<th width="15%"><em>2006</em></th>
 			<th width="15%"><em>2007</em></th>
@@ -37,13 +37,13 @@
 			<td tal:content="record/Cat56_2009"/>
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="6">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
  			<td colspan="6" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">
+			<th colspan="6">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -51,7 +51,7 @@
 			<td colspan="6" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="5" tal:content="mop/DataSource"/>

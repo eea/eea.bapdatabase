@@ -74,7 +74,7 @@
 	</tal:block>
 	<tal:block define="mop python:here.get_action_mop(action_id, country, '')">
 		<tr>
-			<th colspan="6" style="text-align:left">
+			<th colspan="6">
 				Narrative summary of the above information (text provided should be able to stand alone) and any further details where available (e.g. comparison with previous years, causes of good/bad results):
 			</th>
 		</tr>
@@ -82,7 +82,7 @@
 			<td colspan="6" tal:content="mop/Narative"/>
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">
+			<th colspan="6">
 				Additional clarifications:
 			</th>
 		</tr>

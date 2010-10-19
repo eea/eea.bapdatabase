@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th colspan="2" rowspan="3" style="text-align:left">Have a separate action plan on <em>biomass</em> and/or a National Renewable Action Plan (NREAP) already been developed?<br/>
+			<th colspan="2" rowspan="3">Have a separate action plan on <em>biomass</em> and/or a National Renewable Action Plan (NREAP) already been developed?<br/>
 			Please tick only one box for each row:</th>
 			<th width="20%"/>
 			<th width="12%">No</th>
@@ -31,7 +31,7 @@
 			<td tal:content="record/NREAPDontKnow"/>
 		</tr>
 		<tr>
-			<th colspan="2" rowspan="3" style="text-align:left">Have key mechanisms in implementing sustainability criteria for biofuels and bioliquids already been put in place at the national level?<br/>
+			<th colspan="2" rowspan="3">Have key mechanisms in implementing sustainability criteria for biofuels and bioliquids already been put in place at the national level?<br/>
 			Please enter Y or N or P [yyyy] (=in progress +date of expected implementation)</th>
 			<th>Roundtables</th>
 			<th colspan="2">National certification bodies</th>
@@ -46,7 +46,7 @@
 			<td colspan="2" tal:content="record/OtherNat"/>
 		</tr>
 		<tr>
-			<th colspan="2" rowspan="2" style="text-align:left">Have requirements been adopted, which address the impact of biomass production for cooling, heating and electricity on biodiversity?</th>
+			<th colspan="2" rowspan="2">Have requirements been adopted, which address the impact of biomass production for cooling, heating and electricity on biodiversity?</th>
 			<th>Y/N</th>
 			<th colspan="4">Details/comments</th>
 		</tr>
@@ -55,13 +55,13 @@
 			<td colspan="4" tal:content="record/RequireDetail"/>
 		</tr>
 		<tr>
-			<th colspan="7" style="text-align:left">Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="7">Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="7" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="7" style="text-align:left">
+			<th colspan="7">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -69,7 +69,7 @@
 			<td colspan="7" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th width="20%" style="text-align:left">
+			<th width="20%">
 				Data source (if any)
 			</th>
 			<td colspan="6" tal:content="mop/DataSource"/>

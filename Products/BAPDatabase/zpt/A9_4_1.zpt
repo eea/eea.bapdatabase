@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th width="20%" rowspan="5" style="text-align:left">Have a national <em>biodiversity adaptation strategy</em> and/or <em>action plan</em> been developed?<br/>
+			<th width="20%" rowspan="5">Have a national <em>biodiversity adaptation strategy</em> and/or <em>action plan</em> been developed?<br/>
 			Please mark accordingly:</th>
 			<th colspan="2"/>
 			<th width="12%">No</th>
@@ -42,7 +42,7 @@
 			<td tal:content="record/OtherDesc"/>
 		</tr>
 		<tr>
-			<th colspan="3" rowspan="3" style="text-align:left">If N, is biodiversity adaptation to climate change dealt with comprehensively as part of a national/sub-national <em>adaptation strategy</em>/action plan? Please enter Y or N and provide comments here:</th>
+			<th colspan="3" rowspan="3">If N, is biodiversity adaptation to climate change dealt with comprehensively as part of a national/sub-national <em>adaptation strategy</em>/action plan? Please enter Y or N and provide comments here:</th>
 			<th/>
 			<th>Y/N</th>
 			<th colspan="2">Details/comments</th>
@@ -58,7 +58,7 @@
 			<td tal:content="record/AdaptPlanDetail"/>
 		</tr>
 		<tr>
-			<th colspan="3" rowspan="3" style="text-align:left">If N to LINE 2, is biodiversity adaptation to climate change dealt with comprehensively as part of a national/sub-national biodiversity strategy and/or action plan?<br/>
+			<th colspan="3" rowspan="3">If N to LINE 2, is biodiversity adaptation to climate change dealt with comprehensively as part of a national/sub-national biodiversity strategy and/or action plan?<br/>
 			Please enter Y or N and provide comments here:</th>
 			<th/>
 			<th>Y/N</th>
@@ -75,7 +75,7 @@
 			<td tal:content="record/BioPlanDetail"/>
 		</tr>
 		<tr>
-			<th colspan="4" rowspan="2" style="text-align:left">If N to LINE 3, have biodiversity adaptation projects been initiated?<br/>
+			<th colspan="4" rowspan="2">If N to LINE 3, have biodiversity adaptation projects been initiated?<br/>
 			Please enter Y or N and provide comments here:</th>
 			<th>Y/N</th>
 			<th colspan="2">Details/comments</th>
@@ -86,14 +86,14 @@
 		</tr>
 
 		<tr>
-			<th colspan="7" style="text-align:left">Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="7">Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<!-- <td colspan="7" tal:content="mop/Narative" /> -->
 			<td colspan="7" tal:content="string:???" />
 		</tr>
 		<tr>
-			<th colspan="7" style="text-align:left">
+			<th colspan="7">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -102,7 +102,7 @@
 			<td colspan="7" tal:content="string:???"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Provide relevant Data Sources and internet links here:
 			</th>
 			<!-- <td colspan="6" tal:content="mop/DataSource"/> -->

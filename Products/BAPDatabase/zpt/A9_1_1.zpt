@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th width="20%" rowspan="3" style="text-align:left">Annual anthropogenic Greenhouse Gas Emissions (GHG) in million tonnes of CO2 equivalents (excl. LULUCF).</th>
+			<th width="20%" rowspan="3">Annual anthropogenic Greenhouse Gas Emissions (GHG) in million tonnes of CO2 equivalents (excl. LULUCF).</th>
 			<th width="20%"/>
 			<th width="20%">2006</th>
 			<th width="20%">2007</th>
@@ -27,14 +27,14 @@
 			<td tal:content="record/Change2008"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="4">Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<!-- <td colspan="4" tal:content="mop/Narative" /> -->
 			<td colspan="4" tal:content="string:???" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -43,7 +43,7 @@
 			<td colspan="4" tal:content="string:???" />
 		</tr>
 		<tr>
-			<th style="text-align:left">
+			<th>
 				Data source
 			</th>
 			<!-- <td colspan="3" tal:content="mop/DataSource"/> -->

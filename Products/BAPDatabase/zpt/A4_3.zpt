@@ -31,7 +31,7 @@
 		</tr>
 
 		<tr>
-			<th colspan="3" style="text-align:left">
+			<th colspan="3">
 				Additional details & Narrative summary of the above information (text provided should be able to stand alone):
 			</th>
 		</tr>
@@ -39,7 +39,7 @@
 			<td colspan="3" tal:content="mop/Narative"/>
 		</tr>
 		<tr>
-			<th colspan="3" style="text-align:left">
+			<th colspan="3">
 				Additional clarifications:
 			</th>
 		</tr>

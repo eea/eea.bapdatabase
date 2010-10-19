@@ -15,13 +15,13 @@
 			<td width="20%" tal:content="record/Num1000km"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="4">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -74,13 +74,13 @@
 			<td tal:content="record/Control"/>
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="6">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="6" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">
+			<th colspan="6">
 				Additional clarifications:
 			</th>
 		</tr>

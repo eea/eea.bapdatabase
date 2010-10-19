@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="3" colspan="2" style="text-align:left;vertical-align:middle">Please indicate level of participation in the Global Biodiversity Information Facility (GBIF). Please select only ONE of the following:</th>
+			<th rowspan="3" colspan="2">Please indicate level of participation in the Global Biodiversity Information Facility (GBIF). Please select only ONE of the following:</th>
 			<th width="20%">Participant (signed MoU)</th>
 			<td width="20%" tal:content="record/MoU"/>
 		</tr>
@@ -27,11 +27,11 @@
 			<td colspan="4" tal:content="record/GBIFDetails"/>
 		</tr>
 		<tr>
-			<th width="20%" style="text-align:left;vertical-align:middle">Data source</th>
+			<th width="20%">Data source</th>
 			<td colspan="3" tal:content="record/GBIFLink"/>
 		</tr>
 		<tr>
-			<th rowspan="3" colspan="2" style="text-align:left;vertical-align:middle">Please indicate level of participation in European Network for Biodiversity Information (ENBI).</th>
+			<th rowspan="3" colspan="2">Please indicate level of participation in European Network for Biodiversity Information (ENBI).</th>
 			<th width="20%">Government agency/Research group is a member</th>
 			<td width="20%" tal:content="record/Gov"/>
 		</tr>
@@ -44,19 +44,19 @@
 			<td tal:content="record/NotMember"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">If Government agency/Research group is an ENBI member, please describe ways in which Member State participates.</th>
+			<th colspan="4">If Government agency/Research group is an ENBI member, please describe ways in which Member State participates.</th>
 		</tr>
 		<tr>
  			<td colspan="6" tal:content="record/ENBIDetails" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="4">Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
  			<td colspan="6" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">
+			<th colspan="6">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -64,7 +64,7 @@
 			<td colspan="6" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="5" tal:content="mop/DataSource"/>

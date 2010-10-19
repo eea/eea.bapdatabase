@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="11" width="20%" style="vertical-align:middle">Indicate national/sub-national biodiversity monitoring schemes for habitats</th>
+			<th rowspan="11" width="20%">Indicate national/sub-national biodiversity monitoring schemes for habitats</th>
 			<th width="20%">Habitat types</th>
 			<th width="15%">Number of monitoring schemes</th>
 			<th colspan="2">Details</th>
@@ -65,7 +65,7 @@
 		</tr>
 
 		<tr>
-			<th rowspan="8" width="20%" style="vertical-align:middle">Indicate national/sub-national biodiversity monitoring schemes for species</th>
+			<th rowspan="8" width="20%">Indicate national/sub-national biodiversity monitoring schemes for species</th>
 			<th width="20%">Species groups</th>
 			<th width="15%">Number of monitoring schemes</th>
 			<th colspan="2">Details</th>
@@ -107,7 +107,7 @@
 		</tr>
 
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional detail & Narrative summary of the above information<br/>(text provided should be able to stand alone):
 			</th>
 		</tr>
@@ -116,7 +116,7 @@
 		</tr>
 
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -125,7 +125,7 @@
 		</tr>
 
 		<tr>
-			<th style="text-align:left">
+			<th>
 				Data source (if any)
 			</th>
 			<td colspan="3">

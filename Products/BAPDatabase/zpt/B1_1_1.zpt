@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th colspan="4" style="text-align:left;vertical-align:middle">Does a national programme identifying long-term goals and the allocation of funding (both COM and MS co-funding) for the related biodiversity activities exist? If present indicate Y, if absent indicate N</th>
+			<th colspan="4">Does a national programme identifying long-term goals and the allocation of funding (both COM and MS co-funding) for the related biodiversity activities exist? If present indicate Y, if absent indicate N</th>
 			<td colspan="2" tal:content="record/NatProg"/>
 		</tr>
 		<tr>
@@ -18,11 +18,11 @@
 			<td colspan="6" tal:content="record/NatProgDetails"/>
 		</tr>
 		<tr>
-			<th width="20%" style="text-align:left;vertical-align:middle">Data source</th>
+			<th width="20%">Data source</th>
 			<td colspan="5" tal:content="record/NatProgData"/>
 		</tr>
 		<tr>
-			<th rowspan="6" colspan="2" style="text-align:left;vertical-align:middle">What is your country's expenditure for management or restoration of Natura 2000 sites?</th>
+			<th rowspan="6" colspan="2">What is your country's expenditure for management or restoration of Natura 2000 sites?</th>
 			<th width="5%">Year</th>
 			<th width="15%">Expenditure for management (EUR)</th>
 			<th width="15%">Expenditure for restoration (EUR)</th>
@@ -59,13 +59,13 @@
 			<td tal:content="record/Other2008"/>
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="6">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
  			<td colspan="6" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="6" style="text-align:left">
+			<th colspan="6">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -73,7 +73,7 @@
 			<td colspan="6" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="5" tal:content="mop/DataSource"/>

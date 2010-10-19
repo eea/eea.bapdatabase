@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
  		<tr>
-			<th rowspan="28" colspan="2" style="vertical-align:middle">Indicate national/sub-national biodiversity indicators</th>
+			<th rowspan="28" colspan="2">Indicate national/sub-national biodiversity indicators</th>
 			<th width="30%">SEBI 2010 indicator</th>
 			<th width="30%">Corresponding national indicator(s)</th>
 		</tr>
@@ -121,7 +121,7 @@
 			<td tal:content="record/Public" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional detail & Narrative summary of the above information<br/>(text provided should be able to stand alone):
 			</th>
 		</tr>
@@ -129,12 +129,12 @@
 			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
 		<tr>
-			<th style="width:20%">Data source (if any)</th>
+			<th width="20%">Data source (if any)</th>
 			<td colspan="3">???</td>
 		</tr>
 	</tal:block>

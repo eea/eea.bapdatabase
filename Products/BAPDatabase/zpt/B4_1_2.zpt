@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
  		<tr>
-			<th rowspan="2" colspan="2" style="text-align:left">What is the amount of funding by the MS for the supporting the 2010 countdown initiative?<br/>
+			<th rowspan="2" colspan="2">What is the amount of funding by the MS for the supporting the 2010 countdown initiative?<br/>
 			Please indicate amounts (in EUR):</th>
 			<th width="20%">2006</th>
 			<th width="20%">2007</th>
@@ -20,19 +20,19 @@
 			<td tal:content="record/Y2008" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Have the national Environment Ministries made a declaration supporting the implementation of joint actions under the 2010 countdown initiative?<br/>
+			<th colspan="4">Have the national Environment Ministries made a declaration supporting the implementation of joint actions under the 2010 countdown initiative?<br/>
 			Please indicate Y / N</th>
 			<td tal:content="record/Declaration" />
 		</tr>
 		<tr>
-			<th colspan="5" style="text-align:left">Have the national Environment Ministries made a declaration supporting the implementation of joint actions under the 2010 countdown initiative?<br/>
+			<th colspan="5">Have the national Environment Ministries made a declaration supporting the implementation of joint actions under the 2010 countdown initiative?<br/>
 			Please indicate Y / N</th>
 		</tr>
 		<tr>
 			<td colspan="5" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="5" style="text-align:left">
+			<th colspan="5">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -40,7 +40,7 @@
 			<td colspan="5" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="4" tal:content="mop/DataSource"/>

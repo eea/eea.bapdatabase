@@ -7,7 +7,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="4" colspan="2" style="text-align:left">What is the proportion of national consumption of wood products derived from sustainable sources (%)?</th>
+			<th rowspan="4" colspan="2">What is the proportion of national consumption of wood products derived from sustainable sources (%)?</th>
 			<th width="20%">2006</th>
 			<td width="40%" tal:content="record/Y2006"/>
 		</tr>
@@ -24,13 +24,13 @@
 			<td tal:content="record/Y2009"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Additional detail (Please describe the kind of sources (e.g. certified products; products through bilateral agreements with producer countries, etc)) & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="4">Additional detail (Please describe the kind of sources (e.g. certified products; products through bilateral agreements with producer countries, etc)) & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>

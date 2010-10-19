@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="3" colspan="2" style="text-align:left;vertical-align:middle">Has a communications campaign in support of the EU Biodiversity Action Plan (BAP) been developed at the national level?<br/>
+			<th rowspan="3" colspan="2">Has a communications campaign in support of the EU Biodiversity Action Plan (BAP) been developed at the national level?<br/>
 			Please tick only one of the following</th>
 			<th width="20%">Yes</th>
 			<td width="20%" tal:content="record/Yes"/>
@@ -22,7 +22,7 @@
 			<td tal:content="record/Dev"/>
 		</tr>
 		<tr>
-			<th rowspan="3" colspan="2" style="text-align:left;vertical-align:middle">What is the stage of its implementation?<br/>
+			<th rowspan="3" colspan="2">What is the stage of its implementation?<br/>
 			Please tick only one of the following:</th>
 			<th>Not yet started</th>
 			<td tal:content="record/NotYet"/>
@@ -36,13 +36,13 @@
 			<td tal:content="record/Fully"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Narrative summary of the above information (text provided should be able to stand alone) and if a communications campaign in support of the EU BAP has been developed or is under development, please provide additional details and a short description of it below.</th>
+			<th colspan="4">Narrative summary of the above information (text provided should be able to stand alone) and if a communications campaign in support of the EU BAP has been developed or is under development, please provide additional details and a short description of it below.</th>
 		</tr>
 		<tr>
 			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="5" style="text-align:left">
+			<th colspan="5">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -50,7 +50,7 @@
 			<td colspan="4" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="3" tal:content="mop/DataSource"/>

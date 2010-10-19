@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="5" colspan="2" style="text-align:left;vertical-align:middle">Please indicate amount of national funding allocated for European and national biodiversity research activities and programmes for the years indicated.</th>
+			<th rowspan="5" colspan="2">Please indicate amount of national funding allocated for European and national biodiversity research activities and programmes for the years indicated.</th>
 			<th width="20%">Year</th>
 			<th width="20%">Amount (EUR)</th>
 		</tr>
@@ -29,13 +29,13 @@
 			<td tal:content="record/Y2009"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="4">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
  			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -43,7 +43,7 @@
 			<td colspan="4" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="3" tal:content="mop/DataSource"/>

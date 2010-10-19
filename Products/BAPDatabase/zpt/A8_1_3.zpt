@@ -27,13 +27,13 @@
 			<td tal:content="record/Y2009"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="4">Additional detail & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -60,13 +60,13 @@
 			<td tal:content="record/Aware"/>
 		</tr>
 		<tr>
-			<th colspan="3" style="text-align:left">Additional detail (If Y please describe national activities that raise awareness of the CBD Bonn Guidelines on Access and Benefit-sharing) & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="3">Additional detail (If Y please describe national activities that raise awareness of the CBD Bonn Guidelines on Access and Benefit-sharing) & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="3" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="3" style="text-align:left">
+			<th colspan="3">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -93,13 +93,13 @@
 			<td tal:content="record/Aware"/>
 		</tr>
 		<tr>
-			<th colspan="3" style="text-align:left">Additional detail (If Y please describe national activities that raise awareness of the Material Transfer Agreement of the International Treaty on Plant Genetic Resources) & Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="3">Additional detail (If Y please describe national activities that raise awareness of the Material Transfer Agreement of the International Treaty on Plant Genetic Resources) & Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
 			<td colspan="3" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="3" style="text-align:left">
+			<th colspan="3">
 				Additional clarifications:
 			</th>
 		</tr>

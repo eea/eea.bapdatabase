@@ -11,7 +11,7 @@
 		</tr>
 
 		<tr>
-			<th colspan="3" style="text-align:left">
+			<th colspan="3">
 				Narrative summary of the above information (text provided should be able to stand alone): and If yes please indicate for which activities
 			</th>
 		</tr>
@@ -20,7 +20,7 @@
 			<td colspan="3" tal:content="string:???"/>
 		</tr>
 		<tr>
-			<th colspan="3" style="text-align:left">
+			<th colspan="3">
 				Additional clarifications:
 			</th>
 		</tr>

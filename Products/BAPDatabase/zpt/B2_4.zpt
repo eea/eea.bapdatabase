@@ -8,7 +8,7 @@
 <table class="datatable">
 	<tal:block define="record python:here.get_action_values(action_id, country)">
 		<tr>
-			<th rowspan="3" colspan="2" style="text-align:left;vertical-align:middle">Has a new national environmental policy or strategy been created, or an existing policy or strategy updated, in light of the Communication 'Halting the loss of biodiversity by 2010 and beyond'? Please indicate Y or N in each case.</th>
+			<th rowspan="3" colspan="2">Has a new national environmental policy or strategy been created, or an existing policy or strategy updated, in light of the Communication 'Halting the loss of biodiversity by 2010 and beyond'? Please indicate Y or N in each case.</th>
 			<th width="20%">New strategy/policy created</th>
 			<td width="20%" tal:content="record/New"/>
 		</tr>
@@ -25,7 +25,7 @@
 			<td width="20%" tal:content="record/NoNew"/>
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">If new strategy/policy created, existing strategy/policy updated or strategy/policy in development, please provide details (name of plan, year of implementation) as well as an Internet link, if available, here:</th>
+			<th colspan="4">If new strategy/policy created, existing strategy/policy updated or strategy/policy in development, please provide details (name of plan, year of implementation) as well as an Internet link, if available, here:</th>
 		</tr>
 		<tr>
  			<td colspan="4" tal:content="record/Details" />
@@ -34,7 +34,7 @@
  			<td colspan="4" tal:content="mop/Narative" />
 		</tr>
 		<tr>
-			<th colspan="4" style="text-align:left">
+			<th colspan="4">
 				Additional clarifications:
 			</th>
 		</tr>
@@ -42,7 +42,7 @@
 			<td colspan="4" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
-			<th style="text-align:left;width:20%">
+			<th width="20%">
 				Data source
 			</th>
 			<td colspan="3" tal:content="mop/DataSource"/>
