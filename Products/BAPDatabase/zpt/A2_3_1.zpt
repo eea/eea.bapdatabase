@@ -4,8 +4,7 @@
 <h3>Measures of Progress</h3>
 
 <table class="datatable">
-	<tal:block define="action python:here.get_action(action_id, 'Stations');
-						record python:here.get_action_values('A2_3_1_Stations', country);
+	<tal:block define="record python:here.get_action_values('A2_3_1_Stations', country);
 						mop python:here.get_action_mop(action_id, country, 'Stations')">
 	<tr>
 		<th colspan="2" width="90%">Number of monitoring stations in protected areas defined under the Habitats and Birds Directive</th>
@@ -35,8 +34,7 @@
 </table>
 
 <table class="datatable">
-	<tal:block define="action python:here.get_action(action_id, 'BioAsses');
-						record python:here.get_action_values('A2_3_1_BioAsses', country);
+	<tal:block define="record python:here.get_action_values('A2_3_1_BioAsses', country);
 						mop python:here.get_action_mop(action_id, country, 'BioAsses')">
 	<tr>
 		<th rowspan="6">

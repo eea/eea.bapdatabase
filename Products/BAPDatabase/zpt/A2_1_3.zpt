@@ -1,12 +1,11 @@
-<div class="bap-action-content" 
+<div class="bap-action-content"
 		tal:define="country options/country;
 					action_id options/action_id;">
 
 <h3>Measures of Progress</h3>
 
 <table class="datatable">
-	<tal:block define="action python:here.get_action(action_id, 'HNV');
-						record python:here.get_action_values('A2_1_3_HNV', country);
+	<tal:block define="record python:here.get_action_values('A2_1_3_HNV', country);
 						mop python:here.get_action_mop(action_id, country, 'HNV')">
 	<tr>
 		<th colspan="3" width="40%" rowspan="2">
@@ -39,8 +38,7 @@
 	</tr>
 	</tal:block>
 
-	<tal:block define="action python:here.get_action(action_id, 'ForestCert');
-						record python:here.get_action_values('A2_1_3_ForestCert', country);
+	<tal:block define="record python:here.get_action_values('A2_1_3_ForestCert', country);
 						mop python:here.get_action_mop(action_id, country, 'ForestCert')">
 	<tr>
 		<th colspan="2" width="35%" rowspan="4">
@@ -84,7 +82,7 @@
 	<tr>
 		<th>Data source</th>
 		<td colspan="4" tal:content="mop/DataSource" />
-	</tr>	
+	</tr>
 	</tal:block>
 </table>
 

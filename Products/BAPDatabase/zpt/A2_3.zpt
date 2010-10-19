@@ -4,8 +4,7 @@
 <h3>Measures of Progress</h3>
 
 <table class="datatable">
-	<tal:block define="action python:here.get_action(action_id, 'FWQuality');
-						record python:here.get_action_values('A2_3_FWQuality', country);
+	<tal:block define="record python:here.get_action_values('A2_3_FWQuality', country);
 						mop python:here.get_action_mop(action_id, country, 'FWQuality')">
 	<tr>
 		<th colspan="2" rowspan="3" width="40%">
@@ -103,8 +102,7 @@
 </table>
 
 <table class="datatable">
-	<tal:block define="action python:here.get_action(action_id, 'FWHabitatStatus');
-						record python:here.get_action_values('A2_3_FWHabitatStatus', country);
+	<tal:block define="record python:here.get_action_values('A2_3_FWHabitatStatus', country);
 						mop python:here.get_action_mop(action_id, country, '')">
 	<tr>
 		<th colspan="2">Additional detail & Narrative summary of the information (text provided should be able to stand alone):</th>
@@ -126,8 +124,7 @@
 </table>
 
 <table class="datatable">
-	<tal:block define="action python:here.get_action(action_id, 'InlandBathing');
-						record python:here.get_action_values('A2_3_InlandBathing', country);
+	<tal:block define="record python:here.get_action_values('A2_3_InlandBathing', country);
 						mop python:here.get_action_mop(action_id, country, 'InlandBathing')">
 	<tr>
 		<th colspan="2" rowspan="4" width="30%">
