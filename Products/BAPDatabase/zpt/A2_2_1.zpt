@@ -34,6 +34,26 @@
 		</th>
 		<td colspan="2" tal:content="record/Projects" />
 	</tr>
+	<tr>
+		<th colspan="3">
+			Additional detail & Narrative summary of the above information (text provided should be able to stand alone):
+		</th>
+	</tr>
+	<tr>
+		<td colspan="3" tal:content="mop/Narative" />
+	</tr>
+	<tr>
+		<th colspan="3">
+			Additional clarifications:
+		</th>
+	</tr>
+	<tr>
+		<td colspan="3" tal:content="mop/Clarifcations" />
+	</tr>
+	<tr>
+		<th width="20%">Data source (if any)</th>
+		<td colspan="2" tal:content="mop/DataSource" />
+	</tr>
 
 
 </table>
