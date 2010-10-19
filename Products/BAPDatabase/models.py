@@ -860,6 +860,10 @@ class A7_1_4(Base):
     Percent4th = Column(String)
     Percent5th = Column(String)
 
+class A7_1_6(Base):
+    __tablename__ = 'A7_1_6'
+    CountryCode = Column(String, primary_key=True)
+
 class A7_2_2(Base):
     __tablename__ = 'A7_2_2'
     CountryCode = Column(String, primary_key=True)
