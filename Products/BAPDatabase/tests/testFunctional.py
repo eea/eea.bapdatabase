@@ -561,6 +561,15 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A7_2_2', country='Austria')
         self.assertTrue(hasattr(record, 'MandatorySEA_EIA'))
 
+    def test_A7_2_5(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A7_2_5')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertEqual(datatable.tr.th.text, 'Are ex-ante strategic environmental assessment (SEA) of relevant strategies and programmes and environmental impact assessment (EIA) of relevant projects mandatory for OCTs?Please enter Y or N:')
+        #record = self.portal.bap.get_action_values('A7_2_5', country='France')
+        #self.assertTrue(hasattr(record, 'XXX'))
+
     def test_A8_1(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1')
         html = self.browser.get_html()
