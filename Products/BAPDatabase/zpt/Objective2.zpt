@@ -16,10 +16,10 @@
 	<tr>
 		<td colspan="2" tal:content="mop/Clarifcations" />
 	</tr>
-	<tr>
+<!-- 	<tr>
 		<th width="30%">Explanation of information contained in the measure of progress above</th>
 		<td tal:content="string:???" />
-	</tr>
+	</tr> -->
 	<tr>
 		<th>Data source</th>
 		<td tal:content="mop/DataSource" />

@@ -42,8 +42,7 @@
 			<th width="20%">
 				Data source
 			</th>
-			<!-- <td colspan="2" tal:content="mop/DataSource"/> -->
-			<td colspan="2" tal:content="string:???"/>
+			<td colspan="2" tal:content="mop/DataSource"/>
 		</tr>
 	</tal:block>
 </table>

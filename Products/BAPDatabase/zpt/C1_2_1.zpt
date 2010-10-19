@@ -134,7 +134,7 @@
 		</tr>
 		<tr>
 			<th width="20%">Data source (if any)</th>
-			<td colspan="3">???</td>
+			<td colspan="3" tal:content="mop/DataSource"/>
 		</tr>
 	</tal:block>
 </table>

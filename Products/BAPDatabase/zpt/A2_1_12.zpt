@@ -81,10 +81,10 @@
 	<tr>
 		<td colspan="6" tal:content="mop/Clarifcations" />
 	</tr>
-	<tr>
+<!-- 	<tr>
 		<th colspan="2">Explanation of information contained in the measure of progress above</th>
 		<td colspan="4" tal:content="string:???" />
-	</tr>
+	</tr> -->
 	<tr>
 		<th width="20%">Data source (if any)</th>
 		<td colspan="5" tal:content="mop/DataSource" />

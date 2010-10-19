@@ -62,7 +62,7 @@
 		</tr>
 		<tr>
 			<th>Net change between reporting periods</th>
-			<td tal:content="string:???"/>
+			<td tal:content="string:NA"/>
 			<td tal:content="record/NetChange"/>
 		</tr>
 		<tr>

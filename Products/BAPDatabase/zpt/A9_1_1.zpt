@@ -26,27 +26,24 @@
 			<td tal:content="record/Change2008"/>
 		</tr>
 		<tr>
-			<th colspan="4">Narrative summary of the above information (text provided should be able to stand alone):</th>
+			<th colspan="5">Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
-			<!-- <td colspan="4" tal:content="mop/Narative" /> -->
-			<td colspan="4" tal:content="string:???" />
+			<td colspan="5" tal:content="mop/Narative" /><!--???NO DATA-->
 		</tr>
 		<tr>
-			<th colspan="4">
+			<th colspan="5">
 				Additional clarifications:
 			</th>
 		</tr>
 		<tr>
-			<!-- <td colspan="4" tal:content="mop/Clarifcations"/> -->
-			<td colspan="4" tal:content="string:???" />
+			<td colspan="5" tal:content="mop/Clarifcations"/><!--???NO DATA-->
 		</tr>
 		<tr>
 			<th>
 				Data source
 			</th>
-			<!-- <td colspan="3" tal:content="mop/DataSource"/> -->
-			<td colspan="4" tal:content="string:???" />
+			<td colspan="3" tal:content="mop/DataSource"/><!--???NO DATA-->
 		</tr>
 	</tal:block>
 </table>

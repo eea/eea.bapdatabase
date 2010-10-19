@@ -99,10 +99,7 @@
 			<th>
 				Data source
 			</th>
-			<td colspan="5">
-				<span tal:content="mop/DataSource"/>
-				<span>???</span>
-			</td>
+			<td colspan="5" tal:content="mop/DataSource"/>
 		</tr>
 	</tal:block>
 </table>

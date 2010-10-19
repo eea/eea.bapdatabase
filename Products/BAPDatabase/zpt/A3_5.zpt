@@ -29,10 +29,10 @@
 		<tr>
 			<td colspan="3" tal:content="mop/Clarifcations"/>
 		</tr>
-		<tr>
+<!-- 		<tr>
 			<th colspan="2">Explanation of information contained in the measure of progress above.</th>
 			<td tal:content="string:???" />
-		</tr>
+		</tr> -->
 		<tr>
 			<th width="20%">Data source</th>
 			<td colspan="2" tal:content="mop/DataSource" />

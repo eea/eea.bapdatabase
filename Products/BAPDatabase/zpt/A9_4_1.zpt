@@ -88,8 +88,7 @@
 			<th colspan="7">Narrative summary of the above information (text provided should be able to stand alone):</th>
 		</tr>
 		<tr>
-			<!-- <td colspan="7" tal:content="mop/Narative" /> -->
-			<td colspan="7" tal:content="string:???" />
+			<td colspan="7" tal:content="mop/Narative" />
 		</tr>
 		<tr>
 			<th colspan="7">
@@ -97,16 +96,14 @@
 			</th>
 		</tr>
 		<tr>
-			<!-- <td colspan="7" tal:content="mop/Clarifcations"/> -->
-			<td colspan="7" tal:content="string:???"/>
+			<td colspan="7" tal:content="mop/Clarifcations"/>
 		</tr>
 		<tr>
 			<th width="20%">
 				Provide relevant Data Sources and internet links here:
 			</th>
-			<!-- <td colspan="6" tal:content="mop/DataSource"/> -->
-			<td colspan="6" tal:content="string:???"/>
-		</tr>
+			<td colspan="6" tal:content="mop/DataSource"/>
+	</tr>
 	</tal:block>
 </table>
 
