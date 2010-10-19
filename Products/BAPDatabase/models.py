@@ -262,6 +262,10 @@ class A2_1_11_RDPPayments(Base):
     Public = Column(String)
     PublicPercent = Column(String)
 
+class A2_1_12(Base):
+    __tablename__ = 'A2_1_12'
+    CountryCode = Column(String, primary_key=True)
+
 class A2_1_15(Base):
     __tablename__ = 'A2_1_15'
     CountryCode = Column(String, primary_key=True)

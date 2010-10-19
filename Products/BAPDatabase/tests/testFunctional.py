@@ -202,6 +202,16 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A2_1_11_RDPPayments', country='Austria')
         self.assertTrue(hasattr(record, 'EAFRD'))
 
+    def test_A2_1_12(self):
+        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A2_1_12')
+        html = self.browser.get_html()
+        soup = BeautifulSoup(html)
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        self.assertTrue(datatable.tr.th.text.startswith('EAFRD'))
+        datatable = soup.find('table', attrs={'class':'datatable'})
+        record = self.portal.bap.get_action_values('A2_1_12', country='France')
+        self.assertTrue(hasattr(record, 'NatStratNo'))
+
     def test_A2_1_15(self):
         self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_15')
         html = self.browser.get_html()
