@@ -218,7 +218,9 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovakia', 'Measure1'
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovakia', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovakia', 'Measure4', 'B4_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovakia', 'MandE', 'C1_3');
-
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovakia', 'Objective3', 'A3_2_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovakia', 'Objective3', 'A3_6');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovakia', 'Objective3', 'A3_7');
 #
 # Missing data for Slovenia
 #
@@ -238,6 +240,9 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovenia', 'Measure1'
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovenia', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovenia', 'Measure4', 'B4_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovenia', 'MandE', 'C1_3');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovenia', 'Objective3', 'A3_2_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovenia', 'Objective3', 'A3_6');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Slovenia', 'Objective3', 'A3_7');
 
 #
 # Missing data for Sweden
@@ -248,8 +253,6 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective2'
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective2', 'A2_1_10');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective2', 'A2_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective2', 'A2_4');
-INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective3', 'A3_2_1');
-INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective3', 'A3_2_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective3', 'A3_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective3', 'A3_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Sweden', 'Objective5', 'A5_2');
@@ -683,6 +686,7 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'MandE', 'C
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A1_1', 'A1_1_2', 'Objective1');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A2_1', 'A2_1_10', 'Objective2');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A4_4_1', '', 'Objective4');
+INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A4_5_1', '', 'Objective4');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A5_2', 'A5_2_2', 'Objective5');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A6_1', 'A6_1_1', 'Objective6');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A7_1', 'A7_1_6', 'Objective7');
@@ -702,6 +706,7 @@ INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A3_2_1', 'Action: 3.2.1
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A3_2_2', 'Action: 3.2.2 - Significantly reduce airborne eutrophicating and acidifying pollution of marine ecosystems in line with Thematic Strategy on Air Quality [2006 onwards]; revise National Emissions Ceiling Directive [by 2007] (cf action 2.3.2) MS Action: Implement Thematic Strategy and NEC Directive at Member State level');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A3_6', 'Target: 3.6 - Impact of fisheries on non-target species and habitats progressively and substantially reduced from 2006 onwards');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A3_7', 'Target: 3.7 - Substantially improved information and reporting on environmental integration of the Common Fisheries Policy from 2008 onwards');
+INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A4_5_1', 'Action: 4.5.1 - All above actions applied, as appropriate, in Outermost Regions (French Guyana, Guadeloupe, Reunion, Martinique, Canaries, Azores, Madeira) [2006 onwards]. MS Action: (FRANCE, SPAIN, PORTUGAL ONLY ) All above actions (where applicable) applied in outermost regions');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A5_2', 'Target: A.5.2 Impact of alien genotypes on biodiversity in the EU significantly reduced by 2010 and again by 2013.');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A6_1', 'Target: A.6.1: International governance for biodiversity substantially more effective in delivering positive biodiversity outcomes by 2010');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A7_1_6', 'Action: A.7.1.6 Enhance economic and development assistance funds available for biodiversity-related actions in the MS’ Overseas Countries and Territories. MS Action: Check and ensure that biodiversity is addressed through specific programmes and projects or through integration in other sectors covered by economic development assistance');
