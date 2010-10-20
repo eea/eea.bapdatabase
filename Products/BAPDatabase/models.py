@@ -53,7 +53,14 @@ class Objective(Base):
     id = Column(String, primary_key=True)
     name = Column(String)
     description = Column(String)
+    headline = Column(String)
 
+class TargetActions(Base):
+    __tablename__ = 'TargetActions'
+    ID = Column(String, primary_key=True)
+    Target = Column(String)
+    Action = Column(String)
+    Objective = Column(String)    
 
 class A1_1_1_Natura2000Compleat(Base):
   __tablename__ = 'A1_1_1_Natura2000Compleat'
@@ -802,8 +809,8 @@ class A5_1_4(Base):
     Focal = Column(String)
     Coordination = Column(String)
 
-class A5_2(Base):
-    __tablename__ = 'A5_2'
+class A5_2_2(Base):
+    __tablename__ = 'A5_2_2'
     CountryCode = Column(String, primary_key=True)
     GMlegalNo = Column(String)
     GMlegalDev = Column(String)
@@ -1203,8 +1210,8 @@ class C1_2_1(Base):
     Public = Column(String)
     Additional = Column(String)
 
-class C1_3(Base):
-    __tablename__ = 'C1_3'
+class C1_3_1(Base):
+    __tablename__ = 'C1_3_1'
     CountryCode = Column(String, primary_key=True)
     Costal = Column(String)
     Dunes = Column(String)

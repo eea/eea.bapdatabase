@@ -33,11 +33,6 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         html = self.browser.get_html()
         self.failUnless("Objective1" in html)
     
-    def test_headlines(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap')
-        html = self.browser.get_html()
-        self.failUnless("Headline Target" in html)
-    
     def test_actions(self):
         self.browser.go('http://localhost/portal/countries/austria/bap')
         html = self.browser.get_html()
@@ -507,13 +502,13 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('A5_1_4', country='Austria')
         self.assertTrue(hasattr(record, 'DatabaseNo'))
 
-    def test_A5_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_2')
+    def test_A5_2_2(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_2_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
         self.assertEqual(datatable.tr.th.text, 'Has legislation on co-existence of genetically modified crops with conventional and organic farming been adopted?Please tick only one box:')
-        record = self.portal.bap.get_action_values('A5_2', country='Austria')
+        record = self.portal.bap.get_action_values('A5_2_2', country='Austria')
         self.assertTrue(hasattr(record, 'GMlegalNo'))
 
     def test_A6_1_1(self):
@@ -818,11 +813,11 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_action_values('C1_2_1', country='Austria')
         self.assertTrue(hasattr(record, 'Abundance'))
 
-    def test_C1_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_3')
+    def test_C1_3_1(self):
+        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_3_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
         self.assertEqual(datatable.tr.th.text, 'Indicate national/sub-national biodiversity monitoring schemes for habitats')
-        record = self.portal.bap.get_action_values('C1_3', country='Austria')
+        record = self.portal.bap.get_action_values('C1_3_1', country='Austria')
         self.assertTrue(hasattr(record, 'Costal'))

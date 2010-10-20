@@ -24,16 +24,14 @@
 						<span tal:content="objective/description" />
 					</span>
 					<div class="bap-objective" tal:condition="objective">
-						<tal:block define="headline python:here.get_headline(objective_name)">
-						<div class="bap-headline" tal:condition="headline">
-							<span tal:content="headline"/>
+						<div class="bap-headline" tal:condition="objective/headline">
+							<span tal:content="objective/headline"/>
 						</div>
-						</tal:block>
 						<div class="bap-targets">
 							
 							<div class="bap-target" tal:repeat="target python:here.get_targets(objective_name, country)">
-								<tal:block define="text target/FullText;
-													ident target/Ident"> 
+								<tal:block define="text python:target[1];
+													ident python:target[0]"> 
 								<span tal:content="structure python:here.humanize_text(text, ident)" />
 							
 								<div class="bap-actions">

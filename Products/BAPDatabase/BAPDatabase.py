@@ -121,23 +121,16 @@ class BAPDatabase(NyFolder):
     def get_objectives(self):
         return self._get_session().query(models.Objective).all()
 
-    def get_headline(self, objective):
-        result = self._get_session().query(models.QuestionsText.FullText).\
-                                    filter(models.QuestionsText.Ident == objective).all()
-        if result:
-            return result[0][0]    #take the first headline
-        return ''
-
     def get_targets(self, objective, country):
         result = {}
-        for target in self._get_session().query(models.QuestionsText) \
-                        .join((models.Narrative, models.QuestionsText.Ident == models.Narrative.Ident)) \
-                        .filter(models.Narrative.Country == country) \
-                        .filter(models.Narrative.Objective == objective).all():
-            if target_pattern.match(target.Ident):   #extract targets (e.g. A1_1)
-                result[target.Ident] = target
-
-        return [result[k] for k in sorted(result)]
+        for target in self._get_session().query(models.TargetActions.Target, models.QuestionsText.FullText) \
+                                .join((models.Narrative, models.Narrative.Ident == models.TargetActions.Target)) \
+                                .join((models.QuestionsText, models.QuestionsText.Ident == models.TargetActions.Target)) \
+                                .filter(models.Narrative.Country == country) \
+                                .filter(models.Narrative.Objective == objective).distinct().all():
+            result[target[0]] = target[1]
+        return iter(sorted(result.iteritems()))
+        
 
     def get_actions(self, objective, target, country):
         result = {}
