@@ -52,6 +52,36 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Belgium', 'Measure3',
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Belgium', 'Measure4', 'B4_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Belgium', 'MandE', 'C1_3');
 
+
+#
+# Missing data for Bulgaria
+#
+
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective1', 'A1_1_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective1', 'A1_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective2', 'A2_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective2', 'A2_1_10');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective2', 'A2_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective2', 'A2_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective3', 'A3_2_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective3', 'A3_2_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective3', 'A3_6');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective3', 'A3_7');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective5', 'A5_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective6', 'A6_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective7', 'A7_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective9', 'A9_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective9', 'A9_3');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Objective10', 'A10_1_6');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Measure1', 'B1_1_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Measure1', 'B1_1_7');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Measure3', 'B3_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'Measure4', 'B4_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Bulgaria', 'MandE', 'C1_3');
+
+
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A1_1', 'A1_1_2', 'Objective1');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A2_1', 'A2_1_10', 'Objective2');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A4_4_1', '', 'Objective4');
