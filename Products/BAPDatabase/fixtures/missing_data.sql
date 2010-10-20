@@ -674,6 +674,7 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Objective7
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Objective9', 'A9_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Objective9', 'A9_3');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Measure1', 'B1_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Measure3', 'B3_1');
