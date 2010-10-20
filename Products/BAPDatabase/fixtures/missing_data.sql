@@ -528,6 +528,7 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Objective9'
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Objective9', 'A9_4');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Measure1', 'B1_1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Greece', 'Measure4', 'B4_1');
@@ -552,7 +553,9 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Objective7
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Objective9', 'A9_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Objective9', 'A9_3');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Measure1', 'B1_1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Ireland', 'Measure4', 'B4_1');
@@ -577,7 +580,9 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Objective7',
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Objective9', 'A9_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Objective9', 'A9_3');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Measure1', 'B1_1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Italy', 'Measure4', 'B4_1');
@@ -602,7 +607,9 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Objective7'
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Objective9', 'A9_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Objective9', 'A9_3');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Measure1', 'B1_1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Latvia', 'Measure4', 'B4_1');
@@ -627,7 +634,9 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Objectiv
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Objective9', 'A9_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Objective9', 'A9_3');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Measure1', 'B1_1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Lithuania', 'Measure4', 'B4_1');
