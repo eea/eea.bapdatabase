@@ -1,7 +1,9 @@
 USE `bap`;
 
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective1', 'A1_1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective1', 'A1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective2', 'A2_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective2', 'A2_1_10');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective2', 'A2_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective2', 'A2_4');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective5', 'A5_2');
@@ -10,11 +12,21 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective7
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective9', 'A9_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective9', 'A9_3');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Measure3', 'B3_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Measure4', 'B4_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Measure1', 'B1_1_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Austria', 'MandE', 'C1_3');
 
+
+INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A1_1', 'A1_1_2', 'Objective1');
+INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A2_1', 'A2_1_10', 'Objective2');
+INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A4_4_1', '', 'Objective4');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A5_2', 'A5_2_2', 'Objective5');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A6_1', 'A6_1_1', 'Objective6');
+INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A10_1', 'A10_1_6', 'Objective10');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('C1_3', 'C1_3_1', 'MandE');
 
 
@@ -29,7 +41,13 @@ INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A9_1', 'Target: A.9.1 8
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A9_3', 'Target: A.9.3 Climate change adaptation or mitigation measure from 2006 onwards delivering biodiversity benefits, and any negative impacts on biodiversity prevented or minimised, from 2006 onwards.');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A9_4', 'Target: A.9.4 Resilience of EU biodiversity to climate change substantially strengthened by 2010.');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('B1_1', 'Target: B1.1: Adequate funding provided for Natura 2000, biodiversity outside Natura 2000 in EU, biodiversity in external assistance and biodiversity research, inventory and monitoring 2007-2013');
+INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('B3_1', 'Target B3.1: Key stakeholder groups actively engaged in conservation of biodiversity from 2006 in each MS');
+INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('B4_1', 'Target B4.1: 10 million Europeans actively engaged in biodiversity conservation by 2010, 15 million by 2013.');
 INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('C1_3', 'Target: C.1.3: Monitoring providing adequate data flow for implementation of indicator set, for reporting on favourable conservation status, and for broader assessment of effectiveness of this Action Plan by 2010.');
+INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A2_1_10', 'Action: A.2.1.10 Consider, if appropriate, a possible review of cross compliance requirements related to the preservation of biodiversity in the 2007 review of the cross-compliance system. MS Action: Develop appropriate standards and modalities for cross compliance, decoupling, modulation');
+INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('A10_1_6', 'Action: A10.1.6 Allocate adequate financial resources to European and national biodiversity research and to dissemination of its results, including under the 7th Framework Programme MS Action: Accommodate in national research programmes and take forward initiatives under the ESFRI');
+INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('B1_1_2', 'Action: B1.1.2: Allocate, at MS initiative, within each national/regional Rural Development (RD) Programme, adequate Community and MS co-financing measures available under all three axes of the RD Regulation which are directly or indirectly supportive of nature and biodiversity [2006/07 and any subsequent revisions]. MS Action: Ensure adequate MS funds to make up any shortfall in funds provided by EC co-financing.');
+INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('B1_1_7', 'Action: B1.1.7: Increase in real terms international development assistance funds flowing annually to projects directly benefiting biodiversity [for period 2006-2010 compared with period 2000-2005; and again for period 2011-2013]. MS Action: Check and ensure that resources are available to implement the recommendations in the R/CEP through biodiversity projects or mainstreaming biodiversity concerns in to other relevant projects. Continue to press in GEF replenishment negotiations and through bilateral contracts for a substantial replenishment based on the agreed policy priorities.');
 
 
 -- INSERT INTO QuestionsText (`Ident`, `FullText`) VALUES ('xxx', 'xxx');
