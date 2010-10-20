@@ -474,7 +474,9 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Objective7
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Objective9', 'A9_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Objective9', 'A9_3');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Objective9', 'A9_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Romania', 'Objective10', 'A10_1_6');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Measure1', 'B1_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Measure1', 'B1_1_2');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Measure1', 'B1_1_7');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Measure3', 'B3_1');
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Finland', 'Measure4', 'B4_1');
