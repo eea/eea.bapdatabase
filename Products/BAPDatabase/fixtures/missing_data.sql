@@ -111,6 +111,30 @@ INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Cyprus', 'Measure4', 
 INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Cyprus', 'MandE', 'C1_3');
 
 
+#
+# Missing data for Czech Republic
+#
+
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective1', 'A1_1_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective1', 'A1_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective2', 'A2_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective2', 'A2_1_10');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective2', 'A2_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective2', 'A2_4');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective5', 'A5_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective6', 'A6_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective7', 'A7_2');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective9', 'A9_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective9', 'A9_3');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective9', 'A9_4');
+-- INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Objective10', 'A10_1_6');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Measure1', 'B1_1');
+-- INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Measure1', 'B1_1_2');
+-- INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Measure1', 'B1_1_7');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Measure3', 'B3_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'Measure4', 'B4_1');
+INSERT INTO Narrative (Country, Objective, Ident) VALUES ('Czech Republic', 'MandE', 'C1_3');
+
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A1_1', 'A1_1_2', 'Objective1');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A2_1', 'A2_1_10', 'Objective2');
 INSERT INTO `TargetActions` (`Target`,`Action`,`Objective`) VALUES ('A4_4_1', '', 'Objective4');
