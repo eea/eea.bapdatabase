@@ -15,6 +15,9 @@
 			<h1 i18n:translate="">
 				Country profile <span i18n:name="country-name" tal:replace="country" />
 			</h1>
+			<p>
+				<strong>Tip:</strong> click on an item from the list below to expand its details.
+			</p>
 			<div id="bap-content">
 			<tal:block repeat="objective here/get_objectives">
 			 
