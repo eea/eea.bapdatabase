@@ -10,7 +10,6 @@ from AccessControl.SecurityInfo import ClassSecurityInfo
 from AccessControl.Permissions import view_management_screens, view
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 
-from Products.NaayaCore.FormsTool.NaayaTemplate import NaayaPageTemplateFile
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
  
 import models
@@ -24,9 +23,7 @@ for f in os.listdir(join(dirname(__file__), 'zpt')):
     if f.endswith('.zpt'):
         fname = splitext(f)[0]
         tables.setdefault(fname, 
-                            NaayaPageTemplateFile('zpt/%s' % fname, 
-                                                globals(), 
-                                                'products.bapdatabase.tables.%s' % fname))
+                            PageTemplateFile('zpt/%s' % fname, globals()))
 
 def create_object_callback(parent, id, contributor):
     ob = BAPDatabase(id, contributor)
@@ -175,7 +172,7 @@ class BAPDatabase(NyFolder):
         template = tables.get(action_id)
         return template.__of__(self)(country=country, action_id=action_id)
 
-    index_html = NaayaPageTemplateFile('zpt/index', globals(), 'products.bapdatabase.index')
-    details = NaayaPageTemplateFile('zpt/details', globals(), 'products.bapdatabase.details')
+    index_html = PageTemplateFile('zpt/index', globals())
+    details = PageTemplateFile('zpt/details', globals())
 
 InitializeClass(BAPDatabase)
