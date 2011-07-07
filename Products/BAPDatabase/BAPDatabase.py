@@ -2,6 +2,11 @@ import re
 import os
 from os.path import join, dirname, splitext
 
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -11,7 +16,7 @@ from AccessControl.Permissions import view_management_screens, view
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 
 from Products.Naaya.NyFolder import NyFolder, addNyFolder
- 
+
 import models
 
 pattern = re.compile(r'^(?P<heading>[a-zA-Z\s]+\:?(\s*\w[\s\d\.]+)?)(?P<text>.*)$', re.DOTALL)
@@ -22,7 +27,7 @@ tables = {}
 for f in os.listdir(join(dirname(__file__), 'zpt')):
     if f.endswith('.zpt'):
         fname = splitext(f)[0]
-        tables.setdefault(fname, 
+        tables.setdefault(fname,
                             PageTemplateFile('zpt/%s' % fname, globals()))
 
 def create_object_callback(parent, id, contributor):
@@ -67,7 +72,7 @@ class BAPDatabase(NyFolder):
     db_username = None
     db_password = None
     db_name = None
-    db_debug = False
+    db_debug = True
 
     def _get_schema(self):
         from Products.NaayaCore.constants import ID_SCHEMATOOL
@@ -98,25 +103,21 @@ class BAPDatabase(NyFolder):
             del registeredWrappers[self.db_name]
             self._p_changed = 1
 
-    def humanize_text(self, text, id, action=False):
+
+    def humanize_text(self, text):
         m = pattern.match(text)
         if m is not None:
-            if action:  #@todo: optimize this code
-                return '<a class="action-link" title="CLick to see details" href="%(url)s">%(heading)s</a> %(text)s' % {
-                     'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
-                     'heading': m.group('heading').strip(),
-                     'text': m.group('text').strip(),
-                 }
-            else:
-                return '<a class="target-link" title="CLick to see details" href="%(url)s">%(heading)s</a> %(text)s' % {
-                    'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
-                    'heading': m.group('heading').strip(),
-                    'text': m.group('text').strip(),
-                }
-            return text
+            return m.group('heading').strip(), m.group('text').strip()
 
-    def get_objectives(self):
-        return self._get_session().query(models.Objective).all()
+    def build_details(self, text, id, css_class):
+        parsed_text = self.humanize_text(text)
+        if isinstance(parsed_text, tuple):
+            return '<a class="%(css_class)s" title="Click to see details" href="%(url)s">%(heading)s</a> %(text)s' % {
+                 'css_class': css_class,
+                 'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
+                 'heading': parsed_text[0],
+                 'text': parsed_text[1]
+             }
 
     def get_targets(self, objective, country):
         result = {}
@@ -127,7 +128,6 @@ class BAPDatabase(NyFolder):
                                 .filter(models.Narrative.Objective == objective).distinct().all():
             result[target[0]] = target[1]
         return iter(sorted(result.iteritems()))
-        
 
     def get_actions(self, objective, target, country):
         result = {}
@@ -172,7 +172,71 @@ class BAPDatabase(NyFolder):
         template = tables.get(action_id)
         return template.__of__(self)(country=country, action_id=action_id)
 
+    #Compare country values
+    def get_countries_filtered_by_actions(self, objective, target, ref_country):
+        countries = self._get_session().query(models.Header.Country) \
+                            .filter(models.Narrative.Objective == objective) \
+                            .filter(models.Narrative.Ident.like('%s_%%' % target)).distinct() \
+                            .order_by(models.Header.Country).all()
+        return [ country[0] for country in countries if ref_country!=country[0] ]
+
+    def get_countries(self):
+        countries = self._get_session().query(models.Header.Country) \
+                                        .order_by(models.Header.Country).all()
+        return [ country[0] for country in countries if country ]
+
+    def get_objectives(self):
+        return self._get_session().query(models.Objective).all()
+
+    def build_compare_details(self, text, id):
+        parsed_text = self.humanize_text(text)
+        if isinstance(parsed_text, tuple):
+            return '<a class="action-link" title="Click to see details" href="#">%(heading)s</a> %(text)s' % {
+                 'id': id,
+                 'heading': parsed_text[0],
+                 'text': parsed_text[1]
+             }
+
+    def json_objectives(self):
+        """ """
+        records = []
+        for objective in self.get_objectives():
+            records.append({'optionValue': objective.name,
+                            'optionDisplay': objective.name,
+                            'optionTitle': objective.headline})
+        return json.dumps(records)
+
+    def json_get_targets(self, objective, country):
+        """ """
+        records = []
+        for target in self.get_targets(objective, country):
+            records.append({'optionValue': target[0],
+                            'optionDisplay': target[0],
+                            'optionTitle': target[1]})
+        return json.dumps(records)
+
+    def json_get_actions(self, objective, target, country):
+        """ """
+        records = []
+        for action in self.get_actions(objective, target, country):
+            records.append({'optionValue': action.Ident,
+                            'optionDisplay': action.Ident,
+                            'optionTitle': action.FullText})
+        return json.dumps(records)
+
+    def json_get_countries_filtered_by_actions(self, objective, target, ref_country):
+        """ """
+        records = []
+        for country in self.get_countries_filtered_by_actions(objective, target, ref_country):
+            records.append({'optionValue': country,
+                            'optionDisplay': country,
+                            'optionTitle': country})
+        return json.dumps(records)
+
     index_html = PageTemplateFile('zpt/index', globals())
     details = PageTemplateFile('zpt/details', globals())
+
+    compare = PageTemplateFile('zpt/compare', globals())
+    compare_details = PageTemplateFile('zpt/compare_details', globals())
 
 InitializeClass(BAPDatabase)

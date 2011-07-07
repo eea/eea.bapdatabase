@@ -2,9 +2,9 @@ import BAPDatabase
 from App.ImageFile import ImageFile
 
 def initialize(context):
-    """ 
+    """
         Product initialization method
-        @param context: Zope server context 
+        @param context: Zope server context
     """
     context.registerClass(
         BAPDatabase.BAPDatabase,
@@ -15,7 +15,9 @@ def initialize(context):
 
 misc_ = {
     'bap.js':ImageFile('www/js/bap.js', globals()),
+    'bapCompare.js':ImageFile('www/js/bap_compare.js', globals()),
     'showLoading.js':ImageFile('www/js/showLoading.js', globals()),
+    'tabs-ie.css':ImageFile('www/css/tabs-ie.css', globals()),
     'ajax-loader.gif':ImageFile('www/ajax-loader.gif', globals()),
     'bullet_orange.png':ImageFile('www/bullet_orange.png', globals()),
     'bullet_blue.png':ImageFile('www/bullet_blue.png', globals()),

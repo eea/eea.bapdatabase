@@ -4,7 +4,7 @@
 					action python:here.get_action(action_id);
 					record python:here.get_action_values(action_id, country)">
 
-<h3>Measures of Progress</h3>
+
 
 <table class="datatable">
 	<tr>

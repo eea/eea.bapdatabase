@@ -1,24 +1,25 @@
-<metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro"> 
+<metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
 
-<metal:block metal:fill-slot="title"> 
-	<title tal:content="string:${here/title} | ${here/site_title}" /> 
+<metal:block metal:fill-slot="title">
+	<title tal:content="string:${here/title} | ${here/site_title}" />
 </metal:block>
 
-<metal:block fill-slot="body"> 
+<metal:block fill-slot="body">
 
-<div id="center_content" tal:define="country here/aq_parent/title_or_id; 
-									action_id request/id | nothing"> 
-   <h1 i18n:translate=""> 
-           Country profile <span i18n:name="country-name" tal:replace="country" /> 
+<div id="center_content" tal:define="country here/aq_parent/title_or_id;
+									action_id request/id | nothing">
+   <h1 i18n:translate="">
+           Country profile <span i18n:name="country-name" tal:replace="country" />
    </h1>
 
-	<div tal:condition="action_id" tal:define="action python:here.get_action(action_id);"> 
-		<p tal:condition="action" tal:content="structure action/FullText" /> 
+	<div tal:condition="action_id" tal:define="action python:here.get_action(action_id);">
+		<p tal:condition="action" tal:content="structure action/FullText" />
 	</div>
 
-	<div id="mop-content" 
-			tal:condition="action_id"
-			tal:content="structure python:here.get_table(action_id, country)" />
+	<div id="mop-content" tal:condition="action_id">
+		<h3>Measures of Progress</h3>
+		<tal:block replace="structure python:here.get_table(action_id, country)" />
+	</div>
 </div>
 </metal:block>
 

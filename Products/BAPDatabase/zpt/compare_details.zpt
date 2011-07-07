@@ -1,0 +1,3 @@
+<tal:block define="req_country request/country|nothing;
+									req_action request/id|nothing"
+					 replace="structure python:here.get_table(req_action, req_country)" />

@@ -4,7 +4,7 @@
 					mop python:here.get_action_mop(action_id, country);
 					record python:here.get_action_values('A1_1_3', country)">
 
-<h3>Measures of Progress</h3>
+
 
 <table class="datatable">
 	<tr>

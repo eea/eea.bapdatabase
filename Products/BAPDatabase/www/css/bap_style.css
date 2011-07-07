@@ -1,3 +1,17 @@
+.clearifx {
+    clear: both;
+    display: block;
+    height: 1px;
+}
+
+.clear {
+    height: auto !important;
+}
+
+.ui-tabs-hide {
+    display: none !important;
+}
+
 .datatable td, .datatable th  {
 	margin:0;
 	padding: 0.3em;
@@ -6,10 +20,7 @@
 }
 
 table.datatable {
-	border: 1px solid #4CA6D6;
-	color: #666666;
-	margin: 1em 0em;
-	width: 95%;
+	margin: 0 0 1em 0;
 }
 
 .datatable th {
@@ -42,7 +53,7 @@ table.datatable {
 }
 
 .bap-objectives a {
-	
+
 }
 
 .bap-objective {
@@ -101,21 +112,25 @@ table.datatable {
 }
 
 .bap-target span {
-	
+
 }
 
 .bap-target:last-child {
 	border: none;
 }
 
-.bap-target span a {
-	background: transparent url('/misc_/BAPDatabase/bullet_orange.png') no-repeat left center;
-	padding-left: 20px;
-	padding-bottom: 3px;
-	vertical-align: middle;
+.bap-actions {
 }
 
-.bap-actions {
+.bap-target span a {
+	background: transparent url('/misc_/BAPDatabase/bullet_orange.png') no-repeat left center;
+}
+
+.bap-target span a,
+.bap-action span a {
+    padding-left: 20px;
+    padding-bottom: 3px;
+    vertical-align: middle;
 }
 
 .bap-action a {
@@ -148,4 +163,112 @@ table.datatable {
 	background-color: #FFFFFF;
 	opacity: 0.6;
 	filter: alpha(opacity = 60);
+}
+
+select.compare-select {
+    border: 1px solid #BABBB8;
+    background-color: #FAFAFA;
+    padding: 2px;
+    min-width: 150px;
+}
+
+#compare-form table td.label {
+    vertical-align: top;
+}
+
+/**
+ * Compare tabs
+*/
+
+.ui-tabs-nav {
+    z-index: 2;
+}
+
+.ui-tabs-panel {
+    z-index: 1;
+}
+
+.compare-tabs ul {
+    list-style: none;
+    clear: both;
+    padding: 0 !important;
+    margin: 0 !important;
+    
+}
+
+.compare-tabs ul li {
+    list-style: none;
+    list-style-image: none;
+    float: left;
+    margin-right: 3px;
+}
+
+.compare-tabs ul li a {
+    border: 1px solid #4CA6D6;
+    background-image: none !important;
+    background-color: #F2F2F2;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 3px 3px 0 0;
+       -moz-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+    text-decoration: none;
+    color: #333333;
+}
+
+.compare-tabs ul li.current a,
+.ui-state-active a {
+    background-color: #E4F1F9 !important;
+    padding:  7px !important;
+    position: relative;
+    top: -2px;
+}
+
+.ui-state-active a {
+    border-bottom: 1px solid #E4F1F9 !important;
+}
+
+.compare-tabs ul li a:hover {
+    position: relative;
+    border: 1px solid #BABBB8;
+    background: #E4F1F9 !important;
+}
+
+#compare-form select.multiple-select {
+    height: 145px;
+}
+
+.compare-form-holder {
+    border: 1px solid #DFDFDF;
+    background-color: #E7F3FB;
+    padding: 15px;
+    -webkit-box-shadow: 3px 3px 3px #EFEFEF;
+       -moz-box-shadow: 3px 3px 3px #EFEFEF;
+            box-shadow: 3px 3px 3px #EFEFEF;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    width: 700px;
+}
+
+.compare-form-holder form#compare-form {
+    float: left;
+}
+
+.compare-form-holder p {
+    font-size: 13px;
+    font-weight: bold;
+    border-bottom: 1px solid #BABBB8;
+    padding-bottom: 15px;
+}
+
+.fields-holder {
+    float: left;
+    margin-right: 25px;
+}
+
+.datatable, .datatable th, .datatable td {
+    word-break: break-all;
+    word-wrap: break-word;
 }
