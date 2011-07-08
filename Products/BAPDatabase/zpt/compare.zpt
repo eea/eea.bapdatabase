@@ -1,27 +1,29 @@
 <metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${here/title} | ${here/site_title}" />
+    <title tal:content="string:${here/title} | ${here/site_title}" />
 </metal:block>
 
 <metal:block metal:fill-slot="head">
   <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
-	<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bapCompare.js"></script>
-	<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
-	<tal:block content="structure string:<!--[if lt IE 8]>" />
-	<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
-	<tal:block content="structure string:<![endif]-->" />
+    <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bapCompare.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
+    <tal:block content="structure string:<!--[if lt IE 8]>" />
+    <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
+    <tal:block content="structure string:<![endif]-->" />
 </metal:block>
+
+<metal:block fill-slot="left-port"></metal:block>
 
 <metal:block fill-slot="body">
 
 <div id="center_content"
-		tal:define="req_country request/country|nothing;
-								req_objective request/objective|nothing;
-								req_target request/target|nothing;
-								req_cmp_countries request/cmp_countries|python:[];">
+        tal:define="req_country request/country|nothing;
+                                req_objective request/objective|nothing;
+                                req_target request/target|nothing;
+                                req_cmp_countries request/cmp_countries|python:[];">
 
-	<div class="bap-action-content">
+    <div class="bap-action-content">
         <div class="compare-form-holder">
             <p>
                 Select the countries, objective and target to compare. Finally select action.
@@ -94,50 +96,50 @@
 
 
 
-		<div class="bap-actions"
-					tal:condition="request/compare|nothing">
-			<div class="bap-action" tal:repeat="action python:here.get_actions(req_objective, req_target, req_country)">
-				<span tal:define="text action/FullText; ident action/Ident"
-									tal:content="structure python:here.build_compare_details(text, ident)" />
+        <div class="bap-actions"
+                    tal:condition="request/compare|nothing">
+            <div class="bap-action" tal:repeat="action python:here.get_actions(req_objective, req_target, req_country)">
+                <span tal:define="text action/FullText; ident action/Ident"
+                                    tal:content="structure python:here.build_compare_details(text, ident)" />
 
-				<div class="bap-mop-content" tal:attributes="id action/Ident" style="display:none;">
-					<h3>Measures of Progress</h3>
-					<tal:block define="tabid string:tab${action/Ident}">
-					<div class="compare-tabs" tal:attributes="id tabid">
-						<ul class="clear" tal:attributes="id string:ul${tabid}">
-							<tal:block condition="python:len(req_cmp_countries) <= 8">
-							  <li>
-								  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
-													title string:${action/Ident} - ${req_country}"
-									   tal:content="req_country" />
-							  </li>
-							  <li tal:repeat="country req_cmp_countries">
-								  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
-													title string:${action/Ident} - ${country}"
-									  tal:content="country"/>
-							  </li>
-							</tal:block>
-							<tal:block condition="python:len(req_cmp_countries) > 8">
-							  <li>
-								  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
-													title string:${action/Ident} - ${req_country}"
-									   tal:content="python:here.get_country_code(req_country)" />
-							  </li>
-							  <li tal:repeat="country req_cmp_countries">
-								  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
-													title string:${action/Ident} - ${country}"
-									  tal:content="python:here.get_country_code(country)"/>
-							  </li>
-							</tal:block>
-						</ul>
-			                        <div class="clear">&nbsp;</div>
-					</div>
+                <div class="bap-mop-content" tal:attributes="id action/Ident" style="display:none;">
+                    <h3>Measures of Progress</h3>
+                    <tal:block define="tabid string:tab${action/Ident}">
+                    <div class="compare-tabs" tal:attributes="id tabid">
+                        <ul class="clear" tal:attributes="id string:ul${tabid}">
+                            <tal:block condition="python:len(req_cmp_countries) <= 8">
+                              <li>
+                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
+                                                    title string:${action/Ident} - ${req_country}"
+                                       tal:content="req_country" />
+                              </li>
+                              <li tal:repeat="country req_cmp_countries">
+                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
+                                                    title string:${action/Ident} - ${country}"
+                                      tal:content="country"/>
+                              </li>
+                            </tal:block>
+                            <tal:block condition="python:len(req_cmp_countries) > 8">
+                              <li>
+                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
+                                                    title string:${action/Ident} - ${req_country}"
+                                       tal:content="python:here.get_country_code(req_country)" />
+                              </li>
+                              <li tal:repeat="country req_cmp_countries">
+                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
+                                                    title string:${action/Ident} - ${country}"
+                                      tal:content="python:here.get_country_code(country)"/>
+                              </li>
+                            </tal:block>
+                        </ul>
+                                    <div class="clear">&nbsp;</div>
+                    </div>
 
-					</tal:block>
-				</div>
-			</div>
-		</div>
-	</div>
+                    </tal:block>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </metal:block>
 
