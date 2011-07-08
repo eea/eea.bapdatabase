@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/misc_/BAPDatabase/full-width-style.css" />
     <tal:block content="structure string:<!--[if lt IE 8]>" />
-    <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/misc_/BAPDatabase/tabs-ie.css" />
     <tal:block content="structure string:<![endif]-->" />
 </metal:block>
 
