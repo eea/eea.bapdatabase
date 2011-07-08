@@ -170,7 +170,8 @@ class BAPDatabase(NyFolder):
 
     def get_table(self, action_id, country):
         template = tables.get(action_id)
-        return template.__of__(self)(country=country, action_id=action_id)
+        if template is not None:
+            return template.__of__(self)(country=country, action_id=action_id)
 
     #Compare country values
     def get_countries_filtered_by_actions(self, objective, target, ref_country):
