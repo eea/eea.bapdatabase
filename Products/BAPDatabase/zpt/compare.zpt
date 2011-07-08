@@ -25,9 +25,11 @@
                                 req_cmp_countries request/cmp_countries|python:[];">
 
     <div class="bap-action-holder">
+        <h1>BAP Report 2010 - comparison</h1>
         <div class="compare-form-holder">
             <p>
-                Select the countries, objective and target to compare. Finally select action.
+                Select the countries, objective and target to compare. Finally select the action. 
+                The data for two countries will show side by side; by selecting multiple countries, you will show each corresponding data in a separate tab
             </p>
 
             <form action="" name="compare_values" method="get" id="compare-form">
