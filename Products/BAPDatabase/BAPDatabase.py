@@ -238,5 +238,9 @@ class BAPDatabase(NyFolder):
 
     compare = PageTemplateFile('zpt/compare', globals())
     compare_details = PageTemplateFile('zpt/compare_details', globals())
+    
+    compare_multiple = PageTemplateFile('zpt/compare_multiple', globals())
+    compare_side_by_side = PageTemplateFile('zpt/compare_side_by_side', globals())
+    
 
 InitializeClass(BAPDatabase)

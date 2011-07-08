@@ -106,33 +106,9 @@
                     <h3>Measures of Progress</h3>
                     <tal:block define="tabid string:tab${action/Ident}">
                     <div class="compare-tabs" tal:attributes="id tabid">
-                        <ul class="clear" tal:attributes="id string:ul${tabid}">
-                            <tal:block condition="python:len(req_cmp_countries) <= 8">
-                              <li>
-                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
-                                                    title string:${action/Ident} - ${req_country}"
-                                       tal:content="req_country" />
-                              </li>
-                              <li tal:repeat="country req_cmp_countries">
-                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
-                                                    title string:${action/Ident} - ${country}"
-                                      tal:content="country"/>
-                              </li>
-                            </tal:block>
-                            <tal:block condition="python:len(req_cmp_countries) > 8">
-                              <li>
-                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
-                                                    title string:${action/Ident} - ${req_country}"
-                                       tal:content="python:here.get_country_code(req_country)" />
-                              </li>
-                              <li tal:repeat="country req_cmp_countries">
-                                  <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
-                                                    title string:${action/Ident} - ${country}"
-                                      tal:content="python:here.get_country_code(country)"/>
-                              </li>
-                            </tal:block>
-                        </ul>
-                                    <div class="clear">&nbsp;</div>
+                        <tal:block condition="python:len(req_cmp_countries) > 1" replace="structure python:here.compare_multiple(action=action)" />
+                        <tal:block condition="python:len(req_cmp_countries) == 1" replace="structure python:here.compare_side_by_side(action=action)" />
+                        <div class="clear">&nbsp;</div>
                     </div>
 
                     </tal:block>

@@ -1,0 +1,33 @@
+<tal:block define="req_cmp_countries request/cmp_countries|python:[];
+                   req_country request/country|nothing;
+                   action options/action;
+                   tabid string:tab${action/Ident}">
+
+<ul class="clear" tal:attributes="id string:ul${tabid}">
+    <tal:block condition="python:len(req_cmp_countries) <= 8">
+      <li>
+          <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
+                            title string:${action/Ident} - ${req_country}"
+               tal:content="req_country" />
+      </li>
+      <li tal:repeat="country req_cmp_countries">
+          <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
+                            title string:${action/Ident} - ${country}"
+              tal:content="country"/>
+      </li>
+    </tal:block>
+    <tal:block condition="python:len(req_cmp_countries) > 8">
+      <li>
+          <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
+                            title string:${action/Ident} - ${req_country}"
+               tal:content="python:here.get_country_code(req_country)" />
+      </li>
+      <li tal:repeat="country req_cmp_countries">
+          <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
+                            title string:${action/Ident} - ${country}"
+              tal:content="python:here.get_country_code(country)"/>
+      </li>
+    </tal:block>
+</ul>
+
+</tal:block>
