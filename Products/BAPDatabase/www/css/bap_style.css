@@ -299,3 +299,28 @@ select.compare-select {
     margin-right: 15px;
     position: relative;
 }
+
+.country-compare-button {
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #BABBB8;
+    background: #F2F2F2;
+    color: #333333 !important;
+    padding: 3px 5px;
+    clear: both;
+    display: block;
+    position: relative;
+    top: -6px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    text-shadow: 1px 1px 0 #FFFFFF;
+}
+
+.country-compare-button:hover {
+    -webkit-box-shadow: 0px 0px 3px #C6C6C6;
+       -moz-box-shadow: 0px 0px 3px #C6C6C6;
+            box-shadow: 0px 0px 3px #C6C6C6;
+}

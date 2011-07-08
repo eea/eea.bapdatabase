@@ -1,7 +1,7 @@
 <metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
 
 	<metal:block metal:fill-slot="title">
-			<title tal:content="string:${here/title} | ${here/site_title}" />
+			<title tal:content="string:${here/title} | ${here/absolute_url}" />
 	</metal:block>
 
 	<metal:block metal:fill-slot="head">
@@ -17,7 +17,16 @@
 		<div id="center_content" tal:define="country here/aq_parent/title_or_id">
 			<h1 i18n:translate="">
 				Country profile <span i18n:name="country-name" tal:replace="country" />
+				<a class="country-compare-button"
+				   i18n:name="compare-button"
+				   tal:attributes="
+				   title string:Compare ${country};
+				   href string:${here/absolute_url}/compare?country=${country}&objective=&target=&compare=Compare
+				   ">
+					Compare
+				</a>
 			</h1>
+			
 			<p>
 				<strong>Tip:</strong> click on an item from the list below to expand its details.
 			</p>
