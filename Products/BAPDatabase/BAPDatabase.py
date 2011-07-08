@@ -110,16 +110,6 @@ class BAPDatabase(NyFolder):
             return m.group('heading').strip(), m.group('text').strip()
         return ['', '']
 
-    def build_details(self, text, id, css_class):
-        parsed_text = self.humanize_text(text)
-        if isinstance(parsed_text, tuple):
-            return '<a class="%(css_class)s" title="Click to see details" href="%(url)s">%(heading)s</a> %(text)s' % {
-                 'css_class': css_class,
-                 'url': '%s/details?id=%s' % (self.REQUEST.ACTUAL_URL, id),
-                 'heading': parsed_text[0],
-                 'text': parsed_text[1]
-             }
-
     def get_targets(self, objective, country):
         result = {}
         for target in self._get_session().query(models.TargetActions.Target, models.QuestionsText.FullText) \
@@ -160,6 +150,13 @@ class BAPDatabase(NyFolder):
             return self._get_session().query(models.QuestionsText) \
                                     .filter(models.QuestionsText.Ident == id) \
                                     .filter(models.QuestionsText.MOP == mop).one()
+        except NoResultFound:
+            return
+
+    def get_objective(self, id):
+        try:
+            return self._get_session().query(models.Objective) \
+                                    .filter(models.Objective.id == id).one()
         except NoResultFound:
             return
 
@@ -237,6 +234,7 @@ class BAPDatabase(NyFolder):
 
     index_html = PageTemplateFile('zpt/index', globals())
     details = PageTemplateFile('zpt/details', globals())
+    objective = PageTemplateFile('zpt/objective', globals())
 
     compare = PageTemplateFile('zpt/compare', globals())
     compare_details = PageTemplateFile('zpt/compare_details', globals())
