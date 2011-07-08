@@ -58,10 +58,10 @@
                     </select>
                 </div>
 
-                <div class="field left">
+                <!--<div class="field left">
                     <label>&nbsp;</label>
                     <a href="javascript:void(0);" title="Switch compare view" class="switch-compare">Compare side by side</a>
-                </div>
+                </div>-->
 
                 <div class="clear">&nbsp;</div>
 
@@ -88,13 +88,8 @@
                     </select>
                 </div>
 
-                <div class="field left">
-                    <label for="ctlCmpCountries">&nbsp;</label>
-                    <input type="submit" name="compare" value="Compare" />
-                </div>
-
                 <div class="cleaner">
-                    
+                    <input type="submit" name="compare" value="Compare" />
                 </div>
             </form>
 

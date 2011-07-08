@@ -1,18 +1,18 @@
-$(function() {
-	$('.switch-compare').live('click', function(e){
-		e.preventDefault();
-		if( ($('.compare-select.multiple-select').length)){
-			console.log('s');
-			$('.compare-select.multiple-select').removeAttr('multiple').css({'height': 'auto'}).removeClass('multiple-select').addClass('multiple-select-switched');
-		}else {
-			$('.compare-select.multiple-select-switched')
-			.attr('multiple', 'multiple')
-			.css({'height': '145px'})
-			.removeClass('multiple-select-switched')
-			.addClass('multiple-select');
-		}
-	});
-});
+//$(function() {
+//	$('.switch-compare').live('click', function(e){
+//		e.preventDefault();
+//		if( ($('.compare-select.multiple-select').length)){
+//			console.log('s');
+//			$('.compare-select.multiple-select').removeAttr('multiple').css({'height': 'auto'}).removeClass('multiple-select').addClass('multiple-select-switched');
+//		}else {
+//			$('.compare-select.multiple-select-switched')
+//			.attr('multiple', 'multiple')
+//			.css({'height': '145px'})
+//			.removeClass('multiple-select-switched')
+//			.addClass('multiple-select');
+//		}
+//	});
+//});
 
 $(function() {
 	$('.compare-tabs').each(function(){
