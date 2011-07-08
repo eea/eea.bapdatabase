@@ -1,19 +1,24 @@
+<tal:block tal:define="
+    country here/aq_parent/title_or_id;
+    action_id request/id|nothing;
+    action python: here.get_action(action_id);
+    action_text action/FullText|string:;
+    action_title python:here.humanize_text(action_text)[0];
+    action_title python:action_title != '' and action_title or 'Country profile'">
 <metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${here/title} | ${here/site_title}" />
+	<title tal:content="string:${action_title} | ${here/site_title}" />
 </metal:block>
 
 <metal:block fill-slot="body">
 
-<div id="center_content" tal:define="country here/aq_parent/title_or_id;
-									action_id request/id | nothing">
-   <h1 i18n:translate="">
-           Country profile <span i18n:name="country-name" tal:replace="country" />
+<div id="center_content">
+    <h1 i18n:translate="">
+        <span i18n:name="action-title" tal:replace="action_title" /> for <span i18n:name="country-name" tal:replace="country" />
    </h1>
-
-	<div tal:condition="action_id" tal:define="action python:here.get_action(action_id);">
-		<p tal:condition="action" tal:content="structure action/FullText" />
+	<div tal:condition="action_id">
+		<p tal:content="action_text" />
 	</div>
 
 	<div id="mop-content" tal:condition="action_id">
@@ -24,3 +29,4 @@
 </metal:block>
 
 </metal:block>
+</tal:block>

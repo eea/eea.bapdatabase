@@ -108,6 +108,7 @@ class BAPDatabase(NyFolder):
         m = pattern.match(text)
         if m is not None:
             return m.group('heading').strip(), m.group('text').strip()
+        return ['', '']
 
     def build_details(self, text, id, css_class):
         parsed_text = self.humanize_text(text)
@@ -239,9 +240,9 @@ class BAPDatabase(NyFolder):
 
     compare = PageTemplateFile('zpt/compare', globals())
     compare_details = PageTemplateFile('zpt/compare_details', globals())
-    
+
     compare_multiple = PageTemplateFile('zpt/compare_multiple', globals())
     compare_side_by_side = PageTemplateFile('zpt/compare_side_by_side', globals())
-    
+
 
 InitializeClass(BAPDatabase)
