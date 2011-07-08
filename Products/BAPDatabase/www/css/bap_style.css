@@ -244,7 +244,7 @@ select.compare-select {
 }
 
 #compare-form select.multiple-select {
-    height: 145px;
+    height: 70px;
 }
 
 .compare-form-holder {
@@ -295,6 +295,7 @@ select.compare-select {
 }
 
 .compare-tabs.single {
-    width: 415px;
+    width: 400px;
+    margin-right: 15px;
     position: relative;
 }

@@ -8,7 +8,7 @@
   <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
     <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bapCompare.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/full-width-style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/misc_/BAPDatabase/full-width-style.css" />
     <tal:block content="structure string:<!--[if lt IE 8]>" />
     <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
     <tal:block content="structure string:<![endif]-->" />
@@ -31,6 +31,18 @@
             </p>
 
             <form action="" name="compare_values" method="get" id="compare-form">
+                <div class="field left">
+                    <label for="ctlCountry">Country</label>
+
+                    <select name="country" id="ctlCountry" class="compare-select">
+                        <tal:block repeat="country here/get_countries">
+                        <option tal:attributes="value country;
+                                                selected python:country == req_country;"
+                                tal:content="country" />
+                        </tal:block>
+                    </select>
+                </div>
+
                 <div class="field left">
                     <label for="ctlObjective">Objective</label>
                     <select name="objective" id="ctlObjective" class="compare-select">
@@ -63,20 +75,6 @@
                     <a href="javascript:void(0);" title="Switch compare view" class="switch-compare">Compare side by side</a>
                 </div>-->
 
-                <div class="clear">&nbsp;</div>
-
-                <div class="field left">
-                    <label for="ctlCountry">Country</label>
-
-                    <select name="country" id="ctlCountry" class="compare-select">
-                        <tal:block repeat="country here/get_countries">
-                        <option tal:attributes="value country;
-                                                selected python:country == req_country;"
-                                tal:content="country" />
-                        </tal:block>
-                    </select>
-                </div>
-
                 <div class="field left">
                     <label for="ctlCmpCountries">Compare with</label>
                     <select name="cmp_countries:list" id="ctlCmpCountries" multiple="multiple" class="compare-select multiple-select">
@@ -88,7 +86,8 @@
                     </select>
                 </div>
 
-                <div class="cleaner">
+                <div class="field left">
+                    <label>&nbsp;</label>
                     <input type="submit" name="compare" value="Compare" />
                 </div>
             </form>

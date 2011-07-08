@@ -18,6 +18,7 @@ misc_ = {
     'bapCompare.js':ImageFile('www/js/bap_compare.js', globals()),
     'showLoading.js':ImageFile('www/js/showLoading.js', globals()),
     'tabs-ie.css':ImageFile('www/css/tabs-ie.css', globals()),
+    'full-width-style.css':ImageFile('www/css/full-width-style.css', globals()),
     'ajax-loader.gif':ImageFile('www/ajax-loader.gif', globals()),
     'side-by-side.png':ImageFile('www/side-by-side.png', globals()),
     'bullet_orange.png':ImageFile('www/bullet_orange.png', globals()),
