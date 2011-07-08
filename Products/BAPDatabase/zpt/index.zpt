@@ -20,10 +20,10 @@
 				<a class="country-compare-button"
 				   i18n:name="compare-button"
 				   tal:attributes="
-				   title string:Compare ${country};
+				   title string:Compare ${country}'s data;
 				   href string:${here/absolute_url}/compare?country=${country}&objective=&target=&compare=Compare
 				   ">
-					Compare
+					Compare data
 				</a>
 			</h1>
 			
