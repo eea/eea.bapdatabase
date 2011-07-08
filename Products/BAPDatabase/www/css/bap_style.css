@@ -8,6 +8,14 @@
     height: auto !important;
 }
 
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 .ui-tabs-hide {
     display: none !important;
 }
@@ -249,7 +257,8 @@ select.compare-select {
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
             border-radius: 3px;
-    width: 700px;
+    /*width: 700px;*/
+    width: 865px;
 }
 
 .compare-form-holder form#compare-form {
@@ -268,7 +277,24 @@ select.compare-select {
     margin-right: 25px;
 }
 
+.field {
+    margin-right: 25px;
+}
+
 .datatable, .datatable th, .datatable td {
     word-break: break-all;
     word-wrap: break-word;
+}
+
+.switch-compare {
+    background: url("/misc_/BAPDatabase/side-by-side.png") no-repeat scroll left 2px transparent;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.compare-tabs.single {
+    width: 415px;
+    position: relative;
 }

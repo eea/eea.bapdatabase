@@ -1,14 +1,32 @@
 $(function() {
+	$('.switch-compare').live('click', function(e){
+		e.preventDefault();
+		if( ($('.compare-select.multiple-select').length)){
+			console.log('s');
+			$('.compare-select.multiple-select').removeAttr('multiple').css({'height': 'auto'}).removeClass('multiple-select').addClass('multiple-select-switched');
+		}else {
+			$('.compare-select.multiple-select-switched')
+			.attr('multiple', 'multiple')
+			.css({'height': '145px'})
+			.removeClass('multiple-select-switched')
+			.addClass('multiple-select');
+		}
+	});
+});
+
+$(function() {
 	$('.compare-tabs').each(function(){
-		id = $(this).attr('id');
-		
-		$('#' + id).tabs({
-			ajaxOptions: {
-				error: function( xhr, status, index, anchor ) {
-					$( anchor.hash ).html( "Couldn't load this tab. We'll try to fix this as soon as possible." );
+		if( !$(this).hasClass('single') ){
+			id = $(this).attr('id');
+
+			$('#' + id).tabs({
+				ajaxOptions: {
+					error: function( xhr, status, index, anchor ) {
+						$( anchor.hash ).html( "Couldn't load this tab. We'll try to fix this as soon as possible." );
+					}
 				}
-			}
-		});
+			});
+		}
 	});
 });
 
@@ -19,6 +37,7 @@ $(function(){
 		$("select#ctlCmpCountries").empty();
 	})
 })
+
 $(function(){
 	$("select#ctlObjective").change(function(){
 		var params = $.param({'objective': $(this).val(), 'country': $("select#ctlCountry").val()}, true);

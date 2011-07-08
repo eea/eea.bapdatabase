@@ -19,6 +19,7 @@ misc_ = {
     'showLoading.js':ImageFile('www/js/showLoading.js', globals()),
     'tabs-ie.css':ImageFile('www/css/tabs-ie.css', globals()),
     'ajax-loader.gif':ImageFile('www/ajax-loader.gif', globals()),
+    'side-by-side.png':ImageFile('www/side-by-side.png', globals()),
     'bullet_orange.png':ImageFile('www/bullet_orange.png', globals()),
     'bullet_blue.png':ImageFile('www/bullet_blue.png', globals()),
     'bullet_red.png':ImageFile('www/bullet_red.png', globals()),
