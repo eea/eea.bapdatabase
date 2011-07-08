@@ -223,6 +223,7 @@ select.compare-select {
             border-radius: 3px 3px 0 0;
     text-decoration: none;
     color: #333333;
+    font-size: 11px;
 }
 
 .compare-tabs ul li.current a,
