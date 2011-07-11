@@ -1,7 +1,7 @@
 <metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
 
 	<metal:block metal:fill-slot="title">
-			<title tal:content="string:${here/title} | ${here/absolute_url}" />
+			<title tal:content="string:Country profile - ${here/aq_parent/title_or_id} | ${here/site_title}" />
 	</metal:block>
 
 	<metal:block metal:fill-slot="head">
@@ -16,7 +16,7 @@
 	<metal:block fill-slot="body">
 		<div id="center_content" tal:define="country here/aq_parent/title_or_id">
 			<h1 i18n:translate="">
-				Country profile <span i18n:name="country-name" tal:replace="country" />
+				Country profile - <span i18n:name="country-name" tal:replace="country" />
 				<a class="country-compare-button"
 				   i18n:name="compare-button"
 				   tal:attributes="
@@ -57,10 +57,11 @@
                                 </span>
 								<div class="bap-actions">
                                     <div class="bap-action" tal:repeat="action python:here.get_actions(objective_name, ident, country)">
-                                            <span>
+                                            <span tal:define="text action/FullText;
+                                                            humanized python:here.humanize_text(text)">
                                                 <a class="action-link"
                                                    title="Click to see details"
-                                                   tal:attributes="href string:${request/ACTUAL_URL}/details?id=${ident}"
+                                                   tal:attributes="href string:${request/ACTUAL_URL}/details?id=${action/Ident}"
                                                    tal:content="python: humanized[0]"></a>
                                                <span tal:content="python: humanized[1]" />
                                             </span>

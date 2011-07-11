@@ -8,7 +8,7 @@
 <metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${action_title} | ${here/site_title}" />
+	<title tal:content="string:${action_title} for ${country} | ${here/site_title}" />
 </metal:block>
 
 <metal:block fill-slot="body">
