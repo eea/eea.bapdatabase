@@ -2,10 +2,10 @@
     country here/aq_parent/title_or_id;
     objective_id request/id|nothing;
     objective python: here.get_objective(objective_id);">
-<metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${objective/name} for ${here/aq_parent/title_or_id} | ${here/site_title}" />
+	<title tal:content="string:${here/site_title} - ${objective/name} for ${here/aq_parent/title_or_id}" />
 </metal:block>
 <metal:block metal:fill-slot="head">
 		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap.js"></script>
@@ -19,8 +19,8 @@
 <metal:block fill-slot="body">
 
 <div id="center_content">
-    <h1 i18n:translate="">
-        <span i18n:name="objective-title" tal:replace="objective/name" /> for <span i18n:name="country-name" tal:replace="country" />
+    <h1>
+        <span tal:replace="objective/name" /> for <span tal:replace="country" />
     </h1>
     <div class="bap-targets" tal:condition="objective" tal:define="objective_name objective/name">
         <div class="bap-target" tal:repeat="target python:here.get_targets(objective_name, country)">
@@ -36,10 +36,11 @@
             </span>
             <div class="bap-actions">
                 <div class="bap-action" tal:repeat="action python:here.get_actions(objective_name, ident, country)">
-                        <span>
+                        <span tal:define="text action/FullText;
+                                        humanized python:here.humanize_text(text)">
                             <a class="action-link"
                                title="Click to see details"
-                               tal:attributes="href string:${here/aq_parent/absolute_url}/bap/details?id=${ident}"
+                               tal:attributes="href string:${here/aq_parent/absolute_url}/bap/details?id=${action/Ident}"
                                tal:content="python: humanized[0]"></a>
                            <span tal:content="python: humanized[1]" />
                         </span>

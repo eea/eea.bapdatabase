@@ -5,17 +5,17 @@
     action_text action/FullText|string:;
     action_title python:here.humanize_text(action_text)[0];
     action_title python:action_title != '' and action_title or 'Country profile'">
-<metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${action_title} for ${country} | ${here/site_title}" />
+	<title tal:content="string:${here/site_title} - Action: ${action_id} for ${country}" />
 </metal:block>
 
 <metal:block fill-slot="body">
 
 <div id="center_content">
-    <h1 i18n:translate="">
-        <span i18n:name="action-title" tal:replace="action_title" /> for <span i18n:name="country-name" tal:replace="country" />
+    <h1>
+        <span tal:replace="string: Action: ${action_id}" /> for <span tal:replace="country" />
    </h1>
 	<div tal:condition="action_id">
 		<p tal:content="action_text" />

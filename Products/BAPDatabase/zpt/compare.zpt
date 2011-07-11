@@ -1,7 +1,7 @@
-<metal:block i18n:domain="portal_translations" metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-    <title tal:content="string:${here/title} | ${here/site_title}" />
+    <title tal:content="string:${here/site_title} - BAP Report 2010 comparison" />
 </metal:block>
 
 <metal:block metal:fill-slot="head">
