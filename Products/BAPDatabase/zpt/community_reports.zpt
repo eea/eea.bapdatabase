@@ -47,9 +47,9 @@
                                     <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
                                             <span>
                                                 <a class="action-link"
-                                                   title="Click to see details"
-                                                   tal:attributes="href string:${request/ACTUAL_URL}/community_action?id=${action/id}"
-                                                   tal:content="string:Action: ${action/name}"></a>
+                                                    title="Click to see details"
+                                                    tal:attributes="id action/name; href string:${request/ACTUAL_URL}/community_action?id=${action/id}"
+                                                    tal:content="string:Action: ${action/name}"></a>
                                                <span tal:content="action/action" />
                                             </span>
 										<div class="bap-mop-content"></div>

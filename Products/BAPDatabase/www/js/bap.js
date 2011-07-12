@@ -50,6 +50,7 @@ $(document).ready(function(){
         return false;
     });
 
+
 	var action_id = getCookie('BAPAction');
 	if (action_id)
 	{
@@ -150,7 +151,10 @@ $(document).ready(function(){
 			
 			Action.parent().next(".bap-mop-content").load('' + url + ' #mop-content', function(response, status, xhr) {
 				$("#bap-content").hideLoading();
-				
+                //Replace Action: A1.2. with <a href=
+				$(this).html(
+                    $(this).html().replace(/(\w{1})\s*\.?(\d+)\.(\d+)\.(\d+)/g, 
+                    '<a href="#$1.$2.$3.$4">$1.$2.$3.$4</a>'));
 				if(status == "error"){
 					alert(xhr.status + " " + xhr.statusText);
 				}
