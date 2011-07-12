@@ -232,6 +232,10 @@ class BAPDatabase(NyFolder):
                             'optionTitle': country})
         return json.dumps(records)
 
+    def test_select(self):
+        """ """
+        return self._get_session().query(models.Action).filter(models.PolicyArea.id == 1).all()
+
     index_html = PageTemplateFile('zpt/index', globals())
     details = PageTemplateFile('zpt/details', globals())
     objective = PageTemplateFile('zpt/objective', globals())

@@ -1,6 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Column, ForeignKey
-from sqlalchemy.types import String
+from sqlalchemy.types import String, Integer
 
 Base = declarative_base()
 
@@ -1247,3 +1247,40 @@ class C1_3_1(Base):
     InvertsDetail = Column(String)
     PlantsDetail = Column(String)
     SpeciesOtherDetail = Column(String)
+
+
+######## Community report ########
+class PolicyArea(Base):
+    __tablename__ = 'CL_PolicyAreas'
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+
+class Objective(Base):
+    __tablename__ = 'CL_Objectives'
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+    headline_target = Column(String)
+    policy_area = Column(Integer, ForeignKey('CL_PolicyAreas.id'))
+
+class Target(Base):
+    __tablename__ = 'CL_Targets'
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+    objective = Column(Integer, ForeignKey('CL_Objectives.id'))
+
+class Action(Base):
+    __tablename__ = 'CL_Actions'
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    action = Column(String, nullable=False)
+    comunity_action = Column(String)
+    target = Column(Integer, ForeignKey('CL_Targets.id'))
+
+class ActionProgress(Base):
+    __tablename__ = 'CL_Progress'
+    action = Column(Integer, ForeignKey('CL_Actions.id'), primary_key=True)
+    year = Column(Integer, primary_key=True)
+    progress = Column(String)
