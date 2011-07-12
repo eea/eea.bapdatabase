@@ -236,6 +236,40 @@ class BAPDatabase(NyFolder):
         """ """
         return self._get_session().query(models.Action).filter(models.PolicyArea.id == 1).all()
 
+    def cl_get_objectives(self):
+        """ Same as get_objectives, but will probably change in the future"""
+        return self.get_objectives()
+
+    def cl_get_objective(self, objective_id):
+        """ Get objective """
+        return self._get_session().query(models.Objective).\
+                filter(models.Objective.id == objective_id).one()
+
+    def cl_get_targets(self, objective):
+        return self._get_session().query(models.Target).filter(
+                models.Target.objective == objective).all()
+
+    def cl_get_target(self, target_id):
+        """ Get target """
+        return self._get_session().query(models.Target).\
+                filter(models.Target.id == target_id).one()
+
+    def cl_get_actions(self, target):
+        """ Get actions for a cl_target """
+        return self._get_session().query(models.Action).filter(
+                models.Action.target == target).all()
+
+    def cl_get_action(self, action_id):
+        """ Get target """
+        return self._get_session().query(models.Action).\
+                filter(models.Action.id == action_id).one()
+
+    def cl_get_mops(self, action_id):
+        """ get measurements of progress """
+        return self._get_session().query(models.ActionProgress).\
+                filter(models.ActionProgress.action == action_id).\
+                order_by(models.ActionProgress.year).all()
+
     index_html = PageTemplateFile('zpt/index', globals())
     details = PageTemplateFile('zpt/details', globals())
     objective = PageTemplateFile('zpt/objective', globals())
@@ -246,5 +280,9 @@ class BAPDatabase(NyFolder):
     compare_multiple = PageTemplateFile('zpt/compare_multiple', globals())
     compare_side_by_side = PageTemplateFile('zpt/compare_side_by_side', globals())
 
+    community_reports = PageTemplateFile('zpt/community_reports', globals())
+    community_objective = PageTemplateFile('zpt/community_objective', globals())
+    community_target = PageTemplateFile('zpt/community_target', globals())
+    community_action = PageTemplateFile('zpt/community_action', globals())
 
 InitializeClass(BAPDatabase)

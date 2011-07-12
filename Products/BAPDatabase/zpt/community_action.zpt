@@ -1,0 +1,30 @@
+<tal:block tal:define="
+    action_id request/id|nothing;
+    action python: here.cl_get_action(action_id);">
+<metal:block metal:use-macro="here/standard_template_macro">
+
+<metal:block metal:fill-slot="title">
+	<title tal:content="string:${here/site_title} - Action: ${action/name}" />
+</metal:block>
+
+<metal:block fill-slot="body">
+
+<div id="center_content">
+    <h1>
+        <span tal:replace="string: Action: ${action/name}" />
+   </h1>
+	<div tal:condition="action_id">
+		<p tal:content="action/action" />
+	</div>
+    <div id="mop-content" tal:condition="action_id">
+        <tal:block repeat="mop python:here.cl_get_mops(action_id)">
+        <div class="bap-mop-item">
+            <h3 class="bop-mop-year" tal:content="mop/year"></h3>
+            <p class="bop-mop-progress" tal:content="mop/progress"></p>
+        </div>
+        </tal:block>
+    </div>
+</metal:block>
+
+</metal:block>
+</tal:block>
