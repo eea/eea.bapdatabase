@@ -218,7 +218,7 @@ $(document).ready(function(){
 	}
 
     function replace_actions(html){
-        return html.replace(/(\w{1})\s*\.?(\d+)\.(\d+)\.(\d+)/g,
+        return html.replace(/\b(\w{1})\s*\.?(\d+)\.(\d+)\.(\d+)/g,
                 '<a class="goto-action" href="#$1$2.$3.$4">$1$2.$3.$4</a>');
     }
 });
