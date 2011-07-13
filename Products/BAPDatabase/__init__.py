@@ -15,6 +15,7 @@ def initialize(context):
 
 misc_ = {
     'bap.js':ImageFile('www/js/bap.js', globals()),
+    'bap_community_reports.js': ImageFile('www/js/bap_community_reports.js', globals()),
     'bapCompare.js':ImageFile('www/js/bap_compare.js', globals()),
     'showLoading.js':ImageFile('www/js/showLoading.js', globals()),
     'tabs-ie.css':ImageFile('www/css/tabs-ie.css', globals()),
