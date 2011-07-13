@@ -144,7 +144,10 @@ table.datatable {
 .action-link {
 	background: transparent url('/misc_/BAPDatabase/bullet_red.png') no-repeat left center !important;
 }
-
+.goto-action {
+	background: none !important;
+	padding: 0 !important;
+}
 .bap-action {
 	background-color: #FFFFFF;
 	border: 1px solid #EFEFEF;
