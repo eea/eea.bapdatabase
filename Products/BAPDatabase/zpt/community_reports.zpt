@@ -25,7 +25,7 @@
 
 				<div class="bap-objectives" tal:define="objective_id objective/id">
 					<span class="bap-objective-title">
-                        <a tal:attributes="href string:${here/absolute_url}/bap/community_objective?id=${objective_id}" title="Click to see details" tal:content="objective/name" />
+                        <a tal:attributes="id objective/name; href string:${here/absolute_url}/bap/community_objective?id=${objective_id}" title="Click to see details" tal:content="objective/name" />
 						<span tal:content="objective/description" />
 					</span>
 					<div class="bap-objective" tal:condition="objective">
@@ -39,7 +39,7 @@
                                 <span>
                                 <a class="target-link"
                                    title="Click to see details"
-                                   tal:attributes="href string:${request/ACTUAL_URL}/community_target?id=${target/id}"
+				   tal:attributes="id target/name; href string:${request/ACTUAL_URL}/community_target?id=${target/id}"
                                    tal:content="string:Target: ${target/name}"></a>
                                <span tal:content="target/description" />
                                 </span>

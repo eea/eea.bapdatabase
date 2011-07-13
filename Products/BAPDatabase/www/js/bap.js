@@ -161,8 +161,10 @@ $(document).ready(function(){
 			
 			Action.parent().next(".bap-mop-content").load('' + url + ' #mop-content', function(response, status, xhr) {
 				$("#bap-content").hideLoading();
-                //Replace Action: A1.2. with <a href=
+				//Replace Action: A1.2. with <a href=
 				$(this).html(replace_actions($(this).html()));
+				//Also linkify text
+				$(this).html(Linkify($(this).html()));
 				if(status == "error"){
 					alert(xhr.status + " " + xhr.statusText);
 				}

@@ -16,14 +16,20 @@
 	<div tal:condition="action_id">
 		<p tal:content="action/action" />
 	</div>
-    <div id="mop-content" tal:condition="action_id">
-        <tal:block repeat="mop python:here.cl_get_mops(action_id)">
-        <div class="bap-mop-item">
-            <h3 class="bop-mop-year" tal:content="mop/year"></h3>
-            <p class="bop-mop-progress" tal:content="mop/progress"></p>
-        </div>
-        </tal:block>
-    </div>
+	<div id="mop-content" tal:condition="action_id"
+		tal:define="mops python:here.cl_get_mops(action_id)">
+		<tal:block repeat="mop mops">
+		<div class="bap-mop-item" tal:define="progress mop/progress">
+			<h3 class="bop-mop-year" tal:content="mop/year"></h3>
+				<tal:block condition="progress">
+					<p class="bop-mop-progress" tal:content="progress"></p>
+				</tal:block>
+				<tal:block condition="not: progress">
+					Not available
+				</tal:block>
+			</div>
+		</tal:block>
+	</div>
 </metal:block>
 
 </metal:block>
