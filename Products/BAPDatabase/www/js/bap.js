@@ -50,6 +50,11 @@ $(document).ready(function(){
         return false;
     });
 
+    $('.goto-action').live('click', function(){
+        var href = $(this).attr('href');
+        href = href.replace(/\./g, '\\.');
+        $(href).parents().show();
+    });
 
 	var action_id = getCookie('BAPAction');
 	if (action_id)
@@ -153,8 +158,8 @@ $(document).ready(function(){
 				$("#bap-content").hideLoading();
                 //Replace Action: A1.2. with <a href=
 				$(this).html(
-                    $(this).html().replace(/(\w{1})\s*\.?(\d+)\.(\d+)\.(\d+)/g, 
-                    '<a href="#$1.$2.$3.$4">$1.$2.$3.$4</a>'));
+                    $(this).html().replace(/(\w{1})\s*\.?(\d+)\.(\d+)\.(\d+)/g,
+                    '<a class="goto-action" href="#$1$2.$3.$4">$1$2.$3.$4</a>'));
 				if(status == "error"){
 					alert(xhr.status + " " + xhr.statusText);
 				}
