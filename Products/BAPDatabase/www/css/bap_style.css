@@ -141,7 +141,7 @@ table.datatable {
     vertical-align: middle;
 }
 
-.bap-action a {
+.action-link {
 	background: transparent url('/misc_/BAPDatabase/bullet_red.png') no-repeat left center !important;
 }
 

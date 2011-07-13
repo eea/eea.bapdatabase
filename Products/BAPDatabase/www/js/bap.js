@@ -54,6 +54,11 @@ $(document).ready(function(){
         var href = $(this).attr('href');
         href = href.replace(/\./g, '\\.');
         $(href).parents().show();
+        toggle_action($(href));
+    });
+
+     $('.bap-action span span').each(function(){
+        $(this).html(replace_actions($(this).html()));
     });
 
 	var action_id = getCookie('BAPAction');
@@ -157,9 +162,7 @@ $(document).ready(function(){
 			Action.parent().next(".bap-mop-content").load('' + url + ' #mop-content', function(response, status, xhr) {
 				$("#bap-content").hideLoading();
                 //Replace Action: A1.2. with <a href=
-				$(this).html(
-                    $(this).html().replace(/(\w{1})\s*\.?(\d+)\.(\d+)\.(\d+)/g,
-                    '<a class="goto-action" href="#$1$2.$3.$4">$1$2.$3.$4</a>'));
+				$(this).html(replace_actions($(this).html()));
 				if(status == "error"){
 					alert(xhr.status + " " + xhr.statusText);
 				}
@@ -213,4 +216,9 @@ $(document).ready(function(){
 			}
 		});
 	}
+
+    function replace_actions(html){
+        return html.replace(/(\w{1})\s*\.?(\d+)\.(\d+)\.(\d+)/g,
+                '<a class="goto-action" href="#$1$2.$3.$4">$1$2.$3.$4</a>');
+    }
 });
