@@ -4,7 +4,7 @@
 
 <metal:block metal:use-macro="here/standard_template_macro">
 	<metal:block metal:fill-slot="title">
-			<title tal:content="string:${here/site_title} - Community reports" />
+			<title tal:content="string:${here/site_title} - Community report" />
 	</metal:block>
 
 	<metal:block metal:fill-slot="head">

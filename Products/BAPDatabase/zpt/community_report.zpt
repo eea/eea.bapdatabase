@@ -1,7 +1,7 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
 	<metal:block metal:fill-slot="title">
-			<title tal:content="string:${here/site_title} - Community reports" />
+			<title tal:content="string:${here/site_title} - Community report" />
 	</metal:block>
 
 	<metal:block metal:fill-slot="head">
@@ -15,7 +15,7 @@
 
 	<metal:block fill-slot="body">
 		<div id="center_content">
-			<h1>Community reports</h1>
+			<h1>Community report</h1>
 
 			<p>
 				<strong>Tip:</strong> click on an item from the list below to expand its details.
