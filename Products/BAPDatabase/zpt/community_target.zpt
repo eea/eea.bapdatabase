@@ -2,20 +2,15 @@
     target_id request/id|nothing;
     target python: here.cl_get_target(target_id);">
 <metal:block metal:use-macro="here/standard_template_macro">
-
 <metal:block metal:fill-slot="title">
 	<title tal:content="string:${here/site_title} - Target: ${target/name}" />
 </metal:block>
-
 <metal:block fill-slot="body">
-
 <div id="center_content">
     <h1>
-        <span tal:replace="string: Target: ${target/name}" />
+        Target: <span tal:replace="string: ${target/name}" />
+	<span tal:replace="target/description" />
    </h1>
-	<div tal:condition="target_id">
-		<p tal:content="target/description" />
-	</div>
     <div class="bap-actions">
         <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
             <span>
@@ -27,6 +22,5 @@
         </div>
     </div>
 </metal:block>
-
 </metal:block>
 </tal:block>
