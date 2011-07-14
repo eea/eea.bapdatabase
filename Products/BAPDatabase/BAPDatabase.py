@@ -72,7 +72,7 @@ class BAPDatabase(NyFolder):
     db_username = None
     db_password = None
     db_name = None
-    db_debug = True
+    db_debug = False
 
     def _get_schema(self):
         from Products.NaayaCore.constants import ID_SCHEMATOOL

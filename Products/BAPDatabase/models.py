@@ -1276,7 +1276,7 @@ class Action(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     action = Column(String, nullable=False)
-    comunity_action = Column(String)
+    community_action = Column(String)
     target = Column(Integer, ForeignKey('CL_Targets.id'))
 
 class ActionProgress(Base):

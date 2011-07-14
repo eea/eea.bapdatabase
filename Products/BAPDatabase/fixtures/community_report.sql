@@ -17,7 +17,7 @@ CREATE TABLE `CL_Actions` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `action` text NOT NULL,
-  `comunity_action` text,
+  `community_action` text,
   `target` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
@@ -27,7 +27,7 @@ CREATE TABLE `CL_Actions` (
 
 LOCK TABLES `CL_Actions` WRITE;
 /*!40000 ALTER TABLE `CL_Actions` DISABLE KEYS */;
-INSERT INTO `CL_Actions` (`id`,`name`,`action`,`comunity_action`,`target`)
+INSERT INTO `CL_Actions` (`id`,`name`,`action`,`community_action`,`target`)
 VALUES
 	(111,'A1.1.1','Accelerate efforts to finalise the Natura 2000 network including: complete terrestrial network of Special Protection Areas (SPA) [by 2006, 2008 for marine]; adopt lists of Sites of Community Importance (SCI) [by 2006, 2008 for marine]; designate Special Areas of Conservation (SAC) and establish management priorities and necessary conservation measures for SACs [by 2010, 2012 for marine]; establish similar management and conservation measures for SPAs [by 2010, 2012 for marine].','For EU15 - ensure MS which have not proposed sufficient sites complete their lists; adopt remaining lists of SCIs as soon as possible; provide necessary guidance on designation and establishment of management priorities and measures; for EU10 - ensure correct transposition of Birds and Habitats Directives, ensure MS which have not proposed sufficient sites complete their lists; adopt lists of SCIs as soon as possible; provide necessary guidance on designation and establishment of management priorities and measures; publish annual review of progress.',11),
 	(112,'A1.1.2','Ensure adequate financing provided to Natura 2000 implementation from Community sources (notably Rural Development funds, Cohesion and Structural Funds, Pre- Accession Instrument, Life-III, Life+) and MS sources, accessible to those who manage Natura 2000 sites, with focus on optimising longterm conservation benefits as well as priority awareness raising and networking initiatives [2006 onwards','Establish Community priorities for cofinancing under each instrument; provide guidance on cofinancing to MS and potential beneficiaries; evaluate MS cofinancing programme proposals; disburse funds; monitor effectiveness (in terms of biodiversity outcomes); audit expenditure.',11),
