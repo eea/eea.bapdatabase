@@ -31,7 +31,7 @@
                        </tal:block>
                    </ul>
                    <div class="clearfix"></div>
-                   <tal:block replace="structure python:here.get_table(action_id, req_country)" />
+                   <tal:block replace="structure python:here.cl_get_table(action_id, req_country)" />
 </div>
 <div class="clearfix"></div>
 </tal:block>

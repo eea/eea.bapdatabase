@@ -173,9 +173,9 @@ class BAPDatabase(NyFolder):
 
     def cl_get_table(self, action_id, country):
         if country == 'Community report':
-            mops = self.cl_get_mops(action_id)
-            import pdb; pdb.set_trace()
-            return self.compare_community_details.__of__(self)(action=action)
+            text = "\n\n".join([mop.progress
+                for mop in self.cl_get_mops(action_id) if mop.progress])
+            return self.compare_community_details.__of__(self)(text=text)
         else:
             action_id = action_id.replace('.', '_')
             template = tables.get(action_id)
@@ -183,13 +183,13 @@ class BAPDatabase(NyFolder):
                 return template.__of__(self)(country=country,
                         action_id=action_id)
 
-
     #Compare country values
     def get_countries_filtered_by_actions(self, objective, target, ref_country):
         if ref_country == 'Community report':
             target_row = self._get_session().query(models.Target).\
                     filter(models.Target.id == target).one()
             target = target_row.name.replace('.', '_')
+
         countries = self._get_session().query(models.Header.Country) \
                         .filter(models.Narrative.Objective == objective) \
                         .filter(models.Narrative.Ident.like('%s_%%' % target)).distinct() \

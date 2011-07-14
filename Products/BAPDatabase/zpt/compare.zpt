@@ -35,14 +35,14 @@
             <form action="" name="compare_values" method="get" id="compare-form">
                 <div class="field left">
                     <label for="ctlCountry">Country</label>
-
                     <select name="country" id="ctlCountry" class="compare-select">
                         <tal:block repeat="country here/get_countries">
                         <option tal:attributes="value country;
-                                                selected python:country == req_country;"
+                                                selected python:country == req_country and 'selected' or '';"
                                 tal:content="country" />
-                        </tal:block>
-                        <option value="Community report">Community Report</option>
+                                </tal:block>
+                        <option value="Community report"
+                            tal:attributes="selected python:req_country == 'Community report' and 'selected' or 'selected'">Community Report</option>
                     </select>
                 </div>
 
