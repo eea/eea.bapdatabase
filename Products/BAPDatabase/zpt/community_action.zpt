@@ -18,6 +18,10 @@
     <h2 tal:content="action/action" />
     
     <div id="mop-content" tal:condition="action_id">
+	    <h3 class="bop-mop-year">Community action</h3>
+	    <div class="bop-mop-progress">
+            <p tal:content="action/community_action" />
+        </div>
     	<tal:block repeat="mop python:here.cl_get_mops(action_id)">
     	<div class="bap-mop-item" tal:define="progress mop/progress">
     		<h3 class="bop-mop-year">Progress to July <span tal:replace="mop/year"/></h3>
