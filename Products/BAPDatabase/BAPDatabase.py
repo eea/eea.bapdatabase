@@ -171,12 +171,28 @@ class BAPDatabase(NyFolder):
         if template is not None:
             return template.__of__(self)(country=country, action_id=action_id)
 
+    def cl_get_table(self, action_id, country):
+        if country == 'report':
+            action = self.cl_get_action(action_id)
+            return self.compare_community_details.__of__(self)(action=action)
+        else:
+            action_id = action_id.replace('.', '_')
+            template = tables.get(action_id)
+            if template is not None:
+                return template.__of__(self)(country=country,
+                        action_id=action_id)
+
+
     #Compare country values
     def get_countries_filtered_by_actions(self, objective, target, ref_country):
+        if ref_country == 'report':
+            target_row = self._get_session().query(models.Target).\
+                    filter(models.Target.id == target).one()
+            target = target_row.name.replace('.', '_')
         countries = self._get_session().query(models.Header.Country) \
-                            .filter(models.Narrative.Objective == objective) \
-                            .filter(models.Narrative.Ident.like('%s_%%' % target)).distinct() \
-                            .order_by(models.Header.Country).all()
+                        .filter(models.Narrative.Objective == objective) \
+                        .filter(models.Narrative.Ident.like('%s_%%' % target)).distinct() \
+                        .order_by(models.Header.Country).all()
         return [ country[0] for country in countries if ref_country!=country[0] ]
 
     def get_countries(self):
@@ -208,19 +224,36 @@ class BAPDatabase(NyFolder):
     def json_get_targets(self, objective, country):
         """ """
         records = []
-        for target in self.get_targets(objective, country):
-            records.append({'optionValue': target[0],
-                            'optionDisplay': target[0],
-                            'optionTitle': target[1]})
+        if country == 'report':
+            objective = int(objective.split('Objective')[1])
+            for target in self.cl_get_targets(objective):
+                records.append({
+                    'optionValue': target.id,
+                    'optionDisplay': target.name,
+                    'optionTitle': target.name,
+                })
+        else:
+            for target in self.get_targets(objective, country):
+                records.append({'optionValue': target[0],
+                                'optionDisplay': target[0],
+                                'optionTitle': target[1]})
         return json.dumps(records)
 
     def json_get_actions(self, objective, target, country):
         """ """
         records = []
-        for action in self.get_actions(objective, target, country):
-            records.append({'optionValue': action.Ident,
-                            'optionDisplay': action.Ident,
-                            'optionTitle': action.FullText})
+
+        if country == 'report':
+            objective = int(objective.split('Objective')[1])
+            for action in self.cl_get_actions(objective, target):
+                records.append({'optionValue': action.id,
+                                'optionDisplay': action.name,
+                                'optionTitle': action.action})
+        else:
+            for action in self.get_actions(objective, target, country):
+                records.append({'optionValue': action.Ident,
+                                'optionDisplay': action.Ident,
+                                'optionTitle': action.FullText})
         return json.dumps(records)
 
     def json_get_countries_filtered_by_actions(self, objective, target, ref_country):
@@ -259,6 +292,25 @@ class BAPDatabase(NyFolder):
         return self._get_session().query(models.Action).filter(
                 models.Action.target == target).all()
 
+    def cl_get_actions_combined(self, req_objective, req_target, req_country):
+        """ Combine both types of action """
+
+        actions = []
+        for action in self.cl_get_actions(req_target):
+            actions.append({
+                'id': action.id,
+                'text': action.action,
+                'name': action.name
+            })
+
+        for action in self.get_actions(req_objective, req_target, req_country):
+            actions.append({
+                'id': action.Ident,
+                'text': action.FullText,
+                'name': action.Ident
+            })
+        return actions
+
     def cl_get_action(self, action_id):
         """ Get target """
         return self._get_session().query(models.Action).\
@@ -279,6 +331,11 @@ class BAPDatabase(NyFolder):
 
     compare_multiple = PageTemplateFile('zpt/compare_multiple', globals())
     compare_side_by_side = PageTemplateFile('zpt/compare_side_by_side', globals())
+    compare_community_details = PageTemplateFile('zpt/compare_community_details', globals())
+
+
+    cl_compare_multiple = PageTemplateFile('zpt/cl_compare_multiple', globals())
+    cl_compare_side_by_side = PageTemplateFile('zpt/cl_compare_side_by_side', globals())
 
     community_report = PageTemplateFile('zpt/community_report', globals())
     community_objective = PageTemplateFile('zpt/community_objective', globals())

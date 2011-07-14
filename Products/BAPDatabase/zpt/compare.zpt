@@ -28,7 +28,7 @@
         <h1>BAP Report 2010 - comparison</h1>
         <div class="compare-form-holder">
             <p>
-                Select the countries, objective and target to compare. Finally select the action. 
+                Select the countries, objective and target to compare. Finally select the action.
                 The data for two countries will show side by side; by selecting multiple countries, you will show each corresponding data in a separate tab.
             </p>
 
@@ -42,6 +42,7 @@
                                                 selected python:country == req_country;"
                                 tal:content="country" />
                         </tal:block>
+                        <option value="report">Community Report</option>
                     </select>
                 </div>
 
@@ -98,7 +99,8 @@
         </div>
 
         <div class="bap-actions"
-                    tal:condition="request/compare|nothing">
+            tal:condition="request/compare|nothing">
+            <tal:block condition="python: req_country != 'report'">
             <div class="bap-action" tal:repeat="action python:here.get_actions(req_objective, req_target, req_country)">
                 <span tal:define="text action/FullText; ident action/Ident"
                                     tal:content="structure python:here.build_compare_details(text, ident)" />
@@ -111,6 +113,22 @@
                     </tal:block>
                 </div>
             </div>
+            </tal:block>
+            <tal:block condition="python: req_country == 'report'">
+            <div class="bap-action" tal:repeat="action python:here.cl_get_actions_combined(req_objective, req_target, req_country)">
+                <span tal:define="text action/text; ident action/id"
+                                    tal:content="structure python:here.build_compare_details(text, ident)" />
+
+                <div class="bap-mop-content" tal:attributes="id action/id" style="display:none;">
+                    <h3>Measures of Progress</h3>
+                    <tal:block define="tabid string:tab${action/id}">
+                        <tal:block condition="python:len(req_cmp_countries) > 1" replace="structure python:here.cl_compare_multiple(action=action)" />
+                        <tal:block condition="python:len(req_cmp_countries) == 1" replace="structure python:here.cl_compare_side_by_side(action=action)" />
+                    </tal:block>
+                </div>
+            </div>
+            </tal:block>
+
         </div>
     </div>
 </div>
