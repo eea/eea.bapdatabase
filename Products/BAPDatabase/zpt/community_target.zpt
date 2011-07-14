@@ -2,23 +2,31 @@
     target_id request/id|nothing;
     target python: here.cl_get_target(target_id);">
 <metal:block metal:use-macro="here/standard_template_macro">
-<metal:block metal:fill-slot="title">
-	<title tal:content="string:${here/site_title} - Target: ${target/name}" />
-</metal:block>
-<metal:block fill-slot="body">
-<div id="center_content">
-    <h1>BAP 2010 Community report: Target <span tal:replace="target/name" /></h1>
-    <h2 tal:content="target/description" />
-    <div class="bap-actions">
-        <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
-            <span>
-                <a class="action-link" title="Click to see details"
-                   tal:attributes="href string:${here/absolute_url}/bap/community_action?id=${action/id}"
-                   tal:content="string:Action: ${action/name}"></a>
-                <span tal:content="action/action" />
-            </span>
+
+    <metal:block metal:fill-slot="title">
+    	<title tal:content="string:${here/site_title} - Target: ${target/name}" />
+    </metal:block>
+
+    <metal:block metal:fill-slot="head">
+    	<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
+    </metal:block>
+
+
+    <metal:block fill-slot="body">
+    <div id="center_content">
+        <h1>BAP 2010 Community report: Target <span tal:replace="target/name" /></h1>
+        <h2 tal:content="target/description" />
+        <div class="bap-actions">
+            <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
+                <span>
+                    <a class="action-link" title="Click to see details"
+                       tal:attributes="href string:${here/absolute_url}/bap/community_action?id=${action/id}"
+                       tal:content="string:Action: ${action/name}"></a>
+                    <span tal:content="action/action" />
+                </span>
+            </div>
         </div>
-    </div>
-</metal:block>
+    </metal:block>
+
 </metal:block>
 </tal:block>
