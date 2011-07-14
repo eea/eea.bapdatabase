@@ -162,6 +162,16 @@ table.datatable {
 	margin-left: 1.5em;
 }
 
+.bop-mop-year {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.bop-mop-progress {
+    border: 1px solid #DFDFDF;
+    padding: 10px;
+}
+
 .loading-indicator {
 	height: 80px;
 	width: 80px;
