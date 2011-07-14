@@ -7,10 +7,8 @@
 </metal:block>
 <metal:block fill-slot="body">
 <div id="center_content">
-    <h1>
-        Target: <span tal:replace="string: ${target/name}" />
-	<span tal:replace="target/description" />
-   </h1>
+    <h1>BAP 2010 Community report: Target <span tal:replace="target/name" /></h1>
+    <h2 tal:content="target/description" />
     <div class="bap-actions">
         <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
             <span>

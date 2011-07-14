@@ -10,10 +10,8 @@
 <metal:block fill-slot="body">
 
 <div id="center_content">
-<h1><span tal:replace="string: Action: ${action/name}" /></h1>
-<div tal:condition="action_id">
-	<p tal:content="action/action" />
-</div>
+<h1>BAP 2010 Community report: Action <span tal:replace="action/name" /></h1>
+<h2 tal:content="action/action" />
 <div id="mop-content" tal:condition="action_id"
 	tal:define="mops python:here.cl_get_mops(action_id)">
 	<tal:block repeat="mop mops">

@@ -15,7 +15,7 @@
 
 	<metal:block fill-slot="body">
 		<div id="center_content">
-			<h1>Community report</h1>
+			<h1>BAP 2010 Community report</h1>
 
 			<p>
 				<strong>Tip:</strong> click on an item from the list below to expand its details.

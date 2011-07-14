@@ -18,11 +18,9 @@
 
 	<metal:block fill-slot="body">
 		<div id="center_content">
-            <h1>
-                <span tal:replace="objective/name" />:
-		<span tal:content="objective/headline"/>
-            </h1>
-			<div id="bap-content">
+            <h1>BAP 2010 Community report: <span tal:replace="objective/name" /></h1>
+		    <h2 tal:content="objective/headline"/>
+            <div id="bap-content">
                 <div class="bap-targets">
                     <div class="bap-target" tal:repeat="target python:here.cl_get_targets(objective_id)">
                         <tal:block define="target_id target/id">
