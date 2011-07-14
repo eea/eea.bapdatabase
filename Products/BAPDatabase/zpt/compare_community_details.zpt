@@ -1,4 +1,4 @@
-<div class="bap-action-content" tal:define="text options/action/action">
+<div class="bap-action-content" tal:define="text options/text">
     <tal:block repeat='para python:text.split("\n")'>
         <p tal:content="para" />
     </tal:block>

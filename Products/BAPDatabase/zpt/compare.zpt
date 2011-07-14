@@ -42,7 +42,7 @@
                                                 selected python:country == req_country;"
                                 tal:content="country" />
                         </tal:block>
-                        <option value="report">Community Report</option>
+                        <option value="Community report">Community Report</option>
                     </select>
                 </div>
 
@@ -100,7 +100,7 @@
 
         <div class="bap-actions"
             tal:condition="request/compare|nothing">
-            <tal:block condition="python: req_country != 'report'">
+            <tal:block condition="python: req_country != 'Community report'">
             <div class="bap-action" tal:repeat="action python:here.get_actions(req_objective, req_target, req_country)">
                 <span tal:define="text action/FullText; ident action/Ident"
                                     tal:content="structure python:here.build_compare_details(text, ident)" />
@@ -114,7 +114,7 @@
                 </div>
             </div>
             </tal:block>
-            <tal:block condition="python: req_country == 'report'">
+            <tal:block condition="python: req_country == 'Community report'">
             <div class="bap-action" tal:repeat="action python:here.cl_get_actions_combined(req_objective, req_target, req_country)">
                 <span tal:define="text action/text; ident action/id"
                                     tal:content="structure python:here.build_compare_details(text, ident)" />

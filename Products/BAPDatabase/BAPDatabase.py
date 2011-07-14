@@ -172,8 +172,9 @@ class BAPDatabase(NyFolder):
             return template.__of__(self)(country=country, action_id=action_id)
 
     def cl_get_table(self, action_id, country):
-        if country == 'report':
-            action = self.cl_get_action(action_id)
+        if country == 'Community report':
+            mops = self.cl_get_mops(action_id)
+            import pdb; pdb.set_trace()
             return self.compare_community_details.__of__(self)(action=action)
         else:
             action_id = action_id.replace('.', '_')
@@ -185,7 +186,7 @@ class BAPDatabase(NyFolder):
 
     #Compare country values
     def get_countries_filtered_by_actions(self, objective, target, ref_country):
-        if ref_country == 'report':
+        if ref_country == 'Community report':
             target_row = self._get_session().query(models.Target).\
                     filter(models.Target.id == target).one()
             target = target_row.name.replace('.', '_')
@@ -224,7 +225,7 @@ class BAPDatabase(NyFolder):
     def json_get_targets(self, objective, country):
         """ """
         records = []
-        if country == 'report':
+        if country == 'Community report':
             objective = int(objective.split('Objective')[1])
             for target in self.cl_get_targets(objective):
                 records.append({
@@ -243,7 +244,7 @@ class BAPDatabase(NyFolder):
         """ """
         records = []
 
-        if country == 'report':
+        if country == 'Community report':
             objective = int(objective.split('Objective')[1])
             for action in self.cl_get_actions(objective, target):
                 records.append({'optionValue': action.id,
