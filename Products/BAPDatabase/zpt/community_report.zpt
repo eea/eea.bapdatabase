@@ -5,7 +5,7 @@
 	</metal:block>
 
 	<metal:block metal:fill-slot="head">
-		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap_community_reports.js"></script>
+		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap_community_report.js"></script>
 		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
 		<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
 		<!--[if lt IE 8]>

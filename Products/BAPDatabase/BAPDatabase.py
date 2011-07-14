@@ -280,7 +280,7 @@ class BAPDatabase(NyFolder):
     compare_multiple = PageTemplateFile('zpt/compare_multiple', globals())
     compare_side_by_side = PageTemplateFile('zpt/compare_side_by_side', globals())
 
-    community_reports = PageTemplateFile('zpt/community_reports', globals())
+    community_report = PageTemplateFile('zpt/community_report', globals())
     community_objective = PageTemplateFile('zpt/community_objective', globals())
     community_target = PageTemplateFile('zpt/community_target', globals())
     community_action = PageTemplateFile('zpt/community_action', globals())
