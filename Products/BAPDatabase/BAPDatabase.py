@@ -177,11 +177,17 @@ class BAPDatabase(NyFolder):
                 for mop in self.cl_get_mops(action_id) if mop.progress])
             return self.compare_community_details.__of__(self)(text=text)
         else:
+            try:
+                if str(int(action_id)) == action_id: #Is numeric
+                    action_id = self.cl_get_action(action_id).name
+            except ValueError:
+                pass
             action_id = action_id.replace('.', '_')
             template = tables.get(action_id)
             if template is not None:
                 return template.__of__(self)(country=country,
                         action_id=action_id)
+        return self.empty_table.__of__(self)()
 
     #Compare country values
     def get_countries_filtered_by_actions(self, objective, target, ref_country):
@@ -280,6 +286,8 @@ class BAPDatabase(NyFolder):
                 filter(models.Objective.id == objective_id).one()
 
     def cl_get_targets(self, objective):
+        if isinstance(objective, basestring) and 'Objective' in objective:
+            objective = objective.split('Objective')[1]
         return self._get_session().query(models.Target).filter(
                 models.Target.objective == objective).all()
 
@@ -337,6 +345,7 @@ class BAPDatabase(NyFolder):
 
     cl_compare_multiple = PageTemplateFile('zpt/cl_compare_multiple', globals())
     cl_compare_side_by_side = PageTemplateFile('zpt/cl_compare_side_by_side', globals())
+    empty_table = PageTemplateFile('zpt/empty_table', globals())
 
     community_report = PageTemplateFile('zpt/community_report', globals())
     community_objective = PageTemplateFile('zpt/community_objective', globals())

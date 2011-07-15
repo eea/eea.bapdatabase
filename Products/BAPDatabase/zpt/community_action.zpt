@@ -8,7 +8,14 @@
     </metal:block>
 
     <metal:block metal:fill-slot="head">
-    	<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
+        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function(){
+                    $('.bop-mop-progress p').each(function(){
+                        $(this).html(Linkify($(this).html()));
+                    });
+            });
+        </script>
     </metal:block>
 
     <metal:block fill-slot="body">
@@ -16,7 +23,7 @@
     <div id="center_content">
     <h1>BAP 2010 Community report: Action <span tal:replace="action/name" /></h1>
     <h2 tal:content="action/action" />
-    
+
     <div id="mop-content" tal:condition="action_id">
 	    <h3 class="bop-mop-year">Community action</h3>
 	    <div class="bop-mop-progress">

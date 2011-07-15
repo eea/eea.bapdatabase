@@ -156,6 +156,7 @@ table.datatable {
 	-moz-box-shadow: 2px 2px 7px #DFDFDF;
 	-webkit-box-shadow: 2px 2px 7px #DFDFDF;
 	box-shadow: 2px 2px 7px #DFDFDF;
+    clear: both;
 }
 
 .bap-mop-content {
