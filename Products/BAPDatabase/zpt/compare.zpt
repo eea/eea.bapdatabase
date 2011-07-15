@@ -36,13 +36,14 @@
                 <div class="field left">
                     <label for="ctlCountry">Country</label>
                     <select name="country" id="ctlCountry" class="compare-select">
+                        <option value="Community report"
+                            tal:attributes="selected python:req_country == 'Community report' and 'selected' or ''">Community Report</option>
+
                         <tal:block repeat="country here/get_countries">
                         <option tal:attributes="value country;
                                                 selected python:country == req_country and 'selected' or '';"
                                 tal:content="country" />
                                 </tal:block>
-                        <option value="Community report"
-                            tal:attributes="selected python:req_country == 'Community report' and 'selected' or ''">Community Report</option>
                     </select>
                 </div>
 
