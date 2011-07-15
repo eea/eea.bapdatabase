@@ -8,18 +8,18 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${here/site_title} - Action: ${action_id} for ${country}" />
+	<title tal:content="string:${here/site_title} - ${action_id} for ${country}" />
 </metal:block>
 
 <metal:block fill-slot="body">
 
 <div id="center_content">
     <h1>
-        <span tal:replace="string: Action: ${action_id}" /> for <span tal:replace="country" />
-   </h1>
-	<div tal:condition="action_id">
-		<p tal:content="action_text" />
-	</div>
+        BAP Report 2010 - <span tal:replace="string: ${action_id}" /> for <span tal:replace="country" />
+    </h1>
+    <tal:block tal:condition="action_id">
+        <h2 tal:content="action_text"></h2>
+	</tal:block>
 
 	<div id="mop-content" tal:condition="action_id">
 		<h3>Measures of Progress</h3>
