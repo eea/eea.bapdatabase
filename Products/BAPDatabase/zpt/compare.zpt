@@ -128,7 +128,7 @@
             </tal:block>
             <tal:block condition="python: req_country == 'Community report'">
             <div class="bap-action" tal:repeat="action python:here.cl_get_actions_combined(req_objective, req_target, req_country)">
-                <span tal:define="text action/text; ident action/id"
+                <span tal:define="text string: ${action/name} ${action/text} ; ident action/id"
                                     tal:content="structure python:here.build_compare_details(text, ident)" />
 
                 <div class="bap-mop-content" tal:attributes="id action/id" style="display:none;">
