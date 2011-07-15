@@ -161,10 +161,13 @@ class BAPDatabase(NyFolder):
             return
 
     def get_action_values(self, table_id, country):
-        code = self.get_country_code(country)
-        model = getattr(models, table_id)
-        return self._get_session().query(model) \
+        try:
+            code = self.get_country_code(country)
+            model = getattr(models, table_id)
+            return self._get_session().query(model) \
                                 .filter(model.CountryCode == code).one()
+        except NoResultFound:
+            return None
 
     def get_table(self, action_id, country):
         template = tables.get(action_id)
@@ -172,21 +175,24 @@ class BAPDatabase(NyFolder):
             return template.__of__(self)(country=country, action_id=action_id)
 
     def cl_get_table(self, action_id, country):
-        if country == 'Community report':
-            text = "\n\n".join([mop.progress
-                for mop in self.cl_get_mops(action_id) if mop.progress])
-            return self.compare_community_details.__of__(self)(text=text)
-        else:
-            try:
-                if str(int(action_id)) == action_id: #Is numeric
-                    action_id = self.cl_get_action(action_id).name
-            except ValueError:
-                pass
-            action_id = action_id.replace('.', '_')
-            template = tables.get(action_id)
-            if template is not None:
-                return template.__of__(self)(country=country,
-                        action_id=action_id)
+        try:
+            if country == 'Community report':
+                text = "\n\n".join([mop.progress
+                    for mop in self.cl_get_mops(action_id) if mop.progress])
+                return self.compare_community_details.__of__(self)(text=text)
+            else:
+                try:
+                    if str(int(action_id)) == action_id: #Is numeric
+                        action_id = self.cl_get_action(action_id).name
+                except ValueError:
+                    pass
+                action_id = action_id.replace('.', '_')
+                template = tables.get(action_id)
+                if template is not None:
+                    return template.__of__(self)(country=country,
+                            action_id=action_id)
+        except:
+            pass
         return self.empty_table.__of__(self)()
 
     #Compare country values
