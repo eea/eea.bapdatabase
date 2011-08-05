@@ -280,10 +280,12 @@ select.compare-select {
     float: left;
 }
 
+/*
 .datatable, .datatable th, .datatable td {
     word-break: break-all;
     word-wrap: break-word;
 }
+*/
 
 .compare-form-holder p {
     font-size: 13px;
