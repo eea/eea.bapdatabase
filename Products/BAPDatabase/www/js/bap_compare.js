@@ -1,19 +1,3 @@
-//$(function() {
-//    $('.switch-compare').live('click', function(e){
-//        e.preventDefault();
-//        if( ($('.compare-select.multiple-select').length)){
-//            console.log('s');
-//            $('.compare-select.multiple-select').removeAttr('multiple').css({'height': 'auto'}).removeClass('multiple-select').addClass('multiple-select-switched');
-//        }else {
-//            $('.compare-select.multiple-select-switched')
-//            .attr('multiple', 'multiple')
-//            .css({'height': '145px'})
-//            .removeClass('multiple-select-switched')
-//            .addClass('multiple-select');
-//        }
-//    });
-//});
-
 $(function() {
     $('.compare-tabs').each(function(){
         if( !$(this).hasClass('single') ){
@@ -54,8 +38,8 @@ $(function(){
 
 $(function(){
     $("select#ctlTarget").change(function(){
-        var params = $.param({'objective': $("select#ctlObjective").val(), 'target': $(this).val(), 'ref_country': $("select#ctlCountry").val()}, true);
-        $.getJSON("json_get_countries_filtered_by_actions", params, function(j){
+        var params = $.param({'ref_country': $("select#ctlCountry").val()}, true);
+        $.getJSON("json_get_comparision_countries", params, function(j){
             var options = '';
             for (var i = 0; i < j.length; i++) {
                 options += '<option value="' + j[i].optionValue + '" title="' + j[i].optionTitle + '">' + j[i].optionDisplay + '<'+'/option>';

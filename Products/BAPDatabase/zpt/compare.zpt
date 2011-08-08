@@ -66,7 +66,7 @@
                     <select name="target" id="ctlTarget" class="compare-select">
                         <option value="">select target</option>
                         <tal:block condition="python: req_country != 'Community report'">
-                            <tal:block repeat="target python:here.get_targets(req_objective, req_country)">
+                            <tal:block repeat="target python:here.get_objective_targets(req_objective)">
                             <option tal:attributes="value python:target[0];
                                                 selected python:target[0] == req_target and 'selected' or '';
                                                 title python:target[1]"
@@ -86,17 +86,12 @@
                     </select>
                 </div>
 
-                <!--<div class="field left">
-                    <label>&nbsp;</label>
-                    <a href="javascript:void(0);" title="Switch compare view" class="switch-compare">Compare side by side</a>
-                </div>-->
-
                 <div class="field left">
                     <label for="ctlCmpCountries">Compare with</label>
                     <select name="cmp_countries:list" id="ctlCmpCountries" multiple="multiple" class="compare-select multiple-select">
-                        <tal:block repeat="country python:here.get_countries_filtered_by_actions(req_objective, req_target, req_country)">
+                        <tal:block repeat="country python:here.get_comparision_countries(req_country)">
                         <option tal:attributes="value country;
-                                                selected python: country in req_cmp_countries"
+                                             selected python: country in req_cmp_countries"
                                 tal:content="country" />
                         </tal:block>
                     </select>
@@ -114,7 +109,7 @@
         <div class="bap-actions"
             tal:condition="request/compare|nothing">
             <tal:block condition="python: req_country != 'Community report'">
-            <div class="bap-action" tal:repeat="action python:here.get_actions(req_objective, req_target, req_country)">
+            <div class="bap-action" tal:repeat="action python:here.get_target_actions(req_objective, req_target)">
                 <span tal:define="text action/FullText; ident action/Ident"
                                     tal:content="structure python:here.build_compare_details(text, ident)" />
 

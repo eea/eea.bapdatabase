@@ -120,11 +120,31 @@ class BAPDatabase(NyFolder):
             result[target[0]] = target[1]
         return iter(sorted(result.iteritems()))
 
+    def get_objective_targets(self, objective):
+        result = {}
+        for target in self._get_session().query(models.TargetActions.Target, models.QuestionsText.FullText) \
+                                .join((models.Narrative, models.Narrative.Ident == models.TargetActions.Target)) \
+                                .join((models.QuestionsText, models.QuestionsText.Ident == models.TargetActions.Target)) \
+                                .filter(models.Narrative.Objective == objective).distinct().all():
+            result[target[0]] = target[1]
+        return iter(sorted(result.iteritems()))
+
     def get_actions(self, objective, target, country):
         result = {}
         for action in self._get_session().query(models.QuestionsText) \
                         .join((models.Narrative, models.QuestionsText.Ident == models.Narrative.Ident)) \
                         .filter(models.Narrative.Country == country) \
+                        .filter(models.Narrative.Objective == objective) \
+                        .filter(models.QuestionsText.Ident.like('%s%%' % target)).all():
+            if action.Ident != target:   #skip targets
+                result[action.Ident] = action
+
+        return [result[k] for k in sorted(result)]
+
+    def get_target_actions(self, objective, target):
+        result = {}
+        for action in self._get_session().query(models.QuestionsText) \
+                        .join((models.Narrative, models.QuestionsText.Ident == models.Narrative.Ident)) \
                         .filter(models.Narrative.Objective == objective) \
                         .filter(models.QuestionsText.Ident.like('%s%%' % target)).all():
             if action.Ident != target:   #skip targets
@@ -171,42 +191,14 @@ class BAPDatabase(NyFolder):
 
     def get_table(self, action_id, country):
         template = tables.get(action_id)
-        if template is not None:
-            return template.__of__(self)(country=country, action_id=action_id)
-
-    def cl_get_table(self, action_id, country):
         try:
-            if country == 'Community report':
-                text = "\n\n".join([mop.progress
-                    for mop in self.cl_get_mops(action_id) if mop.progress])
-                return self.compare_community_details.__of__(self)(text=text)
-            else:
-                try:
-                    if str(int(action_id)) == action_id: #Is numeric
-                        action_id = self.cl_get_action(action_id).name
-                except ValueError:
-                    pass
-                action_id = action_id.replace('.', '_')
-                template = tables.get(action_id)
-                if template is not None:
-                    return template.__of__(self)(country=country,
-                            action_id=action_id)
+            if template is not None:
+                return template.__of__(self)(country=country, action_id=action_id)
         except:
-            pass
-        return self.empty_table.__of__(self)()
+            return self.empty_table.__of__(self)()
 
-    #Compare country values
-    def get_countries_filtered_by_actions(self, objective, target, ref_country):
-        if ref_country == 'Community report':
-            target_row = self._get_session().query(models.Target).\
-                    filter(models.Target.id == target).one()
-            target = target_row.name.replace('.', '_')
-
-        countries = self._get_session().query(models.Header.Country) \
-                        .filter(models.Narrative.Objective == objective) \
-                        .filter(models.Narrative.Ident.like('%s_%%' % target)).distinct() \
-                        .order_by(models.Header.Country).all()
-        return [ country[0] for country in countries if ref_country!=country[0] ]
+    def get_comparision_countries(self, ref_country):
+        return [ c for c in self.get_countries() if c!=ref_country ]
 
     def get_countries(self):
         countries = self._get_session().query(models.Header.Country) \
@@ -246,41 +238,45 @@ class BAPDatabase(NyFolder):
                     'optionTitle': target.name,
                 })
         else:
-            for target in self.get_targets(objective, country):
+            for target in self.get_objective_targets(objective):
                 records.append({'optionValue': target[0],
                                 'optionDisplay': target[0],
                                 'optionTitle': target[1]})
         return json.dumps(records)
 
-    def json_get_actions(self, objective, target, country):
+    def json_get_comparision_countries(self, ref_country):
         """ """
         records = []
-
-        if country == 'Community report':
-            objective = int(objective.split('Objective')[1])
-            for action in self.cl_get_actions(objective, target):
-                records.append({'optionValue': action.id,
-                                'optionDisplay': action.name,
-                                'optionTitle': action.action})
-        else:
-            for action in self.get_actions(objective, target, country):
-                records.append({'optionValue': action.Ident,
-                                'optionDisplay': action.Ident,
-                                'optionTitle': action.FullText})
-        return json.dumps(records)
-
-    def json_get_countries_filtered_by_actions(self, objective, target, ref_country):
-        """ """
-        records = []
-        for country in self.get_countries_filtered_by_actions(objective, target, ref_country):
+        for country in self.get_comparision_countries(ref_country):
             records.append({'optionValue': country,
                             'optionDisplay': country,
                             'optionTitle': country})
         return json.dumps(records)
 
-    def test_select(self):
-        """ """
-        return self._get_session().query(models.Action).filter(models.PolicyArea.id == 1).all()
+    ################################
+    #   Community report functions #
+    ################################
+
+    def cl_get_table(self, action_id, country):
+        try:
+            if country == 'Community report':
+                text = "\n\n".join([mop.progress
+                    for mop in self.cl_get_mops(action_id) if mop.progress])
+                return self.compare_community_details.__of__(self)(text=text)
+            else:
+                try:
+                    if str(int(action_id)) == action_id: #Is numeric
+                        action_id = self.cl_get_action(action_id).name
+                except ValueError:
+                    pass
+                action_id = action_id.replace('.', '_')
+                template = tables.get(action_id)
+                if template is not None:
+                    return template.__of__(self)(country=country,
+                            action_id=action_id)
+        except:
+            pass
+        return self.empty_table.__of__(self)()
 
     def cl_get_objectives(self):
         """ Same as get_objectives, but will probably change in the future"""
