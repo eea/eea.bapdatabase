@@ -165,6 +165,12 @@ $(document).ready(function(){
 				$(this).html(replace_actions($(this).html()));
 				//Also linkify text
 				$(this).html(Linkify($(this).html()));
+				
+				//Shorten long urls
+                $('.linkified').each(function(){
+                    $(this).html($(this).html().substr(0, 50) + '...');
+                });
+                
 				if(status == "error"){
 					alert(xhr.status + " " + xhr.statusText);
 				}
