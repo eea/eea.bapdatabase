@@ -3,24 +3,24 @@ $(document).ready(function(){
      * Hide all objectives` content if Javascript Enabled
     */
     hideItems();
-    
+
     $('.bap-objective-title a').click(function(e){
 		update_links('/bap')
         e.preventDefault();
-        
+
         if($(this).parent().next('.bap-objective').is(':visible')){
             $(this).attr("class", "active");
         }else {
             $(this).attr("class", "inactive");
         }
-        
+
         $(this).parent().next('.bap-objective').slideToggle();
 		objective_id = $(this).text();
 		setCookie('BAPObjective', objective_id, 1);
 		deleteCookie('BAPTarget');
 		deleteCookie('BAPAction');
     });
-    
+
     $('.bap-objective-title span').click(function(e){
 		update_links('/bap');
 		objective_id = $(this).parent().children('a').text();
@@ -29,7 +29,7 @@ $(document).ready(function(){
 		deleteCookie('BAPAction');
 		toggle_objective($(this));
     });
-    
+
     $('.bap-objective .bap-targets .bap-target span a.target-link').click(function(){
 		update_links('/bap');
 		target_id = $(this).attr('href').split('?id=')[1];
@@ -111,25 +111,35 @@ $(document).ready(function(){
 		$(".bap-objective").each(function(){
 			$(this).css({'display' : 'none'});
 		});
-		
+
 		$(".bap-actions").each(function(){
 			$(this).css({'display' : 'none'});
 		});
-		
+
 		return false;
 	}
 	function toggle_target(Target){
 		var bap_actions = Target.parent().next('.bap-actions')
 		if(bap_actions.children('.bap-action').children('.bap-mop-content').length == 0){
 			bap_actions.append("<div class='bap-action'><div class='bap-mop-content'></div></div>");
-			
+
 			url = Target.attr("href");
-		   
+
 			$("#bap-content").showLoading();
-			
+
 			bap_actions.children('.bap-action').children('.bap-mop-content').load('' + url + ' #mop-content', function(response, status, xhr) {
 				$("#bap-content").hideLoading();
-				
+				//Also linkify text
+                $('.bap-action').html(Linkify($(this).html()));
+
+                //Shorten long urls
+                $('.linkified').each(function(){
+                    if (!$(this).hasClass('shortened')) {
+                        $(this).html($(this).html().substr(0, 50) + '...');
+                        $(this).addClass('shortened')
+                    }
+                });
+
 				if(status == "error"){
 					alert(xhr.status + " " + xhr.statusText);
 				}
@@ -149,33 +159,36 @@ $(document).ready(function(){
 		}else {
 			objective.parent().children('.bap-objective-title a').attr("class", "inactive");
 		}
-		
+
 		objective.parent().next('.bap-objective').slideToggle();
 	}
 
 	function toggle_action(Action){
 		if(Action.parent().next(".bap-mop-content").is(':empty') == true){
 			url = Action.attr("href");
-			
+
 			$("#bap-content").showLoading();
-			
+
 			Action.parent().next(".bap-mop-content").load('' + url + ' #mop-content', function(response, status, xhr) {
 				$("#bap-content").hideLoading();
 				//Replace Action: A1.2. with <a href=
 				$(this).html(replace_actions($(this).html()));
 				//Also linkify text
 				$(this).html(Linkify($(this).html()));
-				
+
 				//Shorten long urls
                 $('.linkified').each(function(){
-                    $(this).html($(this).html().substr(0, 50) + '...');
+                    if (!$(this).hasClass('shortened')) {
+                        $(this).html($(this).html().substr(0, 50) + '...');
+                        $(this).addClass('shortened')
+                    }
                 });
-                
+
 				if(status == "error"){
 					alert(xhr.status + " " + xhr.statusText);
 				}
 			});
-			
+
 			Action.parent().next(".bap-mop-content").slideDown();
 		}else {
 			Action.parent().next(".bap-mop-content").slideToggle();
