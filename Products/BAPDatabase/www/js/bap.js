@@ -120,7 +120,7 @@ $(document).ready(function(){
 	}
 	function toggle_target(Target){
 		var bap_actions = Target.parent().next('.bap-actions')
-		if(bap_actions.children('.bap-action').children('.bap-mop-content').length == 0){
+		if(bap_actions.children('.bap-action').children().length == 0){
 			bap_actions.append("<div class='bap-action'><div class='bap-mop-content'></div></div>");
 
 			url = Target.attr("href");
