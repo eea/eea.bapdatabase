@@ -1,3 +1,7 @@
+h1 {
+    line-height: 1.2;
+}
+
 .clearifx {
     clear: both;
     display: block;
@@ -284,6 +288,7 @@ select.compare-select {
 .datatable, .datatable th, .datatable td {
     word-break: break-all;
     word-wrap: break-word;
+    text-align: justify;
 }
 */
 
@@ -317,6 +322,12 @@ select.compare-select {
     position: relative;
 }
 
+.country-profile-title {
+    display: block;
+    clear: both;
+}
+
+
 .country-compare-button {
     float: right;
     text-decoration: none;
@@ -324,12 +335,13 @@ select.compare-select {
     font-family: Arial, sans-serif;
     border: 1px solid #BABBB8;
     background: #F2F2F2;
-    color: #333333 !important;
+    color: #8F68DA !important;
     padding: 3px 5px;
     clear: both;
     display: block;
-    position: relative;
-    top: -6px;
+    position: absolute;
+    right: 0;
+    top: 0;
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
             border-radius: 3px;
