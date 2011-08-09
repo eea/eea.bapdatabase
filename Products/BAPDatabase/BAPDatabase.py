@@ -180,6 +180,14 @@ class BAPDatabase(NyFolder):
         except NoResultFound:
             return
 
+    def get_objective_by_name(self, name):
+        """ """
+        try:
+            return self._get_session().query(models.Objective) \
+                                    .filter(models.Objective.name == name).one()
+        except NoResultFound:
+            return
+
     def get_action_values(self, table_id, country):
         try:
             code = self.get_country_code(country)
@@ -294,8 +302,11 @@ class BAPDatabase(NyFolder):
 
     def cl_get_target(self, target_id):
         """ Get target """
-        return self._get_session().query(models.Target).\
-                filter(models.Target.id == target_id).one()
+        try:
+            return self._get_session().query(models.Target).\
+                    filter(models.Target.id == target_id).one()
+        except NoResultFound:
+            return None
 
     def cl_get_actions(self, target):
         """ Get actions for a cl_target """
