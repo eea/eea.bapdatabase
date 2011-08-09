@@ -47,6 +47,7 @@ $(document).ready(function(){
 		deleteCookie('BAPObjective');
 		deleteCookie('BAPTarget');
         toggle_action($(this));
+	console.log('2');
         return false;
     });
 
@@ -193,6 +194,8 @@ $(document).ready(function(){
 		}else {
 			Action.parent().next(".bap-mop-content").slideToggle();
 		}
+		
+		console.log('da');
 	}
 
 	function setCookie(c_name,value,expires){

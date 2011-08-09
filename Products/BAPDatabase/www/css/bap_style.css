@@ -33,6 +33,7 @@ h1 {
 
 table.datatable {
 	margin: 0 0 1em 0;
+	font-size: 11px !important;
 }
 
 .datatable th {
@@ -68,11 +69,25 @@ table.datatable {
 
 }
 
-.bap-objective {
+.bap-objective,
+.target-description {
 	margin: 0.5em 2.2em 0em 1em;
 	background-color: #FAFAFA;
 	padding: 0;
-	border: 1px solid #EFEFEF;
+}
+
+.target-description,
+.objective-description {
+    display: block;
+    width: auto;
+    margin: 0 !important;
+    padding: 10px !important;
+    text-indent: 0 !important;
+    border: 1px solid #EFEFEF;
+}
+
+.objective-description {
+    margin-top: 15px !important;
 }
 
 .bap-objective-title {
@@ -108,7 +123,8 @@ table.datatable {
 	cursor: pointer;
 }
 
-.bap-headline {
+.bap-headline,
+.objective-description {
 	background-color: #F4FFE0;
 	border-bottom: 1px dotted #D6D6D6;
 	text-align: left;
@@ -148,6 +164,17 @@ table.datatable {
 .action-link {
 	background: transparent url('/misc_/BAPDatabase/bullet_red.png') no-repeat left center !important;
 }
+
+.collapse .action-link,
+.action-link.collapse {
+	background: transparent url('/misc_/BAPDatabase/collapse.png') no-repeat left center !important;
+}
+
+.expand .action-link,
+.action-link.expand {
+	background: transparent url('/misc_/BAPDatabase/expand.png') no-repeat left center !important;
+}
+
 .goto-action {
 	background: none !important;
 	padding: 0 !important;
@@ -164,7 +191,7 @@ table.datatable {
 }
 
 .bap-mop-content {
-	margin-left: 1.5em;
+	margin-left: 0;
 }
 
 .bop-mop-year {
@@ -317,8 +344,8 @@ select.compare-select {
 }
 
 .compare-tabs.single {
-    width: 400px;
-    margin-right: 15px;
+    width: 430px;
+    margin-right: 5px;
     position: relative;
 }
 

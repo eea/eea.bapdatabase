@@ -27,4 +27,6 @@ misc_ = {
     'bullet_red.png':ImageFile('www/bullet_red.png', globals()),
     'up.png':ImageFile('www/up.png', globals()),
     'down.png':ImageFile('www/down.png', globals()),
+    'expand.png':ImageFile('www/expand.png', globals()),
+    'collapse.png':ImageFile('www/collapse.png', globals()),
 }
