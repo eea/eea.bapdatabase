@@ -302,9 +302,20 @@ class BAPDatabase(NyFolder):
 
     def cl_get_target(self, target_id):
         """ Get target """
+        print 'cl_get_target', target_id
         try:
             return self._get_session().query(models.Target).\
                     filter(models.Target.id == target_id).one()
+        except NoResultFound:
+            return None
+
+    def get_target_by_name(self, target_name):
+        """ Get target by name"""
+        print 'get_target_by_name', target_name
+        target_name = target_name.replace('_', '.')
+        try:
+            return self._get_session().query(models.Target).\
+                    filter(models.Target.name == target_name).one()
         except NoResultFound:
             return None
 

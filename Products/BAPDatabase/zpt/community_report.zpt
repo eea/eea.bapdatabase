@@ -15,8 +15,19 @@
 
 	<metal:block fill-slot="body">
 		<div id="center_content">
-			<h1>BAP 2010 Community report</h1>
-
+			<span class="country-profile-title">
+				<h1>
+					BAP 2010 Community report
+					
+				</h1>
+	
+				<a class="country-compare-button"
+					tal:attributes="
+					title string:Compare country data;
+					href string:${here/absolute_url}/compare">
+					     Compare community report data
+				     </a>
+			</span>
 			<p>
 				<strong>Tip:</strong> click on an item from the list below to expand its details.
 			</p>

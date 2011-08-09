@@ -18,7 +18,7 @@ $(function(){
     $("select#ctlCountry").change(function(){
         $("select#ctlObjective option[value='']").attr("selected", "selected");
         $("select#ctlTarget").empty();
-        $("select#ctlCmpCountries").empty();
+        // $("select#ctlCmpCountries").empty();
     })
 })
 
@@ -31,7 +31,7 @@ $(function(){
                 options += '<option value="' + j[i].optionValue + '" title="' + j[i].optionTitle + '">' + j[i].optionDisplay + '<'+'/option>';
             }
             $("select#ctlTarget").html(options);
-            $("select#ctlCmpCountries").empty();
+            // $("select#ctlCmpCountries").empty();
         })
     })
 })
@@ -44,7 +44,7 @@ $(function(){
             for (var i = 0; i < j.length; i++) {
                 options += '<option value="' + j[i].optionValue + '" title="' + j[i].optionTitle + '">' + j[i].optionDisplay + '<'+'/option>';
             }
-            $("select#ctlCmpCountries").html(options);
+            // $("select#ctlCmpCountries").html(options);
         })
     })
 })

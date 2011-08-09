@@ -107,14 +107,25 @@
         </div>
 
         <div class="bap-actions" tal:condition="request/compare|nothing">
+
             <span class="objective-description" tal:define="objective python:here.get_objective_by_name(req_objective)">
                 <strong tal:content="req_objective" />
                 <span tal:replace="objective/description" />
             </span>
-            <span class="target-description" tal:define="target python:here.cl_get_target(req_target)">
-                <strong tal:content="target/name" />
-                <span tal:replace="target/description" />
+
+            <span class="target-description" tal:condition="python: req_country != 'Community report'" 
+                tal:define="target request/target|nothing; 
+                            record python:here.get_target_by_name(target)">
+                <strong tal:content="record/name" />
+                <span tal:replace="record/description" />
             </span>
+
+            <span class="target-description" tal:condition="python: req_country == 'Community report'" 
+                tal:define="record python:here.cl_get_target(req_target)">
+                <strong tal:content="record/name" />
+                <span tal:replace="record/description" />
+            </span>
+
             <tal:block condition="python: req_country != 'Community report'">
             <tal:block repeat="action python:here.get_target_actions(req_objective, req_target)">
             <div tal:attributes="class python:test(path('repeat/action/start'), 'bap-action first-element', 'bap-action')">
