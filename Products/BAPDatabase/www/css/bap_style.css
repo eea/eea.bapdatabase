@@ -161,15 +161,15 @@ table.datatable {
     vertical-align: middle;
 }
 
-.action-link {
-	background: transparent url('/misc_/BAPDatabase/bullet_red.png') no-repeat left center !important;
-}
-
+.collapse .target-link,
+.target-link.collapse,
 .collapse .action-link,
 .action-link.collapse {
 	background: transparent url('/misc_/BAPDatabase/collapse.png') no-repeat left center !important;
 }
 
+.expand .target-link,
+.target-link.expand,
 .expand .action-link,
 .action-link.expand {
 	background: transparent url('/misc_/BAPDatabase/expand.png') no-repeat left center !important;
