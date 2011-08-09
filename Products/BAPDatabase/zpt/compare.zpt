@@ -25,7 +25,7 @@
                                 req_cmp_countries request/cmp_countries|python:[];">
 
     <div class="bap-action-holder">
-        <h1>BAP Report 2010 - comparison</h1>
+        <h1>BAP Report 2010 - comparative view</h1>
         <div class="compare-form-holder">
             <p>
                 Select the countries, objective and target to compare. Finally select the action.
@@ -109,11 +109,11 @@
         <div class="bap-actions"
             tal:condition="request/compare|nothing">
             <tal:block condition="python: req_country != 'Community report'">
-            <div class="bap-action" tal:repeat="action python:here.get_target_actions(req_objective, req_target)">
+            <tal:block repeat="action python:here.get_target_actions(req_objective, req_target)">
+            <div tal:attributes="class python:test(path('repeat/action/start'), 'bap-action first-element', 'bap-action')">
                 <span tal:define="text action/FullText; 
-                                  ident action/Ident;
-                                  is_first repeat/action/start;"
-                        tal:content="structure python:here.build_compare_details(text, ident, is_first)" />
+                                  ident action/Ident"
+                        tal:content="structure python:here.build_compare_details(text, ident)" />
 
                 <div class="bap-mop-content" tal:attributes="id action/Ident" style="display:none;">
                     <h3>Measures of Progress</h3>
@@ -124,12 +124,13 @@
                 </div>
             </div>
             </tal:block>
+            </tal:block>
             <tal:block condition="python: req_country == 'Community report'">
-            <div class="bap-action" tal:repeat="action python:here.cl_get_actions_combined(req_objective, req_target, req_country)">
+            <tal:block repeat="action python:here.cl_get_actions_combined(req_objective, req_target, req_country)">
+            <div tal:attributes="class python:test(path('repeat/action/start'), 'bap-action first-element', 'bap-action')">
                 <span tal:define="text string: ${action/name} ${action/text} ; 
-                                  ident action/id;
-                                  is_first repeat/action/start;"
-                        tal:content="structure python:here.build_compare_details(text, ident, is_first)" />
+                                  ident action/id"
+                        tal:content="structure python:here.build_compare_details(text, ident)" />
 
                 
                 <div class="bap-mop-content" tal:attributes="id action/id" style="display:none;">
@@ -141,7 +142,7 @@
                 </div>
             </div>
             </tal:block>
-
+            </tal:block>
         </div>
     </div>
 </div>
