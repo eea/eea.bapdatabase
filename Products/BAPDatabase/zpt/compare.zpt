@@ -110,8 +110,10 @@
             tal:condition="request/compare|nothing">
             <tal:block condition="python: req_country != 'Community report'">
             <div class="bap-action" tal:repeat="action python:here.get_target_actions(req_objective, req_target)">
-                <span tal:define="text action/FullText; ident action/Ident"
-                                    tal:content="structure python:here.build_compare_details(text, ident)" />
+                <span tal:define="text action/FullText; 
+                                  ident action/Ident;
+                                  is_first repeat/action/start;"
+                        tal:content="structure python:here.build_compare_details(text, ident, is_first)" />
 
                 <div class="bap-mop-content" tal:attributes="id action/Ident" style="display:none;">
                     <h3>Measures of Progress</h3>
@@ -124,9 +126,12 @@
             </tal:block>
             <tal:block condition="python: req_country == 'Community report'">
             <div class="bap-action" tal:repeat="action python:here.cl_get_actions_combined(req_objective, req_target, req_country)">
-                <span tal:define="text string: ${action/name} ${action/text} ; ident action/id"
-                                    tal:content="structure python:here.build_compare_details(text, ident)" />
+                <span tal:define="text string: ${action/name} ${action/text} ; 
+                                  ident action/id;
+                                  is_first repeat/action/start;"
+                        tal:content="structure python:here.build_compare_details(text, ident, is_first)" />
 
+                
                 <div class="bap-mop-content" tal:attributes="id action/id" style="display:none;">
                     <h3>Measures of Progress</h3>
                     <tal:block define="tabid string:tab${action/id}">

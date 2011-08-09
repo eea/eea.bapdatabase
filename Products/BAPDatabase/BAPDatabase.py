@@ -208,10 +208,15 @@ class BAPDatabase(NyFolder):
     def get_objectives(self):
         return self._get_session().query(models.Objective).all()
 
-    def build_compare_details(self, text, id):
+    def build_compare_details(self, text, id, is_first=False):
         parsed_text = self.humanize_text(text)
+        if is_first:
+            href_class = "action-link first-element"
+        else:
+            href_class = "action-link"
         if isinstance(parsed_text, tuple):
-            return '<a class="action-link" title="Click to see details" href="#">%(heading)s</a> %(text)s' % {
+            return '<a class="%(href_class)s" title="Click to see details" href="#">%(heading)s</a> %(text)s' % {
+                 'href_class': href_class,
                  'id': id,
                  'heading': parsed_text[0],
                  'text': parsed_text[1]
