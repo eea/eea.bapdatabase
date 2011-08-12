@@ -77,7 +77,7 @@
                         <tal:block repeat="target python:here.cl_get_targets(req_objective)">
                             <tal:block define="target_id target/id">
                                 <option tal:attributes="value target_id;
-                                        selected python: int(req_target) == int(target_id) and 'selected' or ''"
+                                        selected python: req_target == target_id and 'selected' or ''"
                                         tal:content="target/name" />
                                 </tal:block>
                             </tal:block>
@@ -94,7 +94,8 @@
                                              selected python: country in req_cmp_countries"
                                 tal:content="country" />
                         </tal:block>
-                    </select>
+                    </select><br />
+                    <em class="help">CTRL-click to select multiple</em>
                 </div>
 
                 <div class="field left">
@@ -116,8 +117,8 @@
             <span class="target-description" tal:condition="python: req_country != 'Community report'" 
                 tal:define="target request/target|nothing; 
                             record python:here.get_target_by_name(target)">
-                <strong tal:content="record/name" />
-                <span tal:replace="record/description" />
+                <strong tal:content="record/name|nothing" />
+                <span tal:replace="record/description|nothing" />
             </span>
 
             <span class="target-description" tal:condition="python: req_country == 'Community report'" 

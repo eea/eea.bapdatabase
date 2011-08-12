@@ -1250,19 +1250,6 @@ class C1_3_1(Base):
 
 
 ######## Community report ########
-#class PolicyArea(Base):
-#    __tablename__ = 'CL_PolicyAreas'
-#    id = Column(Integer, primary_key=True)
-#    name = Column(String, nullable=False)
-#    description = Column(String, nullable=False)
-#
-#class Objective(Base):
-#    __tablename__ = 'CL_Objectives'
-#    id = Column(Integer, primary_key=True)
-#    name = Column(String, nullable=False)
-#    description = Column(String, nullable=False)
-#    headline_target = Column(String)
-#    policy_area = Column(Integer, ForeignKey('CL_PolicyAreas.id'))
 
 class Target(Base):
     __tablename__ = 'CL_Targets'

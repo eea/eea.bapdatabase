@@ -18,7 +18,14 @@ $(function(){
     $("select#ctlCountry").change(function(){
         $("select#ctlObjective option[value='']").attr("selected", "selected");
         $("select#ctlTarget").empty();
-        // $("select#ctlCmpCountries").empty();
+        var params = $.param({'ref_country': $("select#ctlCountry").val()}, true);
+        $.getJSON("json_get_comparision_countries", params, function(j){
+            var options = '';
+            for (var i = 0; i < j.length; i++) {
+                options += '<option value="' + j[i].optionValue + '" title="' + j[i].optionTitle + '">' + j[i].optionDisplay + '<'+'/option>';
+            }
+            $("select#ctlCmpCountries").html(options);
+        })
     })
 })
 
@@ -31,29 +38,12 @@ $(function(){
                 options += '<option value="' + j[i].optionValue + '" title="' + j[i].optionTitle + '">' + j[i].optionDisplay + '<'+'/option>';
             }
             $("select#ctlTarget").html(options);
-            // $("select#ctlCmpCountries").empty();
-        })
-    })
-})
-
-$(function(){
-    $("select#ctlTarget").change(function(){
-        var params = $.param({'ref_country': $("select#ctlCountry").val()}, true);
-        $.getJSON("json_get_comparision_countries", params, function(j){
-            var options = '';
-            for (var i = 0; i < j.length; i++) {
-                options += '<option value="' + j[i].optionValue + '" title="' + j[i].optionTitle + '">' + j[i].optionDisplay + '<'+'/option>';
-            }
-            // $("select#ctlCmpCountries").html(options);
         })
     })
 })
 
 $(document).ready(function(){
     cookieAction = getCookie("BAPAction");
-    
-    
-    
 
     $('.action-link').click(function(e){
         e.preventDefault();
@@ -62,18 +52,9 @@ $(document).ready(function(){
         return false;
     });
 
-    $('.action-link').each(function(){
-	$this = $(this);
-	if( $this.closest('.bap-mop-content').is(':visible') == true ) {
-		$this.removeClass('expand').addClass('collapse');
-	}else {
-		$this.removeClass('collapse').addClass('expand');
-	}
-	});
-    
-if(cookieAction !== 'None'){
-        toggle_action(cookieAction, true);
-    }
+    if(cookieAction !== 'None'){
+            toggle_action(cookieAction, true);
+        }
 
     $('.bap-action-content').each(function(){
         $(this).html(Linkify($(this).html()));
@@ -83,6 +64,16 @@ if(cookieAction !== 'None'){
     $('.linkified').each(function(){
         $(this).html($(this).html().substr(0, 50) + '...');
     });
+    
+    $('.action-link').each(function(){
+        $this = $(this);
+        if( $this.parent().next('.bap-mop-content').is(':visible') == true) {
+            $this.removeClass('expand').addClass('collapse');
+        }else {
+            $this.removeClass('collapse').addClass('expand');
+        }
+    });
+    
 });
 
 function update_links(parameter){
@@ -114,23 +105,23 @@ function toggle_action(action_id, state){
 
         setCookie('BAPAction', action_id, 60);
         bap_mop_content.slideDown();
-	$('.action-link', bap_mop_content.parent()).removeClass('expand').addClass('collapse');
+    $('.action-link', bap_mop_content.parent()).removeClass('expand').addClass('collapse');
     }else {
         if(bap_mop_content.is(':visible') == true){
             setCookie('BAPAction', 'None', 60);
             bap_mop_content.slideUp();
-	    $('.action-link', bap_mop_content.parent()).removeClass('collapse').addClass('expand');
+        $('.action-link', bap_mop_content.parent()).removeClass('collapse').addClass('expand');
         }else {
             setCookie('BAPAction', action_id, 60);
             bap_mop_content.slideDown();
-	    $('.action-link', bap_mop_content.parent()).removeClass('expand').addClass('collapse');
+        $('.action-link', bap_mop_content.parent()).removeClass('expand').addClass('collapse');
         }
     }
 
     if(state == true){
         setCookie('BAPAction', action_id, 60);
         bap_mop_content.slideDown();
-	$('.action-link', bap_mop_content.parent()).removeClass('expand').addClass('collapse');
+    $('.action-link', bap_mop_content.parent()).removeClass('expand').addClass('collapse');
     }
     
 return false;

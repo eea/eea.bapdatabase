@@ -25,23 +25,23 @@ h1 {
 }
 
 .datatable td, .datatable th  {
-	margin:0;
-	padding: 0.3em;
-	vertical-align: middle;
+    margin:0;
+    padding: 0.3em;
+    vertical-align: middle;
         font-weight: normal;
 }
 
 table.datatable {
-	margin: 0 0 1em 0;
-	font-size: 11px !important;
+    margin: 0 0 1em 0;
+    font-size: 11px !important;
 }
 
 .datatable th {
-	text-align: left;
-	background-color: #E4F1F9;
-	border-bottom: 2px solid white;
-	border-top: none;
-	color: #4C4C4C;
+    text-align: left;
+    background-color: #E4F1F9;
+    border-bottom: 2px solid white;
+    border-top: none;
+    color: #4C4C4C;
 }
 
 /**
@@ -51,15 +51,15 @@ table.datatable {
 */
 
 #bap-content {
-	border: 2px solid #DFDFDF;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+    border: 2px solid #DFDFDF;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .bap-objectives {
-	border-bottom: 2px solid #DFDFDF;
-	padding: 0.5em 0 0.5em 1em;
+    border-bottom: 2px solid #DFDFDF;
+    padding: 0.5em 0 0.5em 1em;
 }
 
 .bap-objectives:hover {
@@ -71,9 +71,9 @@ table.datatable {
 
 .bap-objective,
 .target-description {
-	margin: 0.5em 2.2em 0em 1em;
-	background-color: #FAFAFA;
-	padding: 0;
+    margin: 0.5em 2.2em 0em 1em;
+    background-color: #FAFAFA;
+    padding: 0;
 }
 
 .target-description,
@@ -91,52 +91,52 @@ table.datatable {
 }
 
 .bap-objective-title {
-	color: #4B4742 !important;
+    color: #4B4742 !important;
 }
 
 .bap-objective-title a.inactive {
-	background: transparent url('/misc_/BAPDatabase/up.png') no-repeat left center;
+    background: transparent url('/misc_/BAPDatabase/up.png') no-repeat left center;
 }
 
 .bap-objective-title a.active {
-	background: transparent url('/misc_/BAPDatabase/down.png') no-repeat left 55%;
+    background: transparent url('/misc_/BAPDatabase/down.png') no-repeat left 55%;
 }
 
 .bap-objective-title a {
-	background: transparent url('/misc_/BAPDatabase/down.png') no-repeat left 55%;
-	outline: none;
-	padding-left: 1em;
-	font-size: 1.2em;
-	line-height: 1.2em;
-	vertical-align: middle;
+    background: transparent url('/misc_/BAPDatabase/down.png') no-repeat left 55%;
+    outline: none;
+    padding-left: 1em;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    vertical-align: middle;
 }
 
 .bap-objective-title span {
-	vertical-align: middle;
-	font-size: 1.1em;
-	line-height: 1.1em;
-	margin-left: 0.5em;
-	font-style: italic;
+    vertical-align: middle;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    margin-left: 0.5em;
+    font-style: italic;
 }
 
 .bap-objective-title span:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .bap-headline,
 .objective-description {
-	background-color: #F4FFE0;
-	border-bottom: 1px dotted #D6D6D6;
-	text-align: left;
-	text-indent: 1em;
-	padding: 0.5em 0em 0.5em 1em;
-	padding-left: 1em;
+    background-color: #F4FFE0;
+    border-bottom: 1px dotted #D6D6D6;
+    text-align: left;
+    text-indent: 1em;
+    padding: 0.5em 0em 0.5em 1em;
+    padding-left: 1em;
 }
 
 .bap-target {
-	margin-top: 1em;
-	border-bottom: 1px solid #EFEFEF;
-	padding: 0em 1em 0.5em 1em;
+    margin-top: 1em;
+    border-bottom: 1px solid #EFEFEF;
+    padding: 0em 1em 0.5em 1em;
 }
 
 .bap-target span {
@@ -144,14 +144,14 @@ table.datatable {
 }
 
 .bap-target:last-child {
-	border: none;
+    border: none;
 }
 
 .bap-actions {
 }
 
 .bap-target span a {
-	background: transparent url('/misc_/BAPDatabase/bullet_orange.png') no-repeat left center;
+    background: transparent url('/misc_/BAPDatabase/bullet_orange.png') no-repeat left center;
 }
 
 .bap-target span a,
@@ -165,33 +165,33 @@ table.datatable {
 .target-link.collapse,
 .collapse .action-link,
 .action-link.collapse {
-	background: transparent url('/misc_/BAPDatabase/collapse.png') no-repeat left center !important;
+    background: transparent url('/misc_/BAPDatabase/collapse.png') no-repeat left center !important;
 }
 
 .expand .target-link,
 .target-link.expand,
 .expand .action-link,
 .action-link.expand {
-	background: transparent url('/misc_/BAPDatabase/expand.png') no-repeat left center !important;
+    background: transparent url('/misc_/BAPDatabase/expand.png') no-repeat left center !important;
 }
 
 .goto-action {
-	background: none !important;
-	padding: 0 !important;
+    background: none !important;
+    padding: 0 !important;
 }
 .bap-action {
-	background-color: #FFFFFF;
-	border: 1px solid #EFEFEF;
-	padding: 1em;
-	margin: 1em 0 1em 0em;
-	-moz-box-shadow: 2px 2px 7px #DFDFDF;
-	-webkit-box-shadow: 2px 2px 7px #DFDFDF;
-	box-shadow: 2px 2px 7px #DFDFDF;
+    background-color: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    padding: 1em;
+    margin: 1em 0 1em 0em;
+    -moz-box-shadow: 2px 2px 7px #DFDFDF;
+    -webkit-box-shadow: 2px 2px 7px #DFDFDF;
+    box-shadow: 2px 2px 7px #DFDFDF;
     clear: both;
 }
 
 .bap-mop-content {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .bop-mop-year {
@@ -205,17 +205,17 @@ table.datatable {
 }
 
 .loading-indicator {
-	height: 80px;
-	width: 80px;
-	background: url('/misc_/BAPDatabase/ajax-loader.gif');
-	background-repeat: no-repeat;
-	background-position: center center;
+    height: 80px;
+    width: 80px;
+    background: url('/misc_/BAPDatabase/ajax-loader.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .loading-indicator-overlay {
-	background-color: #FFFFFF;
-	opacity: 0.6;
-	filter: alpha(opacity = 60);
+    background-color: #FFFFFF;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
 }
 
 select.compare-select {
@@ -383,4 +383,8 @@ select.compare-select {
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
+}
+
+.help {
+    font-size: 0.8em;
 }

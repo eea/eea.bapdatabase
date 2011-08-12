@@ -240,15 +240,17 @@ class BAPDatabase(NyFolder):
         if country == 'Community report':
             objective = int(objective.split('Objective')[1])
             for target in self.cl_get_targets(objective):
+                description = 'Target %s: %s' % (target.name, target.description)
                 records.append({
                     'optionValue': target.id,
                     'optionDisplay': target.name,
-                    'optionTitle': target.name,
+                    'optionTitle': description,
                 })
         else:
             for target in self.get_objective_targets(objective):
+                target_name = target[0].replace('_', '.')
                 records.append({'optionValue': target[0],
-                                'optionDisplay': target[0],
+                                'optionDisplay': target_name,
                                 'optionTitle': target[1]})
         return json.dumps(records)
 
@@ -302,7 +304,6 @@ class BAPDatabase(NyFolder):
 
     def cl_get_target(self, target_id):
         """ Get target """
-        print 'cl_get_target', target_id
         try:
             return self._get_session().query(models.Target).\
                     filter(models.Target.id == target_id).one()
@@ -311,7 +312,6 @@ class BAPDatabase(NyFolder):
 
     def get_target_by_name(self, target_name):
         """ Get target by name"""
-        print 'get_target_by_name', target_name
         target_name = target_name.replace('_', '.')
         try:
             return self._get_session().query(models.Target).\

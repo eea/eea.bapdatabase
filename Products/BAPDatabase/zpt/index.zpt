@@ -24,8 +24,7 @@
 				<a class="country-compare-button"
 					tal:attributes="
 					title string:Compare country data;
-					href string:${here/absolute_url}/compare?country=${country}&objective=&target=&compare=Compare
-					">
+					href string:${here/absolute_url}/compare?country=${country}">
 					     Compare country data
 				     </a>
 			</span>
