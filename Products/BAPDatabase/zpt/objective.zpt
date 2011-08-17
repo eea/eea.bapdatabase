@@ -5,16 +5,16 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${here/site_title} - ${objective/name} for ${here/aq_parent/title_or_id}" />
+    <title tal:content="string:${here/site_title} - ${objective/name} for ${here/aq_parent/title_or_id}" />
 </metal:block>
 <metal:block metal:fill-slot="head">
-		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap.js"></script>
-		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
-		<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
-		<!--[if lt IE 8]>
-		<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
-		<![endif]-->
-	</metal:block>
+        <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap.js"></script>
+        <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
+        <![endif]-->
+    </metal:block>
 
 <metal:block fill-slot="body">
 

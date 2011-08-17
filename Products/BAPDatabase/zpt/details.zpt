@@ -8,23 +8,36 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-	<title tal:content="string:${here/site_title} - ${action_id} for ${country}" />
+    <title tal:content="string:${here/site_title} - ${action_id} for ${country}" />
+</metal:block>
+
+<metal:block metal:fill-slot="head">
+    <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
 </metal:block>
 
 <metal:block fill-slot="body">
 
 <div id="center_content">
-    <h1>
-        BAP Report 2010 - <span tal:replace="string: ${action_id}" /> for <span tal:replace="country" />
-    </h1>
+    <span class="country-profile-title">
+        <h1>
+            BAP Report 2010:<span tal:replace="country" /> <span tal:replace="string: ${action_id}" /> 
+        </h1>
+
+        <a class="country-compare-button"
+            tal:attributes="title string:Show full country profile;
+                            href string:${here/getSitePath}/countries_and_networks/${country/lower}/bap">
+                 Show full country profile
+             </a>
+    </span>
+
     <tal:block tal:condition="action_id">
         <h2 tal:content="action_text"></h2>
-	</tal:block>
+    </tal:block>
 
-	<div id="mop-content" tal:condition="action_id">
-		<h3>Measures of Progress</h3>
-		<tal:block replace="structure python:here.get_table(action_id, country)" />
-	</div>
+    <div id="mop-content" tal:condition="action_id">
+        <h3>Measures of Progress</h3>
+        <tal:block replace="structure python:here.get_table(action_id, country)" />
+    </div>
 </div>
 </metal:block>
 

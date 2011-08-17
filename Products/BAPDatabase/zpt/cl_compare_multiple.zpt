@@ -20,8 +20,10 @@
        <tal:block condition="python:len(req_cmp_countries) > 8">
          <li>
              <a tal:attributes="href string:compare_details?id=${action/id}&country=${req_country};
-                               title string:${action/id} - ${req_country}"
-                  tal:content="python:here.get_country_code(req_country)" />
+                               title string:${action/id} - ${req_country}">
+                   <span tal:condition="python:req_country != 'Community report'" tal:replace="python:here.get_country_code(req_country)" />
+                   <span tal:condition="python:req_country == 'Community report'">Comm. report</span>
+            </a>
          </li>
          <li tal:repeat="country req_cmp_countries">
              <a tal:attributes="href string:compare_details?id=${action/id}&country=${country};

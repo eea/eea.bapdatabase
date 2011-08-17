@@ -3,23 +3,23 @@
             objective python:here.cl_get_objective(objective_id)">
 
 <metal:block metal:use-macro="here/standard_template_macro">
-	<metal:block metal:fill-slot="title">
-			<title tal:content="string:${here/site_title} - Community report" />
-	</metal:block>
+    <metal:block metal:fill-slot="title">
+            <title tal:content="string:${here/site_title} - Community report" />
+    </metal:block>
 
-	<metal:block metal:fill-slot="head">
-		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap.js"></script>
-		<script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
-		<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
-		<!--[if lt IE 8]>
-		<link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
-		<![endif]-->
-	</metal:block>
+    <metal:block metal:fill-slot="head">
+        <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap.js"></script>
+        <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
+        <![endif]-->
+    </metal:block>
 
-	<metal:block fill-slot="body">
-		<div id="center_content">
+    <metal:block fill-slot="body">
+        <div id="center_content">
             <h1>BAP 2010 Community report: <span tal:replace="objective/name" /></h1>
-		    <h2 tal:content="objective/headline"/>
+            <h2 tal:content="objective/headline"/>
             <div id="bap-content">
                 <div class="bap-targets">
                     <div class="bap-target" tal:repeat="target python:here.cl_get_targets(objective_id)">
@@ -31,7 +31,7 @@
                                    tal:content="string:Target: ${target/name}"></a>
                                <span tal:content="target/description" />
                                 </span>
-								<div class="bap-actions">
+                                <div class="bap-actions">
                                     <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
                                             <span>
                                                 <a class="action-link"
@@ -48,6 +48,6 @@
                 </div>
             </div>
         </div>
-	</metal:block>
+    </metal:block>
 </metal:block>
 </tal:block>
