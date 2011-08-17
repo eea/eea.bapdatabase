@@ -310,15 +310,22 @@ class BAPDatabase(NyFolder):
         except NoResultFound:
             return None
 
-    def get_target_by_name(self, target_name):
+    def get_target_by_name(self, target_name, REQUEST=None):
         """ Get target by name"""
         target_name = target_name.replace('_', '.')
         try:
-            return self._get_session().query(models.Target).\
+            target = self._get_session().query(models.Target).\
                     filter(models.Target.name == target_name).one()
+            if REQUEST is not None:
+                return json.dumps({
+                    "id": target.id,
+                    "name": target.name,
+                    "description": target.description,
+                    "objective": target.objective,
+                })
+            return target
         except NoResultFound:
             return None
-
     def cl_get_actions(self, target):
         """ Get actions for a cl_target """
         return self._get_session().query(models.Action).filter(
