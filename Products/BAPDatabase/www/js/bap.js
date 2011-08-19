@@ -148,7 +148,7 @@ $(document).ready(function(){
             bap_actions.children('.bap-action').children('.bap-mop-content').load('' + url + ' #mop-content', function(response, status, xhr) {
                 $("#bap-content").hideLoading();
                 //Also linkify text
-                $('.bap-action').html(Linkify($(this).html()));
+                $(this).parent().html(Linkify($(this).html()));
 
                 //Shorten long urls
                 $('.linkified').each(function(){
