@@ -1,12 +1,12 @@
 <div class="bap-action-content" tal:define="country options/country;
 					action_id options/action_id;
-					mop python:here.get_action_mop(action_id, country);
-					action python:here.get_action(action_id)">
+					mop python:here.get_country_report(action_id, country);
+					action python:here.get_progress_measure(action_id)">
 
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A2_1_1', country)">
+	<tal:block define="record python:here.get_report('A2_1_1', country)">
 		<tr>
 			<th rowspan="2" width="22%">EAFRD</th>
 			<th width="26%" colspan="2">Total Amount in million EUR</th>
@@ -90,7 +90,7 @@
 				Explanation of information contained in the measure of progress above
 			</th>
 			<td colspan="5">
-				<span tal:content="action/MOPText"/><br/>
+				<span tal:content="action/text"/><br/>
 				<span />
 			</td>
 		</tr>
@@ -99,7 +99,7 @@
 			<th>
 				Data source
 			</th>
-			<td colspan="5" tal:content="mop/DataSource"/>
+			<td colspan="7  " tal:content="mop/DataSource"/>
 		</tr>
 	</tal:block>
 </table>

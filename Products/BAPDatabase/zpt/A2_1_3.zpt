@@ -5,8 +5,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A2_1_3_HNV', country);
-						mop python:here.get_action_mop(action_id, country, 'HNV')">
+	<tal:block define="record python:here.get_report('A2_1_3_HNV', country);
+						mop python:here.get_country_report(action_id, country, 'HNV')">
 	<tr>
 		<th colspan="3" width="40%" rowspan="2">
 			Share of high nature value (HNV) farmland areas.
@@ -38,8 +38,8 @@
 	</tr>
 	</tal:block>
 
-	<tal:block define="record python:here.get_action_values('A2_1_3_ForestCert', country);
-						mop python:here.get_action_mop(action_id, country, 'ForestCert')">
+	<tal:block define="record python:here.get_report('A2_1_3_ForestCert', country);
+						mop python:here.get_country_report(action_id, country, 'ForestCert')">
 	<tr>
 		<th colspan="2" width="35%" rowspan="4">
 			Forest under certification

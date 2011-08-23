@@ -4,8 +4,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A2_3_FWQuality', country);
-						mop python:here.get_action_mop(action_id, country, 'FWQuality')">
+	<tal:block define="record python:here.get_report('A2_3_FWQuality', country);
+						mop python:here.get_country_report(action_id, country, 'FWQuality')">
 	<tr>
 		<th colspan="2" rowspan="3" width="40%">
 			Oxygen Demand (BOD5) and ammonium concentrations
@@ -102,8 +102,8 @@
 </table>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A2_3_FWHabitatStatus', country);
-						mop python:here.get_action_mop(action_id, country, '')">
+	<tal:block define="record python:here.get_report('A2_3_FWHabitatStatus', country);
+						mop python:here.get_country_report(action_id, country, '')">
 	<tr>
 		<th colspan="2">Additional detail & Narrative summary of the information (text provided should be able to stand alone):</th>
 	</tr>
@@ -124,8 +124,8 @@
 </table>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A2_3_InlandBathing', country);
-						mop python:here.get_action_mop(action_id, country, 'InlandBathing')">
+	<tal:block define="record python:here.get_report('A2_3_InlandBathing', country);
+						mop python:here.get_country_report(action_id, country, 'InlandBathing')">
 	<tr>
 		<th colspan="2" rowspan="4" width="30%">
 			EU inland bathing waters meeting the non-mandatory guide levels of the Bathing Water Directive

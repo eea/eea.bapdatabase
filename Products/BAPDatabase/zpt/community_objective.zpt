@@ -1,6 +1,6 @@
 <tal:block
-    define="objective_id request/id|nothing;
-            objective python:here.cl_get_objective(objective_id)">
+    define="objective_id request/id | nothing;
+            objective python:here.get_objective(objective_id)">
 
 <metal:block metal:use-macro="here/standard_template_macro">
     <metal:block metal:fill-slot="title">
@@ -18,25 +18,35 @@
 
     <metal:block fill-slot="body">
         <div id="center_content">
-            <h1>BAP 2010 Community report: <span tal:replace="objective/name" /></h1>
+            <span class="country-profile-title">
+                <h1>BAP 2010 Community report: <span tal:replace="objective/name" /></h1>
+
+                <a class="country-compare-button"
+                    tal:attributes="title string:Show full community report;
+                                    href string:${here/getSitePath}/countries_and_networks/bap/community_report">
+                         Show full community report
+                     </a>
+            </span>
+
             <h2 tal:content="objective/headline"/>
+
             <div id="bap-content">
                 <div class="bap-targets">
-                    <div class="bap-target" tal:repeat="target python:here.cl_get_targets(objective_id)">
+                    <div class="bap-target" tal:repeat="target python:here.get_objective_targets(objective_id)">
                         <tal:block define="target_id target/id">
                         <span>
                             <a class="target-link"
                                    title="Click to see details"
-                                   tal:attributes="href string:${request/ACTUAL_URL}/community_target?id=${target/id}"
+                                   tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_target?id=${target/id}"
                                    tal:content="string:Target: ${target/name}"></a>
                                <span tal:content="target/description" />
                                 </span>
                                 <div class="bap-actions">
-                                    <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
+                                    <div class="bap-action" tal:repeat="action python:here.get_actions(target_id, objective_id)">
                                             <span>
                                                 <a class="action-link"
                                                    title="Click to see details"
-                                                   tal:attributes="href string:${request/ACTUAL_URL}/community_action?id=${action/id}"
+                                                   tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_action?id=${action/id}"
                                                    tal:content="string:Action: ${action/name}"></a>
                                                <span tal:content="action/action" />
                                             </span>

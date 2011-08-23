@@ -24,7 +24,7 @@
                 <a class="country-compare-button"
                     tal:attributes="
                     title string:Compare country data;
-                    href string:${here/absolute_url}/compare">
+                    href string:${here/absolute_url}/compare?country=Community+report">
                          Compare community report data
                      </a>
             </span>
@@ -32,37 +32,39 @@
                 <strong>Tip:</strong> click on an item from the list below to expand its details.
             </p>
             <div id="bap-content">
-            <tal:block repeat="objective here/cl_get_objectives">
+            <tal:block repeat="objective here/get_objectives">
+                <tal:block define="objective_id objective/id">
 
-                <div class="bap-objectives" tal:define="objective_id objective/id">
+                <div class="bap-objectives">
                     <span class="bap-objective-title">
-                        <a tal:attributes="id objective/name; href string:${here/absolute_url}/bap/community_objective?id=${objective_id}" title="Click to see details" tal:content="objective/name" />
+                        <a title="Click to see details"
+                            tal:attributes="id objective/name; href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective_id}" 
+                            tal:content="objective/name" />
                         <span tal:content="objective/description" />
                     </span>
-                    <div class="bap-objective" tal:condition="objective">
+                    <div class="bap-objective">
                         <div class="bap-headline" tal:condition="objective/headline">
                             <span tal:content="objective/headline"/>
                         </div>
                         <div class="bap-targets">
 
-                            <div class="bap-target" tal:repeat="target python:here.cl_get_targets(objective_id)">
+                            <div class="bap-target" tal:repeat="target python:here.get_objective_targets(objective_id)">
                                 <tal:block define="target_id target/id">
                                 <span>
-                                <a class="target-link"
-                                   title="Click to see details"
-                   tal:attributes="id target/name; href string:${request/ACTUAL_URL}/community_target?id=${target/id}"
+                                <a class="target-link" title="Click to see details"
+                                   tal:attributes="id target/name; href string:${here/getSitePath}/countries_and_networks/bap/community_target?id=${target_id}"
                                    tal:content="string:Target: ${target/name}"></a>
                                <span tal:content="target/description" />
                                 </span>
                                 <div class="bap-actions">
-                                    <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
-                                            <span>
-                                                <a class="action-link"
-                                                    title="Click to see details"
-                                                    tal:attributes="id action/name; href string:${request/ACTUAL_URL}/community_action?id=${action/id}"
-                                                    tal:content="string:Action: ${action/name}"></a>
-                                               <span tal:content="action/action" />
-                                            </span>
+                                    <div class="bap-action" tal:repeat="action python:here.get_actions(target_id, objective_id)">
+                                        <span>
+                                            <a class="action-link"
+                                                title="Click to see details"
+                                                tal:attributes="id action/name; href string:${here/getSitePath}/countries_and_networks/bap/community_action?id=${action/id}"
+                                                tal:content="string:Action: ${action/name}"></a>
+                                           <span tal:content="action/action" />
+                                        </span>
                                         <div class="bap-mop-content"></div>
                                     </div>
                                 </div>
@@ -71,9 +73,8 @@
 
                         </div>
                     </div>
-                    <!-- <div class="cleaner">&nbsp;</div> -->
                 </div>
-
+                </tal:block>
             </tal:block>
             </div>
         </div>

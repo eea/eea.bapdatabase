@@ -3,8 +3,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A2_4_2_Emission', country);
-					mop python:here.get_action_mop(action_id, country, '')">
+	<tal:block define="record python:here.get_report('A2_4_2_Emission', country);
+					mop python:here.get_country_report(action_id, country, '')">
 		<tr>
 			<th rowspan="5" width="20%">Comparison of Member States Emission ceilings with Member States current emissions and WM projections 2010</th>
 			<th width="30%" />
@@ -70,8 +70,8 @@
 </table>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A2_4_2_EcoAtRisk', country);
-					mop python:here.get_action_mop(action_id, country, 'EcoAtRisk')">
+	<tal:block define="record python:here.get_report('A2_4_2_EcoAtRisk', country);
+					mop python:here.get_country_report(action_id, country, 'EcoAtRisk')">
 		<tr>
 			<th rowspan="3" width="20%">Percentage of natural ecosystem area at risk of acidification and of eutrophication</th>
 			<th colspan="4">Acidification</th>

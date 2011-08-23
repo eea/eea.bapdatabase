@@ -3,8 +3,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A5_1_AlienSpecies', country);
-						mop python:here.get_action_mop(action_id, country, 'AlienSpecies')">
+	<tal:block define="record python:here.get_report('A5_1_AlienSpecies', country);
+						mop python:here.get_country_report(action_id, country, 'AlienSpecies')">
 		<tr>
 			<th rowspan="2" colspan="2">Number of worst invasive alien species registered per country</th>
 			<th width="20%">Total number</th>
@@ -36,8 +36,8 @@
 </table>
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A5_1_AlienLegal', country);
-						mop python:here.get_action_mop(action_id, country, 'AlienLegal')">
+	<tal:block define="record python:here.get_report('A5_1_AlienLegal', country);
+						mop python:here.get_country_report(action_id, country, 'AlienLegal')">
 		<tr>
 			<th colspan="2" rowspan="3">Is there general and/or specific legislation in place in relation to Invasive Alien Species?<br/>
 			Please enter Y or N here:</th>

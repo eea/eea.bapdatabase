@@ -4,8 +4,8 @@
 
 
 
-<tal:block define="record python:here.get_action_values('A2_1_11_NatStrats', country);
-					mop python:here.get_action_mop(action_id, country, 'NatStrats')">
+<tal:block define="record python:here.get_report('A2_1_11_NatStrats', country);
+					mop python:here.get_country_report(action_id, country, 'NatStrats')">
 <table class="datatable">
 	<tr>
 		<th colspan="8" rowspan="5" width="30%">
@@ -135,8 +135,8 @@
 </table>
 </tal:block>
 
-<tal:block define="record python:here.get_action_values('A2_1_11_RDPPayments', country);
-					mop python:here.get_action_mop(action_id, country, 'RDPPayments')">
+<tal:block define="record python:here.get_report('A2_1_11_RDPPayments', country);
+					mop python:here.get_country_report(action_id, country, 'RDPPayments')">
 <table class="datatable">
 	<tr>
 		<th rowspan="2">Axis 2 payments for genetic conservation measures</th>

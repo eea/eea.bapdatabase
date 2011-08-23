@@ -3,7 +3,7 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A3_2_BathingWater', country)">
+	<tal:block define="record python:here.get_report('A3_2_BathingWater', country)">
 		<tr>
 			<th rowspan="4" colspan="3">% of coastal bathing waters meeting minimum (mandatory) and guideline standards</th>
 			<th width="15%" />
@@ -30,7 +30,7 @@
 			<td colspan="5" tal:content="record/DataLink"/>
 		</tr>
 	</tal:block>
-	<tal:block define="record python:here.get_action_values('A3_2_Nitrogen', country)">
+	<tal:block define="record python:here.get_report('A3_2_Nitrogen', country)">
 		<tr>
 			<th rowspan="2">Change in winter oxidised nitrogen concentrations in coastal and open waters 1985-2005</th>
 			<th>Region</th>
@@ -51,7 +51,7 @@
 			<td colspan="5" tal:content="record/DataLink"/>
 		</tr>
 	</tal:block>
-	<tal:block define="record python:here.get_action_values('A3_2_Phospate', country)">
+	<tal:block define="record python:here.get_report('A3_2_Phospate', country)">
 		<tr>
 			<th rowspan="2">Change in winter oxidised nitrogen concentrations in coastal and open waters 1985-2005</th>
 			<th>Region</th>
@@ -72,7 +72,7 @@
 			<td colspan="5" tal:content="record/DataLink"/>
 		</tr>
 	</tal:block>
-	<tal:block define="mop python:here.get_action_mop(action_id, country, '')">
+	<tal:block define="mop python:here.get_country_report(action_id, country, '')">
 		<tr>
 			<th colspan="6">
 				Narrative summary of the above information (text provided should be able to stand alone) and any further details where available (e.g. comparison with previous years, causes of good/bad results):

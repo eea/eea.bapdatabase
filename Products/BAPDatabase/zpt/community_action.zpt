@@ -1,6 +1,6 @@
 <tal:block tal:define="
     action_id request/id|nothing;
-    action python: here.cl_get_action(action_id);">
+    action python: here.get_action(action_id);">
 <metal:block metal:use-macro="here/standard_template_macro">
 
     <metal:block metal:fill-slot="title">
@@ -37,7 +37,7 @@
         <div class="bop-mop-progress">
             <p tal:content="action/community_action" />
         </div>
-        <tal:block repeat="mop python:here.cl_get_mops(action_id)">
+        <tal:block repeat="mop python:here.get_community_report(action_id)">
         <div class="bap-mop-item" tal:define="progress mop/progress">
             <h3 class="bop-mop-year">Progress to July <span tal:replace="mop/year"/></h3>
             <tal:block condition="progress">

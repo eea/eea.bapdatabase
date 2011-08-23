@@ -1,11 +1,11 @@
 <div class="bap-action-content" tal:define="country options/country;
 					action_id options/action_id;
-					mop python:here.get_action_mop(action_id, country)">
+					mop python:here.get_country_report(action_id, country)">
 
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values(action_id, country)">
+	<tal:block define="record python:here.get_report(action_id, country)">
 		<tr>
 			<th colspan="2">Is there a national research programme dedicated exclusively to supporting biodiversity research? Enter Y or N here:</th>
 			<td width="20%" tal:content="record/Programme"/>

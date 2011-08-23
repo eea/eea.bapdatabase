@@ -3,8 +3,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A8_1_3_CBD', country);
-						mop python:here.get_action_mop(action_id, country, 'CBD')">
+	<tal:block define="record python:here.get_report('A8_1_3_CBD', country);
+						mop python:here.get_country_report(action_id, country, 'CBD')">
 		<tr>
 			<th rowspan="5" colspan="2">Indicate the provision of funds for the CBD Access & Benefit-sharing Working Group</th>
 			<th width="20%">Year</th>
@@ -49,8 +49,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A8_1_3_BenefitShare', country);
-						mop python:here.get_action_mop(action_id, country, 'BenefitShare')">
+	<tal:block define="record python:here.get_report('A8_1_3_BenefitShare', country);
+						mop python:here.get_country_report(action_id, country, 'BenefitShare')">
 		<tr>
 			<th colspan="2">Does national legislation implementing the CBD Bonn Guidelines on Access and Benefit-sharing exist (legislation existing=Y, under development=UD, non-existing=N)?</th>
 			<td width="20%" tal:content="record/Legal"/>
@@ -82,8 +82,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A8_1_3_GeneticResource', country);
-						mop python:here.get_action_mop(action_id, country, 'GeneticResource')">
+	<tal:block define="record python:here.get_report('A8_1_3_GeneticResource', country);
+						mop python:here.get_country_report(action_id, country, 'GeneticResource')">
 		<tr>
 			<th colspan="2">Does national legislation implementing the Material Transfer Agreement of the International Treaty on Plant Genetic Resources exist (legislation existing=Y, under development=UD, non-existing=N)?</th>
 			<td width="20%" tal:content="record/Legal"/>

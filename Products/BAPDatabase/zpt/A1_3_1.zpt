@@ -5,8 +5,8 @@
 
 
 <table class="datatable">
-	<tal:block define="record python:here.get_action_values('A1_3_1_ActionPlan', country);
-						mop python:here.get_action_mop(action_id, country, 'ActionPlan')">
+	<tal:block define="record python:here.get_report('A1_3_1_ActionPlan', country);
+						mop python:here.get_country_report(action_id, country, 'ActionPlan')">
 	<tr>
 		<th rowspan="7" colspan="2" width="50%">
 			Indicate the number of action plans per species group
@@ -51,8 +51,8 @@
 	</tr>
 	</tal:block>
 
-	<tal:block define="record python:here.get_action_values('A1_3_1_BirdIndicator', country);
-						mop python:here.get_action_mop(action_id, country, 'A1_3_1_BirdIndicator')">
+	<tal:block define="record python:here.get_report('A1_3_1_BirdIndicator', country);
+						mop python:here.get_country_report(action_id, country, 'A1_3_1_BirdIndicator')">
 	<tr>
 		<th colspan="2">
 			Has your country developed indicators derived from common bird monitoring schemes? Please indicate Y or N.
@@ -73,8 +73,8 @@
 	</tr>
 	</tal:block>
 
-	<tal:block define="record python:here.get_action_values('A1_3_1_RedList', country);
-						mop python:here.get_action_mop(action_id, country, 'RedList')">
+	<tal:block define="record python:here.get_report('A1_3_1_RedList', country);
+						mop python:here.get_country_report(action_id, country, 'RedList')">
 	<tr>
 		<th rowspan="6" colspan="2">
 			Do Red Data lists exist? Please indicate Y or N
@@ -126,8 +126,8 @@
 </table>
 
 <table class="datatable">
-<tal:block define="record python:here.get_action_values('A1_3_1_BirdMonitoring', country);
-					mop python:here.get_action_mop(action_id, country, 'BirdMonitoring')">
+<tal:block define="record python:here.get_report('A1_3_1_BirdMonitoring', country);
+					mop python:here.get_country_report(action_id, country, 'BirdMonitoring')">
 	<tr>
 		<th width="50%" colspan="2">Does your country have active common bird monitoring schemes? Please indicate Y or N</th>
 		<td tal:content="record/active" />

@@ -4,6 +4,27 @@ from sqlalchemy.types import String, Integer
 
 Base = declarative_base()
 
+class Target(Base):
+    __tablename__ = 'targets'
+    id = Column(Integer, primary_key=True)
+    objective = Column(Integer, ForeignKey('objectives.id'))
+    name = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+
+class Action(Base):
+    __tablename__ = 'actions'
+    id = Column(Integer, primary_key=True)
+    target = Column(Integer, ForeignKey('targets.id'))
+    name = Column(String, nullable=False)
+    action = Column(String, nullable=False)
+    community_action = Column(String)
+
+class CommunityReport(Base):
+    __tablename__ = 'community_report'
+    action = Column(Integer, ForeignKey('actions.id'), primary_key=True)
+    year = Column(Integer, primary_key=True)
+    progress = Column(String)
+
 class Header(Base):
     __tablename__ = '01Header'
     CountryCode = Column(String, primary_key=True)
@@ -22,10 +43,10 @@ class Header(Base):
     VerifiedECName = Column(String)
     VerifiedECDate = Column(String)
 
-class Narrative(Base):
-    __tablename__ = 'Narrative'
+class CountryReport(Base):
+    __tablename__ = 'country_report'
     Country = Column(String, primary_key=True)
-    Objective = Column(String, primary_key=True)
+    Objective = Column(Integer, primary_key=True)
     Ident = Column(String, primary_key=True)
     MOP = Column(String, primary_key=True)
     Narative = Column(String)
@@ -38,15 +59,11 @@ class Narrative(Base):
     CO1Verrified = Column(String)
     CO2Verrified = Column(String)
 
-class QuestionsText(Base):
-    __tablename__ = 'QuestionsText'
-    ID = Column(String, primary_key=True)
-    Ident = Column(String)
-    MOP = Column(String)
-    Action = Column(String)
-    MSAction = Column(String)
-    FullText = Column(String)
-    MOPText = Column(String)
+class ProgressMeasures(Base):
+    __tablename__ = 'progress_measures'
+    id = Column(String, primary_key=True)
+    mop = Column(String)
+    text = Column(String)
 
 class Objective(Base):
     __tablename__ = 'objectives'
@@ -54,13 +71,6 @@ class Objective(Base):
     name = Column(String)
     description = Column(String)
     headline = Column(String)
-
-class TargetActions(Base):
-    __tablename__ = 'TargetActions'
-    ID = Column(String, primary_key=True)
-    Target = Column(String)
-    Action = Column(String)
-    Objective = Column(String)
 
 class A1_1_1_Natura2000Compleat(Base):
   __tablename__ = 'A1_1_1_Natura2000Compleat'
@@ -1249,25 +1259,3 @@ class C1_3_1(Base):
     SpeciesOtherDetail = Column(String)
 
 
-######## Community report ########
-
-class Target(Base):
-    __tablename__ = 'CL_Targets'
-    id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    description = Column(String, nullable=False)
-    objective = Column(Integer, ForeignKey('objectives.id'))
-
-class Action(Base):
-    __tablename__ = 'CL_Actions'
-    id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    action = Column(String, nullable=False)
-    community_action = Column(String)
-    target = Column(Integer, ForeignKey('CL_Targets.id'))
-
-class ActionProgress(Base):
-    __tablename__ = 'CL_Progress'
-    action = Column(Integer, ForeignKey('CL_Actions.id'), primary_key=True)
-    year = Column(Integer, primary_key=True)
-    progress = Column(String)

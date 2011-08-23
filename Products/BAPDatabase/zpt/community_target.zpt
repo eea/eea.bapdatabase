@@ -1,6 +1,6 @@
 <tal:block tal:define="
     target_id request/id|nothing;
-    target python: here.cl_get_target(target_id);">
+    target python: here.get_target(target_id);">
 <metal:block metal:use-macro="here/standard_template_macro">
 
     <metal:block metal:fill-slot="title">
@@ -14,13 +14,22 @@
 
     <metal:block fill-slot="body">
     <div id="center_content">
-        <h1>BAP 2010 Community report: Target <span tal:replace="target/name" /></h1>
+        <span class="country-profile-title">
+            <h1>BAP 2010 Community report: Target <span tal:replace="target/name" /></h1>
+
+            <a class="country-compare-button"
+                tal:attributes="title string:Show full community report;
+                                href string:${here/getSitePath}/countries_and_networks/bap/community_report">
+                     Show full community report
+                 </a>
+        </span>
+
         <h2 tal:content="target/description" />
         <div class="bap-actions">
-            <div class="bap-action" tal:repeat="action python:here.cl_get_actions(target_id)">
+            <div class="bap-action" tal:repeat="action python:here.get_actions(target_id)">
                 <span>
                     <a class="action-link" title="Click to see details"
-                       tal:attributes="href string:${here/absolute_url}/bap/community_action?id=${action/id}"
+                       tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_action?id=${action/id}"
                        tal:content="string:Action: ${action/name}"></a>
                     <span tal:content="action/action" />
                 </span>

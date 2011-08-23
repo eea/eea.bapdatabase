@@ -31,7 +31,7 @@ $(function(){
 
 $(function(){
     $("select#ctlObjective").change(function(){
-        var params = $.param({'objective': $(this).val(), 'country': $("select#ctlCountry").val()}, true);
+        var params = $.param({'objective_name': $(this).val()}, true);
         $.getJSON("json_get_targets", params, function(j){
             var options = '<option value="">select target' + '<'+'/option>';
             for (var i = 0; i < j.length; i++) {

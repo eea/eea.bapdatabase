@@ -1,13 +1,13 @@
 <tal:block define="req_cmp_countries request/cmp_countries|python:[];
                    req_country request/country|nothing;
                    action options/action;
-                   action_id string:${action/Ident};
-                   tabid string:tab${action/Ident}">
+                   action_id string:${action/id};
+                   tabid string:tab${action/id}">
 <div class="compare-tabs single left" tal:attributes="id tabid">
                    <ul class="clear">
                          <li>
-                             <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${req_country};
-                                               title string:${action/Ident} - ${req_country}"
+                             <a tal:attributes="href string:compare_details?id=${action/id}&country=${req_country};
+                                               title string:${action/id} - ${req_country}"
                                   tal:content="req_country" />
                          </li>
                    </ul>
@@ -18,8 +18,8 @@
 <div class="compare-tabs single left" tal:attributes="id tabid">
                    <ul class="clear">
                        <li tal:repeat="country req_cmp_countries">
-                           <a tal:attributes="href string:compare_details?id=${action/Ident}&country=${country};
-                                             title string:${action/Ident} - ${country}"
+                           <a tal:attributes="href string:compare_details?id=${action/id}&country=${country};
+                                             title string:${action/id} - ${country}"
                                tal:content="country"/>
                        </li>
                    </ul>
