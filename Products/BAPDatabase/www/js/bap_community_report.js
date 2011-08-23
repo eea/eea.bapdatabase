@@ -25,6 +25,8 @@ $(document).ready(function(){
         update_links('/bap');
         objective_id = $(this).text();
         setCookie('BAPObjective', objective_id, 60);
+	deleteCookie('BAPTarget');
+	deleteCookie('BAPAction');
         toggle_objective($(this).closest('span'));
     });
 
@@ -33,6 +35,8 @@ $(document).ready(function(){
         update_links('/bap');
         objective_id = $(this).parent().children('a').text();
         setCookie('BAPObjective', objective_id, 60);
+	deleteCookie('BAPTarget');
+	deleteCookie('BAPAction');
         toggle_objective($(this));
     });
 
@@ -81,11 +85,16 @@ $(document).ready(function(){
         $(this).html(replace_actions($(this).html()));
     });
     
+    console.log(getCookie('BAPObjective'));
+    console.log(getCookie('BAPTarget'));
+    console.log(getCookie('BAPAction'));
+    
     var action_id = getCookie('BAPAction');
-    if (action_id)
+    if ((action_id !== 'None') && (action_id !== undefined))
     {
+	console.log('action');
         update_links('/bap');
-        var Action = $('.action-link[href$='+action_id+']');
+        var Action = $('.action-link[id='+action_id+']');
         var Target = Action.parents('.bap-target').find('.target-link');
         var objective = Action.parents('.bap-objectives').find('.bap-objective-title span');
         if (Action.length>0)
@@ -97,10 +106,11 @@ $(document).ready(function(){
     }
     else{
         var target_id = getCookie('BAPTarget');
-        if (target_id)
+        if ((target_id !== 'None') && (target_id !== undefined))
         {
+		console.log('target');
             update_links('/bap');
-            var Target = $('.bap-objective .bap-targets .bap-target span a.target-link[href$='+target_id+']');
+            var Target = $('.bap-objective .bap-targets .bap-target span a.target-link[id='+target_id+']');
             var objective = Target.parents('.bap-objectives').find('.bap-objective-title span');
             if (Target.length>0)
             {
@@ -110,7 +120,7 @@ $(document).ready(function(){
         }
         else{
             var objective_id = getCookie('BAPObjective');
-            if (objective_id)
+            if ((objective_id !== 'None') && (objective_id !== undefined))
             {
                 update_links('/bap');
                 var objective = $('.bap-objective-title a:contains('+objective_id+'):first')
@@ -191,18 +201,20 @@ function toggle_target(Target, state){
         bap_actions.slideDown();
     Target.removeClass('expand').addClass('collapse');
     }
+    
+    
 }
 
 function toggle_objective(objective){
-    if(objective.parent().next('.bap-objective').is(':visible')){
+	
+    if(objective.parent().next('.bap-objective').css('display') == 'block'){
 	objective.parent().next('.bap-objective').slideUp();
+	deleteCookie('BAPObjective');
 	objective.parent().children('.bap-objective-title a').attr("class", "active");
     }else {
 	objective.parent().next('.bap-objective').slideDown();
 	objective.parent().children('.bap-objective-title a').attr("class", "inactive");
     }
-
-    
 }
 
 function toggle_action(Action, state){
@@ -254,6 +266,7 @@ function toggle_action(Action, state){
         bap_mop_content.slideDown();
     Action.removeClass('expand').addClass('collapse');
     }
+    
 }
 
 function setCookie(c_name,value,expires){
