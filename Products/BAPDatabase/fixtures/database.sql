@@ -3,8 +3,8 @@
 # http://code.google.com/p/sequel-pro
 #
 # Host: localhost (MySQL 5.1.54-log)
-# Database: bap_mod
-# Generation Time: 2011-08-23 16:55:38 +0300
+# Database: bap
+# Generation Time: 2011-08-23 18:59:47 +0300
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -4344,6 +4344,7 @@ VALUES
 	('A2_1_6','A2_1','A2.1.6','Broaden extension services, farm advisory systems and training actions to farmers, landowners and farm workers to strengthen biodiversity-related implementation in the next rural development programming [2007 onwards], including support from the LEADER axis.','Evaluate extent to which CAP National Strategy Plans for RD and National or regional RD Programmes reflect this need - encourage adjustments where necessary.'),
 	('A2_1_7','A2_1','A2.1.7','Ensure future \'less favoured area\' (LFA) regime [from 2010] under Axis 2 enhances its contribution to biodiversity and to \'high nature value\' farm and forest areas.','Assess contribution of LFAs to biodiversity, means to enhance this contribution - and reflect this in 2008 report and proposals.'),
 	('A2_1_8','A2_1','A2.1.8','Implement the common monitoring and evaluation framework and Strategic Environmental Assessment (SEA) Directive requirements where applicable for rural development programmes, including the definition of indicators in a way that impact of measures on biodiversity is assessed [2006 onwards].','Evaluate the extent to which MS have used the mandatory indicators and the appropriateness and adequacy of their additional programme specific indicators.'),
+	('A2_1_9','A2_1','A2.1.9','Encourage that implementation of the Common Agricultural Policy first pillar benefits biodiversity, notably through mandatory cross compliance, decoupling (single farm payments) and by encouraging take-up of modulation by the Member States MS Action: Use the instruments of the CAP first pillar (decoupling, cross-compliance) to promote biodiversity actions and increase modulation possibilities and redirection of first pillar resources to biodiversity actions through Rural Development.',NULL),
 	('A2_2_1','A2_2','A2.2.1','Identify geographical risk areas for factors affecting soil biodiversity (soil sealing, loss of organic matter, soil erosion, etc.) [by 2009].','Provide guidance on identification of risk areas.'),
 	('A2_2_2','A2_2','A2.2.2','Minimise soil sealing, sustain soil organic matter and prevent soil erosion through timely implementation of key measures identified in the forthcoming Thematic Strategy for Soil Protection [2010 onwards].','Propose suitable measures, provide guidance on implementation, monitor implementation, enforce any measures required by Community law.'),
 	('A2_3_1','A2_3','A2.3.1','Ensure implementation of operational monitoring programmes [by 2006] and publication of River Basin Management Plans and establishment of River Basin District Programmes of Measures [by 2009] and that these Plans and Programmes of Measures are fully operational [by 2012], in line with provisions of the Water Framework Directive.','Provide guidance, monitor implementation, address complaints, enforce where appropriate.'),

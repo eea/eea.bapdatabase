@@ -13,7 +13,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         addNyFolder(self.portal.countries, id='france', title='France', contributor='admin', submitted=1)
         manage_add_bap(self.portal, 
                     id = 'bap', 
-                    db_host = 'pivo.edw.ro', 
+                    db_host = 'localhost', 
                     db_port = '3306',
                     db_username = 'bap',
                     db_password = 'bap',
@@ -39,14 +39,14 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.failUnless("Target" in html)    
 
     def test_A1_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
         self.assertTrue(datatable.tr.th.text.startswith('Additional detail & Narrative summary of the information'))
 
     def test_A1_1_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_1_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A1_1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -59,14 +59,14 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Compleat'))
 
     def test_A1_1_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_1_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A1_1_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
         self.assertTrue(datatable.tr.th.text.startswith('Additional detail & Narrative summary of the above information'))
 
     def test_A1_1_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_1_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A1_1_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -76,7 +76,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Y2004'))
 
     def test_A1_2_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_2_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A1_2_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -86,7 +86,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'ToolInPlace'))
 
     def test_A1_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A1_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -96,7 +96,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'BirdGrn'))
 
     def test_A1_3_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A1_3_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A1_3_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -114,15 +114,8 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_report('A1_3_1_BirdMonitoring', country='Austria')
         self.assertTrue(hasattr(record, 'active'))
 
-    def test_Objective2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=Objective2')
-        html = self.browser.get_html()
-        soup = BeautifulSoup(html)
-        datatable = soup.find('table', attrs={'class':'datatable'})
-        self.assertTrue(datatable.tr.th.text.startswith('Additional detail & Narrative summary of the information (text provided should be able to stand alone):'))
-
     def test_A2_1_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -132,7 +125,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
     def test_A2_1_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -145,7 +138,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'FSCArea'))
 
     def test_A2_1_4(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_4')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -155,7 +148,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Livestock'))
 
     def test_A2_1_6(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_6')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_6')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -165,7 +158,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Training'))
 
     def test_A2_1_8(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_8')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_8')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -173,7 +166,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'RegBirds'))
 
     def test_A2_1_9(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_9')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_9')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -184,7 +177,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Percentage'))
 
     def test_A2_1_11(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_11')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_11')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -198,7 +191,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'EAFRD'))
 
     def test_A2_1_12(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A2_1_12')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A2_1_12')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -208,7 +201,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'EAFRDTotal'))
 
     def test_A2_1_15(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_1_15')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_1_15')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -219,7 +212,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Deforest'))
 
     def test_A2_2_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_2_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_2_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -230,7 +223,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'NatMonitor'))
 
     def test_A2_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A2_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -250,7 +243,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
     def test_A2_3_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_3_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_3_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -266,7 +259,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
 
 
     def test_A2_4_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A2_4_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A2_4_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -277,7 +270,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'NumPermitsNotUpdated'))
 
     def test_A2_4_2(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A2_4_2')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A2_4_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -288,7 +281,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'NO2006'))
 
     def test_A2_4_3(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A2_4_3')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A2_4_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -296,17 +289,8 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_report('A2_4_3', country='France')
         self.assertTrue(hasattr(record, 'Y1990_1992'))
 
-    def test_A3(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3')
-        html = self.browser.get_html()
-        soup = BeautifulSoup(html)
-        datatable = soup.find('table', attrs={'class':'datatable'})
-        self.assertEqual(datatable.tr.th.text, 'Mean marine trophic level for EEZ waters in 2004')
-        record = self.portal.bap.get_report('A3', country='France')
-        self.assertTrue(hasattr(record, 'MeanTrophic'))
-
     def test_A3_1(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_1')
+        self.browser.go('http://localhost/portal/countries/france/bap/target?id=A3_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -315,7 +299,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'MarineFVNum'))
 
     def test_A3_1_4(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_1_4')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_1_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -324,7 +308,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'MeasureNo'))
 
     def test_A3_1_5(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_1_5')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_1_5')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -333,7 +317,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'NoPlan'))
 
     def test_A3_2(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_2')
+        self.browser.go('http://localhost/portal/countries/france/bap/target?id=A3_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -346,7 +330,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Guide2006'))
 
     def test_A3_4(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_4')
+        self.browser.go('http://localhost/portal/countries/france/bap/target?id=A3_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -355,7 +339,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Ax12007MS'))
 
     def test_A3_5(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5')
+        self.browser.go('http://localhost/portal/countries/france/bap/target?id=A3_5')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -364,7 +348,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'WithinLimit'))
 
     def test_A3_5_1(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5_1')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_5_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -373,7 +357,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'vessels2006'))
 
     def test_A3_5_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A3_5_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A3_5_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -382,7 +366,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'SalmonPlan'))
 
     def test_A3_5_3(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_5_3')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_5_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -391,7 +375,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Vessel1999'))
 
     def test_A3_6_1(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_6_1')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_6_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -400,7 +384,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'vessel2006'))
 
     def test_A3_6_2(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_6_2')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_6_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -409,7 +393,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'SharkMonitor'))
 
     def test_A3_6_3(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_6_3')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_6_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -420,7 +404,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Number'))
 
     def test_A3_7_1(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A3_7_1')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A3_7_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -428,17 +412,8 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         record = self.portal.bap.get_report('A3_7_1', country='France')
         self.assertTrue(hasattr(record, 'DCF'))
 
-    def test_A4(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4')
-        html = self.browser.get_html()
-        soup = BeautifulSoup(html)
-        datatable = soup.find('table', attrs={'class':'datatable'})
-        self.assertEqual(datatable.tr.th.text, 'Has there been an increase in Biodiversity spending under Cohesion and Structural funds since 2006? Please indicate Y or N.')
-        record = self.portal.bap.get_report('A4', country='Austria')
-        self.assertTrue(hasattr(record, 'spending'))
-
     def test_A4_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A4_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -447,7 +422,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Planing'))
 
     def test_A4_4_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A4_4_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A4_4_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -456,7 +431,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'TourismGuide'))
 
     def test_A4_5_1(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A4_5_1')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A4_5_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -465,7 +440,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'OutermostRegion'))
 
     def test_A5_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A5_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -476,7 +451,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'General'))
 
     def test_A5_1_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A5_1_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -485,7 +460,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'StrategyNo'))
 
     def test_A5_1_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A5_1_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -494,7 +469,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Ballast'))
 
     def test_A5_1_4(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_1_4')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A5_1_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -503,7 +478,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'DatabaseNo'))
 
     def test_A5_2_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A5_2_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A5_2_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -512,7 +487,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'GMlegalNo'))
 
     def test_A6_1_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A6_1_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A6_1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -521,7 +496,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'NationalReport4'))
 
     def test_A7_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A7_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -530,7 +505,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Aid2006'))
 
     def test_A7_1_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_1_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A7_1_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -539,7 +514,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'BiAid2006'))
 
     def test_A7_1_4(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_1_4')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A7_1_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -548,7 +523,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Total3rd'))
 
     def test_A7_1_6(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A7_1_6')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A7_1_6')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -557,7 +532,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         #self.assertTrue(hasattr(record, 'XXX'))
 
     def test_A7_2_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A7_2_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A7_2_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -566,7 +541,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'MandatorySEA_EIA'))
 
     def test_A7_2_5(self):
-        self.browser.go('http://localhost/portal/countries/france/bap/details?id=A7_2_5')
+        self.browser.go('http://localhost/portal/countries/france/bap/action?id=A7_2_5')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -575,7 +550,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         #self.assertTrue(hasattr(record, 'XXX'))
 
     def test_A8_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A8_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -584,7 +559,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'A8_1_3Imp'))
 
     def test_A8_1_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A8_1_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -597,7 +572,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Legal'))
 
     def test_A8_1_4(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_4')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A8_1_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -608,7 +583,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Y2006'))
 
     def test_A8_1_8(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A8_1_8')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A8_1_8')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -619,7 +594,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'ImportApps'))
 
     def test_A9_1_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_1_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A9_1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -630,7 +605,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'GHG2006'))
 
     def test_A9_3_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_3_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A9_3_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -641,7 +616,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'PlanNo'))
 
     def test_A9_4_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_4_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A9_4_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -652,7 +627,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'StratNo'))
 
     def test_A9_4_3(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A9_4_3')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A9_4_3')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -661,7 +636,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'StudiesYN'))
 
     def test_A10_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A10_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=A10_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -670,7 +645,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Programme'))
 
     def test_A10_1_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A10_1_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A10_1_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -679,7 +654,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'NatFollow'))
 
     def test_A10_1_8(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A10_1_8')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A10_1_8')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -688,7 +663,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Platform'))
 
     def test_A10_1_9(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=A10_1_9')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=A10_1_9')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -697,7 +672,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'MoU'))
 
     def test_B1_1_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B1_1_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B1_1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -706,7 +681,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'NatProg'))
 
     def test_B1_1_4(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B1_1_4')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B1_1_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -715,7 +690,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Cat51_2006'))
 
     def test_B1_1_8(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B1_1_8')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B1_1_8')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -724,7 +699,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Y2006'))
 
     def test_B2_4(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B2_4')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=B2_4')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -733,7 +708,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'New'))
 
     def test_B3_1_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B3_1_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B3_1_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -742,7 +717,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Local'))
 
     def test_B3_1_5(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B3_1_5')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B3_1_5')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -751,7 +726,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Local'))
 
     def test_B3_1_6(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B3_1_6')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B3_1_6')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -760,7 +735,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Y2006'))
 
     def test_B3_1_7(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B3_1_7')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B3_1_7')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -769,7 +744,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Y2006'))
 
     def test_B3_1_8(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B3_1_8')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B3_1_8')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -778,7 +753,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'EU'))
 
     def test_B4_1_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B4_1_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B4_1_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -787,7 +762,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Yes'))
 
     def test_B4_1_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=B4_1_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=B4_1_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -796,7 +771,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Y2006'))
 
     def test_C1_2(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_2')
+        self.browser.go('http://localhost/portal/countries/austria/bap/target?id=C1_2')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -805,7 +780,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'SEBI'))
 
     def test_C1_2_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_2_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=C1_2_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})
@@ -814,7 +789,7 @@ class BAPFunctionalTestCase(NaayaFunctionalTestCase):
         self.assertTrue(hasattr(record, 'Abundance'))
 
     def test_C1_3_1(self):
-        self.browser.go('http://localhost/portal/countries/austria/bap/details?id=C1_3_1')
+        self.browser.go('http://localhost/portal/countries/austria/bap/action?id=C1_3_1')
         html = self.browser.get_html()
         soup = BeautifulSoup(html)
         datatable = soup.find('table', attrs={'class':'datatable'})

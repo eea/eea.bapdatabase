@@ -246,8 +246,6 @@ class BAPDatabase(NyFolder):
     compare_side_by_side = PageTemplateFile('zpt/compare_side_by_side', globals())
     compare_community_details = PageTemplateFile('zpt/compare_community_details', globals())
 
-    cl_compare_multiple = PageTemplateFile('zpt/cl_compare_multiple', globals())
-    cl_compare_side_by_side = PageTemplateFile('zpt/cl_compare_side_by_side', globals())
     empty_table = PageTemplateFile('zpt/empty_table', globals())
 
     community_report = PageTemplateFile('zpt/community_report', globals())
