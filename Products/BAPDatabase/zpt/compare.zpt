@@ -121,41 +121,21 @@
                 <span tal:replace="target/description" />
             </span>
 
-            <tal:block condition="python: req_country != 'Community report'">
-                <tal:block repeat="action actions">
-                    <div tal:attributes="class python:test(path('repeat/action/start'), 'bap-action first-element', 'bap-action')">
-                        <span>
-                            <a class="action-link" title="Click to see details" href="#" tal:content="string:Action: ${action/name}" />
-                            <span tal:content="action/action" />
-                        </span>
+            <tal:block repeat="action actions">
+                <div tal:attributes="class python:test(path('repeat/action/start'), 'bap-action first-element', 'bap-action')">
+                    <span>
+                        <a class="action-link" title="Click to see details" href="#" tal:content="string:Action: ${action/name}" />
+                        <span tal:content="action/action" />
+                    </span>
 
-                        <div class="bap-mop-content" tal:attributes="id action/id; style python:test(path('repeat/action/start'), 'display: block', 'display: none');">
-                            <h3>Measures of Progress</h3>
-                            <tal:block define="tabid string:tab${action/id}">
-                                <tal:block condition="python:len(req_cmp_countries) > 1" replace="structure python:here.compare_multiple(action=action)" />
-                                <tal:block condition="python:len(req_cmp_countries) == 1" replace="structure python:here.compare_side_by_side(action=action)" />
-                            </tal:block>
-                        </div>
+                    <div class="bap-mop-content" tal:attributes="id action/id; style python:test(path('repeat/action/start'), 'display: block', 'display: none');">
+                        <h3>Measures of Progress</h3>
+                        <tal:block define="tabid string:tab${action/id}">
+                            <tal:block condition="python:len(req_cmp_countries) > 1" replace="structure python:here.compare_multiple(action=action)" />
+                            <tal:block condition="python:len(req_cmp_countries) == 1" replace="structure python:here.compare_side_by_side(action=action)" />
+                        </tal:block>
                     </div>
-                </tal:block>
-            </tal:block>
-            <tal:block condition="python: req_country == 'Community report'">
-                <tal:block repeat="action actions">
-                    <div tal:attributes="class python:test(path('repeat/action/start'), 'bap-action first-element', 'bap-action')">
-                        <span>
-                            <a class="action-link" title="Click to see details" href="#" tal:content="string:Action: ${action/name}" />
-                            <span tal:content="action/action" />
-                        </span>
-
-                        <div class="bap-mop-content" tal:attributes="id action/id; style python:test(path('repeat/action/start'), 'display: block', 'display: none');">
-                            <h3>Measures of Progress</h3>
-                            <tal:block define="tabid string:tab${action/id}">
-                                <tal:block condition="python:len(req_cmp_countries) > 1" replace="structure python:here.cl_compare_multiple(action=action)" />
-                                <tal:block condition="python:len(req_cmp_countries) == 1" replace="structure python:here.cl_compare_side_by_side(action=action)" />
-                            </tal:block>
-                        </div>
-                    </div>
-                </tal:block>
+                </div>
             </tal:block>
             </tal:block>
         </div>
