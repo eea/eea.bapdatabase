@@ -8781,13 +8781,13 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `policy_areas`;
 
 CREATE TABLE `policy_areas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   CONSTRAINT `policy_areas_ibfk_1` FOREIGN KEY (`id`) REFERENCES `objectives` (`policy_area`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `policy_areas` WRITE;
 /*!40000 ALTER TABLE `policy_areas` DISABLE KEYS */;
