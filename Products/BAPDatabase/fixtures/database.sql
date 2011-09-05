@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.54-log)
 # Database: bap
-# Generation Time: 2011-08-23 18:59:47 +0300
+# Generation Time: 2011-09-05 18:04:57 +0300
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -8741,7 +8741,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `objectives`;
 
 CREATE TABLE `objectives` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(25) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `headline` varchar(255) DEFAULT NULL,
@@ -8749,27 +8749,27 @@ CREATE TABLE `objectives` (
   PRIMARY KEY (`id`),
   KEY `policy_area` (`policy_area`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `objectives` WRITE;
 /*!40000 ALTER TABLE `objectives` DISABLE KEYS */;
 INSERT INTO `objectives` (`id`,`name`,`description`,`headline`,`policy_area`)
 VALUES
-	(1,'Objective1','To safeguard the EU\'s most important habitats and species','Biodiversity loss of most important habitats and species halted by 2010, these habitats and species showing substantial recovery by 2013',1),
-	(2,'Objective2','To conserve and restore biodiversity and ecosystem services in the wider EU countryside','In wider countryside (terrestrial, freshwater, brackish water outside Natura 2000 network), biodiversity loss halted by 2010 and showing substantial recovery by 2013.',1),
-	(3,'Objective3','To conserve and restore biodiversity and ecosystem services in the wider EU marine environment','In wider marine environment (outside Natura 2000 network), biodiversity loss halted by 2010 and showing substantial recovery by 2013',1),
-	(4,'Objective4','To reinforce compatibility of regional and territorial development with biodiversity in the EU','Regional and territorial development benefiting biodiversity, and negative impacts on biodiversity prevented and minimised or, where unavoidable, adequately compensated for, from 2006 onwards.',1),
-	(5,'Objective5','To substantially reduce the impact on EU biodiversity of invasive alien species (IAS) & alien genotypes','Negative impacts on EU biodiversity of IAS and alien genotypes prevented or minimised from 2010 onwards.',1),
-	(6,'Objective6','To substantially strengthen effectiveness of international governance for biodiversity and ecosystem services','',2),
-	(7,'Objective7','To substantially strengthen support for biodiversity and ecosystem services in EU external assistance','',2),
-	(8,'Objective8','To substantially reduce the impact of international trade on global biodiversity and ecosystem services','',2),
-	(9,'Objective9','To support biodiversity adaptation to climate change','Potential for damaging impacts, related to climate change, on EU biodiversity substantially reduced by 2013',3),
-	(10,'Objective10','To sustainably strengthen the knowledge base for conservation and sustainable use of biodiversity, in the EU and globally','',4),
-	(11,'Measure1','Ensuring adequate financing for biodiversity','',4),
-	(12,'Measure2','Strengthening EU decision making for biodiversity','',4),
-	(13,'Measure3','Building partnerships for biodiversity','',4),
-	(14,'Measure4','Building public education, awareness and participation for biodiversity','',4),
-	(15,'MandE','Monitoring, evaluation and review','',4);
+	('A1','Objective1','To safeguard the EU\'s most important habitats and species','Biodiversity loss of most important habitats and species halted by 2010, these habitats and species showing substantial recovery by 2013',1),
+	('A10','Objective10','To sustainably strengthen the knowledge base for conservation and sustainable use of biodiversity, in the EU and globally','',4),
+	('A11','Measure1','Ensuring adequate financing for biodiversity','',4),
+	('A12','Measure2','Strengthening EU decision making for biodiversity','',4),
+	('A13','Measure3','Building partnerships for biodiversity','',4),
+	('A14','Measure4','Building public education, awareness and participation for biodiversity','',4),
+	('A15','MandE','Monitoring, evaluation and review','',4),
+	('A2','Objective2','To conserve and restore biodiversity and ecosystem services in the wider EU countryside','In wider countryside (terrestrial, freshwater, brackish water outside Natura 2000 network), biodiversity loss halted by 2010 and showing substantial recovery by 2013.',1),
+	('A3','Objective3','To conserve and restore biodiversity and ecosystem services in the wider EU marine environment','In wider marine environment (outside Natura 2000 network), biodiversity loss halted by 2010 and showing substantial recovery by 2013',1),
+	('A4','Objective4','To reinforce compatibility of regional and territorial development with biodiversity in the EU','Regional and territorial development benefiting biodiversity, and negative impacts on biodiversity prevented and minimised or, where unavoidable, adequately compensated for, from 2006 onwards.',1),
+	('A5','Objective5','To substantially reduce the impact on EU biodiversity of invasive alien species (IAS) & alien genotypes','Negative impacts on EU biodiversity of IAS and alien genotypes prevented or minimised from 2010 onwards.',1),
+	('A6','Objective6','To substantially strengthen effectiveness of international governance for biodiversity and ecosystem services','',2),
+	('A7','Objective7','To substantially strengthen support for biodiversity and ecosystem services in EU external assistance','',2),
+	('A8','Objective8','To substantially reduce the impact of international trade on global biodiversity and ecosystem services','',2),
+	('A9','Objective9','To support biodiversity adaptation to climate change','Potential for damaging impacts, related to climate change, on EU biodiversity substantially reduced by 2013',3);
 
 /*!40000 ALTER TABLE `objectives` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -8950,7 +8950,7 @@ CREATE TABLE `targets` (
   `id` varchar(25) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `objective` int(11) NOT NULL,
+  `objective` varchar(25) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `objective` (`objective`),
@@ -8961,53 +8961,53 @@ LOCK TABLES `targets` WRITE;
 /*!40000 ALTER TABLE `targets` DISABLE KEYS */;
 INSERT INTO `targets` (`id`,`name`,`description`,`objective`)
 VALUES
-	('A10_1','A10.1','Research findings on biodiversity and ecosystem services has substantially advanced our ability to ensure conservation and sustainable use by 2010 and again by 2013.',10),
-	('A1_1','A1.1','Natura 2000 network established, safeguarded, designated and under effective conservation management by 2010, 2012 in marine.',1),
-	('A1_2','A1.2','Sufficiency, coherence, connectivity and resilience of the protected areas network in the EU substantially enhanced by 2010 and further enhanced by 2013 (cf. objective 9, target 9.4).',1),
-	('A1_3','A1.3','No priority species in worsening conservation status by 2010; the majority of priority species in or moving towards favourable conservation status by 2013',1),
-	('A1_4','A1.4','All above targets applied for Acceding Countries from date of accession.',1),
-	('A1_5','A1.5','For those EU Outermost Regions not covered by the nature directives, valued biodiversity sites and species not in worsening conservation status by 2010; majority of valued sites and species moving towards favourable conservation status by 2013.',1),
-	('A2_1','A2.1','Member States have optimised use of opportunities under agricultural, rural development and forest policy to benefit biodiversity 2007-2013.',2),
-	('A2_2','A2.2','Risks to soil biodiversity in EU substantially reduced by 2013.',2),
-	('A2_3','A2.3','Substantial progress made towards \'good ecological status\' of freshwaters by 2010 and further substantial progress made by 2013.',2),
-	('A2_4','A2.4','Principal pollutant pressures on terrestrial and freshwater biodiversity substantially reduced by 2010, and again by 2013.',2),
-	('A2_5','A2.5','Flood risk management plans in place and designed in such a way as to prevent and minimise biodiversity loss and optimise biodiversity gains, by 2015.',2),
-	('A3_1','A3.1','Substantial progress achieved by 2010 and again by 2013 towards \'good environmental status\' of the marine environment.',3),
-	('A3_2','A3.2','Principal pollutant pressures on marine biodiversity substantially reduced by 2010, and again by 2013.',3),
-	('A3_3','A3.3','Ecosystem approach to the protection of the seas in place and implying fisheries management measures no later than 2016.',3),
-	('A3_4','A3.4','Substantially enhanced funding provided to environmentally-friendly fisheries management from 2007 onwards.',3),
-	('A3_5','A3.5','Stock levels maintained or restored to levels that can produce maximum sustainable yield, where possible no later than 2015.',3),
-	('A3_6','A3.6','Impact of fisheries on non-target species and habitats progressively and substantially reduced from 2006 onwards.',3),
-	('A3_7','A3.7','Substantially improved information and reporting on environmental integration of the Common Fisheries Policy from 2008 onwards.',3),
-	('A4_1','A4.1','Cohesion and structural funds contributing to sustainable development and making (directly or indirectly) a positive contribution to biodiversity, and negative impacts on biodiversity prevented or minimised or, where unavoidable, adequately compensated fo',4),
-	('A4_2','A4.2','Negative impacts of territorial plans (within each MS) on biodiversity prevented or minimised, and positive benefits optimised, from 2006 onwards.',4),
-	('A4_3','A4.3','Ecological coherence and functioning strengthened through spatial planning from 2006 onwards.',4),
-	('A4_4','A4.4','Significant increase in proportion of tourism which is ecologically sustainable by 2010 and again by 2013.',4),
-	('A4_5','A4.5','All above outcomes achieved also in Outermost Regions.',4),
-	('A4_6','A4.6','All Strategic Environmental Assessments and Environmental Impact Assessments have taken full account of biodiversity concerns (2006 onwards).',4),
-	('A5_1','A5.1','Impact of IAS on biodiversity in the EU substantially reduced by 2010 and again by 2013.',5),
-	('A5_2','A5.2','Impact of alien genotypes on biodiversity in the EU significantly reduced by 2010 and again by 2013.',5),
-	('A6_1','A6.1','International governance for biodiversity substantially more effective in delivering positive biodiversity outcomes by 2010.',6),
-	('A7_1','A7.1','Financial resources flowing annually to projects directly benefiting biodiversity has substantially increased in real terms (for period 2006-2010 compared with period 2000-2005; and again for period 2011-2013).',7),
-	('A7_2','A7.2','EU \'mainstream\' external development assistance delivering enhanced biodiversity and related livelihoods benefits, and negative impacts on biodiversity prevented or minimised, from 2006 onwards.',7),
-	('A8_1','A8.1','Impact on biodiversity of EU trade significantly reduced by 2010 and again by 2013.',8),
-	('A9_1','A9.1','8% reduction in greenhouse gas emissions achieved by 2010.',9),
-	('A9_2','A9.2','Global annual mean surface temperature increase limited to not more than 2ºC above pre-industrial levels.',9),
-	('A9_3','A9.3','Climate change adaptation or mitigation measure from 2006 onwards delivering biodiversity benefits, and any negative impacts on biodiversity prevented or minimised, from 2006 onwards.',9),
-	('A9_4','A9.4','Resilience of EU biodiversity to climate change substantially strengthened by 2010.',9),
-	('B1_1','B1.1','Adequate funding provided for Natura 2000, biodiversity outside Natura 2000 in EU, biodiversity in external assistance and biodiversity research, inventory and monitoring 2007-2013.',11),
-	('B2_1','B2.1','EU vision on biodiversity and ecosystem services agreed and providing policy framework by 2010.',12),
-	('B2_2','B2.2','New policies benefit biodiversity and ecosystem services, and their negative impact on biodiversity and ecosystem services prevented or minimised, from 2006 onwards.',12),
-	('B2_3','B2.3','Biodiversity needs have been better integrated, as necessary, into post-2013 Financial Perspectives and any mid-term review of FP 2007-2013.',12),
-	('B2_4','B2.4','Complementarity of EC and MS biodiversity strategies and action plans substantially enhanced by 2010.',12),
-	('B2_5','B2.5','Effective integration of Natura 2000, rural development, river basin management and other territorial plans and programmes in support of biodiversity achieved by 2010.',12),
-	('B2_6','B2.6','Substantial improvement in compliance with environmental regulations by 2010 and again by 2013.',12),
-	('B3_1','B3.1','Key stakeholder groups actively engaged in conservation of biodiversity from 2006 in each MS.',13),
-	('B4_1','B4.1','10 million Europeans actively engaged in biodiversity conservation by 2010, 15 million by 2013.',14),
-	('C1_1','C1.1','Annual, Mid-term and Final Reports submitted in timely fashion to Council and Parliament',15),
-	('C1_2','C1.2','Indicators in place and informing policy decisions by 2010',15),
-	('C1_3','C1.3','Monitoring providing adequate data flow for implementation of indicator set, for reporting on favourable conservation status, and for broader assessment of effectiveness of this Action Plan by 2010.',15),
-	('C1_4','C1.4','Action Plan adjusted as necessary in 2010, new plan adopted in 2013',15);
+	('A10_1','A10.1','Research findings on biodiversity and ecosystem services has substantially advanced our ability to ensure conservation and sustainable use by 2010 and again by 2013.','A10'),
+	('A1_1','A1.1','Natura 2000 network established, safeguarded, designated and under effective conservation management by 2010, 2012 in marine.','A1'),
+	('A1_2','A1.2','Sufficiency, coherence, connectivity and resilience of the protected areas network in the EU substantially enhanced by 2010 and further enhanced by 2013 (cf. objective 9, target 9.4).','A1'),
+	('A1_3','A1.3','No priority species in worsening conservation status by 2010; the majority of priority species in or moving towards favourable conservation status by 2013','A1'),
+	('A1_4','A1.4','All above targets applied for Acceding Countries from date of accession.','A1'),
+	('A1_5','A1.5','For those EU Outermost Regions not covered by the nature directives, valued biodiversity sites and species not in worsening conservation status by 2010; majority of valued sites and species moving towards favourable conservation status by 2013.','A1'),
+	('A2_1','A2.1','Member States have optimised use of opportunities under agricultural, rural development and forest policy to benefit biodiversity 2007-2013.','A2'),
+	('A2_2','A2.2','Risks to soil biodiversity in EU substantially reduced by 2013.','A2'),
+	('A2_3','A2.3','Substantial progress made towards \'good ecological status\' of freshwaters by 2010 and further substantial progress made by 2013.','A2'),
+	('A2_4','A2.4','Principal pollutant pressures on terrestrial and freshwater biodiversity substantially reduced by 2010, and again by 2013.','A2'),
+	('A2_5','A2.5','Flood risk management plans in place and designed in such a way as to prevent and minimise biodiversity loss and optimise biodiversity gains, by 2015.','A2'),
+	('A3_1','A3.1','Substantial progress achieved by 2010 and again by 2013 towards \'good environmental status\' of the marine environment.','A3'),
+	('A3_2','A3.2','Principal pollutant pressures on marine biodiversity substantially reduced by 2010, and again by 2013.','A3'),
+	('A3_3','A3.3','Ecosystem approach to the protection of the seas in place and implying fisheries management measures no later than 2016.','A3'),
+	('A3_4','A3.4','Substantially enhanced funding provided to environmentally-friendly fisheries management from 2007 onwards.','A3'),
+	('A3_5','A3.5','Stock levels maintained or restored to levels that can produce maximum sustainable yield, where possible no later than 2015.','A3'),
+	('A3_6','A3.6','Impact of fisheries on non-target species and habitats progressively and substantially reduced from 2006 onwards.','A3'),
+	('A3_7','A3.7','Substantially improved information and reporting on environmental integration of the Common Fisheries Policy from 2008 onwards.','A3'),
+	('A4_1','A4.1','Cohesion and structural funds contributing to sustainable development and making (directly or indirectly) a positive contribution to biodiversity, and negative impacts on biodiversity prevented or minimised or, where unavoidable, adequately compensated fo','A4'),
+	('A4_2','A4.2','Negative impacts of territorial plans (within each MS) on biodiversity prevented or minimised, and positive benefits optimised, from 2006 onwards.','A4'),
+	('A4_3','A4.3','Ecological coherence and functioning strengthened through spatial planning from 2006 onwards.','A4'),
+	('A4_4','A4.4','Significant increase in proportion of tourism which is ecologically sustainable by 2010 and again by 2013.','A4'),
+	('A4_5','A4.5','All above outcomes achieved also in Outermost Regions.','A4'),
+	('A4_6','A4.6','All Strategic Environmental Assessments and Environmental Impact Assessments have taken full account of biodiversity concerns (2006 onwards).','A4'),
+	('A5_1','A5.1','Impact of IAS on biodiversity in the EU substantially reduced by 2010 and again by 2013.','A5'),
+	('A5_2','A5.2','Impact of alien genotypes on biodiversity in the EU significantly reduced by 2010 and again by 2013.','A5'),
+	('A6_1','A6.1','International governance for biodiversity substantially more effective in delivering positive biodiversity outcomes by 2010.','A6'),
+	('A7_1','A7.1','Financial resources flowing annually to projects directly benefiting biodiversity has substantially increased in real terms (for period 2006-2010 compared with period 2000-2005; and again for period 2011-2013).','A7'),
+	('A7_2','A7.2','EU \'mainstream\' external development assistance delivering enhanced biodiversity and related livelihoods benefits, and negative impacts on biodiversity prevented or minimised, from 2006 onwards.','A7'),
+	('A8_1','A8.1','Impact on biodiversity of EU trade significantly reduced by 2010 and again by 2013.','A8'),
+	('A9_1','A9.1','8% reduction in greenhouse gas emissions achieved by 2010.','A9'),
+	('A9_2','A9.2','Global annual mean surface temperature increase limited to not more than 2ºC above pre-industrial levels.','A9'),
+	('A9_3','A9.3','Climate change adaptation or mitigation measure from 2006 onwards delivering biodiversity benefits, and any negative impacts on biodiversity prevented or minimised, from 2006 onwards.','A9'),
+	('A9_4','A9.4','Resilience of EU biodiversity to climate change substantially strengthened by 2010.','A9'),
+	('B1_1','B1.1','Adequate funding provided for Natura 2000, biodiversity outside Natura 2000 in EU, biodiversity in external assistance and biodiversity research, inventory and monitoring 2007-2013.','A11'),
+	('B2_1','B2.1','EU vision on biodiversity and ecosystem services agreed and providing policy framework by 2010.','A12'),
+	('B2_2','B2.2','New policies benefit biodiversity and ecosystem services, and their negative impact on biodiversity and ecosystem services prevented or minimised, from 2006 onwards.','A12'),
+	('B2_3','B2.3','Biodiversity needs have been better integrated, as necessary, into post-2013 Financial Perspectives and any mid-term review of FP 2007-2013.','A12'),
+	('B2_4','B2.4','Complementarity of EC and MS biodiversity strategies and action plans substantially enhanced by 2010.','A12'),
+	('B2_5','B2.5','Effective integration of Natura 2000, rural development, river basin management and other territorial plans and programmes in support of biodiversity achieved by 2010.','A12'),
+	('B2_6','B2.6','Substantial improvement in compliance with environmental regulations by 2010 and again by 2013.','A12'),
+	('B3_1','B3.1','Key stakeholder groups actively engaged in conservation of biodiversity from 2006 in each MS.','A13'),
+	('B4_1','B4.1','10 million Europeans actively engaged in biodiversity conservation by 2010, 15 million by 2013.','A14'),
+	('C1_1','C1.1','Annual, Mid-term and Final Reports submitted in timely fashion to Council and Parliament','A15'),
+	('C1_2','C1.2','Indicators in place and informing policy decisions by 2010','A15'),
+	('C1_3','C1.3','Monitoring providing adequate data flow for implementation of indicator set, for reporting on favourable conservation status, and for broader assessment of effectiveness of this Action Plan by 2010.','A15'),
+	('C1_4','C1.4','Action Plan adjusted as necessary in 2010, new plan adopted in 2013','A15');
 
 /*!40000 ALTER TABLE `targets` ENABLE KEYS */;
 UNLOCK TABLES;
