@@ -5,7 +5,8 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-    <title tal:content="string:${here/site_title} - Action: ${action/name} for ${country}" />
+    <title tal:condition="action" tal:content="string:${here/site_title} - Action: ${action/name} for ${country}" />
+    <title tal:condition="not:action" tal:content="string:${here/site_title} - Action not found" /> 
 </metal:block>
 
 <metal:block metal:fill-slot="head">
@@ -14,7 +15,7 @@
 
 <metal:block fill-slot="body">
 
-<div id="center_content">
+<div id="center_content" tal:condition="action">
     <span class="country-profile-title">
         <h1>
             BAP Report 2010: Action: <span tal:replace="string: ${action/name}" /> for <span tal:replace="country" /> 
@@ -35,6 +36,10 @@
         <h3>Measures of Progress</h3>
         <tal:block define="action_id action/id" replace="structure python:here.get_table(action_id, country)" />
     </div>
+</div>
+<div id="center_content" tal:condition="not:action">
+    <h1>Action Not Found in Database</h1>
+    <p>Invalid action id</p>
 </div>
 </metal:block>
 

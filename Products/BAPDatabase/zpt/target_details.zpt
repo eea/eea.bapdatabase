@@ -5,7 +5,8 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
 <metal:block metal:fill-slot="title">
-    <title tal:content="string:${here/site_title} - Target: ${target/name} for ${country}" />
+    <title tal:condition="target" tal:content="string:${here/site_title} - Target: ${target/name} for ${country}" />
+    <title tal:condition="not:target" tal:content="string:${here/site_title} - Target not found" /> 
 </metal:block>
 
 <metal:block metal:fill-slot="head">
@@ -14,7 +15,7 @@
 
 <metal:block fill-slot="body">
 
-<div id="center_content">
+<div id="center_content" tal:condition="target">
     <span class="country-profile-title">
         <h1>
             BAP Report 2010: Target: <span tal:replace="string: ${target/name}" /> for <span tal:replace="country" /> 
@@ -35,6 +36,10 @@
         <h3>Measures of Progress</h3>
         <tal:block define="target_id target/id" replace="structure python:here.get_table(target_id, country)" />
     </div>
+</div>
+<div id="center_content" tal:condition="not:target">
+    <h1>Target Not Found in Database</h1>
+    <p>Invalid target id</p>
 </div>
 </metal:block>
 

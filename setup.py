@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='BAPDatabase',
-    version='0.2.2',
+    version='0.2.3',
     author='Eau de Web',
     author_email='office@eaudeweb.ro',
     url='http://naaya.eaudeweb.ro',

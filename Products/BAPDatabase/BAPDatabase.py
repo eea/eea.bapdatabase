@@ -151,7 +151,11 @@ class BAPDatabase(NyFolder):
                     .filter(models.Action.target == target_id).all()
 
     def get_action(self, action_id):
-        return self._get_session().query(models.Action).filter(models.Action.id == action_id).one()
+        try:
+            return self._get_session().query(models.Action).filter(models.Action.id == action_id).one()
+        except NoResultFound:
+            pass
+        return None
 
     def get_actions(self, target_id, objective_id=None):
         all_targets =  self._get_session().query(models.Action) \
