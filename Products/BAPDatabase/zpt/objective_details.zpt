@@ -6,8 +6,7 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
     <metal:block metal:fill-slot="title">
-        <title tal:condition="objective" tal:content="string:${here/site_title} - ${objective/name} for ${here/aq_parent/title_or_id}" />
-        <title tal:condition="not:objective" tal:content="string:${here/site_title} - Objective not found" /> 
+        <title tal:content="string:${here/site_title} - ${objective/name} for ${here/aq_parent/title_or_id}" />
     </metal:block>
     <metal:block metal:fill-slot="head">
             <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
@@ -19,7 +18,7 @@
 
     <metal:block fill-slot="body">
 
-    <div id="center_content" tal:condition="objective">
+    <div id="center_content">
         <h1>
             BAP Report 2010 - <span tal:replace="objective/name" /> for <span tal:replace="country" />
         </h1>
@@ -49,10 +48,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="center_content" tal:condition="not:objective">
-        <h1>Objective Not Found in Database</h1>
-        <p>Invalid objective id</p>
     </div>
     </metal:block>
 </metal:block>

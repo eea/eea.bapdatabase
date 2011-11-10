@@ -5,8 +5,7 @@
 <metal:block metal:use-macro="here/standard_template_macro">
 
     <metal:block metal:fill-slot="title">
-        <title tal:condition="objective" tal:content="string:${here/site_title} - Community report" />
-        <title tal:condition="not:objective" tal:content="string:${here/site_title} - Objective not found" /> 
+        <title tal:content="string:${here/site_title} - Community report" />
     </metal:block>
 
     <metal:block metal:fill-slot="head">
@@ -19,7 +18,7 @@
     </metal:block>
 
     <metal:block fill-slot="body">
-        <div id="center_content" tal:condition="objective">
+        <div id="center_content">
             <span class="country-profile-title">
                 <h1>BAP 2010 Community report: <span tal:replace="objective/name" /></h1>
 
@@ -59,10 +58,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="center_content" tal:condition="not:objective">
-            <h1>Objective Not Found in Database</h1>
-            <p>Invalid objective id</p>
         </div>
     </metal:block>
 </metal:block>

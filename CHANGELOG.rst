@@ -1,5 +1,6 @@
 0.2.5 (unreleased)
 ==================
+* raise 404 when record is not found in database
 
 0.2.4 (2011-11-20)
 ==================

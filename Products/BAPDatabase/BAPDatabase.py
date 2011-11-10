@@ -8,6 +8,7 @@ except ImportError:
 
 from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
 from sqlalchemy.orm.exc import NoResultFound
+from ZPublisher import NotFound
 
 from App.class_init import InitializeClass
 from AccessControl.SecurityInfo import ClassSecurityInfo
@@ -115,7 +116,7 @@ class BAPDatabase(NyFolder):
             return self._get_session().query(models.Objective) \
                                     .filter(models.Objective.id == objective_id).one()
         except NoResultFound:
-            return
+            raise NotFound, "Objective not found"
 
     def get_objective_by_name(self, objective_name):
         """ """
@@ -136,7 +137,7 @@ class BAPDatabase(NyFolder):
         try:
             return self._get_session().query(models.Target).filter(models.Target.id == target_id).one()
         except NoResultFound:
-            return None
+            raise NotFound, "Target not found"
 
     def get_objective_targets(self, objective_id):
         return self._get_session().query(models.Target) \
@@ -154,8 +155,7 @@ class BAPDatabase(NyFolder):
         try:
             return self._get_session().query(models.Action).filter(models.Action.id == action_id).one()
         except NoResultFound:
-            pass
-        return None
+            raise NotFound, "Action not found"
 
     def get_actions(self, target_id, objective_id=None):
         all_targets =  self._get_session().query(models.Action) \

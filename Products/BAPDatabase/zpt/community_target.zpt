@@ -5,8 +5,7 @@
 
 
     <metal:block metal:fill-slot="title">
-        <title tal:condition="target" tal:content="string:${here/site_title} - Target: ${target/name}" />
-        <title tal:condition="not:target" tal:content="string:${here/site_title} - Target not found" /> 
+        <title tal:content="string:${here/site_title} - Target: ${target/name}" />
     </metal:block>
 
     <metal:block metal:fill-slot="head">
@@ -15,7 +14,7 @@
 
 
     <metal:block fill-slot="body">
-    <div id="center_content" tal:condition="target">
+    <div id="center_content">
         <span class="country-profile-title">
             <h1>BAP 2010 Community report: Target <span tal:replace="target/name" /></h1>
 
@@ -37,10 +36,6 @@
                 </span>
             </div>
         </div>
-    </div>
-    <div id="center_content" tal:condition="not:target">
-        <h1>Target Not Found in Database</h1>
-        <p>Invalid target id</p>
     </div>
     </metal:block>
 
