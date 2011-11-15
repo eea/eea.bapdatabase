@@ -1,5 +1,6 @@
 0.2.5 (unreleased)
 ==================
+* bugfix: actions were not displayed for a given target and objective
 
 0.2.5 (2011-11-10)
 ==================

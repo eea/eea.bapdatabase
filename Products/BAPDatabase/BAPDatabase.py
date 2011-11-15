@@ -109,7 +109,8 @@ class BAPDatabase(NyFolder):
                                 .filter(models.Header.Country == country).one()[0]
 
     def get_objectives(self):
-        return self._get_session().query(models.Objective).all()
+        return self._get_session().query(models.Objective) \
+                                .order_by(models.Objective.order).all()
 
     def get_objective(self, objective_id):
         try:

@@ -71,6 +71,7 @@ class Objective(Base):
     name = Column(String)
     description = Column(String)
     headline = Column(String)
+    order = Column(Integer)
 
 class A1_1_1_Natura2000Compleat(Base):
   __tablename__ = 'A1_1_1_Natura2000Compleat'
