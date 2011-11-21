@@ -1,4 +1,7 @@
-0.2.7 (unreleased)
+0.2.8 (unreleased)
+==================
+
+0.2.7 (2011-11-21)
 ==================
 * objective page for the Community Report – does not display the title of the Objective
 * the Action and Target pages for the Community Report should show links to the upper elements – Objective and Target.
