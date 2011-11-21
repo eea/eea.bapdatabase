@@ -161,16 +161,17 @@ class BAPDatabase(NyFolder):
         except NoResultFound:
             raise NotFound, "Action not found"
 
-    def get_actions(self, target_id, objective_id=None):
-        all_targets =  self._get_session().query(models.Action) \
-                    .join((models.Target, models.Target.id == models.Action.target)) \
-                    .filter(models.Action.target == target_id)
-        if objective_id:
-            targets = all_targets.filter(models.Target.objective == objective_id)
-        else:
-            targets = all_targets
+    def get_actions(self, target_id=None, objective_id=None):
+        records = self._get_session().query(models.Action) \
+                        .join((models.Target, models.Target.id == models.Action.target))
 
-        return targets.all()
+        if target_id:
+            records = records.filter(models.Action.target == target_id)
+
+        if objective_id:
+            records = records.filter(models.Target.objective == objective_id)
+
+        return records.all()
 
     def get_action_parents(self, action_id):
         record = self._get_session().query(models.Target) \

@@ -36,23 +36,25 @@
           tal:define="records python:here.get_action_parents(action_id);
                       target python:records[0];
                       objective python:records[1]">
-                      
+
       <p>
-        <strong tal:content="objective/name" />: 
+        <a tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective/id}">
+          <strong tal:content="objective/name" /></a> : 
         <span tal:content="objective/description" />
       </p>
 
       <p>
-        <strong>Target <span tal:replace="target/name" />: </strong>
+        <a tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_target?id=${target/id}">
+        <strong>Target <span tal:replace="target/name" /></strong></a> :
         <span tal:content="target/description" />
       </p>
     </div>
 
-    <h3 class="bop-mop-year">Action</h3>
+    <h3 class="bop-mop-year">Action:</h3>
     <div class="bop-mop-progress">
         <p tal:content="action/action" />
-    </div>
-    
+    </div>  
+
     <div id="mop-content">
         <h3 class="bop-mop-year">Community action</h3>
         <div class="bop-mop-progress">

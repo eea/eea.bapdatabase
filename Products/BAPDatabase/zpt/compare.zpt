@@ -104,21 +104,23 @@
             <div class="cleaner">&nbsp;</div>
         </div>
 
-        <div class="bap-actions" tal:condition="python:request.get('compare', '') and req_country and req_objective and req_target and req_cmp_countries">
+        <div class="bap-actions" tal:condition="python:request.get('compare', '') and req_country and req_objective and req_cmp_countries">
             <tal:block define="objective python:here.get_objective_by_name(req_objective);
-                                target python:here.get_target(req_target);
                                 objective_id objective/id;
-                                target_id target/id;
-                                actions python:here.get_actions(target_id, objective_id)">
+                                actions python:here.get_actions(req_target, objective_id)">
 
             <span class="objective-description">
                 <strong tal:content="objective/name" />
                 <span tal:replace="objective/description" />
             </span>
 
-            <span class="target-description">
+            <span class="target-description" tal:condition="req_target">
                 <strong>Target: <span tal:replace="target/name" /></strong>
                 <span tal:replace="target/description" />
+            </span>
+
+            <span class="target-description" tal:condition="not:req_target">
+                <strong>Target: all</strong>
             </span>
 
             <tal:block repeat="action actions">
@@ -139,7 +141,7 @@
             </tal:block>
             </tal:block>
         </div>
-        <div class="bap-actions" tal:condition="python: request.get('compare', '') and not (req_country and req_objective and req_target and req_cmp_countries)">
+        <div class="bap-actions" tal:condition="python: request.get('compare', '') and not (req_country and req_objective and req_cmp_countries)">
             <p><strong>Missing parameters. Please try again.</strong></p>
         </div>
     </div>

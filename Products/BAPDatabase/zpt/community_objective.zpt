@@ -29,8 +29,13 @@
                      </a>
             </span>
 
-            <h2 class="description" tal:content="objective/description"/>
-            <h2 tal:content="objective/headline"/>
+            <h2 tal:content="objective/description" />
+
+            <h3 class="bop-mop-year">Headline:</h3>
+            <div class="bop-mop-progress">
+                <p tal:content="objective/headline" />
+            </div>
+            <br />
 
             <div id="bap-content">
                 <div class="bap-targets">
