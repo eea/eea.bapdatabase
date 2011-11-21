@@ -1,4 +1,7 @@
-0.2.8 (unreleased)
+0.2.9 (unreleased)
+==================
+
+0.2.8 (2011-11-21)
 ==================
 * when it is not specified all targets are shown
 
