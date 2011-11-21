@@ -1,4 +1,9 @@
-0.2.5 (unreleased)
+0.2.7 (unreleased)
+==================
+* objective page for the Community Report – does not display the title of the Objective
+* the Action and Target pages for the Community Report should show links to the upper elements – Objective and Target.
+
+0.2.6 (2011-11-15)
 ==================
 * bugfix: actions were not displayed for a given target and objective
 

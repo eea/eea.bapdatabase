@@ -140,6 +140,9 @@ class BAPDatabase(NyFolder):
         except NoResultFound:
             raise NotFound, "Target not found"
 
+    def get_target_parents(self, target):
+        return self.get_objective(target.objective)
+
     def get_objective_targets(self, objective_id):
         return self._get_session().query(models.Target) \
                                 .filter(models.Target.objective == objective_id) \
@@ -168,6 +171,14 @@ class BAPDatabase(NyFolder):
             targets = all_targets
 
         return targets.all()
+
+    def get_action_parents(self, action_id):
+        record = self._get_session().query(models.Target) \
+                    .join((models.Action, models.Target.id == models.Action.target)) \
+                    .filter(models.Action.id == action_id).one()
+        target = self.get_target(record.id)
+        objective = self.get_objective(record.objective)
+        return target, objective
 
     def get_report(self, table_id, country):
         try:

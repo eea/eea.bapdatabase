@@ -2,6 +2,10 @@ h1 {
     line-height: 1.2;
 }
 
+h2.description {
+    color: #8F68DA !important;
+}
+
 .clearifx {
     clear: both;
     display: block;

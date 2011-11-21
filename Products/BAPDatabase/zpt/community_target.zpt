@@ -25,7 +25,16 @@
                  </a>
         </span>
 
+
         <h2 tal:content="target/description" />
+
+        <div tal:define="objective python:here.get_target_parents(target);">
+          <p>
+            <strong tal:content="objective/name" />: 
+            <span tal:content="objective/description" />
+          </p>
+        </div>
+
         <div class="bap-actions">
             <div class="bap-action" tal:repeat="action python:here.get_actions(target_id)">
                 <span>

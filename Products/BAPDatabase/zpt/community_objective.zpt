@@ -29,6 +29,7 @@
                      </a>
             </span>
 
+            <h2 class="description" tal:content="objective/description"/>
             <h2 tal:content="objective/headline"/>
 
             <div id="bap-content">
