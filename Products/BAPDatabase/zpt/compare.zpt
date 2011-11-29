@@ -115,8 +115,10 @@
             </span>
 
             <span class="target-description" tal:condition="req_target">
+                <tal:block define="target python:here.get_target(req_target)">
                 <strong>Target: <span tal:replace="target/name" /></strong>
                 <span tal:replace="target/description" />
+                </tal:block>
             </span>
 
             <span class="target-description" tal:condition="not:req_target">
