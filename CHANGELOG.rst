@@ -1,4 +1,7 @@
-0.2.9 (unreleased)
+0.3.0 (unreleased)
+==================
+ 
+0.2.9 (2011-11-29)
 ==================
  * bugfix: compare:KeyError (missing target)
  
