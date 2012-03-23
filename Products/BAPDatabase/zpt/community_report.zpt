@@ -24,7 +24,7 @@
                 <a class="country-compare-button"
                     tal:attributes="
                     title string:Compare country data;
-                    href string:${here/absolute_url}/compare?country=Community+report">
+                    href string:${here/getSitePath}/countries_and_networks/bap/compare?country=Community+report">
                          Compare community report data
                      </a>
             </span>
