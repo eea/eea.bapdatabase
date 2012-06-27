@@ -1,10 +1,12 @@
 0.3.0 (unreleased)
 ==================
- 
+ * bugfix: bad URLs for countries with spaces, as "United Kingdom" [Gari Araolaza]
+ * bugfix: invalid link to country comparision
+
 0.2.9 (2011-11-29)
 ==================
  * bugfix: compare:KeyError (missing target)
- 
+
 0.2.8 (2011-11-21)
 ==================
 * when it is not specified all targets are shown

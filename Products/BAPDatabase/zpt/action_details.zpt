@@ -1,4 +1,5 @@
 <tal:block define="country here/aq_parent/title_or_id;
+                    country_id here/aq_parent/id;
                     action_id request/id | nothing;
                     action python: here.get_action(action_id);">
 
@@ -22,7 +23,7 @@
 
         <a class="country-compare-button"
             tal:attributes="title string:Show full country profile;
-                            href string:${here/getSitePath}/countries_and_networks/${country/lower}/bap">
+                            href string:${here/getSitePath}/countries_and_networks/${country_id}/bap">
                  Show full country profile
         </a>
     </span>
