@@ -1,4 +1,7 @@
-0.3.0 (unreleased)
+0.3.1 (unreleased)
+==================
+
+0.3.0 (2012-16-27)
 ==================
  * bugfix: bad URLs for countries with spaces, as "United Kingdom" [Gari Araolaza]
  * bugfix: invalid link to country comparision
