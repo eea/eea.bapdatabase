@@ -15,7 +15,7 @@ from AccessControl.SecurityInfo import ClassSecurityInfo
 from AccessControl.Permissions import view_management_screens, view
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 
-from Products.Naaya.NyFolder import NyFolder, addNyFolder
+from Products.BTreeFolder2.BTreeFolder2 import BTreeFolder2
 
 import models
 
@@ -36,7 +36,7 @@ manage_add_html = PageTemplateFile('zpt/manage_add', globals())
 def manage_add_bap(self, id, REQUEST=None, **kwargs):
     """ Create new BAPDatabase object from ZMI.
     """
-    id = addNyFolder(self, id, callback=create_object_callback)
+    create_object_callback(self, id, id)
     ob = self._getOb(id)
     if REQUEST is not None:
         params = dict(REQUEST.form)
@@ -51,11 +51,8 @@ def manage_add_bap(self, id, REQUEST=None, **kwargs):
         return self.manage_main(self, REQUEST, update_menu=1)
     return ob
 
-from Products.NaayaCore.LayoutTool.DiskFile import allow_path
-allow_path('Products.BAPDatabase:www/css/')
 
-
-class BAPDatabase(NyFolder):
+class BAPDatabase(BTreeFolder2):
     """
         BAPDatabase object, folder-type that contains items described within specs.
         This is the root of the application.
@@ -70,9 +67,9 @@ class BAPDatabase(NyFolder):
     db_name = None
     db_debug = False
 
-    def _get_schema(self):
-        from Products.NaayaCore.constants import ID_SCHEMATOOL
-        return self.getSite()._getOb(ID_SCHEMATOOL).getSchemaForMetatype('Naaya Folder')
+    # def _get_schema(self):
+    #     from Products.NaayaCore.constants import ID_SCHEMATOOL
+    #     return self.getSite()._getOb(ID_SCHEMATOOL).getSchemaForMetatype('Naaya Folder')
 
     def __init__(self, id, contributor):
         """
