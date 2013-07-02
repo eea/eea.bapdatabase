@@ -3,7 +3,7 @@
                     action_id request/id | nothing;
                     action python: here.get_action(action_id);">
 
-<metal:block metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/main_template/macros/master">
 
 <metal:block metal:fill-slot="title">
     <title tal:content="string:${here/site_title} - Action: ${action/name} for ${country}" />
@@ -18,7 +18,7 @@
 <div id="center_content">
     <span class="country-profile-title">
         <h1>
-            BAP Report 2010: Action: <span tal:replace="string: ${action/name}" /> for <span tal:replace="country" /> 
+            BAP Report 2010: Action: <span tal:replace="string: ${action/name}" /> for <span tal:replace="country" />
         </h1>
 
         <a class="country-compare-button"

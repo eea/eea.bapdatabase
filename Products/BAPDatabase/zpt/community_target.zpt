@@ -1,7 +1,7 @@
 <tal:block tal:define="
     target_id request/id|nothing;
     target python: here.get_target(target_id);">
-<metal:block metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/main_template/macros/master">
 
 
     <metal:block metal:fill-slot="title">
@@ -30,7 +30,7 @@
         <div tal:define="objective python:here.get_target_parents(target);">
           <p>
             <a tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective/id}">
-              <strong tal:content="objective/name" /></a>: 
+              <strong tal:content="objective/name" /></a>:
             <span tal:content="objective/description" />
           </p>
         </div>

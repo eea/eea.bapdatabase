@@ -1,7 +1,7 @@
 <tal:block tal:define="
     action_id request/id|nothing;
     action python: here.get_action(action_id);">
-<metal:block metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/main_template/macros/master">
 
     <metal:block metal:fill-slot="title">
         <title tal:content="string:${here/site_title} - Action: ${action/name}" />
@@ -32,14 +32,14 @@
              </a>
     </span>
 
-    <div id="parents-content" 
+    <div id="parents-content"
           tal:define="records python:here.get_action_parents(action_id);
                       target python:records[0];
                       objective python:records[1]">
 
       <p>
         <a tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective/id}">
-          <strong tal:content="objective/name" /></a> : 
+          <strong tal:content="objective/name" /></a> :
         <span tal:content="objective/description" />
       </p>
 
@@ -53,7 +53,7 @@
     <h3 class="bop-mop-year">Action:</h3>
     <div class="bop-mop-progress">
         <p tal:content="action/action" />
-    </div>  
+    </div>
 
     <div id="mop-content">
         <h3 class="bop-mop-year">Community action</h3>

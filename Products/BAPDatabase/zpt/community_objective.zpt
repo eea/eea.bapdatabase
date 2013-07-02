@@ -2,7 +2,7 @@
     define="objective_id request/id | nothing;
             objective python:here.get_objective(objective_id)">
 
-<metal:block metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/main_template/macros/master">
 
     <metal:block metal:fill-slot="title">
         <title tal:content="string:${here/site_title} - Community report" />

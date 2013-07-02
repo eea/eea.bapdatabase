@@ -1,4 +1,4 @@
-<metal:block metal:use-macro="here/standard_template_macro">
+<metal:block metal:use-macro="here/main_template/macros/master">
 
     <metal:block metal:fill-slot="title">
             <title tal:content="string:${here/site_title} - Community report" />
@@ -18,9 +18,9 @@
             <span class="country-profile-title">
                 <h1>
                     BAP 2010 Community report
-                    
+
                 </h1>
-    
+
                 <a class="country-compare-button"
                     tal:attributes="
                     title string:Compare country data;
@@ -38,7 +38,7 @@
                 <div class="bap-objectives">
                     <span class="bap-objective-title">
                         <a title="Click to see details"
-                            tal:attributes="id objective/name; href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective_id}" 
+                            tal:attributes="id objective/name; href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective_id}"
                             tal:content="objective/name" />
                         <span tal:content="objective/description" />
                     </span>
