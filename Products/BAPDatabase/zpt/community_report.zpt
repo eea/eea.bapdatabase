@@ -1,3 +1,6 @@
+<tal:block define="dummy python:request.set('disable_plone.leftcolumn', True);
+                   dummy python:request.set('disable_plone.rightcolumn', True);
+">
 <metal:block metal:use-macro="here/main_template/macros/master">
 
     <metal:block metal:fill-slot="title">
@@ -81,3 +84,4 @@
     </metal:block>
 
 </metal:block>
+</tal:block>

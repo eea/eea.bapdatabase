@@ -1,6 +1,9 @@
 <tal:block tal:define="
     action_id request/id|nothing;
-    action python: here.get_action(action_id);">
+    action python: here.get_action(action_id);
+    dummy python:request.set('disable_plone.leftcolumn', True);
+    dummy python:request.set('disable_plone.rightcolumn', True);
+    ">
 <metal:block metal:use-macro="here/main_template/macros/master">
 
     <metal:block metal:fill-slot="title">

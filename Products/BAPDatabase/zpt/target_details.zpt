@@ -1,6 +1,9 @@
 <tal:block define="country here/aq_parent/title_or_id;
                     target_id request/id | nothing;
-                    target python: here.get_target(target_id);">
+                    target python: here.get_target(target_id);
+                    dummy python:request.set('disable_plone.leftcolumn', True);
+                    dummy python:request.set('disable_plone.rightcolumn', True);
+                    ">
 
 <metal:block metal:use-macro="here/main_template/macros/master">
 
@@ -11,6 +14,10 @@
 <metal:block metal:fill-slot="style_slot">
     <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:/misc_/BAPDatabase/bap_style.css" />
 </metal:block>
+
+<metal:block fill-slot="column_one_slot"></metal:block>
+<metal:block fill-slot="column_two_slot"></metal:block>
+
 
 <metal:block fill-slot="main">
 

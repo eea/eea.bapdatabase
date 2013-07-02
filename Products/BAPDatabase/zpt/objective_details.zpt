@@ -1,7 +1,10 @@
 <tal:block tal:define="
     country here/aq_parent/title_or_id;
     objective_id request/id|nothing;
-    objective python: here.get_objective(objective_id);">
+    objective python: here.get_objective(objective_id);
+    dummy python:request.set('disable_plone.leftcolumn', True);
+    dummy python:request.set('disable_plone.rightcolumn', True);
+    ">
 
 <metal:block metal:use-macro="here/main_template/macros/master">
 
@@ -15,6 +18,10 @@
             <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
             <![endif]-->
         </metal:block>
+
+    <metal:block fill-slot="column_one_slot"></metal:block>
+    <metal:block fill-slot="column_two_slot"></metal:block>
+
 
     <metal:block fill-slot="main">
 

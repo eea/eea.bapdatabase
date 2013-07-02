@@ -1,6 +1,9 @@
+<tal:block define="dummy python:request.set('disable_plone.leftcolumn', True);
+                   dummy python:request.set('disable_plone.rightcolumn', True);
+">
 <metal:block metal:use-macro="here/main_template/macros/master">
 
-    <metal:block metal:fill-slot="site_title">
+    <metal:block metal:fill-slot="title">
             <title tal:content="string:${here/site_title} - Country profile for ${here/aq_parent/title_or_id} " />
     </metal:block>
 
@@ -9,7 +12,7 @@
         <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
         <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:/misc_/BAPDatabase/bap_style.css" />
         <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
+        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:/misc_/BAPDatabase/tabs-ie.css" />
         <![endif]-->
     </metal:block>
 
@@ -76,3 +79,4 @@
         </div>
     </metal:block>
 </metal:block>
+</tal:block>

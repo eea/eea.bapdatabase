@@ -1,6 +1,10 @@
 <tal:block
     define="objective_id request/id | nothing;
-            objective python:here.get_objective(objective_id)">
+            objective python:here.get_objective(objective_id);
+            dummy python:request.set('disable_plone.leftcolumn', True);
+            dummy python:request.set('disable_plone.rightcolumn', True);
+
+            ">
 
 <metal:block metal:use-macro="here/main_template/macros/master">
 
