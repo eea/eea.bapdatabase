@@ -26,8 +26,8 @@ for f in os.listdir(join(dirname(__file__), 'zpt')):
         tables.setdefault(fname,
                             PageTemplateFile('zpt/%s' % fname, globals()))
 
-def create_object_callback(parent, id, contributor):
-    ob = BAPDatabase(id, contributor)
+def create_object_callback(parent, id):
+    ob = BAPDatabase(id)
     parent._setObject(id, ob)
     ob = parent._getOb(id)
     return ob
@@ -36,7 +36,7 @@ manage_add_html = PageTemplateFile('zpt/manage_add', globals())
 def manage_add_bap(self, id, REQUEST=None, **kwargs):
     """ Create new BAPDatabase object from ZMI.
     """
-    create_object_callback(self, id, id)
+    create_object_callback(self, id)
     ob = self._getOb(id)
     if REQUEST is not None:
         params = dict(REQUEST.form)
@@ -71,11 +71,11 @@ class BAPDatabase(BTreeFolder2):
     #     from Products.NaayaCore.constants import ID_SCHEMATOOL
     #     return self.getSite()._getOb(ID_SCHEMATOOL).getSchemaForMetatype('Naaya Folder')
 
-    def __init__(self, id, contributor):
+    def __init__(self, id):
         """
             Constructor that builds new BAPDatabase object.
         """
-        super(BAPDatabase, self).__init__(id, contributor)
+        super(BAPDatabase, self).__init__(id)
 
     def _get_session(self):
         """ Create a Z3C.SQLAlchemy registered wrapper """
