@@ -1,19 +1,19 @@
 <metal:block metal:use-macro="here/main_template/macros/master">
 
-    <metal:block metal:fill-slot="title">
+    <metal:block metal:fill-slot="site_title">
             <title tal:content="string:${here/site_title} - Country profile for ${here/aq_parent/title_or_id} " />
     </metal:block>
 
-    <metal:block metal:fill-slot="head">
+    <metal:block metal:fill-slot="style_slot">
         <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bap.js"></script>
         <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
-        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/bap_style.css" />
+        <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:/misc_/BAPDatabase/bap_style.css" />
         <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:${skin_files_path}/tabs-ie.css" />
         <![endif]-->
     </metal:block>
 
-    <metal:block fill-slot="body">
+    <metal:block fill-slot="main">
         <div id="center_content" tal:define="country here/aq_parent/title_or_id">
             <span class="country-profile-title">
                 <h1>
