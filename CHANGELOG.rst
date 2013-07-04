@@ -1,5 +1,8 @@
-0.3.1 (unreleased)
+0.4.0 (unreleased)
 ==================
+
+ * Remove Naaya dependency [erral]
+ * Include some missing css files [erral]
 
 0.3.0 (2012-16-27)
 ==================
