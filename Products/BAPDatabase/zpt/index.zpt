@@ -3,7 +3,7 @@
 ">
 <metal:block metal:use-macro="here/main_template/macros/master">
 
-    <metal:block metal:fill-slot="title">
+    <metal:block metal:fill-slot="site_title">
             <title tal:content="string:${here/site_title} - Country profile for ${here/aq_parent/title_or_id} " />
     </metal:block>
 
