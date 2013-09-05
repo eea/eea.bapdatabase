@@ -16,6 +16,48 @@
         <![endif]-->
     </metal:block>
 
+
+<metal:block fill-slot="custom_breadcrumb">
+    <div id="portal-breadcrumbs" tal:define="parents request/PARENTS;
+                                             dummy python:parents.reverse();
+                                             breadcrumbs python:parents[2:];
+    ">
+
+    <span id="breadcrumbs-home">
+        <a href="/">Home</a>
+        <span tal:condition="breadcrumbs" class="breadcrumbSeparator">
+            &raquo;
+        </span>
+        <span tal:repeat="crumb breadcrumbs"
+                dir="ltr"
+          tal:attributes="id string:breadcrumbs-${repeat/crumb/number}">
+        <tal:item tal:define="is_last repeat/crumb/end;
+                              url crumb/absolute_url;
+                              title crumb/title_or_id">
+            <a href="#"
+               tal:omit-tag="not: url"
+               tal:condition="python:not is_last"
+               tal:attributes="href url"
+               tal:content="title">
+                crumb
+            </a>
+            <span class="breadcrumbSeparator" tal:condition="not: is_last">
+                &raquo;
+            </span>
+            <span id="breadcrumbs-current"
+                  tal:condition="is_last"
+                  tal:content="string:Country profile for ${here/aq_parent/title_or_id} ">
+                  Title
+
+            </span>
+         </tal:item>
+    </span>
+    </span>
+
+
+    </div>
+</metal:block>
+
     <metal:block fill-slot="main">
         <div id="center_content" tal:define="country here/aq_parent/title_or_id">
             <span class="country-profile-title">
@@ -27,7 +69,7 @@
                 <a class="country-compare-button"
                     tal:attributes="
                     title string:Compare country data;
-                    href string:${here/getSitePath}/countries_and_networks/bap/compare?country=${country}">
+                    href string:${here/portal_url}/countries_and_networks/bap/compare?country=${country}">
                          Compare country data
                      </a>
             </span>
