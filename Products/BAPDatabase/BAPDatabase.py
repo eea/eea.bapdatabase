@@ -9,6 +9,7 @@ except ImportError:
 from z3c.sqlalchemy.util import registeredWrappers, createSAWrapper
 from sqlalchemy.orm.exc import NoResultFound
 from ZPublisher import NotFound
+from zope.interface import implements
 
 from App.class_init import InitializeClass
 from AccessControl.SecurityInfo import ClassSecurityInfo
@@ -16,6 +17,8 @@ from AccessControl.Permissions import view_management_screens, view
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 
 from Products.BTreeFolder2.BTreeFolder2 import BTreeFolder2
+
+from Products.BAPDatabase.interfaces import IBAPDatabase
 
 import models
 
@@ -57,6 +60,7 @@ class BAPDatabase(BTreeFolder2):
         BAPDatabase object, folder-type that contains items described within specs.
         This is the root of the application.
     """
+    implements(IBAPDatabase)
     meta_type = 'BAPDatabase'
     security = ClassSecurityInfo()
 
