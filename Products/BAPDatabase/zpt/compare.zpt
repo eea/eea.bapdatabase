@@ -5,10 +5,11 @@
 
 <metal:block metal:fill-slot="title">
     <title tal:content="string:${here/site_title} - BAP Report 2010 comparison" />
-</metal:block>
+</metal:block>tabs
 
 <metal:block metal:fill-slot="style_slot">
-  <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/showLoading.js"></script>
     <script type="text/javascript" tal:attributes="src string:/misc_/BAPDatabase/bapCompare.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" tal:attributes="href string:/misc_/BAPDatabase/bap_style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/misc_/BAPDatabase/full-width-style.css" />
