@@ -1,8 +1,9 @@
-0.4.0 (unreleased)
+0.4.0 (2013-10-7)
 ==================
 
  * Remove Naaya dependency [erral]
  * Include some missing css files [erral]
+ * Fixes to use it in Plone [erral]
 
 0.3.0 (2012-16-27)
 ==================
