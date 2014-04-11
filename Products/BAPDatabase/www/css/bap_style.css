@@ -392,3 +392,7 @@ select.compare-select {
 .help {
     font-size: 0.8em;
 }
+.section-bap #content .ui-state-default a,  
+.section-bap #content .ui-state-default a:link {
+    color: #000 !important;
+}
