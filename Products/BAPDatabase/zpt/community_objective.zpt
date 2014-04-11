@@ -69,7 +69,7 @@
 
                 <a class="country-compare-button"
                     tal:attributes="title string:Show full community report;
-                                    href string:${here/getSitePath}/countries_and_networks/bap/community_report">
+                                    href string:${here/getSitePath}/countries/bap/community_report">
                          Show full community report
                      </a>
             </span>
@@ -89,7 +89,7 @@
                         <span>
                             <a class="target-link"
                                    title="Click to see details"
-                                   tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_target?id=${target/id}"
+                                   tal:attributes="href string:${here/getSitePath}/countries/bap/community_target?id=${target/id}"
                                    tal:content="string:Target: ${target/name}"></a>
                                <span tal:content="target/description" />
                                 </span>
@@ -98,7 +98,7 @@
                                             <span>
                                                 <a class="action-link"
                                                    title="Click to see details"
-                                                   tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_action?id=${action/id}"
+                                                   tal:attributes="href string:${here/getSitePath}/countries/bap/community_action?id=${action/id}"
                                                    tal:content="string:Action: ${action/name}"></a>
                                                <span tal:content="action/action" />
                                             </span>

@@ -68,7 +68,7 @@
                 <a class="country-compare-button"
                     tal:attributes="
                     title string:Compare country data;
-                    href string:${here/getSitePath}/countries_and_networks/bap/compare?country=Community+report">
+                    href string:${here/getSitePath}/countries/bap/compare?country=Community+report">
                          Compare community report data
                      </a>
             </span>
@@ -82,7 +82,7 @@
                 <div class="bap-objectives">
                     <span class="bap-objective-title">
                         <a title="Click to see details"
-                            tal:attributes="id objective/name; href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective_id}"
+                            tal:attributes="id objective/name; href string:${here/getSitePath}/countries/bap/community_objective?id=${objective_id}"
                             tal:content="objective/name" />
                         <span tal:content="objective/description" />
                     </span>
@@ -96,7 +96,7 @@
                                 <tal:block define="target_id target/id">
                                 <span>
                                 <a class="target-link" title="Click to see details"
-                                   tal:attributes="id target/name; href string:${here/getSitePath}/countries_and_networks/bap/community_target?id=${target_id}"
+                                   tal:attributes="id target/name; href string:${here/getSitePath}/countries/bap/community_target?id=${target_id}"
                                    tal:content="string:Target: ${target/name}"></a>
                                <span tal:content="target/description" />
                                 </span>
@@ -105,7 +105,7 @@
                                         <span>
                                             <a class="action-link"
                                                 title="Click to see details"
-                                                tal:attributes="id action/name; href string:${here/getSitePath}/countries_and_networks/bap/community_action?id=${action/id}"
+                                                tal:attributes="id action/name; href string:${here/getSitePath}/countries/bap/community_action?id=${action/id}"
                                                 tal:content="string:Action: ${action/name}"></a>
                                            <span tal:content="action/action" />
                                         </span>

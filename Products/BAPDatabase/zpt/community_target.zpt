@@ -66,7 +66,7 @@
 
             <a class="country-compare-button"
                 tal:attributes="title string:Show full community report;
-                                href string:${here/getSitePath}/countries_and_networks/bap/community_report">
+                                href string:${here/getSitePath}/countries/bap/community_report">
                      Show full community report
                  </a>
         </span>
@@ -75,7 +75,7 @@
 
         <div tal:define="objective python:here.get_target_parents(target);">
           <p>
-            <a tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective/id}">
+            <a tal:attributes="href string:${here/getSitePath}/countries/bap/community_objective?id=${objective/id}">
               <strong tal:content="objective/name" /></a>:
             <span tal:content="objective/description" />
           </p>
@@ -85,7 +85,7 @@
             <div class="bap-action" tal:repeat="action python:here.get_actions(target_id)">
                 <span>
                     <a class="action-link" title="Click to see details"
-                       tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_action?id=${action/id}"
+                       tal:attributes="href string:${here/getSitePath}/countries/bap/community_action?id=${action/id}"
                        tal:content="string:Action: ${action/name}"></a>
                     <span tal:content="action/action" />
                 </span>

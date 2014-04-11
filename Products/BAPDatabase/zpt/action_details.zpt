@@ -64,7 +64,7 @@
 
         <a class="country-compare-button"
             tal:attributes="title string:Show full country profile;
-                            href string:${here/getSitePath}/countries_and_networks/${country_id}/bap">
+                            href string:${here/getSitePath}/countries/${country_id}/bap">
                  Show full country profile
         </a>
     </span>

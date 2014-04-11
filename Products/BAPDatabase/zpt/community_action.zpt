@@ -72,7 +72,7 @@
 
         <a class="country-compare-button"
             tal:attributes="title string:Show full community report;
-                            href string:${here/getSitePath}/countries_and_networks/bap/community_report">
+                            href string:${here/getSitePath}/countries/bap/community_report">
                  Show full community report
              </a>
     </span>
@@ -83,13 +83,13 @@
                       objective python:records[1]">
 
       <p>
-        <a tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_objective?id=${objective/id}">
+        <a tal:attributes="href string:${here/getSitePath}/countries/bap/community_objective?id=${objective/id}">
           <strong tal:content="objective/name" /></a> :
         <span tal:content="objective/description" />
       </p>
 
       <p>
-        <a tal:attributes="href string:${here/getSitePath}/countries_and_networks/bap/community_target?id=${target/id}">
+        <a tal:attributes="href string:${here/getSitePath}/countries/bap/community_target?id=${target/id}">
         <strong>Target <span tal:replace="target/name" /></strong></a> :
         <span tal:content="target/description" />
       </p>
