@@ -23,8 +23,7 @@
 
 <metal:block fill-slot="custom_breadcrumb">
     <div id="portal-breadcrumbs" tal:define="parents request/PARENTS;
-                                             dummy python:parents.reverse();
-                                             breadcrumbs python:parents[2:];
+                                             breadcrumbs python:parents[::-1][2:];
     ">
 
     <span id="breadcrumbs-home">
