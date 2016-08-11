@@ -1,10 +1,12 @@
 0.7.0 (unreleased)
 ===================
+* Bugfix: use Plone 4 compatible markup for breadcrumbs
+  [tiberich]
 
 0.6.0 (2016-08-05)
 ===================
 * Bugfix: Don't sort inplace the parents of request. This breaks plone.subrequest
-
+  [tiberich]
 
 0.5.0 (2014-04-11)
 ===================

@@ -32,6 +32,7 @@
         <span tal:condition="breadcrumbs" class="breadcrumbSeparator">
             &raquo;
         </span>
+</span>
         <span tal:repeat="crumb breadcrumbs"
                 dir="ltr"
           tal:attributes="id string:breadcrumbs-${repeat/crumb/number}">
@@ -55,7 +56,6 @@
 
             </span>
          </tal:item>
-    </span>
     </span>
 
 
