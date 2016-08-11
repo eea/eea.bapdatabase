@@ -164,7 +164,8 @@ function toggle_target(Target, state){
             bap_actions.children('.bap-action').children('.bap-mop-content').load('' + url + ' #mop-content', function(response, status, xhr) {
                 $("#bap-content").hideLoading();
                 //Also linkify text
-                $(this).parent().html(Linkify($(this).html()));
+                //$(this).parent().html(Linkify($(this).html()));
+                $(this).linkify();
 
                 //Shorten long urls
                 $('.linkified').each(function(){
@@ -229,7 +230,8 @@ function toggle_action(Action, state){
             //Replace Action: A1.2. with <a href=
             $(this).html(replace_actions($(this).html()));
             //Also linkify text
-            $(this).html(Linkify($(this).html()));
+            //$(this).html(Linkify($(this).html()));
+            $(this).linkify();
 
             //Shorten long urls
             $('.linkified').each(function(){

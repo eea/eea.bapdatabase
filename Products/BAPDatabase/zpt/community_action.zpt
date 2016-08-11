@@ -15,7 +15,8 @@
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function(){
                     $('.bop-mop-progress p').each(function(){
-                        $(this).html(Linkify($(this).html()));
+                        //$(this).html(Linkify($(this).html()));
+                        $(this).linkify();
                     });
             });
         </script>

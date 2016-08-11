@@ -57,7 +57,8 @@ $(document).ready(function(){
         }
 
     $('.bap-action-content').each(function(){
-        $(this).html(Linkify($(this).html()));
+        // $(this).html(Linkify($(this).html()));
+        $(this).linkify();
     });
 
     //Shorten long urls

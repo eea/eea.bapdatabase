@@ -1,7 +1,9 @@
-0.7.0 (unreleased)
+0.7.0 (2016-08-11)
 ===================
 * Bugfix: use Plone 4 compatible markup for breadcrumbs
   [tiberich]
+* Bug fix: deploy and use an updated version of jquery.linkify
+  [tiberich #74997]
 
 0.6.0 (2016-08-05)
 ===================
