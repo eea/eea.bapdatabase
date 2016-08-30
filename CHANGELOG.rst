@@ -1,3 +1,8 @@
+0.8.0 (2016-08-30)
+===================
+* Bug fix: don't show a link in compare countries view, show a heading for Country
+  [tiberich #74997]
+
 0.7.0 (2016-08-11)
 ===================
 * Bugfix: use Plone 4 compatible markup for breadcrumbs
